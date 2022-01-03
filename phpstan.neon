@@ -1,0 +1,23 @@
+includes:
+    - vendor/phpstan/phpstan-strict-rules/rules.neon
+    - vendor/phpstan/phpstan-deprecation-rules/rules.neon
+    - vendor/ergebnis/phpstan-rules/rules.neon
+    - vendor/thecodingmachine/phpstan-strict-rules/phpstan-strict-rules.neon
+    - vendor/ekino/phpstan-banned-code/extension.neon
+parameters:
+    level: 8
+    paths:
+        - src
+        - tests
+
+    ignoreErrors:
+        # Extending classes.
+        - '#Class \"[a-zA-Z0-9\\_]+\" is not allowed to extend \"[a-zA-Z0-9\\_]+\".#'
+
+        # No switch rule.
+        - '#Control structures using switch should not be used.#'
+
+        # Nullable parameters.
+        - '#Constructor in [a-zA-Z0-9\\_]+ has parameter \$[a-zA-Z0-9\\_]+ with default value.#'
+        - '#Method [a-zA-Z0-9\\_]+::[a-zA-Z0-9\\_]+\(\) has parameter \$[a-zA-Z0-9\\_]+ with null as default value.#'
+        - '#Method [a-zA-Z0-9\\_]+::[a-zA-Z0-9\\_]+\(\) has parameter \$[a-zA-Z0-9\\_]+ with a nullable type declaration.#'

@@ -1,0 +1,18 @@
+{
+  "name": "sandwave-io/office-365-php",
+  "description": "A PHP SDK for the Microsoft office 365 API.",
+  "type": "library",
+  "license": "MIT",
+  "require": {
+    "php": "^7.4"
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^3.4",
+    "phpstan/phpstan": "^1.3",
+    "phpunit/phpunit": "^9.5",
+    "uptimeproject/php-cs-fixer-config": "^1.3"
+  },
+  "config": {
+    "sort-packages": true
+  }
+}
