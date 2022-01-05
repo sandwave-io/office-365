@@ -1,0 +1,5 @@
+kpn:
+  base_uri: '%env(resolve:KPN_API_BASE_URI)%'
+  username: '%env(resolve:KPN_API_USERNAME)%'
+  passwd: '%env(resolve:KPN_API_PASSWD)%'
+  partner_reference: '%env(resolve:KPN_PARTNER_REFERENCE)%'

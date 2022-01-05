@@ -4,6 +4,8 @@ namespace Kpn\Helper;
 
 use Kpn\Entity\EntityInterface;
 use JMS\Serializer\SerializerBuilder;
+use Kpn\Enum\RequestAction;
+use LaLit\Array2XML;
 
 class EntityHelper
 {
@@ -13,8 +15,10 @@ class EntityHelper
         return $serializer->serialize($object, 'xml');
     }
 
-    public static function deserialize(string $class, string $xml)
+    public static function deserialize(string $class, array $data)
     {
+        $xml = self::toXML($data, RequestAction::NEW_CUSTOMER_REQUEST_V1);
+
         $serializer = SerializerBuilder::create()
             ->addMetadataDir('./config/serializer')
             ->setDebug(true)
@@ -43,5 +47,10 @@ class EntityHelper
         }
 
         return $doc->saveXML();
+    }
+
+    public static function toXML(array $data, string $action): string
+    {
+        return (Array2XML::createXML($action, $data))->saveXML();
     }
 }

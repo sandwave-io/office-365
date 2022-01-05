@@ -3,6 +3,7 @@
 namespace Kpn\Office\Endpoint;
 
 use GuzzleHttp\Client;
+use Kpn\Helper\ParameterHelper;
 
 abstract class AbstractEndpoint
 {
@@ -10,10 +11,12 @@ abstract class AbstractEndpoint
 
     public function __construct()
     {
+        $config = ParameterHelper::get('kpn');
+
         $this->client = new Client(
             [
-                'auth' => ['username', 'password'],
-                'base_uri' => 'http://httpbin.org'
+                'auth' => [$config['username'], $config['passwd']],
+                'base_uri' => $config['base_uri']
             ]
         );
     }
