@@ -1,0 +1,14 @@
+Kpn\Entity\Customer:
+  exclusion_policy: ALL
+
+  properties:
+
+    header:
+      expose: true
+      type: Kpn\Entity\Header\CustomerHeader
+      serialized_name: Header
+
+    name:
+      expose: true
+      type: string
+      serialized_name: Name
