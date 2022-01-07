@@ -12,6 +12,7 @@ class EntityHelper
     public static function serialize($object): string
     {
         $serializer = SerializerBuilder::create()->build();
+
         return $serializer->serialize($object, 'xml');
     }
 
@@ -35,7 +36,6 @@ class EntityHelper
 
         $root = $doc->createElement($action);
         $doc->appendChild($root);
-        
 
         $docCustomer = new \DOMDocument();
         $docCustomer->loadXML(self::serialize($entity), LIBXML_NOWARNING);
@@ -47,7 +47,7 @@ class EntityHelper
             $node = $doc->importNode($property, true);
             $doc->documentElement->appendChild($node);
         }
-
+        
         return $doc->saveXML();
     }
 
