@@ -2,6 +2,7 @@
 
 use SandwaveIo\Office365\Entity\Customer;
 use SandwaveIo\Office365\Enum\Event as KpnEvent;
+use SandwaveIo\Office365\Library\Observer\Customer\CustomerObserverInterface;
 use SandwaveIo\Office365\Office\OfficeClient;
 
 require "vendor/autoload.php";
@@ -29,14 +30,13 @@ $xml = '
     </NewCustomerRequest_V1>
 ';
 
-
 $client = new OfficeClient(
-    'https://kpn',
+    'https://www.google.nl',
     'username',
     'password',
 );
 
-class MyfooBar implements \SandwaveIo\Office365\Observer\CustomerObserverInterface
+class MyfooBar implements CustomerObserverInterface
 {
     public function execute(Customer $customer): void
     {
@@ -47,6 +47,7 @@ class MyfooBar implements \SandwaveIo\Office365\Observer\CustomerObserverInterfa
 $client->webhook->addEventSubscriber(KpnEvent::CUSTOMER_CREATE, new MyfooBar());
 
 $customer = $client->customer->create('name');
+
 $response = $client->webhook->parse($xml);
 
 echo $customer->getHeader()->getPartnerReference();
