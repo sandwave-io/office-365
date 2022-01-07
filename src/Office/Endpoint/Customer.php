@@ -3,6 +3,7 @@
 namespace Office365\Office\Endpoint;
 
 use Office365\Enum\RequestAction;
+use Office365\Exception\Office365Exception;
 use Office365\Helper\EntityHelper;
 use Office365\Entity\Customer as KpnCustomer;
 use Office365\Transformer\ArrayToCustomer;
@@ -17,12 +18,12 @@ class Customer extends AbstractEndpoint
 
         try {
             $this->getClient()->post('/foo', [
-                'headers' => [
-                    'Content-Type' => 'text/xml; charset=UTF8',
-                ],
                 'body' => $document,
             ]);
-        } catch (\Exception $e) {}
+
+        } catch (\Exception $e) {
+            throw new Office365Exception("Network error", $e->getCode(), $e);
+        }
 
         return $customer;
     }

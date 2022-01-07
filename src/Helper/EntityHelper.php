@@ -47,7 +47,7 @@ class EntityHelper
             $node = $doc->importNode($property, true);
             $doc->documentElement->appendChild($node);
         }
-        
+
         return $doc->saveXML();
     }
 

@@ -29,7 +29,7 @@ class Webhook
         $className = ClassTransformer::transform($xml->getName());
 
         $entity = EntityHelper::deserialize($className,  (array) $xml);
-echo $entity->getName();exit;
+
         $subject = $this->subjects->getSubject($eventName, $entity);
 
         if ($subject !== null) {

@@ -3,7 +3,6 @@
 namespace Office365\Transformer;
 
 use Office365\Helper\DateHelper;
-use Office365\Helper\ParameterHelper;
 
 class ArrayToCustomer
 {
@@ -11,7 +10,7 @@ class ArrayToCustomer
     {
         return [
             'Header' => [
-                'PartnerReference' => ParameterHelper::get('kpn')['partner_reference'],
+                'PartnerReference' => 1,
                 'DateCreated' => DateHelper::UTC()->format('Y-m-d\TH:i:s')
             ],
             'Name' => 'test',

@@ -9,16 +9,9 @@ abstract class AbstractEndpoint
 {
     private Client $client;
 
-    public function __construct()
+    public function __construct(Client $client)
     {
-        $config = ParameterHelper::get('kpn');
-
-        $this->client = new Client(
-            [
-                'auth' => [$config['username'], $config['passwd']],
-                'base_uri' => $config['base_uri']
-            ]
-        );
+        $this->client = $client;
     }
 
     public function getClient(): Client
