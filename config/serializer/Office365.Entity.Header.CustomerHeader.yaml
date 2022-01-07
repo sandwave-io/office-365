@@ -1,4 +1,4 @@
-Kpn\Entity\Header\CustomerHeader:
+Office365\Entity\Header\CustomerHeader:
   exclusion_policy: ALL
 
   properties:

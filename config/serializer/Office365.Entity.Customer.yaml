@@ -1,11 +1,11 @@
-Kpn\Entity\Customer:
+Office365\Entity\Customer:
   exclusion_policy: ALL
 
   properties:
 
     header:
       expose: true
-      type: Kpn\Entity\Header\CustomerHeader
+      type: Office365\Entity\Header\CustomerHeader
       serialized_name: Header
 
     name:

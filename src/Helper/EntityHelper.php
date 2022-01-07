@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Kpn\Helper;
+namespace Office365\Helper;
 
-use Kpn\Entity\EntityInterface;
+use Office365\Entity\EntityInterface;
 use JMS\Serializer\SerializerBuilder;
-use Kpn\Enum\RequestAction;
+use Office365\Enum\RequestAction;
 use LaLit\Array2XML;
 
 class EntityHelper
@@ -29,11 +29,13 @@ class EntityHelper
 
     public static function prepare(string $action, EntityInterface $entity)
     {
-        $header = '<?xml version="1.0"?>';
-        $header .= '<' . $action . '></' . $action . '>';
+        $doc = new \DOMDocument('1.0', 'utf-8');
+        $doc->preserveWhiteSpace = false;
+        $doc->formatOutput = true;
 
-        $doc = new \DOMDocument();
-        $doc->loadXML($header, LIBXML_NOWARNING);
+        $root = $doc->createElement($action);
+        $doc->appendChild($root);
+        
 
         $docCustomer = new \DOMDocument();
         $docCustomer->loadXML(self::serialize($entity), LIBXML_NOWARNING);

@@ -1,9 +1,0 @@
-Kpn\Entity\Customer:
-
-  properties:
-
-    name:
-      - Regex:
-          pattern: '/[^A-Za-z0-9\_\-]/'
-          match:   false
-          message: 'invalid name'
