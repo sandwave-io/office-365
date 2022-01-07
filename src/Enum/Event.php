@@ -2,7 +2,7 @@
 
 namespace SandwaveIo\Office365\Enum;
 
-class Event
+final class Event
 {
     const CUSTOMER_CREATE = 'customer_create';
 }

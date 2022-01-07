@@ -2,7 +2,7 @@
 
 namespace SandwaveIo\Office365\Enum;
 
-class RequestAction
+final class RequestAction
 {
     const NEW_CUSTOMER_REQUEST_V1 = 'NewCustomerRequest_V1';
 }

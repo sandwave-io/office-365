@@ -7,7 +7,7 @@ use JMS\Serializer\SerializerBuilder;
 use SandwaveIo\Office365\Enum\RequestAction;
 use LaLit\Array2XML;
 
-class EntityHelper
+final class EntityHelper
 {
     public static function serialize($object): string
     {
@@ -22,7 +22,6 @@ class EntityHelper
 
         $serializer = SerializerBuilder::create()
             ->addMetadataDir('./config/serializer')
-            ->setDebug(true)
             ->build();
 
         return $serializer->deserialize($xml, $class, 'xml');

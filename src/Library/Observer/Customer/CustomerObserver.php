@@ -2,7 +2,7 @@
 
 namespace SandwaveIo\Office365\Library\Observer\Customer;
 
-class CustomerObserver implements \SplObserver
+final class CustomerObserver implements \SplObserver
 {
     private CustomerObserverInterface $callback;
 

@@ -4,7 +4,7 @@ namespace SandwaveIo\Office365\Library\Observer\Customer;
 
 use SandwaveIo\Office365\Entity\Customer;
 
-class CustomerSubject implements \SplSubject {
+final class CustomerSubject implements \SplSubject {
 
     private \SplObjectStorage $observers;
 

@@ -2,7 +2,7 @@
 
 namespace SandwaveIo\Office365\Helper;
 
-class DateHelper
+final class DateHelper
 {
     public static function UTC()
     {

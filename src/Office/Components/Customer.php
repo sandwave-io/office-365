@@ -9,9 +9,9 @@ use SandwaveIo\Office365\Transformer\ArrayToCustomer;
 
 final class Customer extends AbstractComponent
 {
-    public function create(string $name): KpnCustomer
+    public function create(string $name, string $partnerReference): KpnCustomer
     {
-        $customer = EntityHelper::deserialize(KpnCustomer::class, ArrayToCustomer::transform('123456', $name));
+        $customer = EntityHelper::deserialize(KpnCustomer::class, ArrayToCustomer::transform($partnerReference, $name));
         $document = EntityHelper::prepare(RequestAction::NEW_CUSTOMER_REQUEST_V1, $customer);
 
         $route = $this->getRouter()->get('customer_create');
