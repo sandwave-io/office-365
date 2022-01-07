@@ -2,10 +2,10 @@
 
 namespace SandwaveIo\Office365\Office;
 
-use SandwaveIo\Office365\Library\Client\GuzzleClient;
+use SandwaveIo\Office365\Library\Client\WebApiClient;
 use SandwaveIo\Office365\Library\Parameter\ParameterContainer;
 use SandwaveIo\Office365\Library\Parameter\ParameterContainerInterface;
-use SandwaveIo\Office365\Observer\Subjects;
+use SandwaveIo\Office365\Library\Observer\Subjects;
 use SandwaveIo\Office365\Office\Endpoint\Customer;
 use SandwaveIo\Office365\Webhook\Webhook;
 
@@ -27,7 +27,7 @@ final class OfficeClient
             'password' => $password,
         ]);
 
-        $guzzleClient = (new GuzzleClient($this->parameterContainer))->create();
+        $guzzleClient = (new WebApiClient($this->parameterContainer));
 
         $this->customer = new Customer($guzzleClient);
 

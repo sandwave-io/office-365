@@ -2,18 +2,18 @@
 
 namespace SandwaveIo\Office365\Office\Endpoint;
 
-use GuzzleHttp\Client;
+use SandwaveIo\Office365\Library\Client\WebApiClient;
 
 abstract class AbstractEndpoint
 {
-    private Client $client;
+    private WebApiClient $client;
 
-    public function __construct(Client $client)
+    public function __construct(WebApiClient $client)
     {
         $this->client = $client;
     }
 
-    public function getClient(): Client
+    public function getClient(): WebApiClient
     {
         return $this->client;
     }

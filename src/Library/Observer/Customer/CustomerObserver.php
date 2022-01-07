@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace SandwaveIo\Office365\Observer;
+namespace SandwaveIo\Office365\Library\Observer\Customer;
 
 class CustomerObserver implements \SplObserver
 {

@@ -3,7 +3,7 @@
 namespace SandwaveIo\Office365\Webhook;
 
 use SandwaveIo\Office365\Helper\EntityHelper;
-use SandwaveIo\Office365\Observer\Subjects;
+use SandwaveIo\Office365\Library\Observer\Subjects;
 use SandwaveIo\Office365\Transformer\ClassTransformer;
 use SandwaveIo\Office365\Transformer\RootnodeTransformer;
 
