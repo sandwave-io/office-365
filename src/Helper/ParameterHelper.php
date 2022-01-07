@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Kpn\Helper;
+namespace Office365\Helper;
 
 use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\Yaml\Yaml;

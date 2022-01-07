@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Kpn\Enum;
+namespace Office365\Enum;
 
 class Event
 {

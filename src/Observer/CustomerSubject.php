@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Kpn\Observer;
+namespace Office365\Observer;
 
-use Kpn\Entity\Customer;
+use Office365\Entity\Customer;
 
 class CustomerSubject implements \SplSubject {
 

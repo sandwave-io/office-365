@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace Kpn\Office\Endpoint;
+namespace Office365\Office\Endpoint;
 
-use Kpn\Enum\RequestAction;
-use Kpn\Helper\EntityHelper;
-use Kpn\Entity\Customer as KpnCustomer;
-use Kpn\Transformer\ArrayToCustomer;
+use Office365\Enum\RequestAction;
+use Office365\Helper\EntityHelper;
+use Office365\Entity\Customer as KpnCustomer;
+use Office365\Transformer\ArrayToCustomer;
 
 class Customer extends AbstractEndpoint
 {

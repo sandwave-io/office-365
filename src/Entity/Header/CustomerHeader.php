@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Kpn\Entity\Header;
+namespace Office365\Entity\Header;
 
 class CustomerHeader
 {

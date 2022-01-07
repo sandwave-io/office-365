@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Kpn\Transformer;
+namespace Office365\Transformer;
 
-use Kpn\Helper\DateHelper;
-use Kpn\Helper\ParameterHelper;
+use Office365\Helper\DateHelper;
+use Office365\Helper\ParameterHelper;
 
 class ArrayToCustomer
 {

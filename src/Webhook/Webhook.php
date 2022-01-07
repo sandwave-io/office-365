@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace Kpn\Webhook;
+namespace Office365\Webhook;
 
-use Kpn\Helper\EntityHelper;
-use Kpn\Observer\Subjects;
-use Kpn\Transformer\ClassTransformer;
-use Kpn\Transformer\RootnodeTransformer;
+use Office365\Helper\EntityHelper;
+use Office365\Observer\Subjects;
+use Office365\Transformer\ClassTransformer;
+use Office365\Transformer\RootnodeTransformer;
 
 class Webhook
 {

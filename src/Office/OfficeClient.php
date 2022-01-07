@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Kpn\Office;
+namespace Office365\Office;
 
-use Kpn\Observer\Subjects;
-use Kpn\Office\Endpoint\Customer;
-use Kpn\Webhook\Webhook;
+use Office365\Observer\Subjects;
+use Office365\Office\Endpoint\Customer;
+use Office365\Webhook\Webhook;
 
 final class OfficeClient
 {

@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Kpn\Office\Endpoint;
+namespace Office365\Office\Endpoint;
 
 use GuzzleHttp\Client;
-use Kpn\Helper\ParameterHelper;
+use Office365\Helper\ParameterHelper;
 
 abstract class AbstractEndpoint
 {

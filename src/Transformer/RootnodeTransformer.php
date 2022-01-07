@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Kpn\Transformer;
+namespace Office365\Transformer;
 
-use Kpn\Enum\Event;
-use Kpn\Enum\RequestAction;
+use Office365\Enum\Event;
+use Office365\Enum\RequestAction;
 
 class RootnodeTransformer
 {

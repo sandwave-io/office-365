@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Kpn\Transformer;
+namespace Office365\Transformer;
 
-use Kpn\Entity\Customer as KpnCustomer;
-use Kpn\Enum\Event;
-use Kpn\Enum\RequestAction;
+use Office365\Entity\Customer as KpnCustomer;
+use Office365\Enum\Event;
+use Office365\Enum\RequestAction;
 
 class ClassTransformer
 {

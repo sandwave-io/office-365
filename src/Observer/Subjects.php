@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Kpn\Observer;
+namespace Office365\Observer;
 
-use Kpn\Enum\Event;
+use Office365\Enum\Event;
 
 class Subjects
 {
