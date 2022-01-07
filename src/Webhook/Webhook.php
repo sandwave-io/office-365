@@ -7,6 +7,11 @@ use SandwaveIo\Office365\Library\Observer\Subjects;
 use SandwaveIo\Office365\Transformer\ClassTransformer;
 use SandwaveIo\Office365\Transformer\RootnodeTransformer;
 
+/**
+ * Class Webhook
+ * @package SandwaveIo\Office365\Webhook
+ * @deprecated
+ */
 class Webhook
 {
     private Subjects $subjects;
