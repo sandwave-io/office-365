@@ -12,7 +12,7 @@ class Customer extends AbstractEndpoint
 {
     public function create(string $name): KpnCustomer
     {
-        $customer = EntityHelper::deserialize(KpnCustomer::class, ArrayToCustomer::transform($name));
+        $customer = EntityHelper::deserialize(KpnCustomer::class, ArrayToCustomer::transform('123456', $name));
 
         $document = EntityHelper::prepare(RequestAction::NEW_CUSTOMER_REQUEST_V1, $customer);
 

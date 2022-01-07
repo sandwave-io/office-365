@@ -3,7 +3,6 @@
 namespace Office365\Office\Endpoint;
 
 use GuzzleHttp\Client;
-use Office365\Helper\ParameterHelper;
 
 abstract class AbstractEndpoint
 {

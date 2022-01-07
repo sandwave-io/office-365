@@ -2,7 +2,9 @@
 
 namespace Office365\Office;
 
-use Office365\Helper\GuzzleClientHelper;
+use Office365\Library\Client\GuzzleClient;
+use Office365\Library\Parameter\ParameterContainer;
+use Office365\Library\Parameter\ParameterContainerInterface;
 use Office365\Observer\Subjects;
 use Office365\Office\Endpoint\Customer;
 use Office365\Webhook\Webhook;
@@ -15,9 +17,17 @@ final class OfficeClient
 
     private Subjects $subjects;
 
+    private ParameterContainerInterface $parameterContainer;
+
     public function __construct(string $host, string $username, string $password)
     {
-        $guzzleClient = GuzzleClientHelper::create($host, $username, $password);
+        $this->parameterContainer = new ParameterContainer([
+            'host' => $host,
+            'username' => $username,
+            'password' => $password,
+        ]);
+
+        $guzzleClient = (new GuzzleClient($this->parameterContainer))->create();
 
         $this->customer = new Customer($guzzleClient);
 
