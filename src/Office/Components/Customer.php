@@ -7,7 +7,7 @@ use SandwaveIo\Office365\Helper\EntityHelper;
 use SandwaveIo\Office365\Entity\Customer as KpnCustomer;
 use SandwaveIo\Office365\Transformer\ArrayToCustomer;
 
-class Customer extends AbstractComponent
+final class Customer extends AbstractComponent
 {
     public function create(string $name): KpnCustomer
     {

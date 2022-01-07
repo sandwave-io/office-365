@@ -2,7 +2,7 @@
 
 namespace SandwaveIo\Office365\Library\Router;
 
-class Route
+final class Route
 {
     private string $method;
 
