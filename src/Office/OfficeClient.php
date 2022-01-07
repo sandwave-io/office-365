@@ -6,7 +6,9 @@ use SandwaveIo\Office365\Library\Client\WebApiClient;
 use SandwaveIo\Office365\Library\Parameter\ParameterContainer;
 use SandwaveIo\Office365\Library\Parameter\ParameterContainerInterface;
 use SandwaveIo\Office365\Library\Observer\Subjects;
-use SandwaveIo\Office365\Office\Endpoint\Customer;
+use SandwaveIo\Office365\Library\Router\Router;
+use SandwaveIo\Office365\Library\Router\RouterInterface;
+use SandwaveIo\Office365\Office\Components\Customer;
 use SandwaveIo\Office365\Webhook\Webhook;
 
 final class OfficeClient
@@ -19,6 +21,8 @@ final class OfficeClient
 
     private ParameterContainerInterface $parameterContainer;
 
+    private RouterInterface $router;
+
     public function __construct(string $host, string $username, string $password)
     {
         $this->parameterContainer = new ParameterContainer([
@@ -27,9 +31,11 @@ final class OfficeClient
             'password' => $password,
         ]);
 
+        $this->router = new Router();
+
         $guzzleClient = (new WebApiClient($this->parameterContainer));
 
-        $this->customer = new Customer($guzzleClient);
+        $this->customer = new Customer($guzzleClient, $this->router);
 
         $this->subjects = new Subjects();
         $this->webhook = new Webhook($this->subjects);

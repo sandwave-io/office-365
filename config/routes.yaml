@@ -1,0 +1,4 @@
+customer:
+  create:
+    method: post
+    url: '/foo/bar'
