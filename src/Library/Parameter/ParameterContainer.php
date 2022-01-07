@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Office365\Library\Parameter;
+namespace SandwaveIo\Office365\Library\Parameter;
 
 final class ParameterContainer implements ParameterContainerInterface
 {

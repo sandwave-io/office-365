@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-use Kpn\Entity\Customer;
-use Kpn\Enum\Event as KpnEvent;
-use Kpn\Office\OfficeClient;
+use SandwaveIo\Office365\Entity\Customer;
+use SandwaveIo\Office365\Enum\Event as KpnEvent;
+use SandwaveIo\Office365\Office\OfficeClient;
 
 require "vendor/autoload.php";
 
@@ -30,9 +30,13 @@ $xml = '
 ';
 
 
-$client = new OfficeClient();
+$client = new OfficeClient(
+    'https://kpn',
+    'username',
+    'password',
+);
 
-class MyfooBar implements \Kpn\Observer\CustomerObserverInterface
+class MyfooBar implements \SandwaveIo\Office365\Observer\CustomerObserverInterface
 {
     public function execute(Customer $customer): void
     {

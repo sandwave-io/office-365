@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Office365\Transformer;
+namespace SandwaveIo\Office365\Transformer;
 
-use Office365\Entity\Customer as KpnCustomer;
-use Office365\Enum\Event;
-use Office365\Enum\RequestAction;
+use SandwaveIo\Office365\Entity\Customer as KpnCustomer;
+use SandwaveIo\Office365\Enum\Event;
+use SandwaveIo\Office365\Enum\RequestAction;
 
 class ClassTransformer
 {

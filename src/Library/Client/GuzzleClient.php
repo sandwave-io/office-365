@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Office365\Library\Client;
+namespace SandwaveIo\Office365\Library\Client;
 
 use GuzzleHttp\Client;
-use Office365\Library\Parameter\ParameterContainerInterface;
+use SandwaveIo\Office365\Library\Parameter\ParameterContainerInterface;
 
 final class GuzzleClient
 {

@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Office365\Helper;
+namespace SandwaveIo\Office365\Helper;
 
-use Office365\Entity\EntityInterface;
+use SandwaveIo\Office365\Entity\EntityInterface;
 use JMS\Serializer\SerializerBuilder;
-use Office365\Enum\RequestAction;
+use SandwaveIo\Office365\Enum\RequestAction;
 use LaLit\Array2XML;
 
 class EntityHelper

@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace Office365\Webhook;
+namespace SandwaveIo\Office365\Webhook;
 
-use Office365\Helper\EntityHelper;
-use Office365\Observer\Subjects;
-use Office365\Transformer\ClassTransformer;
-use Office365\Transformer\RootnodeTransformer;
+use SandwaveIo\Office365\Helper\EntityHelper;
+use SandwaveIo\Office365\Observer\Subjects;
+use SandwaveIo\Office365\Transformer\ClassTransformer;
+use SandwaveIo\Office365\Transformer\RootnodeTransformer;
 
 class Webhook
 {

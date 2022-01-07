@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Office365\Entity;
+namespace SandwaveIo\Office365\Entity;
 
-use Office365\Entity\Header\CustomerHeader;
+use SandwaveIo\Office365\Entity\Header\CustomerHeader;
 
 class Customer implements EntityInterface
 {

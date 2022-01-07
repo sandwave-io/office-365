@@ -1,11 +1,11 @@
-Office365\Entity\Customer:
+SandwaveIo\Office365\Entity\Customer:
   exclusion_policy: ALL
 
   properties:
 
     header:
       expose: true
-      type: Office365\Entity\Header\CustomerHeader
+      type: SandwaveIo\Office365\Entity\Header\CustomerHeader
       serialized_name: Header
 
     name:

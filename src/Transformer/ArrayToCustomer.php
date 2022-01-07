@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Office365\Transformer;
+namespace SandwaveIo\Office365\Transformer;
 
-use Office365\Helper\DateHelper;
+use SandwaveIo\Office365\Helper\DateHelper;
 
 class ArrayToCustomer
 {

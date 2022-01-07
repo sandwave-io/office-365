@@ -1,13 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace Office365\Office;
+namespace SandwaveIo\Office365\Office;
 
-use Office365\Library\Client\GuzzleClient;
-use Office365\Library\Parameter\ParameterContainer;
-use Office365\Library\Parameter\ParameterContainerInterface;
-use Office365\Observer\Subjects;
-use Office365\Office\Endpoint\Customer;
-use Office365\Webhook\Webhook;
+use SandwaveIo\Office365\Library\Client\GuzzleClient;
+use SandwaveIo\Office365\Library\Parameter\ParameterContainer;
+use SandwaveIo\Office365\Library\Parameter\ParameterContainerInterface;
+use SandwaveIo\Office365\Observer\Subjects;
+use SandwaveIo\Office365\Office\Endpoint\Customer;
+use SandwaveIo\Office365\Webhook\Webhook;
 
 final class OfficeClient
 {

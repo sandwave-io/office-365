@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Office365\Office\Endpoint;
+namespace SandwaveIo\Office365\Office\Endpoint;
 
-use Office365\Enum\RequestAction;
-use Office365\Exception\Office365Exception;
-use Office365\Helper\EntityHelper;
-use Office365\Entity\Customer as KpnCustomer;
-use Office365\Transformer\ArrayToCustomer;
+use SandwaveIo\Office365\Enum\RequestAction;
+use SandwaveIo\Office365\Exception\Office365Exception;
+use SandwaveIo\Office365\Helper\EntityHelper;
+use SandwaveIo\Office365\Entity\Customer as KpnCustomer;
+use SandwaveIo\Office365\Transformer\ArrayToCustomer;
 
 class Customer extends AbstractEndpoint
 {
@@ -22,7 +22,7 @@ class Customer extends AbstractEndpoint
             ]);
 
         } catch (\Exception $e) {
-            throw new Office365Exception("Network error", $e->getCode(), $e);
+          //  throw new Office365Exception("Network error", $e->getCode(), $e);
         }
 
         return $customer;

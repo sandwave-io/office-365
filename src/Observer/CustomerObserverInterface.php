@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Office365\Observer;
+namespace SandwaveIo\Office365\Observer;
 
-use Office365\Entity\Customer;
+use SandwaveIo\Office365\Entity\Customer;
 
 interface CustomerObserverInterface
 {

@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Office365\Office\Endpoint;
+namespace SandwaveIo\Office365\Office\Endpoint;
 
 use GuzzleHttp\Client;
 
