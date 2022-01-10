@@ -6,7 +6,7 @@ use SandwaveIo\Office365\Entity\Header\CustomerHeader;
 
 class Customer implements EntityInterface
 {
-    private CustomerHeader $header;
+    private ?CustomerHeader $header = null;
 
     private string $name;
 
@@ -15,7 +15,7 @@ class Customer implements EntityInterface
         return $this->name;
     }
 
-    public function getHeader(): CustomerHeader
+    public function getHeader(): ?CustomerHeader
     {
         return $this->header;
     }
