@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace SandwaveIo\Office365\Office\Components;
+namespace SandwaveIo\Office365\Components;
 
 use SandwaveIo\Office365\Enum\RequestAction;
 use SandwaveIo\Office365\Helper\EntityHelper;

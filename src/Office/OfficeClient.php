@@ -8,7 +8,7 @@ use SandwaveIo\Office365\Library\Parameter\ParameterContainerInterface;
 use SandwaveIo\Office365\Library\Observer\Subjects;
 use SandwaveIo\Office365\Library\Router\Router;
 use SandwaveIo\Office365\Library\Router\RouterInterface;
-use SandwaveIo\Office365\Office\Components\Customer;
+use SandwaveIo\Office365\Components\Customer;
 use SandwaveIo\Office365\Webhook\Webhook;
 
 final class OfficeClient

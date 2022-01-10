@@ -1,14 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace SandwaveIo\Office365\Office\Components;
+namespace SandwaveIo\Office365\Components;
 
-use SandwaveIo\Office365\Library\Client\WebApiClient;
 use SandwaveIo\Office365\Library\Client\WebApiClientInterface;
 use SandwaveIo\Office365\Library\Router\RouterInterface;
 
 abstract class AbstractComponent
 {
-    private WebApiClient $client;
+    private WebApiClientInterface $client;
 
     private RouterInterface $router;
 
@@ -18,7 +17,7 @@ abstract class AbstractComponent
         $this->router = $router;
     }
 
-    public function getClient(): WebApiClient
+    public function getClient(): WebApiClientInterface
     {
         return $this->client;
     }
