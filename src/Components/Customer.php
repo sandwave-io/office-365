@@ -15,7 +15,7 @@ final class Customer extends AbstractComponent
         $document = EntityHelper::prepare(RequestAction::NEW_CUSTOMER_REQUEST_V1, $customer);
 
         $route = $this->getRouter()->get('customer_create');
-        //$this->getClient()->request($route->method(), $route->url(), $document);
+        $this->getClient()->request($route->method(), $route->url(), $document);
 
         return $customer;
     }

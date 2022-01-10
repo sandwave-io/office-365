@@ -65,5 +65,5 @@ $response = $client->webhook->parse($xml);
  * The callback/event will contain the full created Customer (see the CustomerCreateListener)
  * The object returned from this create method is a Customer object but most likely incomplete
  */
-$customer = $client->customer->create('name', '123456');
-echo $customer->getHeader()->getPartnerReference();
+$customer = $client->customer->create('name');
+echo $customer->getName();
