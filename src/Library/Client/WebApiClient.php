@@ -18,9 +18,11 @@ final class WebApiClient implements WebApiClientInterface
     public function request(string $method, string $url, string $xmlDocument): ResponseInterface
     {
         try {
-            return $this->client->request($method, $url, ['body' => $xmlDocument]);
+            //return $this->client->request($method, $url, ['body' => $xmlDocument]);
         } catch (\Exception $e) {
             throw new Office365Exception($e->getMessage(), $e->getCode(), $e);
         }
+
+
     }
 }
