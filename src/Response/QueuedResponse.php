@@ -13,4 +13,14 @@ class QueuedResponse
         $this->success = $success;
         $this->errorMessage = $errorMessage;
     }
+
+    public function isSuccess(): bool
+    {
+        return $this->success;
+    }
+
+    public function getErrorMessage(): string
+    {
+        return $this->errorMessage;
+    }
 }
