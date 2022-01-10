@@ -2,30 +2,17 @@
 
 namespace SandwaveIo\Office365\Library\Client;
 
-use GuzzleHttp\Client;
+use GuzzleHttp\Client as GuzzleClient;
 use Psr\Http\Message\ResponseInterface;
 use SandwaveIo\Office365\Exception\Office365Exception;
-use SandwaveIo\Office365\Library\Parameter\ParameterContainerInterface;
 
-final class WebApiClient
+final class WebApiClient implements WebApiClientInterface
 {
-    private Client $client;
+    private GuzzleClient $client;
 
-    private ParameterContainerInterface $parameterContainer;
-
-    public function __construct(ParameterContainerInterface $parameterContainer)
+    public function __construct(GuzzleClient $client)
     {
-        $this->parameterContainer = $parameterContainer;
-
-        $this->client = new Client(
-            [
-                'auth' => [$this->parameterContainer->get('username'), $this->parameterContainer->get('password')],
-                'base_uri' => $this->parameterContainer->get('host'),
-                'headers' => [
-                    'Content-Type' => 'text/xml; charset=UTF8'
-                ],
-            ]
-        );
+        $this->client = $client;
     }
 
     public function request(string $method, string $url, string $xmlDocument): ResponseInterface
