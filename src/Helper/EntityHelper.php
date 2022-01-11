@@ -1,7 +1,8 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 namespace SandwaveIo\Office365\Helper;
 
+use DOMException;
 use SandwaveIo\Office365\Entity\EntityInterface;
 use JMS\Serializer\SerializerBuilder;
 use SandwaveIo\Office365\Enum\RequestAction;
@@ -10,13 +11,17 @@ use SandwaveIo\Office365\Transformer\ClassTransformer;
 
 final class EntityHelper
 {
-    public static function serialize($object): string
+    public static function serialize(EntityInterface $entity): string
     {
         $serializer = SerializerBuilder::create()->build();
 
-        return $serializer->serialize($object, 'xml');
+        return $serializer->serialize($entity, 'xml');
     }
 
+    /**
+     * @param array<mixed> $data
+     * @return mixed
+     */
     public static function deserialize(string $class, array $data)
     {
         $xml = self::toXML($data, RequestAction::NEW_CUSTOMER_REQUEST_V1);
@@ -28,6 +33,10 @@ final class EntityHelper
         return $serializer->deserialize($xml, $class, 'xml');
     }
 
+    /**
+     * @return false|string
+     * @throws DOMException
+     */
     public static function prepare(string $action, EntityInterface $entity)
     {
         $doc = new \DOMDocument('1.0', 'utf-8');
@@ -42,6 +51,10 @@ final class EntityHelper
 
         $xpath = new \DOMXPath($docCustomer);
         $properties = $xpath->query('//result/*');
+
+        if (!$properties instanceof \DOMNodeList) {
+            return false;
+        }
 
         foreach ($properties as $property) {
             $node = $doc->importNode($property, true);
