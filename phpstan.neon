@@ -17,7 +17,8 @@ parameters:
         # No switch rule.
         - '#Control structures using switch should not be used.#'
 
-        # Nullable parameters.
         - '#Constructor in [a-zA-Z0-9\\_]+ has parameter \$[a-zA-Z0-9\\_]+ with default value.#'
-        - '#Method [a-zA-Z0-9\\_]+::[a-zA-Z0-9\\_]+\(\) has parameter \$[a-zA-Z0-9\\_]+ with null as default value.#'
-        - '#Method [a-zA-Z0-9\\_]+::[a-zA-Z0-9\\_]+\(\) has parameter \$[a-zA-Z0-9\\_]+ with a nullable type declaration.#'
+        - '#Method [a-zA-Z0-9\\_]+::[a-zA-Z0-9\\_]+\(\) has a nullable return type declaration.#'
+        -
+            message: "#^Property SandwaveIo\\\\Office365\\\\Entity\\\\[a-zA-Z0-9\\]+:\\:\\$[a-zA-Z0-9]+ is never written, only read\\.$#"
+            path: src/Entity/*

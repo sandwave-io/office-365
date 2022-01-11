@@ -1,8 +1,8 @@
 vendor
 .idea
 .php_cs.cache
-composer.lock
 .DS_Store
 clover.xml
 coverage
 .phpunit.result.cache
+.env
