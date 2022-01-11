@@ -19,7 +19,7 @@ final class ParameterContainer implements ParameterContainerInterface
 
     public function get(string $key): ?string
     {
-        if (isset($this->container[$key])) {
+        if (array_key_exists($key, $this->container)) {
             return $this->container[$key];
         }
 

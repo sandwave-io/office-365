@@ -15,9 +15,6 @@ final class Subjects
     /** @var array<string, SplSubject> */
     private array $subject = [];
 
-    /**
-     * @param $callback mixed
-     */
     public function attach(string $event, $callback): void
     {
         switch ($event) {
