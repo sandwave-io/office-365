@@ -2,6 +2,7 @@
 
 namespace SandwaveIo\Office365\Library\Observer;
 
+use SandwaveIo\Office365\Entity\EntityInterface;
 use SandwaveIo\Office365\Enum\Event;
 use SandwaveIo\Office365\Library\Observer\Customer\CustomerObserver;
 use SandwaveIo\Office365\Library\Observer\Customer\CustomerSubject;
@@ -28,7 +29,7 @@ final class Subjects
         $this->subject[$event]->attach($observer);
     }
 
-    public function getSubject(string $event, $entity): ?\SplSubject
+    public function getSubject(string $event, EntityInterface $entity): ?\SplSubject
     {
         if (array_key_exists($event, $this->subject)) {
 

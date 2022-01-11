@@ -6,6 +6,7 @@ use SandwaveIo\Office365\Entity\EntityInterface;
 use JMS\Serializer\SerializerBuilder;
 use SandwaveIo\Office365\Enum\RequestAction;
 use LaLit\Array2XML;
+use SandwaveIo\Office365\Transformer\ClassTransformer;
 
 final class EntityHelper
 {
@@ -53,5 +54,14 @@ final class EntityHelper
     public static function toXML(array $data, string $action): string
     {
         return (Array2XML::createXML($action, $data))->saveXML();
+    }
+
+    public static function createFromXML(string $xml): EntityInterface
+    {
+        $xml = simplexml_load_string($xml);
+
+        $className = ClassTransformer::transform($xml->getName());
+
+        return EntityHelper::deserialize($className,  (array) $xml);
     }
 }

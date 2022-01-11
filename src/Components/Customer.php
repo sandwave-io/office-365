@@ -18,11 +18,12 @@ final class Customer extends AbstractComponent
         $route = $this->getRouter()->get('customer_create');
         $response = $this->getClient()->request($route->method(), $route->url(), $document);
 
-        $xml = simplexml_load_string($response->getBody());
+        $xml = simplexml_load_string($response->getBody()->getContents());
 
         return new QueuedResponse(
             (string) $xml->IsSuccess === 'true',
-            (string) $xml->ErrorMessage
+            (string) $xml->ErrorMessage,
+            (int) $xml->ErrorCode
         );
     }
 }

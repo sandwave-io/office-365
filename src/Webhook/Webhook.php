@@ -1,16 +1,15 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 namespace SandwaveIo\Office365\Webhook;
 
 use SandwaveIo\Office365\Helper\EntityHelper;
 use SandwaveIo\Office365\Library\Observer\Subjects;
-use SandwaveIo\Office365\Transformer\ClassTransformer;
 use SandwaveIo\Office365\Transformer\RootnodeTransformer;
 
 /**
  * Class Webhook
  * @package SandwaveIo\Office365\Webhook
- * @deprecated
+ * @deprecated This should go into the implementer.
  */
 class Webhook
 {
@@ -26,15 +25,11 @@ class Webhook
         $this->subjects->attach($type, $callback);
     }
 
-    public function parse(string $xml)
+    public function dispatch(string $xml)
     {
+        $entity = EntityHelper::createFromXML($xml);
         $xml = simplexml_load_string($xml);
-
         $eventName = RootnodeTransformer::transform($xml->getName());
-        $className = ClassTransformer::transform($xml->getName());
-
-        $entity = EntityHelper::deserialize($className,  (array) $xml);
-
         $subject = $this->subjects->getSubject($eventName, $entity);
 
         if ($subject !== null) {

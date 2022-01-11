@@ -8,10 +8,13 @@ class QueuedResponse
 
     private string $errorMessage;
 
-    public function __construct(bool $success, string $errorMessage)
+    private int $errorCode;
+
+    public function __construct(bool $success, string $errorMessage, int $errorCode)
     {
         $this->success = $success;
         $this->errorMessage = $errorMessage;
+        $this->errorCode = $errorCode;
     }
 
     public function isSuccess(): bool
@@ -22,5 +25,10 @@ class QueuedResponse
     public function getErrorMessage(): string
     {
         return $this->errorMessage;
+    }
+
+    public function getErrorCode(): int
+    {
+        return $this->errorCode;
     }
 }
