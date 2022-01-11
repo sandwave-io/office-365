@@ -3,6 +3,7 @@
 namespace SandwaveIo\Office365\Helper;
 
 use DOMException;
+use Exception;
 use SandwaveIo\Office365\Entity\EntityInterface;
 use JMS\Serializer\SerializerBuilder;
 use SandwaveIo\Office365\Enum\RequestAction;
@@ -64,14 +65,28 @@ final class EntityHelper
         return $doc->saveXML();
     }
 
+    /**
+     * @param array<mixed> $data
+     * @throws Exception
+     */
     public static function toXML(array $data, string $action): string
     {
-        return (Array2XML::createXML($action, $data))->saveXML();
+        $xml = (Array2XML::createXML($action, $data))->saveXML();
+
+        if ($xml === false) {
+            return "";
+        }
+
+        return $xml;
     }
 
-    public static function createFromXML(string $xml): EntityInterface
+    public static function createFromXML(string $xml): ?EntityInterface
     {
         $xml = simplexml_load_string($xml);
+
+        if ($xml === false) {
+            return null;
+        }
 
         $className = ClassTransformer::transform($xml->getName());
 

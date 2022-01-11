@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 namespace SandwaveIo\Office365\Library\Router;
 
@@ -8,6 +8,9 @@ final class Router implements RouterInterface
 {
     private string $routeName = '%s_%s';
 
+    /**
+     * @var array<mixed>
+     */
     private array $routes = [];
 
     public function __construct()

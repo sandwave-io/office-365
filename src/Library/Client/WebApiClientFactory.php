@@ -1,11 +1,11 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 namespace SandwaveIo\Office365\Library\Client;
 
 use GuzzleHttp\Client;
 use SandwaveIo\Office365\Library\Parameter\ParameterContainerInterface;
 
-class WebApiClientFactory
+final class WebApiClientFactory
 {
     private ParameterContainerInterface $parameterContainer;
 
@@ -14,6 +14,9 @@ class WebApiClientFactory
         $this->parameterContainer = $parameterContainer;
     }
 
+    /**
+     * @param array<mixed> $options
+     */
     public function create(array $options = []): WebApiClientInterface
     {
         $defaults = array_merge($options, [

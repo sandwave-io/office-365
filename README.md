@@ -20,7 +20,7 @@ Each request must contain a header for basic authentication
 The office client is the API for this package. Example setup
 
 ```php
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 use SandwaveIo\Office365\Office\OfficeClient;
 

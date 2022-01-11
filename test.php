@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 use SandwaveIo\Office365\Entity\Customer;
 use SandwaveIo\Office365\Enum\Event as OfficeEvent;

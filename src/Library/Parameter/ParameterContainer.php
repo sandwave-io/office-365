@@ -1,9 +1,10 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 namespace SandwaveIo\Office365\Library\Parameter;
 
 final class ParameterContainer implements ParameterContainerInterface
 {
+    /** @var string[]  */
     private array $container = [];
 
     public function __construct(array $keyValuePairs)

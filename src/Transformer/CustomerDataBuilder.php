@@ -1,9 +1,12 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 namespace SandwaveIo\Office365\Transformer;
 
-class CustomerDataBuilder
+final class CustomerDataBuilder
 {
+    /**
+     * @return string[]
+     */
     public static function build(string $name): array
     {
         return [

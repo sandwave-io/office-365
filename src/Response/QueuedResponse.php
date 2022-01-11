@@ -1,8 +1,8 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 namespace SandwaveIo\Office365\Response;
 
-class QueuedResponse
+final class QueuedResponse
 {
     private bool $success;
 

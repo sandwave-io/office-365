@@ -2,6 +2,7 @@
 
 namespace SandwaveIo\Office365\Tests\Integration\Webhook;
 
+use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
 use SandwaveIo\Office365\Entity\Customer;
 use SandwaveIo\Office365\Helper\EntityHelper;
@@ -32,8 +33,9 @@ final class CustomerTest extends TestCase {
             </NewCustomerRequest_V1>';
 
 
+        /** @var Customer $customer */
         $customer = EntityHelper::createFromXML($incomingCustomerXml);
-        $this->assertInstanceOf(Customer::class, $customer);
-        $this->assertSame($customer->getName(), "Naam Klant");
+        Assert::assertInstanceOf(Customer::class, $customer);
+        Assert::assertSame($customer->getName(), "Naam Klant");
     }
 }

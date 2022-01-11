@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 namespace SandwaveIo\Office365\Office;
 
@@ -23,6 +23,9 @@ final class OfficeClient
 
     private RouterInterface $router;
 
+    /**
+     * @param array<mixed> $webApiOptions
+     */
     public function __construct(string $host, string $username, string $password, array $webApiOptions = [])
     {
         $this->parameterContainer = new ParameterContainer([

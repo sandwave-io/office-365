@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 namespace SandwaveIo\Office365\Library\Client;
 
@@ -22,7 +22,5 @@ final class WebApiClient implements WebApiClientInterface
         } catch (\Exception $e) {
             throw new Office365Exception($e->getMessage(), $e->getCode(), $e);
         }
-
-
     }
 }

@@ -1,8 +1,8 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 namespace SandwaveIo\Office365\Entity\Header;
 
-class CustomerHeader
+final class CustomerHeader
 {
     private int $partnerReference;
 
