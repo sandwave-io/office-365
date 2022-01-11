@@ -7,6 +7,9 @@ final class ParameterContainer implements ParameterContainerInterface
     /** @var string[]  */
     private array $container = [];
 
+    /**
+     * @param string[] $keyValuePairs
+     */
     public function __construct(array $keyValuePairs)
     {
         foreach ($keyValuePairs as $key => $value) {
