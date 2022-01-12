@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a7c701c08b9d6d115d095054526dd2a8",
+    "content-hash": "e8fd9e9c6f3ddabfbe202e47772ed599",
     "packages": [
         {
             "name": "digitickets/lalit",
@@ -5301,7 +5301,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.0|^8.0",
+        "php": "^7.4|^8.0",
         "ext-simplexml": "*",
         "ext-dom": "*",
         "ext-libxml": "*"
