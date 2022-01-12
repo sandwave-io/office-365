@@ -4,5 +4,4 @@ namespace SandwaveIo\Office365\Entity;
 
 interface EntityInterface
 {
-
 }

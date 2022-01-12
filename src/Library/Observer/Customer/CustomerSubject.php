@@ -7,20 +7,22 @@ use SplObserver;
 
 final class CustomerSubject implements \SplSubject
 {
-
     private \SplObjectStorage $observers;
 
     private Customer $customer;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->observers = new \SplObjectStorage();
     }
 
-    public function attach(SplObserver $observer): void {
+    public function attach(SplObserver $observer): void
+    {
         $this->observers->attach($observer);
     }
 
-    public function detach(SplObserver $observer): void {
+    public function detach(SplObserver $observer): void
+    {
         $this->observers->detach($observer);
     }
 

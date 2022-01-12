@@ -23,7 +23,7 @@ final class WebApiClientFactory
             'auth' => [$this->parameterContainer->get('username'), $this->parameterContainer->get('password')],
             'base_uri' => $this->parameterContainer->get('host'),
             'headers' => [
-                'Content-Type' => 'text/xml; charset=UTF8'
+                'Content-Type' => 'text/xml; charset=UTF8',
             ],
         ]);
 

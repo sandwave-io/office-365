@@ -4,7 +4,7 @@ namespace SandwaveIo\Office365\Library\Parameter;
 
 final class ParameterContainer implements ParameterContainerInterface
 {
-    /** @var string[]  */
+    /** @var string[] */
     private array $container = [];
 
     /**

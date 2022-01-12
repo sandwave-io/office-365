@@ -9,8 +9,10 @@ use SandwaveIo\Office365\Library\Observer\Subjects;
 use SandwaveIo\Office365\Transformer\RootnodeTransformer;
 
 /**
- * Class Webhook
+ * Class Webhook.
+ *
  * @package SandwaveIo\Office365\Webhook
+ *
  * @deprecated This should go into the implementer.
  */
 class Webhook

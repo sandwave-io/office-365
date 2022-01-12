@@ -7,11 +7,13 @@ use PHPUnit\Framework\TestCase;
 use SandwaveIo\Office365\Entity\Customer;
 use SandwaveIo\Office365\Helper\EntityHelper;
 
-final class CustomerTest extends TestCase {
+final class CustomerTest extends TestCase
+{
     /**
      * @test
      */
-    public function incomingCustomer(): void {
+    public function incomingCustomer(): void
+    {
         $incomingCustomerXml = '
             <NewCustomerRequest_V1>
                 <Header>
@@ -32,10 +34,9 @@ final class CustomerTest extends TestCase {
                 <LegalStatus>CV</LegalStatus>
             </NewCustomerRequest_V1>';
 
-
         /** @var Customer $customer */
         $customer = EntityHelper::createFromXML($incomingCustomerXml);
         Assert::assertInstanceOf(Customer::class, $customer);
-        Assert::assertSame($customer->getName(), "Naam Klant");
+        Assert::assertSame($customer->getName(), 'Naam Klant');
     }
 }
