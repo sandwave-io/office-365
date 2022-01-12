@@ -3,6 +3,7 @@
 namespace SandwaveIo\Office365\Library\Client;
 
 use GuzzleHttp\Client as GuzzleClient;
+use GuzzleHttp\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
 use SandwaveIo\Office365\Exception\Office365Exception;
 
@@ -19,6 +20,7 @@ final class WebApiClient implements WebApiClientInterface
     {
         try {
             //return $this->client->request($method, $url, ['body' => $xmlDocument]);
+            return new Response();
         } catch (\Exception $e) {
             throw new Office365Exception($e->getMessage(), $e->getCode(), $e);
         }

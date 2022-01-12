@@ -21,11 +21,6 @@ parameters:
 			path: src/Helper/EntityHelper.php
 
 		-
-			message: "#^Dead catch \\- Exception is never thrown in the try block\\.$#"
-			count: 1
-			path: src/Library/Client/WebApiClient.php
-
-		-
 			message: "#^Property SandwaveIo\\\\Office365\\\\Library\\\\Client\\\\WebApiClient\\:\\:\\$client is never read, only written\\.$#"
 			count: 1
 			path: src/Library/Client/WebApiClient.php
@@ -34,11 +29,6 @@ parameters:
 			message: "#^Call to an undefined method SplSubject\\:\\:getCustomer\\(\\)\\.$#"
 			count: 1
 			path: src/Library/Observer/Customer/CustomerObserver.php
-
-		-
-			message: "#^Property SandwaveIo\\\\Office365\\\\Library\\\\Observer\\\\Customer\\\\CustomerSubject\\:\\:\\$observers with generic class SplObjectStorage does not specify its types\\: TObject, TData$#"
-			count: 1
-			path: src/Library/Observer/Customer/CustomerSubject.php
 
 		-
 			message: "#^Method SandwaveIo\\\\Office365\\\\Library\\\\Observer\\\\Subjects\\:\\:attach\\(\\) has parameter \\$callback with no type specified\\.$#"
