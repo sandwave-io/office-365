@@ -114,6 +114,7 @@ final class Customer implements EntityInterface
     /**
      * @Test\SerializedName("ChamberOfCommerceNr")
      * @Test\Type("string")
+     * 
      */
     private ?string $chamberOfCommerceNr = null;
 
