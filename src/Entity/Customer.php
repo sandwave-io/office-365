@@ -7,7 +7,6 @@ use SandwaveIo\Office365\Entity\Header\CustomerHeader;
 
 final class Customer implements EntityInterface
 {
-
     private ?CustomerHeader $header = null;
 
     /**

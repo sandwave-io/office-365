@@ -34,7 +34,8 @@ final class Customer extends AbstractComponent
         ?string $bic,
         string $legalStatus,
         ?string $externalId,
-        ?string $chamberOfCommerceNr): QueuedResponse
+        ?string $chamberOfCommerceNr
+    ): QueuedResponse
     {
         $customerData = CustomerDataBuilder::build(
             ... func_get_args()

@@ -26,8 +26,7 @@ final class CustomerDataBuilder
         string $legalStatus,
         ?string $externalId,
         ?string $chamberOfCommerceNr
-    ): array
-    {
+    ): array {
         return [
             'Name'   => $name,
             'Street' => $street,
@@ -46,7 +45,7 @@ final class CustomerDataBuilder
             'BIC' => $bic,
             'LegalStatus' => $legalStatus,
             'ExternalId' => $externalId,
-            'ChamberOfCommerceNr' => $chamberOfCommerceNr
+            'ChamberOfCommerceNr' => $chamberOfCommerceNr,
         ];
     }
 }
