@@ -9,10 +9,6 @@ final class Customer implements EntityInterface
 {
     private ?CustomerHeader $header = null;
 
-    /**
-     * @Serializer\SerializedName("Name")
-     * @Serializer\Type("string")
-     */
     private string $name;
 
     public function getName(): string
