@@ -6,5 +6,5 @@ use Psr\Http\Message\ResponseInterface;
 
 interface WebApiClientInterface
 {
-    public function  request(string $method, string $url, string $xmlDocument): ResponseInterface;
+    public function request(string $method, string $url, string $xmlDocument): ResponseInterface;
 }

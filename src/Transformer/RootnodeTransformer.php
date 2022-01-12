@@ -13,7 +13,7 @@ final class RootnodeTransformer
             case RequestAction::NEW_CUSTOMER_REQUEST_V1:
                 return Event::CUSTOMER_CREATE;
             default:
-                return "";
+                return '';
         }
     }
 }

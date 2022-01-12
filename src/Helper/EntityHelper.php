@@ -4,10 +4,10 @@ namespace SandwaveIo\Office365\Helper;
 
 use DOMException;
 use Exception;
-use SandwaveIo\Office365\Entity\EntityInterface;
 use JMS\Serializer\SerializerBuilder;
-use SandwaveIo\Office365\Enum\RequestAction;
 use LaLit\Array2XML;
+use SandwaveIo\Office365\Entity\EntityInterface;
+use SandwaveIo\Office365\Enum\RequestAction;
 use SandwaveIo\Office365\Transformer\ClassTransformer;
 
 final class EntityHelper
@@ -21,22 +21,22 @@ final class EntityHelper
 
     /**
      * @param array<mixed> $data
+     *
      * @return mixed
      */
     public static function deserialize(string $class, array $data)
     {
         $xml = self::toXML($data, RequestAction::NEW_CUSTOMER_REQUEST_V1);
-
         $serializer = SerializerBuilder::create()
-            ->addMetadataDir('./config/serializer')
             ->build();
 
         return $serializer->deserialize($xml, $class, 'xml');
     }
 
     /**
-     * @return false|string
      * @throws DOMException
+     *
+     * @return false|string
      */
     public static function prepare(string $action, EntityInterface $entity)
     {
@@ -53,7 +53,7 @@ final class EntityHelper
         $xpath = new \DOMXPath($docCustomer);
         $properties = $xpath->query('//result/*');
 
-        if (!$properties instanceof \DOMNodeList) {
+        if (! $properties instanceof \DOMNodeList) {
             return false;
         }
 
@@ -67,6 +67,7 @@ final class EntityHelper
 
     /**
      * @param array<mixed> $data
+     *
      * @throws Exception
      */
     public static function toXML(array $data, string $action): string
@@ -74,7 +75,7 @@ final class EntityHelper
         $xml = (Array2XML::createXML($action, $data))->saveXML();
 
         if ($xml === false) {
-            return "";
+            return '';
         }
 
         return $xml;
@@ -90,6 +91,6 @@ final class EntityHelper
 
         $className = ClassTransformer::transform($xml->getName());
 
-        return EntityHelper::deserialize($className,  (array) $xml);
+        return EntityHelper::deserialize($className, (array) $xml);
     }
 }
