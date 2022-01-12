@@ -37,24 +37,7 @@ final class Customer extends AbstractComponent
         ?string $chamberOfCommerceNr
     ): QueuedResponse {
         $customerData = CustomerDataBuilder::build(
-            $name,
-            $street,
-            $houseNr,
-            $houseNrExtension,
-            $zipCode,
-            $city,
-            $countryCode,
-            $phone1,
-            $phone2,
-            $fax,
-            $email,
-            $website,
-            $debitNr,
-            $iban,
-            $bic,
-            $legalStatus,
-            $externalId,
-            $chamberOfCommerceNr
+            ... func_get_args()
         );
 
         $customer = EntityHelper::deserialize(CustomerEntity::class, $customerData);

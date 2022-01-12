@@ -2,7 +2,7 @@
 
 namespace SandwaveIo\Office365\Entity;
 
-use JMS\Serializer\Annotation as Serializer;
+use JMS\Serializer\Annotation as Test;
 use SandwaveIo\Office365\Entity\Header\CustomerHeader;
 
 final class Customer implements EntityInterface
@@ -10,110 +10,110 @@ final class Customer implements EntityInterface
     private ?CustomerHeader $header = null;
 
     /**
-     * @Serializer\SerializedName("Name")
-     * @Serializer\Type("string")
+     * @Test\SerializedName("Name")
+     * @Test\Type("string")
      */
     private string $name;
 
     /**
-     * @Serializer\SerializedName("Street")
-     * @Serializer\Type("string")
+     * @Test\SerializedName("Street")
+     * @Test\Type("string")
      */
     private string $street;
 
     /**
-     * @Serializer\SerializedName("HouseNr")
-     * @Serializer\Type("int")
+     * @Test\SerializedName("HouseNr")
+     * @Test\Type("int")
      */
     private int $houseNr;
 
     /**
-     * @Serializer\SerializedName("HouseNrExtension")
-     * @Serializer\Type("string")
+     * @Test\SerializedName("HouseNrExtension")
+     * @Test\Type("string")
      */
     private ?string $houseNrExtension = null;
 
     /**
-     * @Serializer\SerializedName("ZipCode")
-     * @Serializer\Type("string")
+     * @Test\SerializedName("ZipCode")
+     * @Test\Type("string")
      */
     private string $zipCode;
 
     /**
-     * @Serializer\SerializedName("City")
-     * @Serializer\Type("string")
+     * @Test\SerializedName("City")
+     * @Test\Type("string")
      */
     private string $city;
 
     /**
-     * @Serializer\SerializedName("CountryCode")
-     * @Serializer\Type("string")
+     * @Test\SerializedName("CountryCode")
+     * @Test\Type("string")
      */
     private string $countryCode;
 
     /**
-     * @Serializer\SerializedName("Phone1")
-     * @Serializer\Type("string")
+     * @Test\SerializedName("Phone1")
+     * @Test\Type("string")
      */
     private string $phone1;
 
     /**
-     * @Serializer\SerializedName("Phone2")
-     * @Serializer\Type("string")
+     * @Test\SerializedName("Phone2")
+     * @Test\Type("string")
      */
     private ?string $phone2 = null;
 
     /**
-     * @Serializer\SerializedName("Fax")
-     * @Serializer\Type("string")
+     * @Test\SerializedName("Fax")
+     * @Test\Type("string")
      */
     private ?string $fax = null;
 
     /**
-     * @Serializer\SerializedName("Email")
-     * @Serializer\Type("string")
+     * @Test\SerializedName("Email")
+     * @Test\Type("string")
      */
     private string $email;
 
     /**
-     * @Serializer\SerializedName("Website")
-     * @Serializer\Type("string")
+     * @Test\SerializedName("Website")
+     * @Test\Type("string")
      */
     private ?string $website = null;
 
     /**
-     * @Serializer\SerializedName("DebitNr")
-     * @Serializer\Type("string")
+     * @Test\SerializedName("DebitNr")
+     * @Test\Type("string")
      */
     private ?string $debitNr = null;
 
     /**
-     * @Serializer\SerializedName("IBAN")
-     * @Serializer\Type("string")
+     * @Test\SerializedName("IBAN")
+     * @Test\Type("string")
      */
     private ?string $iban = null;
 
     /**
-     * @Serializer\SerializedName("BIC")
-     * @Serializer\Type("string")
+     * @Test\SerializedName("BIC")
+     * @Test\Type("string")
      */
     private ?string $bic = null;
 
     /**
-     * @Serializer\SerializedName("LegalStatus")
-     * @Serializer\Type("string")
+     * @Test\SerializedName("LegalStatus")
+     * @Test\Type("string")
      */
     private string $legalStatus;
 
     /**
-     * @Serializer\SerializedName("ExternalId")
-     * @Serializer\Type("string")
+     * @Test\SerializedName("ExternalId")
+     * @Test\Type("string")
      */
     private ?string $externalId = null;
 
     /**
-     * @Serializer\SerializedName("ChamberOfCommerceNr")
-     * @Serializer\Type("string")
+     * @Test\SerializedName("ChamberOfCommerceNr")
+     * @Test\Type("string")
      */
     private ?string $chamberOfCommerceNr = null;
 
