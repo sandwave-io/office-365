@@ -2,8 +2,8 @@
 
 namespace SandwaveIo\Office365\Entity;
 
-use SandwaveIo\Office365\Entity\Header\CustomerHeader;
 use JMS\Serializer\Annotation as Serializer;
+use SandwaveIo\Office365\Entity\Header\CustomerHeader;
 
 final class Customer implements EntityInterface
 {
