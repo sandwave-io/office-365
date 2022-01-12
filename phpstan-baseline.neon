@@ -21,11 +21,6 @@ parameters:
 			path: src/Helper/EntityHelper.php
 
 		-
-			message: "#^Property SandwaveIo\\\\Office365\\\\Library\\\\Client\\\\WebApiClient\\:\\:\\$client is never read, only written\\.$#"
-			count: 1
-			path: src/Library/Client/WebApiClient.php
-
-		-
 			message: "#^Call to an undefined method SplSubject\\:\\:getCustomer\\(\\)\\.$#"
 			count: 1
 			path: src/Library/Observer/Customer/CustomerObserver.php
