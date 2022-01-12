@@ -36,7 +36,6 @@ final class CustomerTest extends TestCase
 
         /** @var Customer $customer */
         $customer = EntityHelper::createFromXML($incomingCustomerXml);
-        var_dump($customer);
         Assert::assertInstanceOf(Customer::class, $customer);
         Assert::assertSame($customer->getName(), 'Naam Klant');
     }

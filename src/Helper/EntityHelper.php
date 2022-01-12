@@ -27,9 +27,8 @@ final class EntityHelper
     public static function deserialize(string $class, array $data)
     {
         $xml = self::toXML($data, RequestAction::NEW_CUSTOMER_REQUEST_V1);
-
         $serializer = SerializerBuilder::create()
-            ->addMetadataDir('./config/serializer')
+            ->addMetadataDir(__DIR__ . '/../../config/serializer')
             ->build();
 
         return $serializer->deserialize($xml, $class, 'xml');

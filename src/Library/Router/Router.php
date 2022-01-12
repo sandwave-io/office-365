@@ -16,7 +16,6 @@ final class Router implements RouterInterface
     public function __construct()
     {
         $data = Yaml::parseFile(__DIR__ . '/../../../config/routes.yaml');
-        var_dump($data);
 
         foreach ($data as $component => $routes) {
             foreach ($routes as $routeName => $route) {
