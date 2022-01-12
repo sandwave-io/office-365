@@ -29,8 +29,7 @@
   },
   "autoload": {
     "psr-4": {
-      "SandwaveIo\\Office365\\": "./src",
-      "SandwaveIo\\Office365\\Tests\\": "tests/"
+      "SandwaveIo\\Office365\\": "./src"
     }
   }
 }
