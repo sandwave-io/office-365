@@ -1,0 +1,14 @@
+SandwaveIo\Office365\Entity\TenantDomainOwner:
+  exclusion_policy: ALL
+
+  properties:
+
+    customerId:
+      expose: true
+      type: int
+      serialized_name: CustomerId
+
+    tenantId:
+      expose: true
+      type: string
+      serialized_name: TenantId

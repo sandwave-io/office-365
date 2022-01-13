@@ -1,0 +1,12 @@
+<?php declare(strict_types = 1);
+
+namespace SandwaveIo\Office365\Enum;
+
+use SandwaveIo\Office365\Entity\RequestStatus;
+
+final class RequestStatusCode
+{
+    const SUCCESS = 'Success';
+    const UNKNOWN_ERROR = 'UnknownError';
+    const VALIDATION_ERROR = 'ValidationError';
+}

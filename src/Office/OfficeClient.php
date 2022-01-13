@@ -3,6 +3,7 @@
 namespace SandwaveIo\Office365\Office;
 
 use SandwaveIo\Office365\Components\Customer;
+use SandwaveIo\Office365\Components\Tenant;
 use SandwaveIo\Office365\Library\Client\WebApiClientFactory;
 use SandwaveIo\Office365\Library\Observer\Subjects;
 use SandwaveIo\Office365\Library\Parameter\ParameterContainer;
@@ -14,6 +15,8 @@ use SandwaveIo\Office365\Webhook\Webhook;
 final class OfficeClient
 {
     public Customer $customer;
+
+    public Tenant $tenant;
 
     public Webhook $webhook;
 
@@ -39,6 +42,7 @@ final class OfficeClient
         $webApiClient = (new WebApiClientFactory($this->parameterContainer))->create($webApiOptions);
 
         $this->customer = new Customer($webApiClient, $this->router);
+        $this->tenant = new Tenant($webApiClient, $this->router);
 
         $this->subjects = new Subjects();
         $this->webhook = new Webhook($this->subjects);
