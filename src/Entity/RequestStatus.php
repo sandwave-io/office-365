@@ -5,7 +5,7 @@ namespace SandwaveIo\Office365\Entity;
 final class RequestStatus
 {
     /** @var string[] */
-    public ?array $messages;
+    public array $messages;
 
     public string $code;
 
