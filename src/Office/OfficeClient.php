@@ -3,7 +3,6 @@
 namespace SandwaveIo\Office365\Office;
 
 use SandwaveIo\Office365\Components\Customer;
-use SandwaveIo\Office365\Components\Tenant;
 use SandwaveIo\Office365\Library\Client\WebApiClientFactory;
 use SandwaveIo\Office365\Library\Observer\Subjects;
 use SandwaveIo\Office365\Library\Parameter\ParameterContainer;
