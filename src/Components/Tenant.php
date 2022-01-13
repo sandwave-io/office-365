@@ -17,7 +17,7 @@ final class Tenant extends AbstractComponent
      * @throws DOMException
      * @throws Office365Exception
      */
-    public function hasDomainOwnership(int $customerId, string $tenantId): TenantDomainOwnershipResponse
+    public function hasTenantDomainOwnership(int $customerId, string $tenantId): TenantDomainOwnershipResponse
     {
         $tenantDomainOwnership = EntityHelper::deserialize(TenantDomainOwner::class, TenantDataBuilder::build($customerId, $tenantId), RequestAction::TENANT_DOMAIN_OWNERSHIP_REQUEST_V1);
         $document = EntityHelper::prepare(RequestAction::TENANT_DOMAIN_OWNERSHIP_REQUEST_V1, $tenantDomainOwnership);
