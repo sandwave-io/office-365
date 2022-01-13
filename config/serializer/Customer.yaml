@@ -12,3 +12,88 @@ SandwaveIo\Office365\Entity\Customer:
       expose: true
       type: string
       serialized_name: Name
+
+    street:
+      expose: true
+      type: string
+      serialized_name: Street
+
+    houseNr:
+      expose: true
+      type: int
+      serialized_name: HouseNr
+
+    houseNrExtension:
+      expose: true
+      type: string
+      serialized_name: HouseNrExtension
+
+    zipCode:
+        expose: true
+        type: string
+        serialized_name: ZipCode
+
+    city:
+      expose: true
+      type: string
+      serialized_name: City
+
+    countryCode:
+      expose: true
+      type: string
+      serialized_name: CountryCode
+
+    phone1:
+      expose: true
+      type: string
+      serialized_name: Phone1
+
+    phone2:
+      expose: true
+      type: string
+      serialized_name: Phone2
+
+    fax:
+      expose: true
+      type: string
+      serialized_name: Fax
+
+    email:
+      expose: true
+      type: string
+      serialized_name: Email
+
+    website:
+      expose: true
+      type: string
+      serialized_name: Website
+
+    debitNr:
+      expose: true
+      type: string
+      serialized_name: DebitNr
+
+    iban:
+      expose: true
+      type: string
+      serialized_name: IBAN
+
+    bic:
+      expose: true
+      type: string
+      serialized_name: BIC
+
+    legalStatus:
+      expose: true
+      type: string
+      serialized_name: LegalStatus
+
+    externalId:
+      expose: true
+      type: string
+      serialized_name: ExternalId
+
+    chamberOfCommerceNr:
+      expose: true
+      type: string
+      serialized_name: ChamberOfCommerceNr
