@@ -40,7 +40,7 @@ class Webhook
             throw new Office365Exception(self::class . '::dispatch - unable to load XML from supplied string.');
         }
 
-        $entity = EntityHelper::createFromXML($xml);
+        $entity = EntityHelper::createFromXML($xml, RequestAction::NEW_CUSTOMER_REQUEST_V1);
         $eventName = RootnodeTransformer::transform($xmlObject->getName());
         $subject = $this->subjects->getSubject($eventName, $entity);
 
