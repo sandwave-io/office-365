@@ -50,6 +50,4 @@ final class Tenant extends AbstractComponent
             (string) $xml->DnsBoardingRecordValue,
         );
     }
-
-
 }
