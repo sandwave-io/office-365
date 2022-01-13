@@ -3,11 +3,11 @@
 namespace SandwaveIo\Office365\Components;
 
 use DOMException;
-use SandwaveIo\Office365\Entity\RequestStatus;
 use SandwaveIo\Office365\Entity\TenantDomainOwner;
 use SandwaveIo\Office365\Enum\RequestAction;
 use SandwaveIo\Office365\Exception\Office365Exception;
 use SandwaveIo\Office365\Helper\EntityHelper;
+use SandwaveIo\Office365\Response\RequestStatus;
 use SandwaveIo\Office365\Response\TenantDomainOwnershipResponse;
 use SandwaveIo\Office365\Transformer\TenantDataBuilder;
 
