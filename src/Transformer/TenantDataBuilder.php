@@ -5,7 +5,7 @@ namespace SandwaveIo\Office365\Transformer;
 final class TenantDataBuilder
 {
     /**
-     * @return string[]
+     * @return array<string, string|int>
      */
     public static function build(int $customerId, string $tenantId): array
     {

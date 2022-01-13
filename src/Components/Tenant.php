@@ -34,7 +34,7 @@ final class Tenant extends AbstractComponent
             throw new Office365Exception(self::class . ':hasDomainOwnership unable to check tenant domain ownership.');
         }
 
-        if (isset($xml->ErrorCode) && (string) $xml->IsSuccess === 'false') {
+        if ((string) $xml->IsSuccess === 'false') {
             throw new Office365Exception(sprintf('%s:hasDomainOwnership Nina error response returned %s, %s.', self::class, $xml->ErrorCode, $xml->ErrorMessage));
         }
 
