@@ -22,7 +22,7 @@ final class Tenant extends AbstractComponent
         $tenantDomainOwnership = EntityHelper::deserialize(TenantDomainOwner::class, TenantDataBuilder::build($customerId, $tenantId), RequestAction::TENANT_DOMAIN_OWNERSHIP_REQUEST_V1);
         $document = EntityHelper::prepare(RequestAction::TENANT_DOMAIN_OWNERSHIP_REQUEST_V1, $tenantDomainOwnership);
         if ($document === false) {
-            throw new Office365Exception(self::class . ':hasDomainOwnership unable to check tenant domain ownership.');
+            throw new Office365Exception(sprintf('%s:hasDomainOwnership unable to check tenant domain ownership. Tenant %s, customer %s.', self::class, $tenantId, $customerId));
         }
 
         $route = $this->getRouter()->get('tenant_ownership_has_domain_ownership');
@@ -31,11 +31,11 @@ final class Tenant extends AbstractComponent
         $xml = simplexml_load_string($response->getBody()->getContents());
 
         if ($xml === false) {
-            throw new Office365Exception(self::class . ':hasDomainOwnership unable to check tenant domain ownership.');
+            throw new Office365Exception(sprintf('%s:hasDomainOwnership unable to check tenant domain ownership. Tenant %s, customer %s.', self::class, $tenantId, $customerId));
         }
 
         if ((string) $xml->IsSuccess === 'false') {
-            throw new Office365Exception(sprintf('%s:hasDomainOwnership Nina error response returned %s, %s.', self::class, $xml->ErrorCode, $xml->ErrorMessage));
+            throw new Office365Exception(sprintf('%s:hasDomainOwnership Nina error response returned %s, %s. Tenant %s, customer %s.', self::class, $xml->ErrorCode, $xml->ErrorMessage, $tenantId, $customerId));
         }
 
         return new TenantDomainOwnershipResponse(
@@ -50,4 +50,6 @@ final class Tenant extends AbstractComponent
             (string) $xml->DnsBoardingRecordValue,
         );
     }
+
+
 }
