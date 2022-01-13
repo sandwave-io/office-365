@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\Office365\Entity;
+namespace SandwaveIo\Office365\Response;
 
 final class RequestStatus
 {

@@ -2,8 +2,6 @@
 
 namespace SandwaveIo\Office365\Response;
 
-use SandwaveIo\Office365\Entity\RequestStatus;
-
 final class TenantDomainOwnershipResponse
 {
     private RequestStatus $status;
