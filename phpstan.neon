@@ -21,6 +21,7 @@ parameters:
 
         - '#Constructor in [a-zA-Z0-9\\_]+ has parameter \$[a-zA-Z0-9\\_]+ with default value.#'
         - '#Method [a-zA-Z0-9\\_]+::[a-zA-Z0-9\\_]+\(\) has a nullable return type declaration.#'
+        - '#Method [a-zA-Z0-9\\_]+::[a-zA-Z0-9\\_]+\(\) has parameter \$[a-zA-Z0-9\\_]+ with a nullable type declaration.#'
         -
             message: "#^Property SandwaveIo\\\\Office365\\\\Entity\\\\[a-zA-Z0-9\\]+:\\:\\$[a-zA-Z0-9]+ is never written, only read\\.$#"
             path: src/Entity/*

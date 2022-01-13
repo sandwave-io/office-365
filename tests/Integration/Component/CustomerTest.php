@@ -25,7 +25,26 @@ final class CustomerTest extends TestCase
         $stack = HandlerStack::create($mockHandler);
         $officeClient = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
 
-        $customerResponse = $officeClient->customer->create('testname');
+        $customerResponse = $officeClient->customer->create(
+            'Naam Klant',
+            'StraatNaam',
+            38,
+            null,
+            '1234AB',
+            'Amsterdam',
+            'NLD',
+            '0612345678',
+            null,
+            null,
+            'klant@email.nl',
+            null,
+            null,
+            null,
+            null,
+            'CV',
+            null,
+            null,
+        );
 
         Assert::assertInstanceOf(QueuedResponse::class, $customerResponse);
         Assert::assertTrue($customerResponse->isSuccess());
