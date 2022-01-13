@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\Office365\Entity\CloudAgreementContact_V1;
+namespace SandwaveIo\Office365\Entity\CloudAgreementContact;
 
 final class AgreementContact
 {
