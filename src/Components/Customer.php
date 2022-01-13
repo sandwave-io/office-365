@@ -40,7 +40,7 @@ final class Customer extends AbstractComponent
             ... func_get_args()
         );
 
-        $customer = EntityHelper::deserialize(CustomerEntity::class, $customerData);
+        $customer = EntityHelper::deserialize(CustomerEntity::class, $customerData, RequestAction::NEW_CUSTOMER_REQUEST_V1);
         $document = EntityHelper::prepare(RequestAction::NEW_CUSTOMER_REQUEST_V1, $customer);
         if ($document === false) {
             throw new Office365Exception(self::class . ':create unable to create customer entity.');

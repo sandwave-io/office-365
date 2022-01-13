@@ -7,7 +7,6 @@ use Exception;
 use JMS\Serializer\SerializerBuilder;
 use LaLit\Array2XML;
 use SandwaveIo\Office365\Entity\EntityInterface;
-use SandwaveIo\Office365\Enum\RequestAction;
 use SandwaveIo\Office365\Transformer\ClassTransformer;
 
 final class EntityHelper
@@ -24,9 +23,9 @@ final class EntityHelper
      *
      * @return mixed
      */
-    public static function deserialize(string $class, array $data)
+    public static function deserialize(string $class, array $data, string $action)
     {
-        $xml = self::toXML($data, RequestAction::NEW_CUSTOMER_REQUEST_V1);
+        $xml = self::toXML($data, $action);
         $serializer = SerializerBuilder::create()
             ->addMetadataDir(__DIR__ . '/../../config/serializer', 'SandwaveIo\Office365\Entity')
             ->build();
@@ -82,7 +81,7 @@ final class EntityHelper
         return $xml;
     }
 
-    public static function createFromXML(string $xml): ?EntityInterface
+    public static function createFromXML(string $xml, string $action): ?EntityInterface
     {
         $xml = simplexml_load_string($xml);
 
@@ -92,6 +91,6 @@ final class EntityHelper
 
         $className = ClassTransformer::transform($xml->getName());
 
-        return EntityHelper::deserialize($className, (array) $xml);
+        return EntityHelper::deserialize($className, (array) $xml, $action);
     }
 }
