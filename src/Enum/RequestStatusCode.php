@@ -2,8 +2,6 @@
 
 namespace SandwaveIo\Office365\Enum;
 
-use SandwaveIo\Office365\Entity\RequestStatus;
-
 final class RequestStatusCode
 {
     const SUCCESS = 'Success';

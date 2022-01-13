@@ -11,7 +11,7 @@ final class RequestStatus
 
     /**
      * @param string[] $messages
-     * @param string $code
+     * @param string   $code
      */
     public function __construct(string $code, array $messages = null)
     {

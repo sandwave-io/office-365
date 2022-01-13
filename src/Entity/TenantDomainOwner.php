@@ -5,6 +5,7 @@ namespace SandwaveIo\Office365\Entity;
 final class TenantDomainOwner implements EntityInterface
 {
     private int $customerId;
+
     private string $tenantId;
 
     public function getCustomerId(): int
