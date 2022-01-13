@@ -3,6 +3,7 @@
 namespace SandwaveIo\Office365\Webhook;
 
 use SandwaveIo\Office365\Entity\EntityInterface;
+use SandwaveIo\Office365\Enum\RequestAction;
 use SandwaveIo\Office365\Exception\Office365Exception;
 use SandwaveIo\Office365\Helper\EntityHelper;
 use SandwaveIo\Office365\Library\Observer\Subjects;
