@@ -22,7 +22,7 @@ final class TenantDomainOwnershipTest extends TestCase
         $stack = HandlerStack::create($mockHandler);
         $officeClient = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
 
-        $domainOwnershipResponse = $officeClient->tenant->hasTenantDomainOwnership(123, '321');
+        $domainOwnershipResponse = $officeClient->customer->hasTenantDomainOwnership(123, '321');
 
         Assert::assertInstanceOf(TenantDomainOwnershipResponse::class, $domainOwnershipResponse);
         Assert::assertSame('Success', $domainOwnershipResponse->getStatus()->code);
@@ -41,6 +41,6 @@ final class TenantDomainOwnershipTest extends TestCase
 
         $this->expectException(Office365Exception::class);
 
-        $officeClient->tenant->hasTenantDomainOwnership(123, '321');
+        $officeClient->customer->hasTenantDomainOwnership(123, '321');
     }
 }

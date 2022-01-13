@@ -16,8 +16,6 @@ final class OfficeClient
 {
     public Customer $customer;
 
-    public Tenant $tenant;
-
     public Webhook $webhook;
 
     private Subjects $subjects;
@@ -42,7 +40,6 @@ final class OfficeClient
         $webApiClient = (new WebApiClientFactory($this->parameterContainer))->create($webApiOptions);
 
         $this->customer = new Customer($webApiClient, $this->router);
-        $this->tenant = new Tenant($webApiClient, $this->router);
 
         $this->subjects = new Subjects();
         $this->webhook = new Webhook($this->subjects);

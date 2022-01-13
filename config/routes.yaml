@@ -2,7 +2,7 @@ customer:
   create:
     method: post
     url: '/foo/bar'
-tenant_ownership:
+
   has_domain_ownership:
     method: post
     url: '/foo/bar'
