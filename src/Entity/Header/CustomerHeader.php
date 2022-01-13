@@ -4,16 +4,8 @@ namespace SandwaveIo\Office365\Entity\Header;
 
 final class CustomerHeader
 {
-    /**
-     * @Serializer\SerializedName("PartnerReference")
-     * @Serializer\Type("int")
-     */
     private int $partnerReference;
 
-    /**
-     * @Serializer\SerializedName("DateCreated")
-     * @Serializer\Type("DateTime<'Y-m-d\TH:i:s'>")
-     */
     private \DateTime $dateCreated;
 
     public function getPartnerReference(): int
