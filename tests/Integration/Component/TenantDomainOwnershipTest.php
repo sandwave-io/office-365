@@ -16,10 +16,8 @@ final class TenantDomainOwnershipTest extends TestCase
      */
     public function hasDomainOwnershipSuccess(): void
     {
-        $response = '<MicrosoftTenantDomainOwnershipCheckResponse_V1><Status><Messages><string>Hello world!</string></Messages><Code>Success</Code></Status><IsDelegatedAccessAllowed>true</IsDelegatedAccessAllowed><IsAcceptanceMcaRequired>false</IsAcceptanceMcaRequired><IsOnboardingReady>true</IsOnboardingReady><DnsBoardingRecordName>dns-name</DnsBoardingRecordName><DnsBoardingRecordValue>dns-value</DnsBoardingRecordValue></MicrosoftTenantDomainOwnershipCheckResponse_V1>';
-
         $mockHandler = new MockHandler(
-            [new Response(200, [], $response)]
+            [new Response(200, [], (string) file_get_contents(__DIR__ . '/../Data/Response/MicrosoftTenantDomainOwnershipCheckResponse_V1.xml'))]
         );
         $stack = HandlerStack::create($mockHandler);
         $officeClient = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
@@ -35,10 +33,8 @@ final class TenantDomainOwnershipTest extends TestCase
      */
     public function hasDomainOwnershipError(): void
     {
-        $ninaResponse = '<NinaResponse><IsSuccess>false</IsSuccess><ErrorCode>108</ErrorCode><ErrorMessage>Is stuk</ErrorMessage></NinaResponse>';
-
         $mockHandler = new MockHandler(
-            [new Response(200, [], $ninaResponse)]
+            [new Response(200, [], (string) file_get_contents(__DIR__ . '/../Data/Response/NinaResponse.xml'))]
         );
         $stack = HandlerStack::create($mockHandler);
         $officeClient = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
