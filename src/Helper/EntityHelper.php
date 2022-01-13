@@ -7,7 +7,6 @@ use Exception;
 use JMS\Serializer\SerializerBuilder;
 use LaLit\Array2XML;
 use SandwaveIo\Office365\Entity\EntityInterface;
-use SandwaveIo\Office365\Enum\RequestAction;
 use SandwaveIo\Office365\Transformer\ClassTransformer;
 
 final class EntityHelper
