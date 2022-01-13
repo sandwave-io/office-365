@@ -24,9 +24,9 @@ final class EntityHelper
      *
      * @return mixed
      */
-    public static function deserialize(string $class, array $data)
+    public static function deserialize(string $class, array $data, string $action)
     {
-        $xml = self::toXML($data, RequestAction::NEW_CUSTOMER_REQUEST_V1);
+        $xml = self::toXML($data, $action);
         $serializer = SerializerBuilder::create()
             ->addMetadataDir(__DIR__ . '/../../config/serializer', 'SandwaveIo\Office365\Entity')
             ->build();
