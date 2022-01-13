@@ -8,9 +8,9 @@ use SandwaveIo\Office365\Entity\CloudAgreementContact\AgreementContact;
 final class CloudAgreementContactDataBuilder
 {
     /**
-     * @return array<string, int|AgreementContact|CustomerHeader>
+     * @return array<string, int|AgreementContact|CustomerHeader|null>
      */
-    public static function build(CustomerHeader $customerHeader, int $customerId, AgreementContact $agreementContact): array
+    public static function build(?CustomerHeader $customerHeader, int $customerId, AgreementContact $agreementContact): array
     {
         return [
             'CustomerHeader' => $customerHeader,
