@@ -8,7 +8,7 @@ use SandwaveIo\Office365\Enum\RequestAction;
 use SandwaveIo\Office365\Exception\Office365Exception;
 use SandwaveIo\Office365\Helper\EntityHelper;
 use SandwaveIo\Office365\Response\QueuedResponse;
-use SandwaveIo\Office365\Transformer\CustomerDataBuilder;
+use SandwaveIo\Office365\Transformer\CloudAgreementDataBuilder;
 
 final class CloudAgreementContact extends AbstractComponent
 {
@@ -18,7 +18,7 @@ final class CloudAgreementContact extends AbstractComponent
      */
     public function create(string $name): QueuedResponse
     {
-        $contact = EntityHelper::deserialize(CloudAgreementContactEntity::class, CustomerDataBuilder::build(... func_get_args()));
+        $contact = EntityHelper::deserialize(CloudAgreementContactEntity::class, CloudAgreementDataBuilder::build(... func_get_args()));
         $document = EntityHelper::prepare(RequestAction::NEW_CLOUD_AGREEMENT_CONTACT_REQUEST_V1, $contact);
         if ($document === false) {
             throw new Office365Exception(self::class . ':create unable to create cloud contact agreement entity.');

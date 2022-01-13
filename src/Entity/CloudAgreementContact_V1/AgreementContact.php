@@ -2,7 +2,7 @@
 
 namespace SandwaveIo\Office365\Entity\CloudAgreementContact_V1;
 
-final class CloudAgreementContact_V1
+final class AgreementContact
 {
     private string $firstName;
 
@@ -31,7 +31,7 @@ final class CloudAgreementContact_V1
 
     public function getPhoneNumber(): string
     {
-        return $this->firstName;
+        return $this->phoneNumber;
     }
 
     public function getDateAgreed(): \DateTime

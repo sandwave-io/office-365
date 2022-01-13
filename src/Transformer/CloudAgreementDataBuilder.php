@@ -1,16 +1,20 @@
 <?php declare(strict_types = 1);
 
 namespace SandwaveIo\Office365\Transformer;
+use SandwaveIo\Office365\Entity\Header\CustomerHeader;
+use SandwaveIo\Office365\Entity\CloudAgreementContact_V1\AgreementContact;
 
 final class CloudAgreementDataBuilder
 {
     /**
-     * @return string[]
+     * @return array<string, int|AgreementContact|CustomerHeader>
      */
-    public static function build(string $name): array
+    public static function build(CustomerHeader $customerHeader, int $customerId, AgreementContact $agreementContact): array
     {
         return [
-            'Name' => $name,
+            'CustomerHeader' => $customerHeader,
+            'CustomerId' => $customerId,
+            'AgreementContact' => $agreementContact,
         ];
     }
 }

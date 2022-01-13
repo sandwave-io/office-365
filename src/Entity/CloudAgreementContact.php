@@ -3,7 +3,7 @@
 namespace SandwaveIo\Office365\Entity;
 
 use SandwaveIo\Office365\Entity\Header\CustomerHeader;
-use SandwaveIo\Office365\Entity\CloudAgreementContact_V1\CloudAgreementContact_V1;
+use SandwaveIo\Office365\Entity\CloudAgreementContact_V1\AgreementContact;
 
 final class CloudAgreementContact implements EntityInterface
 {
@@ -11,20 +11,20 @@ final class CloudAgreementContact implements EntityInterface
 
     private int $customerId;
 
-    private CloudAgreementContact_V1 $cloudAgreementContact;
+    private AgreementContact $cloudAgreementContact;
 
     public function getHeader(): ?CustomerHeader
     {
         return $this->header;
     }
 
-    public function getCloudAgreementContract(): CloudAgreementContact_V1
-    {
-        return $this->cloudAgreementContact;
-    }
-
     public function getCustomerId(): int
     {
         return $this->customerId;
+    }
+
+    public function getCloudAgreementContact(): AgreementContact
+    {
+        return $this->cloudAgreementContact;
     }
 }
