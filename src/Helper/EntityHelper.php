@@ -25,6 +25,7 @@ final class EntityHelper
      */
     public static function deserialize(string $class, array $data, string $action)
     {
+        var_dump('wtfffff');
         $xml = self::toXML($data, $action);
         $serializer = SerializerBuilder::create()
             ->addMetadataDir(__DIR__ . '/../../config/serializer', 'SandwaveIo\Office365\Entity')
@@ -72,6 +73,8 @@ final class EntityHelper
      */
     public static function toXML(array $data, string $action): string
     {
+        //var_dump('wtfff2ff');
+//        var_dump(gettype($data));
         $xml = (Array2XML::createXML($action, $data))->saveXML();
 
         if ($xml === false) {

@@ -32,7 +32,7 @@ final class CloudAgreementTest extends TestCase
         $cloudAgreementResponse = $officeClient->cloudAgreementContact->create(
             null,
             1,
-            new AgreementContact()
+            new AgreementContact('john', 'doe', 'test@sandwave.io', '123456', \DateTime::createFromFormat('Y-m-d H:i:s', '2022-01-13 15:00:00'))
         );
 
         dd($cloudAgreementResponse);

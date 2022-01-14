@@ -14,6 +14,15 @@ final class AgreementContact
 
     private \DateTime $dateAgreed;
 
+    public function __construct(string $firstName, string $lastName, string $emailAddress, string $phoneNumber, \DateTime $dateAgreed)
+    {
+        $this->firstName = $firstName;
+        $this->lastName = $lastName;
+        $this->emailAddress = $emailAddress;
+        $this->phoneNumber = $phoneNumber;
+        $this->dateAgreed = $dateAgreed;
+    }
+
     public function getFirstName(): string
     {
         return $this->firstName;

@@ -4,6 +4,7 @@ namespace SandwaveIo\Office365\Transformer;
 
 use SandwaveIo\Office365\Entity\Header\CustomerHeader;
 use SandwaveIo\Office365\Entity\CloudAgreementContact\AgreementContact;
+use SandwaveIo\Office365\Helper\EntityHelper;
 
 final class CloudAgreementContactDataBuilder
 {
@@ -13,9 +14,9 @@ final class CloudAgreementContactDataBuilder
     public static function build(?CustomerHeader $customerHeader, int $customerId, AgreementContact $agreementContact): array
     {
         return [
-            'CustomerHeader' => $customerHeader,
+            'Header' => $customerHeader ? EntityHelper::serialize($customerHeader.toa) : $customerHeader,
             'CustomerId' => $customerId,
-            'contact' => $agreementContact,
+            'AgreementContact' => EntityHelper::serialize($$agreementContact),
         ];
     }
 }
