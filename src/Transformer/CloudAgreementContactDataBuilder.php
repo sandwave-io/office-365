@@ -9,14 +9,14 @@ use SandwaveIo\Office365\Helper\EntityHelper;
 final class CloudAgreementContactDataBuilder
 {
     /**
-     * @return array<string, int|AgreementContact|CustomerHeader|null>
+     * @return array<string, int|CustomerHeader|string|null>
      */
     public static function build(?CustomerHeader $customerHeader, int $customerId, AgreementContact $agreementContact): array
     {
         return [
-            'Header' => $customerHeader ? EntityHelper::serialize($customerHeader.toa) : $customerHeader,
+            'Header' => EntityHelper::serialize($customerHeader),
             'CustomerId' => $customerId,
-            'AgreementContact' => EntityHelper::serialize($$agreementContact),
+            'AgreementContact' => EntityHelper::serialize($agreementContact),
         ];
     }
 }

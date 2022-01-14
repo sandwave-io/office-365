@@ -2,7 +2,9 @@
 
 namespace SandwaveIo\Office365\Entity\CloudAgreementContact;
 
-final class AgreementContact
+use SandwaveIo\Office365\Entity\EntityInterface;
+
+final class AgreementContact implements EntityInterface
 {
     private string $firstName;
 

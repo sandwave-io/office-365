@@ -27,8 +27,6 @@ final class CloudAgreementContact extends AbstractComponent
             ... func_get_args()
         );
 
-        var_dump($cloudAgreementData);
-
         $contact = EntityHelper::deserialize(CloudAgreementContactEntity::class, $cloudAgreementData, RequestAction::NEW_CLOUD_AGREEMENT_CONTACT_REQUEST_V1);
         $document = EntityHelper::prepare(RequestAction::NEW_CLOUD_AGREEMENT_CONTACT_REQUEST_V1, $contact);
         if ($document === false) {

@@ -7,6 +7,7 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
+use SandwaveIo\Office365\Entity\Header\CustomerHeader;
 use SandwaveIo\Office365\Office\OfficeClient;
 use SandwaveIo\Office365\Response\QueuedResponse;
 use SandwaveIo\Office365\Entity\CloudAgreementContact\AgreementContact;
@@ -30,7 +31,7 @@ final class CloudAgreementTest extends TestCase
         $officeClient = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
 
         $cloudAgreementResponse = $officeClient->cloudAgreementContact->create(
-            null,
+            new CustomerHeader(1, \DateTime::createFromFormat('Y-m-d H:i:s', '2022-01-13 15:00:00')),
             1,
             new AgreementContact('john', 'doe', 'test@sandwave.io', '123456', \DateTime::createFromFormat('Y-m-d H:i:s', '2022-01-13 15:00:00'))
         );
