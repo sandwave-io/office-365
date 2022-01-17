@@ -1,0 +1,24 @@
+SandwaveIo\Office365\Entity\CloudTenant:
+  exclusion_policy: ALL
+
+  properties:
+
+    name:
+      expose: true
+      type: string
+      serialized_name: TenantName
+
+    firstname:
+      expose: true
+      type: string
+      serialized_name: FirstName
+
+    lastname:
+      expose: true
+      type: string
+      serialized_name: LastName
+
+    email:
+      expose: true
+      type: string
+      serialized_name: EmailAddress
