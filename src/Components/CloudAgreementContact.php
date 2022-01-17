@@ -19,15 +19,17 @@ final class CloudAgreementContact extends AbstractComponent
      * @throws Office365Exception
      */
     public function create(
-        ?CustomerHeader $header,
         int $customerId,
         AgreementContact $contact
     ): QueuedResponse {
         $cloudAgreementData = CloudAgreementContactDataBuilder::build(
             ... func_get_args()
         );
+        var_dump($cloudAgreementData);
+
 
         $contact = EntityHelper::deserialize(CloudAgreementContactEntity::class, $cloudAgreementData, RequestAction::NEW_CLOUD_AGREEMENT_CONTACT_REQUEST_V1);
+        var_dump($contact);
         $document = EntityHelper::prepare(RequestAction::NEW_CLOUD_AGREEMENT_CONTACT_REQUEST_V1, $contact);
         if ($document === false) {
             throw new Office365Exception(self::class . ':create unable to create cloud contact agreement entity.');

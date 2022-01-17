@@ -3,6 +3,7 @@
 namespace SandwaveIo\Office365\Transformer;
 
 use SandwaveIo\Office365\Entity\Customer;
+use SandwaveIo\Office365\Entity\CloudAgreementContact;
 use SandwaveIo\Office365\Enum\RequestAction;
 
 final class ClassTransformer
@@ -12,6 +13,8 @@ final class ClassTransformer
         switch ($rootNode) {
             case RequestAction::NEW_CUSTOMER_REQUEST_V1:
                 return Customer::class;
+            case RequestAction::NEW_CLOUD_AGREEMENT_CONTACT_REQUEST_V1:
+                return CloudAgreementContact::class;
             default:
                 return null;
         }

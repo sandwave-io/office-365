@@ -11,12 +11,12 @@ final class CloudAgreementContactDataBuilder
     /**
      * @return array<string, int|CustomerHeader|string|null>
      */
-    public static function build(?CustomerHeader $customerHeader, int $customerId, AgreementContact $agreementContact): array
+    public static function build(int $customerId, AgreementContact $agreementContact): array
     {
         return [
-            'Header' => EntityHelper::serialize($customerHeader),
+            'Header' => $customerHeader,
             'CustomerId' => $customerId,
-            'AgreementContact' => EntityHelper::serialize($agreementContact),
+            'AgreementContact' => $agreementContact,
         ];
     }
 }
