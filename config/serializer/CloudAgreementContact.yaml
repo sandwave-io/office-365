@@ -1,6 +1,8 @@
 SandwaveIo\Office365\Entity\CloudAgreementContact:
   exclusion_policy: ALL
 
+  xml_root_name: NewCloudAgreementContactRequest_V1
+
   properties:
 
     header:

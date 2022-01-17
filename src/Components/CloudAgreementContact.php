@@ -10,7 +10,6 @@ use SandwaveIo\Office365\Enum\RequestAction;
 use SandwaveIo\Office365\Exception\Office365Exception;
 use SandwaveIo\Office365\Helper\EntityHelper;
 use SandwaveIo\Office365\Response\QueuedResponse;
-use SandwaveIo\Office365\Transformer\CloudAgreementContactDataBuilder;
 
 final class CloudAgreementContact extends AbstractComponent
 {
@@ -19,20 +18,22 @@ final class CloudAgreementContact extends AbstractComponent
      * @throws Office365Exception
      */
     public function create(
+        ?CustomerHeader $header,
         int $customerId,
         AgreementContact $contact
     ): QueuedResponse {
-        $cloudAgreementData = CloudAgreementContactDataBuilder::build(
-            ... func_get_args()
-        );
-        var_dump($cloudAgreementData);
+        $cloudAgreement = EntityHelper::deserialize(CloudAgreementContactEntity::class, [], RequestAction::NEW_CLOUD_AGREEMENT_CONTACT_REQUEST_V1);
+        $cloudAgreement->setCustomerId($customerId);
+        $cloudAgreement->setContact($contact);
 
+        if ($header !== null) {
+            $cloudAgreement->setHeader($header);
+        }
 
-        $contact = EntityHelper::deserialize(CloudAgreementContactEntity::class, $cloudAgreementData, RequestAction::NEW_CLOUD_AGREEMENT_CONTACT_REQUEST_V1);
-        var_dump($contact);
-        $document = EntityHelper::prepare(RequestAction::NEW_CLOUD_AGREEMENT_CONTACT_REQUEST_V1, $contact);
-        if ($document === false) {
-            throw new Office365Exception(self::class . ':create unable to create cloud contact agreement entity.');
+        try {
+            $document = EntityHelper::serialize($cloudAgreement);
+        } catch (\Exception $e) {
+            throw new Office365Exception(self::class . ':create unable to create cloud contact agreement entity.', 0, $e);
         }
 
         $route = $this->getRouter()->get('contact_create');
@@ -41,7 +42,7 @@ final class CloudAgreementContact extends AbstractComponent
         $xml = simplexml_load_string($response->getBody()->getContents());
 
         if ($xml === false) {
-            throw new Office365Exception(self::class . ':create unable to create object from cloud agreement contact xml.');
+            throw new Office365Exception(self::class . ':create unable to process cloud license create response');
         }
 
         return new QueuedResponse(

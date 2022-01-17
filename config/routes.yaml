@@ -2,3 +2,8 @@ customer:
   create:
     method: post
     url: '/foo/bar'
+
+contact:
+  create:
+    method: post
+    url: '/foo/bar'

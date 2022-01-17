@@ -18,13 +18,28 @@ final class CloudAgreementContact implements EntityInterface
         return $this->header;
     }
 
+    public function setHeader(CustomerHeader $header): void
+    {
+        $this->header = $header;
+    }
+
     public function getCustomerId(): int
     {
         return $this->customerId;
     }
 
+    public function setCustomerId(int $customerId): void
+    {
+        $this->customerId = $customerId;
+    }
+
     public function getContact(): AgreementContact
     {
         return $this->contact;
+    }
+
+    public function setContact(AgreementContact $contact): void
+    {
+        $this->contact = $contact;
     }
 }

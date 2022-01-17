@@ -2,15 +2,16 @@
 
 namespace Integration\Component;
 
+use DateTime;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
+use SandwaveIo\Office365\Entity\CloudAgreementContact\AgreementContact;
 use SandwaveIo\Office365\Entity\Header\CustomerHeader;
 use SandwaveIo\Office365\Office\OfficeClient;
 use SandwaveIo\Office365\Response\QueuedResponse;
-use SandwaveIo\Office365\Entity\CloudAgreementContact\AgreementContact;
 
 final class CloudAgreementTest extends TestCase
 {
@@ -19,10 +20,7 @@ final class CloudAgreementTest extends TestCase
      */
     public function create(): void
     {
-        $response = '<NewCloudAgreementContactResponse_V1>
-            <Header><PartnerReference>1</PartnerReference><DateCreated>2022-01-13 15:00:00</DateCreated></Header>
-            <SuccessStatus_V1><Code>Active</Code><Messages>test</Messages></SuccessStatus_V1>
-        </NewCloudAgreementContactResponse_V1>';
+        $response = '<NinaResponse><IsSuccess>true</IsSuccess><ErrorCode>0</ErrorCode><ErrorMessage>Success</ErrorMessage></NinaResponse>';
 
         $mockHandler = new MockHandler(
             [new Response(200, [], $response)]
@@ -31,16 +29,14 @@ final class CloudAgreementTest extends TestCase
         $officeClient = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
 
         $cloudAgreementResponse = $officeClient->cloudAgreementContact->create(
-            new CustomerHeader(1, \DateTime::createFromFormat('Y-m-d H:i:s', '2022-01-13 15:00:00')),
+            new CustomerHeader(1, new DateTime('NOW')),
             1,
-            new AgreementContact('john', 'doe', 'test@sandwave.io', '123456', \DateTime::createFromFormat('Y-m-d H:i:s', '2022-01-13 15:00:00'))
+            new AgreementContact('john', 'doe', 'test@sandwave.io', '123456', new DateTime('NOW'))
         );
 
-        dd($cloudAgreementResponse);
-
-//        Assert::assertInstanceOf(QueuedResponse::class, $customerResponse);
-//        Assert::assertTrue($customerResponse->isSuccess());
-//        Assert::assertSame('Success', $customerResponse->getErrorMessage());
-//        Assert::assertSame(0, $customerResponse->getErrorCode());
+        Assert::assertInstanceOf(QueuedResponse::class, $cloudAgreementResponse);
+        Assert::assertTrue($cloudAgreementResponse->isSuccess());
+        Assert::assertSame('Success', $cloudAgreementResponse->getErrorMessage());
+        Assert::assertSame(0, $cloudAgreementResponse->getErrorCode());
     }
 }
