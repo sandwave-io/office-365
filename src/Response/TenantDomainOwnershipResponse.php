@@ -16,6 +16,11 @@ final class TenantDomainOwnershipResponse
 
     private string $dnsBoardingRecordValue;
 
+    public function setStatus(RequestStatus $status): void
+    {
+        $this->status = $status;
+    }
+
     public function getStatus(): RequestStatus
     {
         return $this->status;

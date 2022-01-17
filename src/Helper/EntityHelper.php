@@ -5,6 +5,7 @@ namespace SandwaveIo\Office365\Helper;
 use DOMException;
 use Exception;
 use JMS\Serializer\SerializerBuilder;
+use JMS\Serializer\SerializerInterface;
 use LaLit\Array2XML;
 use SandwaveIo\Office365\Entity\EntityInterface;
 use SandwaveIo\Office365\Transformer\ClassTransformer;
@@ -13,9 +14,37 @@ final class EntityHelper
 {
     public static function serialize(EntityInterface $entity): string
     {
-        $serializer = SerializerBuilder::create()->build();
-
+        $serializer = self::createSerializer();
         return $serializer->serialize($entity, 'xml');
+    }
+
+    public static function createSerializer(): SerializerInterface
+    {
+        return SerializerBuilder::create()
+            ->addMetadataDir(__DIR__ . '/../../config/serializer', 'SandwaveIo\Office365\Entity')
+            ->addMetadataDir(__DIR__ . '/../../config/serializer/response', 'SandwaveIo\Office365\Response')
+            ->build();
+    }
+
+    /**
+     * @return mixed
+     */
+    public static function deserializeXml(string $class, string $xml)
+    {
+        $serializer = self::createSerializer();
+        return $serializer->deserialize($xml, $class, 'xml');
+    }
+
+    /**
+     * @param array<mixed> $data
+     *
+     * @return mixed
+     */
+    public static function deserializeArray(string $class, array $data, string $action)
+    {
+        $xml = self::toXML($data, $action);
+        $serializer = self::createSerializer();
+        return $serializer->deserialize($xml, $class, 'xml');
     }
 
     /**
@@ -25,13 +54,7 @@ final class EntityHelper
      */
     public static function deserialize(string $class, array $data, string $action)
     {
-        $xml = self::toXML($data, $action);
-        $serializer = SerializerBuilder::create()
-            ->addMetadataDir(__DIR__ . '/../../config/serializer', 'SandwaveIo\Office365\Entity')
-            ->addMetadataDir(__DIR__ . '/../../config/serializer/response', 'SandwaveIo\Office365\Response')
-            ->build();
-
-        return $serializer->deserialize($xml, $class, 'xml');
+        return self::deserializeArray($class, $data, $action);
     }
 
     /**

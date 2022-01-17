@@ -1,5 +1,6 @@
 SandwaveIo\Office365\Entity\TenantDomainOwner:
   exclusion_policy: ALL
+  xml_root_name: MicrosoftTenantDomainOwnershipCheckRequest_V1
 
   properties:
 

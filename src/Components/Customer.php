@@ -12,7 +12,6 @@ use SandwaveIo\Office365\Response\QueuedResponse;
 use SandwaveIo\Office365\Response\TenantDomainOwnershipResponse;
 use SandwaveIo\Office365\Transformer\CustomerDataBuilder;
 use SandwaveIo\Office365\Transformer\TenantDataBuilder;
-use SandwaveIo\Office365\Transformer\TenantDomainOwnershipResponseTransformer;
 
 final class Customer extends AbstractComponent
 {
@@ -22,9 +21,11 @@ final class Customer extends AbstractComponent
      */
     public function hasTenantDomainOwnership(int $customerId, string $tenantId): TenantDomainOwnershipResponse
     {
-        $tenantDomainOwnership = EntityHelper::deserialize(TenantDomainOwner::class, TenantDataBuilder::build($customerId, $tenantId), RequestAction::TENANT_DOMAIN_OWNERSHIP_REQUEST_V1);
-        $document = EntityHelper::prepare(RequestAction::TENANT_DOMAIN_OWNERSHIP_REQUEST_V1, $tenantDomainOwnership);
-        if ($document === false) {
+        $tenantDomainOwnership = EntityHelper::deserializeArray(TenantDomainOwner::class, TenantDataBuilder::build($customerId, $tenantId), RequestAction::TENANT_DOMAIN_OWNERSHIP_REQUEST_V1);
+
+        try {
+            $document = EntityHelper::serialize($tenantDomainOwnership);
+        } catch (\Exception $e) {
             throw new Office365Exception(sprintf('%s:hasDomainOwnership unable to check tenant domain ownership. Tenant %s, customer %s.', self::class, $tenantId, $customerId));
         }
 
@@ -32,9 +33,9 @@ final class Customer extends AbstractComponent
         $response = $this->getClient()->request($route->method(), $route->url(), $document);
         $body = $response->getBody()->getContents();
 
-        $xml = simplexml_load_string($body);
-
-        if ($xml === false) {
+        try {
+            $xml = simplexml_load_string($body);
+        } catch (\Exception $e) {
             throw new Office365Exception(sprintf('%s:hasDomainOwnership unable to check tenant domain ownership. Tenant %s, customer %s.', self::class, $tenantId, $customerId));
         }
 
@@ -42,7 +43,7 @@ final class Customer extends AbstractComponent
             throw new Office365Exception(sprintf('%s:hasDomainOwnership Nina error response returned %s, %s. Tenant %s, customer %s.', self::class, $xml->ErrorCode, $xml->ErrorMessage, $tenantId, $customerId));
         }
 
-        return EntityHelper::deserialize(TenantDomainOwnershipResponse::class, TenantDomainOwnershipResponseTransformer::transform($xml), RequestAction::TENANT_DOMAIN_OWNERSHIP_REQUEST_V1);
+        return EntityHelper::deserializeXml(TenantDomainOwnershipResponse::class, $body);
     }
 
     /**
