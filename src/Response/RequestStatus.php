@@ -5,16 +5,20 @@ namespace SandwaveIo\Office365\Response;
 final class RequestStatus
 {
     /** @var string[] */
-    public array $messages;
+    private array $messages;
 
-    public string $code;
+    private string $code;
+
+    public function getCode(): string
+    {
+        return $this->code;
+    }
 
     /**
-     * @param string[] $messages
+     * @return string[]
      */
-    public function __construct(string $code, array $messages = [])
+    public function getMessages(): array
     {
-        $this->messages = $messages;
-        $this->code = $code;
+        return $this->messages;
     }
 }

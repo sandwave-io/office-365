@@ -16,16 +16,6 @@ final class TenantDomainOwnershipResponse
 
     private string $dnsBoardingRecordValue;
 
-    public function __construct(RequestStatus $status, bool $isDelegatedAccessAllowed, bool $isAcceptanceMcaRequired, bool $isOnboardingReady, string $dnsBoardingRecordName, string $dnsBoardingRecordValue)
-    {
-        $this->status = $status;
-        $this->isDelegatedAccessAllowed = $isDelegatedAccessAllowed;
-        $this->isAcceptanceMcaRequired = $isAcceptanceMcaRequired;
-        $this->isOnboardingReady = $isOnboardingReady;
-        $this->dnsBoardingRecordName = $dnsBoardingRecordName;
-        $this->dnsBoardingRecordValue = $dnsBoardingRecordValue;
-    }
-
     public function getStatus(): RequestStatus
     {
         return $this->status;

@@ -28,6 +28,7 @@ final class EntityHelper
         $xml = self::toXML($data, $action);
         $serializer = SerializerBuilder::create()
             ->addMetadataDir(__DIR__ . '/../../config/serializer', 'SandwaveIo\Office365\Entity')
+            ->addMetadataDir(__DIR__ . '/../../config/serializer/response', 'SandwaveIo\Office365\Response')
             ->build();
 
         return $serializer->deserialize($xml, $class, 'xml');
@@ -81,7 +82,7 @@ final class EntityHelper
         return $xml;
     }
 
-    public static function createFromXML(string $xml, string $action): ?EntityInterface
+    public static function createFromXML(string $xml, string $action)
     {
         $xml = simplexml_load_string($xml);
 

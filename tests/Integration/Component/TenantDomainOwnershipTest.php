@@ -24,8 +24,10 @@ final class TenantDomainOwnershipTest extends TestCase
 
         $domainOwnershipResponse = $officeClient->customer->hasTenantDomainOwnership(123, '321');
 
+        var_dump($domainOwnershipResponse);
+
         Assert::assertInstanceOf(TenantDomainOwnershipResponse::class, $domainOwnershipResponse);
-        Assert::assertSame('Success', $domainOwnershipResponse->getStatus()->code);
+        Assert::assertSame('Success', $domainOwnershipResponse->getStatus()->getCode());
     }
 
     /**

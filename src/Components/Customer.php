@@ -9,10 +9,10 @@ use SandwaveIo\Office365\Enum\RequestAction;
 use SandwaveIo\Office365\Exception\Office365Exception;
 use SandwaveIo\Office365\Helper\EntityHelper;
 use SandwaveIo\Office365\Response\QueuedResponse;
-use SandwaveIo\Office365\Response\RequestStatus;
 use SandwaveIo\Office365\Response\TenantDomainOwnershipResponse;
 use SandwaveIo\Office365\Transformer\CustomerDataBuilder;
 use SandwaveIo\Office365\Transformer\TenantDataBuilder;
+use SandwaveIo\Office365\Transformer\TenantDomainOwnershipResponseTransformer;
 
 final class Customer extends AbstractComponent
 {
@@ -30,8 +30,9 @@ final class Customer extends AbstractComponent
 
         $route = $this->getRouter()->get('customer_has_domain_ownership');
         $response = $this->getClient()->request($route->method(), $route->url(), $document);
+        $body = $response->getBody()->getContents();
 
-        $xml = simplexml_load_string($response->getBody()->getContents());
+        $xml = simplexml_load_string($body);
 
         if ($xml === false) {
             throw new Office365Exception(sprintf('%s:hasDomainOwnership unable to check tenant domain ownership. Tenant %s, customer %s.', self::class, $tenantId, $customerId));
@@ -41,17 +42,7 @@ final class Customer extends AbstractComponent
             throw new Office365Exception(sprintf('%s:hasDomainOwnership Nina error response returned %s, %s. Tenant %s, customer %s.', self::class, $xml->ErrorCode, $xml->ErrorMessage, $tenantId, $customerId));
         }
 
-        return new TenantDomainOwnershipResponse(
-            new RequestStatus(
-                (string) $xml->Status->Code,
-                (array) $xml->Status->Messages
-            ),
-            boolval($xml->IsDelegatedAccessAllowed),
-            boolval($xml->IsAcceptanceMcaRequired),
-            boolval($xml->IsOnboardingReady),
-            (string) $xml->DnsBoardingRecordName,
-            (string) $xml->DnsBoardingRecordValue,
-        );
+        return EntityHelper::deserialize(TenantDomainOwnershipResponse::class, TenantDomainOwnershipResponseTransformer::transform($xml), RequestAction::TENANT_DOMAIN_OWNERSHIP_REQUEST_V1);
     }
 
     /**
