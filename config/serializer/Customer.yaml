@@ -1,6 +1,8 @@
 SandwaveIo\Office365\Entity\Customer:
   exclusion_policy: ALL
 
+  xml_root_name: NewCustomerRequest_V3
+
   properties:
 
     header:

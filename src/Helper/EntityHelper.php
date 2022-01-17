@@ -14,7 +14,9 @@ final class EntityHelper
 {
     public static function serialize(EntityInterface $entity): string
     {
-        $serializer = SerializerBuilder::create()->build();
+        $serializer = SerializerBuilder::create()
+            ->addMetadataDir(__DIR__ . '/../../config/serializer', 'SandwaveIo\Office365\Entity')
+            ->build();
 
         return $serializer->serialize($entity, 'xml');
     }
@@ -32,38 +34,6 @@ final class EntityHelper
             ->build();
 
         return $serializer->deserialize($xml, $class, 'xml');
-    }
-
-    /**
-     * @throws DOMException
-     *
-     * @return false|string
-     */
-    public static function prepare(string $action, EntityInterface $entity)
-    {
-        $doc = new \DOMDocument('1.0', 'utf-8');
-        $doc->preserveWhiteSpace = false;
-        $doc->formatOutput = true;
-
-        $root = $doc->createElement($action);
-        $doc->appendChild($root);
-
-        $docCustomer = new \DOMDocument();
-        $docCustomer->loadXML(self::serialize($entity), LIBXML_NOWARNING);
-
-        $xpath = new \DOMXPath($docCustomer);
-        $properties = $xpath->query('//result/*');
-
-        if (! $properties instanceof \DOMNodeList) {
-            return false;
-        }
-
-        foreach ($properties as $property) {
-            $node = $doc->importNode($property, true);
-            $doc->documentElement->appendChild($node);
-        }
-
-        return $doc->saveXML();
     }
 
     /**

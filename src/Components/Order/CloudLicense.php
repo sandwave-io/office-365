@@ -6,6 +6,7 @@ use SandwaveIo\Office365\Components\AbstractComponent;
 use SandwaveIo\Office365\Entity\AgreementContact;
 use SandwaveIo\Office365\Entity\CloudLicense as License;
 use SandwaveIo\Office365\Entity\CloudTenant;
+use SandwaveIo\Office365\Entity\Header\PartnerReferenceHeader;
 use SandwaveIo\Office365\Enum\RequestAction;
 use SandwaveIo\Office365\Exception\Office365Exception;
 use SandwaveIo\Office365\Helper\EntityHelper;
@@ -20,12 +21,18 @@ final class CloudLicense extends AbstractComponent
      */
     public function create(CloudTenant $tenant, AgreementContact $contact, string $partnerReference = ''): QueuedResponse
     {
-        $license = EntityHelper::deserialize(
-            License::class,
-            CloudLicenseTransformer::transform($tenant, $contact, $partnerReference),
-        );
+        $license = EntityHelper::deserialize(License::class, []);
+        $license->setCloudTenant($tenant);
+        $license->setAgreementContact($contact);
 
-        $document = EntityHelper::prepare(RequestAction::NEW_CLOUD_LICENSE_ORDER_REQUEST_V2, $license);
+        if ($partnerReference !== '') {
+            $license->setPartnerReference(new PartnerReferenceHeader($partnerReference));
+        }
+
+        $document = EntityHelper::serialize($license);
+
+        var_dump($document);
+        exit;
 
         if ($document === false) {
             throw new Office365Exception(self::class . ':create unable to create cloud license entity.');
