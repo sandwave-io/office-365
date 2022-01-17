@@ -32,10 +32,10 @@ final class CloudLicenseOrderTest extends TestCase
         $customerResponse = $officeClient->order->cloudLicense->create(
             $tenant, $contact
         );
-//
-//        Assert::assertInstanceOf(QueuedResponse::class, $customerResponse);
-//        Assert::assertTrue($customerResponse->isSuccess());
-//        Assert::assertSame('Success', $customerResponse->getErrorMessage());
-//        Assert::assertSame(0, $customerResponse->getErrorCode());
+
+        Assert::assertInstanceOf(QueuedResponse::class, $customerResponse);
+        Assert::assertTrue($customerResponse->isSuccess());
+        Assert::assertSame('Success', $customerResponse->getErrorMessage());
+        Assert::assertSame(0, $customerResponse->getErrorCode());
     }
 }

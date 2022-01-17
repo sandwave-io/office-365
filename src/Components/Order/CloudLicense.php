@@ -29,16 +29,13 @@ final class CloudLicense extends AbstractComponent
             $license->setPartnerReference(new PartnerReferenceHeader($partnerReference));
         }
 
-        $document = EntityHelper::serialize($license);
-
-        var_dump($document);
-        exit;
-
-        if ($document === false) {
-            throw new Office365Exception(self::class . ':create unable to create cloud license entity.');
+        try {
+            $document = EntityHelper::serialize($license);
+        } catch (\Exception $e) {
+            throw new Office365Exception(self::class . ':create unable to create cloud license entity.', 0, $e);
         }
 
-        $route = $this->getRouter()->get('cloud_license_create');
+        $route = $this->getRouter()->get('order_license_create');
         $response = $this->getClient()->request($route->method(), $route->url(), $document);
 
         $xml = simplexml_load_string($response->getBody()->getContents());
