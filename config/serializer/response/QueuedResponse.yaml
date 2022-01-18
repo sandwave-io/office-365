@@ -1,0 +1,19 @@
+SandwaveIo\Office365\Response\QueuedResponse:
+  exclusion_policy: ALL
+
+  properties:
+
+    success:
+      expose: true
+      type: bool
+      serialized_name: IsSuccess
+
+    errorMessage:
+      expose: true
+      type: string
+      serialized_name: ErrorMessage
+
+    errorCode:
+      expose: true
+      type: int
+      serialized_name: ErrorCode
