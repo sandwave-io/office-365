@@ -30,8 +30,6 @@ final class EntityHelper
             ->addMetadataDir(__DIR__ . '/../../config/serializer', 'SandwaveIo\Office365\Entity')
             ->build();
 
-        var_dump($serializer);
-
         return $serializer->deserialize($xml, $class, 'xml');
     }
 

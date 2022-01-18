@@ -1,9 +1,9 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 namespace SandwaveIo\Office365\Entity;
 
-use SandwaveIo\Office365\Entity\Header\CustomerHeader;
 use SandwaveIo\Office365\Entity\CloudAgreementContact\AgreementContact;
+use SandwaveIo\Office365\Entity\Header\CustomerHeader;
 
 final class CloudAgreementContact implements EntityInterface
 {

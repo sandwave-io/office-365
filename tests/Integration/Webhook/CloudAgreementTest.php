@@ -35,7 +35,6 @@ final class CloudAgreementTest extends TestCase
 
         /** @var CloudAgreementContact $cloudAgreement */
         $cloudAgreement = EntityHelper::createFromXML($incomingCloudAgreementXml, RequestAction::NEW_CLOUD_AGREEMENT_CONTACT_REQUEST_V1);
-        var_dump($cloudAgreement);
         Assert::assertInstanceOf(CloudAgreementContact::class, $cloudAgreement);
         Assert::assertSame($cloudAgreement->getCustomerId(), 1);
         Assert::assertInstanceOf(CustomerHeader::class, $cloudAgreement->getHeader());

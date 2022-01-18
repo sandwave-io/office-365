@@ -51,8 +51,6 @@ final class Customer extends AbstractComponent
 
         $xml = simplexml_load_string($response->getBody()->getContents());
 
-        var_dump($xml);
-
         if ($xml === false) {
             throw new Office365Exception(self::class . ':create unable to create customer entity.');
         }
