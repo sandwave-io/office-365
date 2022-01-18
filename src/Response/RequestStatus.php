@@ -9,6 +9,16 @@ final class RequestStatus
 
     private string $code;
 
+    /**
+     * @param string[] $messages
+     * @param string $code
+     */
+    public function __construct(array $messages, string $code)
+    {
+        $this->messages = $messages;
+        $this->code = $code;
+    }
+
     public function getCode(): string
     {
         return $this->code;
