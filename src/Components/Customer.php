@@ -32,12 +32,8 @@ final class Customer extends AbstractComponent
         $route = $this->getRouter()->get('customer_has_domain_ownership');
         $response = $this->getClient()->request($route->method(), $route->url(), $document);
         $body = $response->getBody()->getContents();
-
-        try {
-            $xml = simplexml_load_string($body);
-        } catch (\Exception $e) {
-            throw new Office365Exception(sprintf('%s:hasDomainOwnership unable to check tenant domain ownership. Tenant %s, customer %s.', self::class, $tenantId, $customerId), 0, $e);
-        }
+        /** @phpstan-ignore-next-line */
+        $xml = @simplexml_load_string($body);
 
         if ($xml === false) {
             throw new Office365Exception(sprintf('%s:hasDomainOwnership unable to check tenant domain ownership. Tenant %s, customer %s.', self::class, $tenantId, $customerId));
