@@ -17,20 +17,18 @@ final class CloudLicenseOrderTest extends TestCase
      */
     public function create(): void
     {
-        $response = '<NinaResponse><IsSuccess>true</IsSuccess><ErrorCode>0</ErrorCode><ErrorMessage>Success</ErrorMessage></NinaResponse>';
-
         $mockHandler = new MockHandler(
-            [new Response(200, [], $response)]
+            [new Response(200, [], (string) file_get_contents(__DIR__ . '/../Data/Response/NinaResponseSuccess.xml'))]
         );
 
         $stack = HandlerStack::create($mockHandler);
         $officeClient = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
 
-        $tenant = $officeClient->tenant->create('my tenant', 'john', 'doe', 'john@doe.com');
+        $tenant = $officeClient->tenant->create('1', 'my tenant', 'john', 'doe', 'john@doe.com');
         $contact = $officeClient->contact->agreement->create('my contact', 'john', 'doe', 'john@doe.com', new \DateTime());
 
         $customerResponse = $officeClient->order->cloudLicense->create(
-            $tenant, $contact
+            $tenant, $contact, '1234', "PC", 2
         );
 
         Assert::assertInstanceOf(QueuedResponse::class, $customerResponse);

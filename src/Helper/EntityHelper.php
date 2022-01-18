@@ -2,23 +2,51 @@
 
 namespace SandwaveIo\Office365\Helper;
 
-use DOMException;
 use Exception;
-use JMS\Serializer\SerializerBuilder;
 use LaLit\Array2XML;
 use SandwaveIo\Office365\Entity\EntityInterface;
-use SandwaveIo\Office365\Enum\RequestAction;
+use SandwaveIo\Office365\Library\Serializer\Serializer;
 use SandwaveIo\Office365\Transformer\ClassTransformer;
 
 final class EntityHelper
 {
+    private static ?Serializer $serializer = null;
+
     public static function serialize(EntityInterface $entity): string
     {
-        $serializer = SerializerBuilder::create()
-            ->addMetadataDir(__DIR__ . '/../../config/serializer', 'SandwaveIo\Office365\Entity')
-            ->build();
-
+        $serializer = self::createSerializer()->getSerializer();
         return $serializer->serialize($entity, 'xml');
+    }
+
+    public static function createSerializer(): Serializer
+    {
+        if (!self::$serializer instanceof Serializer) {
+            self::$serializer = new Serializer();
+        }
+
+        return self::$serializer;
+    }
+
+    /**
+     * @return mixed
+     */
+    public static function deserializeXml(string $class, string $xml)
+    {
+        $serializer = self::createSerializer()->getSerializer();
+        return $serializer->deserialize($xml, $class, 'xml');
+    }
+
+    /**
+     * @param array<mixed> $data
+     *
+     * @return mixed
+     */
+    public static function deserializeArray(string $class, array $data)
+    {
+        $xml = self::toXML($data, self::createSerializer()->getRootNode($class));
+        $serializer = self::createSerializer()->getSerializer();
+
+        return $serializer->deserialize($xml, $class, 'xml');
     }
 
     /**
@@ -28,12 +56,7 @@ final class EntityHelper
      */
     public static function deserialize(string $class, array $data)
     {
-        $xml = self::toXML($data, RequestAction::NEW_CUSTOMER_REQUEST_V1);
-        $serializer = SerializerBuilder::create()
-            ->addMetadataDir(__DIR__ . '/../../config/serializer', 'SandwaveIo\Office365\Entity')
-            ->build();
-
-        return $serializer->deserialize($xml, $class, 'xml');
+        return self::deserializeArray($class, $data);
     }
 
     /**
@@ -54,14 +77,21 @@ final class EntityHelper
 
     public static function createFromXML(string $xml): ?EntityInterface
     {
+        $previousValue = libxml_use_internal_errors();
+
+        libxml_use_internal_errors(true);
+
         $xml = simplexml_load_string($xml);
 
         if ($xml === false) {
             return null;
         }
 
+        libxml_use_internal_errors($previousValue);
+
         $className = ClassTransformer::transform($xml->getName());
 
         return EntityHelper::deserialize($className, (array) $xml);
     }
 }
+

@@ -12,6 +12,12 @@ final class CloudLicense implements EntityInterface
 
     private CloudTenant $tenant;
 
+    private string $customerId;
+
+    private string $productCode;
+
+    private int $quantity;
+
     public function getAgreementContact(): AgreementContact
     {
         return $this->contact;
@@ -40,5 +46,20 @@ final class CloudLicense implements EntityInterface
     public function setAgreementContact(AgreementContact $contact): void
     {
         $this->contact = $contact;
+    }
+
+    public function getCustomerId(): string
+    {
+        return $this->customerId;
+    }
+
+    public function getProductCode(): string
+    {
+        return $this->productCode;
+    }
+
+    public function getQuantity(): int
+    {
+        return $this->quantity;
     }
 }

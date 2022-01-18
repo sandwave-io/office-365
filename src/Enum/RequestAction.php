@@ -9,4 +9,9 @@ final class RequestAction
     const NEW_CLOUD_LICENSE_ORDER_REQUEST_V2 = 'NewCloudLicenseOrderRequest_V2';
 
     const CLOUD_TENANT_REQUEST_V1 = 'CloudTenantRequest_V1';
+
+    public static function reverseLookUp(string $className): string
+    {
+
+    }
 }

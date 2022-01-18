@@ -16,12 +16,17 @@ use SandwaveIo\Office365\Transformer\CloudLicenseTransformer;
 final class CloudLicense extends AbstractComponent
 {
     /**
-     * @throws DOMException
+     * @return QueuedResponse
      * @throws Office365Exception
      */
-    public function create(CloudTenant $tenant, AgreementContact $contact, string $partnerReference = ''): QueuedResponse
+    public function create(CloudTenant $tenant, AgreementContact $contact, string $customerId, string $productCode, int $quantity, string $partnerReference = ''): QueuedResponse
     {
-        $license = EntityHelper::deserialize(License::class, []);
+        $license = EntityHelper::deserialize(License::class, [
+            'CustomerId' => $customerId,
+            'ProductCode' => $productCode,
+            'Quantity' => $quantity
+        ]);
+
         $license->setCloudTenant($tenant);
         $license->setAgreementContact($contact);
 
@@ -32,16 +37,16 @@ final class CloudLicense extends AbstractComponent
         try {
             $document = EntityHelper::serialize($license);
         } catch (\Exception $e) {
-            throw new Office365Exception(self::class . ':create unable to create cloud license entity.', 0, $e);
+            throw new Office365Exception(self::class . ':create unable to process cloud license create response', 0, $e);
         }
 
         $route = $this->getRouter()->get('order_license_create');
         $response = $this->getClient()->request($route->method(), $route->url(), $document);
 
-        $xml = simplexml_load_string($response->getBody()->getContents());
-
-        if ($xml === false) {
-            throw new Office365Exception(self::class . ':create unable to process cloud license create response');
+        try {
+            $xml = simplexml_load_string($response->getBody()->getContents());
+        } catch(\Exception $e) {
+            throw new Office365Exception(self::class . ':create unable to process cloud license create response', 0, $e);
         }
 
         return new QueuedResponse(
@@ -49,7 +54,5 @@ final class CloudLicense extends AbstractComponent
             (string) $xml->ErrorMessage,
             (int) $xml->ErrorCode
         );
-
-        return new QueuedResponse(true, '', 1);
     }
 }

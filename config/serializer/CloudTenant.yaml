@@ -1,7 +1,14 @@
 SandwaveIo\Office365\Entity\CloudTenant:
   exclusion_policy: ALL
 
+  xml_root_name: CloudTenant_V2
+
   properties:
+
+    tenantId:
+      expose: true
+      type: string
+      serialized_name: TenantId
 
     name:
       expose: true
@@ -22,3 +29,4 @@ SandwaveIo\Office365\Entity\CloudTenant:
       expose: true
       type: string
       serialized_name: EmailAddress
+
