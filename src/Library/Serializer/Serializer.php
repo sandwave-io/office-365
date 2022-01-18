@@ -20,6 +20,7 @@ final class Serializer
     {
         $this->meta['entity'] = new Meta(__DIR__ . '/../../../config/serializer', 'SandwaveIo\Office365\Entity');
         $this->meta['response'] = new Meta(__DIR__ . '/../../../config/serializer/response', 'SandwaveIo\Office365\Response');
+        $this->meta['response'] = new Meta(__DIR__ . '/../../../config/serializer/header', 'SandwaveIo\Office365\Entity\Header');
 
         $this->serializer = SerializerBuilder::create()
             ->addMetadataDir($this->meta['entity']->dir, $this->meta['entity']->prefix)

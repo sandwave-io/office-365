@@ -16,6 +16,8 @@ final class CloudTenant implements EntityInterface
 
     private string $email;
 
+    private AgreementContact $contact;
+
     public function getStatus(): ?string
     {
         return $this->status;
@@ -39,5 +41,10 @@ final class CloudTenant implements EntityInterface
     public function getEmail(): string
     {
         return $this->email;
+    }
+
+    public function getContact(): AgreementContact
+    {
+        return $this->contact;
     }
 }

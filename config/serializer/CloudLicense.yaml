@@ -16,11 +16,6 @@ SandwaveIo\Office365\Entity\CloudLicense:
       type: SandwaveIo\Office365\Entity\CloudTenant
       serialized_name: Tenant
 
-    contact:
-      expose: true
-      type: SandwaveIo\Office365\Entity\AgreementContact
-      serialized_name: CustomerAgreementContact_V1
-
     addOns:
       expose: true
       type: string
