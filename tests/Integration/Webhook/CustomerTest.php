@@ -15,7 +15,7 @@ final class CustomerTest extends TestCase
     public function incomingCustomer(): void
     {
         $incomingCustomerXml = '
-            <NewCustomerRequest_V1>
+            <NewCustomerRequest_V3>
                 <Header>
                     <PartnerReference>21139</PartnerReference>
                     <DateCreated>2014-06-20T14:37:00</DateCreated>
@@ -32,7 +32,7 @@ final class CustomerTest extends TestCase
                 <Website />
                 <DebitNr />
                 <LegalStatus>CV</LegalStatus>
-            </NewCustomerRequest_V1>';
+            </NewCustomerRequest_V3>';
 
         /** @var Customer $customer */
         $customer = EntityHelper::createFromXML($incomingCustomerXml);

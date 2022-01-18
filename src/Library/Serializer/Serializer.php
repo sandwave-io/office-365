@@ -43,4 +43,27 @@ final class Serializer
 
         return $meta[array_key_first($meta)]['xml_root_name'];
     }
+
+    public function findClassByRootname(string $rootNode): ?string
+    {
+        $configDirectory = opendir($this->meta['entity']->dir);
+
+        if ($configDirectory !== false) {
+            while (false !== ($entry = readdir($configDirectory))) {
+
+                $file = $this->meta['entity']->dir . '/' . $entry;
+
+                if (is_file($file)) {
+                    $meta = Yaml::parseFile($file);
+
+                    $className = array_key_first($meta);
+                    if (array_key_exists('xml_root_name', $meta[$className]) && $rootNode === $meta[$className]['xml_root_name']) {
+                        return $className;
+                    }
+                }
+            }
+        }
+
+        return null;
+    }
 }
