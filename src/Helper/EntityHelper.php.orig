@@ -1,0 +1,141 @@
+<?php declare(strict_types = 1);
+
+namespace SandwaveIo\Office365\Helper;
+
+use Exception;
+<<<<<<< HEAD
+use LaLit\Array2XML;
+use SandwaveIo\Office365\Entity\EntityInterface;
+use SandwaveIo\Office365\Exception\Office365Exception;
+use SandwaveIo\Office365\Library\Serializer\Serializer;
+=======
+use JMS\Serializer\SerializerBuilder;
+use JMS\Serializer\SerializerInterface;
+use LaLit\Array2XML;
+use SandwaveIo\Office365\Entity\EntityInterface;
+>>>>>>> 14a3e1fe90ae43f690b7cc1fdb12aa1b4ed8379a
+use SandwaveIo\Office365\Transformer\ClassTransformer;
+
+final class EntityHelper
+{
+    private static ?Serializer $serializer = null;
+
+    public static function serialize(EntityInterface $entity): string
+    {
+<<<<<<< HEAD
+        $serializer = self::createSerializer()->getSerializer();
+        return $serializer->serialize($entity, 'xml');
+    }
+
+    public static function createSerializer(): Serializer
+    {
+        if (!self::$serializer instanceof Serializer) {
+            self::$serializer = new Serializer();
+        }
+
+        return self::$serializer;
+=======
+        $serializer = self::createSerializer();
+        return $serializer->serialize($entity, 'xml');
+    }
+
+    public static function createSerializer(): SerializerInterface
+    {
+        return SerializerBuilder::create()
+            ->addMetadataDir(__DIR__ . '/../../config/serializer', 'SandwaveIo\Office365\Entity')
+            ->addMetadataDir(__DIR__ . '/../../config/serializer/response', 'SandwaveIo\Office365\Response')
+            ->build();
+>>>>>>> 14a3e1fe90ae43f690b7cc1fdb12aa1b4ed8379a
+    }
+
+    /**
+     * @return mixed
+     */
+    public static function deserializeXml(string $class, string $xml)
+    {
+<<<<<<< HEAD
+        $serializer = self::createSerializer()->getSerializer();
+=======
+        $serializer = self::createSerializer();
+>>>>>>> 14a3e1fe90ae43f690b7cc1fdb12aa1b4ed8379a
+        return $serializer->deserialize($xml, $class, 'xml');
+    }
+
+    /**
+     * @param array<mixed> $data
+     *
+     * @return mixed
+     */
+<<<<<<< HEAD
+    public static function deserializeArray(string $class, array $data)
+    {
+        $xml = self::toXML($data, self::createSerializer()->getRootNode($class));
+        $serializer = self::createSerializer()->getSerializer();
+
+=======
+    public static function deserializeArray(string $class, array $data, string $action)
+    {
+        $xml = self::toXML($data, $action);
+        $serializer = self::createSerializer();
+>>>>>>> 14a3e1fe90ae43f690b7cc1fdb12aa1b4ed8379a
+        return $serializer->deserialize($xml, $class, 'xml');
+    }
+
+    /**
+     * @param array<mixed> $data
+<<<<<<< HEAD
+=======
+     *
+     * @return mixed
+     */
+    public static function deserialize(string $class, array $data, string $action)
+    {
+        return self::deserializeArray($class, $data, $action);
+    }
+
+    /**
+     * @throws DOMException
+>>>>>>> 14a3e1fe90ae43f690b7cc1fdb12aa1b4ed8379a
+     *
+     * @return mixed
+     */
+    public static function deserialize(string $class, array $data)
+    {
+        return self::deserializeArray($class, $data);
+    }
+
+    /**
+     * @param array<mixed> $data
+     *
+     * @throws Exception
+     */
+    public static function toXML(array $data, string $action): string
+    {
+        $xml = (Array2XML::createXML($action, $data))->saveXML();
+
+        if ($xml === false) {
+            return '';
+        }
+
+        return $xml;
+    }
+
+    public static function createFromXML(string $xml, string $action): ?EntityInterface
+    {
+        $simpleXml = XmlHelper::loadXML($xml);
+
+        if ($simpleXml === null) {
+            throw new Office365Exception('Could not convert XML');
+        }
+
+        $className = ClassTransformer::transform($simpleXml->getName());
+
+        $data = XmlHelper::XmlToArray($xml);
+
+<<<<<<< HEAD
+        return EntityHelper::deserialize($className, $data);
+=======
+        return EntityHelper::deserialize($className, (array) $xml, $action);
+>>>>>>> 14a3e1fe90ae43f690b7cc1fdb12aa1b4ed8379a
+    }
+}
