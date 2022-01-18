@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NewCloudLicenseOrderRequest_V2>
+    <Header>
+        <PartnerReference>12345</PartnerReference>
+        <DateCreated>2012-12-13T12:12:12</DateCreated>
+    </Header>
+    <Tenant>
+        <TenantName>JohnDoe</TenantName>
+        <FirstName>John</FirstName>
+        <LastName>Doe</LastName>
+        <EmailAddress>john@doe.com</EmailAddress>
+        <TenantId>1223</TenantId>
+        <AgreementContact>
+            <FirstName>Jane</FirstName>
+            <LastName>Doe</LastName>
+            <EmailAddress>jane@doe.com</EmailAddress>
+            <PhoneNumber>555-1111</PhoneNumber>
+            <DateAgreed>2021-01-01</DateAgreed>
+        </AgreementContact>
+    </Tenant>
+    <LicenseAddOns>
+        <NewCloudLicenseAddOn_V1>
+            <ProductCode>PC1</ProductCode>
+            <Quantity>1</Quantity>
+        </NewCloudLicenseAddOn_V1>
+    </LicenseAddOns>
+    <CustomerId>123</CustomerId>
+    <ProductCode>PC1</ProductCode>
+    <Quantity>1</Quantity>
+</NewCloudLicenseOrderRequest_V2>

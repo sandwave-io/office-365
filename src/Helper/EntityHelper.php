@@ -2,28 +2,30 @@
 
 namespace SandwaveIo\Office365\Helper;
 
-use DOMException;
 use Exception;
-use JMS\Serializer\SerializerBuilder;
-use JMS\Serializer\SerializerInterface;
 use LaLit\Array2XML;
 use SandwaveIo\Office365\Entity\EntityInterface;
+use SandwaveIo\Office365\Exception\Office365Exception;
+use SandwaveIo\Office365\Library\Serializer\Serializer;
 use SandwaveIo\Office365\Transformer\ClassTransformer;
 
 final class EntityHelper
 {
+    private static ?Serializer $serializer = null;
+
     public static function serialize(EntityInterface $entity): string
     {
-        $serializer = self::createSerializer();
+        $serializer = self::createSerializer()->getSerializer();
         return $serializer->serialize($entity, 'xml');
     }
 
-    public static function createSerializer(): SerializerInterface
+    public static function createSerializer(): Serializer
     {
-        return SerializerBuilder::create()
-            ->addMetadataDir(__DIR__ . '/../../config/serializer', 'SandwaveIo\Office365\Entity')
-            ->addMetadataDir(__DIR__ . '/../../config/serializer/response', 'SandwaveIo\Office365\Response')
-            ->build();
+        if (!self::$serializer instanceof Serializer) {
+            self::$serializer = new Serializer();
+        }
+
+        return self::$serializer;
     }
 
     /**
@@ -31,7 +33,7 @@ final class EntityHelper
      */
     public static function deserializeXml(string $class, string $xml)
     {
-        $serializer = self::createSerializer();
+        $serializer = self::createSerializer()->getSerializer();
         return $serializer->deserialize($xml, $class, 'xml');
     }
 
@@ -40,10 +42,11 @@ final class EntityHelper
      *
      * @return mixed
      */
-    public static function deserializeArray(string $class, array $data, string $action)
+    public static function deserializeArray(string $class, array $data)
     {
-        $xml = self::toXML($data, $action);
-        $serializer = self::createSerializer();
+        $xml = self::toXML($data, self::createSerializer()->getRootNode($class));
+        $serializer = self::createSerializer()->getSerializer();
+
         return $serializer->deserialize($xml, $class, 'xml');
     }
 
@@ -52,41 +55,9 @@ final class EntityHelper
      *
      * @return mixed
      */
-    public static function deserialize(string $class, array $data, string $action)
+    public static function deserialize(string $class, array $data)
     {
-        return self::deserializeArray($class, $data, $action);
-    }
-
-    /**
-     * @throws DOMException
-     *
-     * @return false|string
-     */
-    public static function prepare(string $action, EntityInterface $entity)
-    {
-        $doc = new \DOMDocument('1.0', 'utf-8');
-        $doc->preserveWhiteSpace = false;
-        $doc->formatOutput = true;
-
-        $root = $doc->createElement($action);
-        $doc->appendChild($root);
-
-        $docCustomer = new \DOMDocument();
-        $docCustomer->loadXML(self::serialize($entity), LIBXML_NOWARNING);
-
-        $xpath = new \DOMXPath($docCustomer);
-        $properties = $xpath->query('//result/*');
-
-        if (! $properties instanceof \DOMNodeList) {
-            return false;
-        }
-
-        foreach ($properties as $property) {
-            $node = $doc->importNode($property, true);
-            $doc->documentElement->appendChild($node);
-        }
-
-        return $doc->saveXML();
+        return self::deserializeArray($class, $data);
     }
 
     /**
@@ -105,16 +76,18 @@ final class EntityHelper
         return $xml;
     }
 
-    public static function createFromXML(string $xml, string $action): ?EntityInterface
+    public static function createFromXML(string $xml): ?EntityInterface
     {
-        $xml = simplexml_load_string($xml);
+        $simpleXml = XmlHelper::loadXML($xml);
 
-        if ($xml === false) {
-            return null;
+        if ($simpleXml === null) {
+            throw new Office365Exception('Could not convert XML');
         }
 
-        $className = ClassTransformer::transform($xml->getName());
+        $className = ClassTransformer::transform($simpleXml->getName());
 
-        return EntityHelper::deserialize($className, (array) $xml, $action);
+        $data = XmlHelper::XmlToArray($xml);
+
+        return EntityHelper::deserialize($className, $data);
     }
 }
