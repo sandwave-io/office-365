@@ -34,7 +34,7 @@ final class TenantDomainOwnershipTest extends TestCase
     public function hasDomainOwnershipError(): void
     {
         $mockHandler = new MockHandler(
-            [new Response(200, [], (string) file_get_contents(__DIR__ . '/../Data/Response/NinaResponse.xml'))]
+            [new Response(200, [], (string) file_get_contents(__DIR__ . '/../Data/Response/NinaResponse_Fail.xml'))]
         );
         $stack = HandlerStack::create($mockHandler);
         $officeClient = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);

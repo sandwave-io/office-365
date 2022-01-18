@@ -17,10 +17,8 @@ final class CustomerTest extends TestCase
      */
     public function create(): void
     {
-        $ninaResponse = '<NinaResponse><IsSuccess>true</IsSuccess><ErrorCode>0</ErrorCode><ErrorMessage>Success</ErrorMessage></NinaResponse>';
-
         $mockHandler = new MockHandler(
-            [new Response(200, [], $ninaResponse)]
+            [new Response(200, [], (string) file_get_contents(__DIR__ . '/../Data/Response/NinaResponse_Success.xml'))]
         );
         $stack = HandlerStack::create($mockHandler);
         $officeClient = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
