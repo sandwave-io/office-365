@@ -30,7 +30,7 @@ SandwaveIo\Office365\Entity\CloudTenant:
       type: string
       serialized_name: EmailAddress
 
-    contact:
+    agreementContact:
       expose: true
       type: SandwaveIo\Office365\Entity\AgreementContact
       serialized_name: AgreementContact

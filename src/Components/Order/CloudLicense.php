@@ -25,8 +25,8 @@ final class CloudLicense extends AbstractComponent
             'Quantity' => $quantity
         ]);
 
+        $tenant->setAgreementContact($contact);
         $license->setCloudTenant($tenant);
-        $license->setAgreementContact($contact);
 
         if ($partnerReference !== '') {
             $license->setPartnerReference(new PartnerReferenceHeader($partnerReference));
