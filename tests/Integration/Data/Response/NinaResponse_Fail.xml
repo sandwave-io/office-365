@@ -1,5 +1,5 @@
 <NinaResponse>
     <IsSuccess>false</IsSuccess>
     <ErrorCode>108</ErrorCode>
-    <ErrorMessage>Is stuk</ErrorMessage>
+    <ErrorMessage>Failed</ErrorMessage>
 </NinaResponse>
