@@ -38,17 +38,13 @@ final class CloudAgreementContact extends AbstractComponent
 
         $route = $this->getRouter()->get('contact_create');
         $response = $this->getClient()->request($route->method(), $route->url(), $document);
-
-        $xml = simplexml_load_string($response->getBody()->getContents());
+        $body = $response->getBody()->getContents();
+        $xml = simplexml_load_string($body);
 
         if ($xml === false) {
             throw new Office365Exception(self::class . ':create unable to process cloud license create response');
         }
 
-        return new QueuedResponse(
-            (string) $xml->IsSuccess === 'true',
-            (string) $xml->ErrorMessage,
-            (int) $xml->ErrorCode
-        );
+        return EntityHelper::deserializeXml(QueuedResponse::class, $body);
     }
 }
