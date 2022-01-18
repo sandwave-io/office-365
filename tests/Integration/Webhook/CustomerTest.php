@@ -15,25 +15,7 @@ final class CustomerTest extends TestCase
      */
     public function incomingCustomer(): void
     {
-        $incomingCustomerXml = '
-            <NewCustomerRequest_V1>
-                <Header>
-                    <PartnerReference>21139</PartnerReference>
-                    <DateCreated>2014-06-20T14:37:00</DateCreated>
-                </Header>
-                <Name>Naam Klant</Name>
-                <Street>StraatNaam</Street>
-                <HouseNr>38</HouseNr>
-                <HouseNrExtension />
-                <ZipCode>1234AB</ZipCode>
-                <City>Amsterdam</City>
-                <CountryCode>NLD</CountryCode>
-                <Phone1>0612345678</Phone1>
-                <Email>klant@email.nl</Email>
-                <Website />
-                <DebitNr />
-                <LegalStatus>CV</LegalStatus>
-            </NewCustomerRequest_V1>';
+        $incomingCustomerXml = (string) file_get_contents(__DIR__ . '/../Data/Webhook/Customer.xml');
 
         /** @var Customer $customer */
         $customer = EntityHelper::createFromXML($incomingCustomerXml, RequestAction::NEW_CUSTOMER_REQUEST_V1);

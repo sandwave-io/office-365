@@ -17,21 +17,7 @@ final class CloudAgreementTest extends TestCase
      */
     public function incomingCustomer(): void
     {
-        $incomingCloudAgreementXml = '
-            <NewCloudAgreementContactRequest_V1>
-                <Header>
-                    <PartnerReference>21139</PartnerReference>
-                    <DateCreated>2014-06-20T14:37:00</DateCreated>
-                </Header>
-                <CustomerId>1</CustomerId>
-                <AgreementContact>
-                    <FirstName>john</FirstName>
-                    <LastName>doe</LastName>
-                    <EmailAddress>klant@email.nl</EmailAddress>
-                    <PhoneNumber>0612345678</PhoneNumber>
-                    <DateCreated>2014-06-20T14:37:00</DateCreated>
-                </AgreementContact>
-            </NewCloudAgreementContactRequest_V1>';
+        $incomingCloudAgreementXml = (string) file_get_contents(__DIR__ . '/../Data/Webhook/CloudAgreement.xml');
 
         /** @var CloudAgreementContact $cloudAgreement */
         $cloudAgreement = EntityHelper::createFromXML($incomingCloudAgreementXml, RequestAction::NEW_CLOUD_AGREEMENT_CONTACT_REQUEST_V1);
