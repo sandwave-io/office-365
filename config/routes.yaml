@@ -3,7 +3,11 @@ customer:
     method: post
     url: '/foo/bar'
 
-order:
-  license_create:
+  has_domain_ownership:
+    method: post
+    url: '/foo/bar'
+ 
+  order:
+    license_create:
     method: post
     url: '/order/cloud/license'

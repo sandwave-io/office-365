@@ -17,15 +17,32 @@ final class CustomerTest extends TestCase
      */
     public function create(): void
     {
-        $ninaResponse = '<NinaResponse><IsSuccess>true</IsSuccess><ErrorCode>0</ErrorCode><ErrorMessage>Success</ErrorMessage></NinaResponse>';
-
         $mockHandler = new MockHandler(
-            [new Response(200, [], $ninaResponse)]
+            [new Response(200, [], (string) file_get_contents(__DIR__ . '/../Data/Response/NinaResponse_Success.xml'))]
         );
         $stack = HandlerStack::create($mockHandler);
         $officeClient = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
 
-        $customerResponse = $officeClient->customer->create('testname');
+        $customerResponse = $officeClient->customer->create(
+            'Naam Klant',
+            'StraatNaam',
+            38,
+            null,
+            '1234AB',
+            'Amsterdam',
+            'NLD',
+            '0612345678',
+            null,
+            null,
+            'klant@email.nl',
+            null,
+            null,
+            null,
+            null,
+            'CV',
+            null,
+            null,
+        );
 
         Assert::assertInstanceOf(QueuedResponse::class, $customerResponse);
         Assert::assertTrue($customerResponse->isSuccess());
