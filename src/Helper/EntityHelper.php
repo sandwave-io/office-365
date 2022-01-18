@@ -105,7 +105,7 @@ final class EntityHelper
         return $xml;
     }
 
-    public static function createFromXML(string $xml, string $action)
+    public static function createFromXML(string $xml, string $action): ?EntityInterface
     {
         $xml = simplexml_load_string($xml);
 
