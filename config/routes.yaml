@@ -3,7 +3,6 @@ customer:
     method: post
     url: '/foo/bar'
 
-contact:
-  create:
+  has_domain_ownership:
     method: post
     url: '/foo/bar'

@@ -1,0 +1,15 @@
+SandwaveIo\Office365\Entity\TenantDomainOwner:
+  exclusion_policy: ALL
+  xml_root_name: MicrosoftTenantDomainOwnershipCheckRequest_V1
+
+  properties:
+
+    customerId:
+      expose: true
+      type: int
+      serialized_name: CustomerId
+
+    tenantId:
+      expose: true
+      type: string
+      serialized_name: TenantId
