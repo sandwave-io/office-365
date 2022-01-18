@@ -26,7 +26,7 @@ final class Customer extends AbstractComponent
         try {
             $document = EntityHelper::serialize($tenantDomainOwnership);
         } catch (\Exception $e) {
-            throw new Office365Exception(sprintf('%s:hasDomainOwnership unable to check tenant domain ownership. Tenant %s, customer %s.', self::class, $tenantId, $customerId));
+            throw new Office365Exception(sprintf('%s:hasDomainOwnership unable to check tenant domain ownership. Tenant %s, customer %s.', self::class, $tenantId, $customerId), 0, $e);
         }
 
         $route = $this->getRouter()->get('customer_has_domain_ownership');
@@ -36,6 +36,10 @@ final class Customer extends AbstractComponent
         try {
             $xml = simplexml_load_string($body);
         } catch (\Exception $e) {
+            throw new Office365Exception(sprintf('%s:hasDomainOwnership unable to check tenant domain ownership. Tenant %s, customer %s.', self::class, $tenantId, $customerId), 0, $e);
+        }
+
+        if ($xml === false) {
             throw new Office365Exception(sprintf('%s:hasDomainOwnership unable to check tenant domain ownership. Tenant %s, customer %s.', self::class, $tenantId, $customerId));
         }
 
