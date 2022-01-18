@@ -2,3 +2,7 @@ customer:
   create:
     method: post
     url: '/foo/bar'
+
+  has_domain_ownership:
+    method: post
+    url: '/foo/bar'

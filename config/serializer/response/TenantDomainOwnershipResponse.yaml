@@ -1,0 +1,35 @@
+SandwaveIo\Office365\Response\TenantDomainOwnershipResponse:
+  exclusion_policy: ALL
+  xml_root_name: MicrosoftTenantDomainOwnershipCheckResponse_V1
+
+  properties:
+
+    status:
+      expose: true
+      type: SandwaveIo\Office365\Response\RequestStatus
+      serialized_name: Status
+
+    isDelegatedAccessAllowed:
+      expose: true
+      type: bool
+      serialized_name: IsDelegatedAccessAllowed
+
+    isAcceptanceMcaRequired:
+      expose: true
+      type: bool
+      serialized_name: IsAcceptanceMcaRequired
+
+    isOnboardingReady:
+      expose: true
+      type: bool
+      serialized_name: IsOnboardingReady
+
+    dnsBoardingRecordName:
+      expose: true
+      type: string
+      serialized_name: DnsBoardingRecordName
+
+    dnsBoardingRecordValue:
+      expose: true
+      type: string
+      serialized_name: DnsBoardingRecordValue
