@@ -6,9 +6,15 @@ use SandwaveIo\Office365\Library\Serializer\Serializer;
 
 final class ClassTransformer
 {
-    public static function transform(string $rootNode): ?string
+    public static function transform(string $rootNode): string
     {
         $serializer = new Serializer();
-        return $serializer->findClassByRootname($rootNode);
+        $className = $serializer->findClassByRootname($rootNode);
+
+        if ($className !== null) {
+            return $className;
+        }
+
+        return '';
     }
 }

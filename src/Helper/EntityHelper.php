@@ -5,6 +5,7 @@ namespace SandwaveIo\Office365\Helper;
 use Exception;
 use LaLit\Array2XML;
 use SandwaveIo\Office365\Entity\EntityInterface;
+use SandwaveIo\Office365\Exception\Office365Exception;
 use SandwaveIo\Office365\Library\Serializer\Serializer;
 use SandwaveIo\Office365\Transformer\ClassTransformer;
 
@@ -77,21 +78,16 @@ final class EntityHelper
 
     public static function createFromXML(string $xml): ?EntityInterface
     {
-        $previousValue = libxml_use_internal_errors();
+        $simpleXml = XmlHelper::loadXML($xml);
 
-        libxml_use_internal_errors(true);
-
-        $xml = simplexml_load_string($xml);
-
-        if ($xml === false) {
-            return null;
+        if ($simpleXml === null) {
+            throw new Office365Exception('Could not convert XML');
         }
 
-        libxml_use_internal_errors($previousValue);
+        $className = ClassTransformer::transform($simpleXml->getName());
 
-        $className = ClassTransformer::transform($xml->getName());
+        $data = XmlHelper::XmlToArray($xml);
 
-        return EntityHelper::deserialize($className, (array) $xml);
+        return EntityHelper::deserialize($className, $data);
     }
 }
-

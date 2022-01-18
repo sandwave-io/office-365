@@ -14,7 +14,7 @@ SandwaveIo\Office365\Entity\CloudLicense:
     tenant:
       expose: true
       type: SandwaveIo\Office365\Entity\CloudTenant
-      serialized_name: CloudTenant_V2
+      serialized_name: Tenant
 
     contact:
       expose: true

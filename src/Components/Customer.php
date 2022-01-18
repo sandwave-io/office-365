@@ -18,10 +18,11 @@ final class Customer extends AbstractComponent
     public function create(string $name): QueuedResponse
     {
         $customer = EntityHelper::deserialize(KpnCustomer::class, CustomerDataBuilder::build($name));
-        $document = EntityHelper::serialize($customer);
 
-        if ($document === false) {
-            throw new Office365Exception(self::class . ':create unable to create customer entity.');
+        try {
+            $document = EntityHelper::serialize($customer);
+        } catch (\Exception $e) {
+            throw new Office365Exception(self::class . ':create unable to create customer object', 0, $e);
         }
 
         $route = $this->getRouter()->get('customer_create');
