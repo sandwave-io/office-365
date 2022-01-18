@@ -7,11 +7,9 @@ use SandwaveIo\Office365\Entity\AgreementContact;
 use SandwaveIo\Office365\Entity\CloudLicense as License;
 use SandwaveIo\Office365\Entity\CloudTenant;
 use SandwaveIo\Office365\Entity\Header\PartnerReferenceHeader;
-use SandwaveIo\Office365\Enum\RequestAction;
 use SandwaveIo\Office365\Exception\Office365Exception;
 use SandwaveIo\Office365\Helper\EntityHelper;
 use SandwaveIo\Office365\Response\QueuedResponse;
-use SandwaveIo\Office365\Transformer\CloudLicenseTransformer;
 
 final class CloudLicense extends AbstractComponent
 {
