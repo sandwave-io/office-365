@@ -11,7 +11,7 @@ final class CustomerObserver implements \SplObserver
         $this->callback = $callback;
     }
 
-    public function update(\SplSubject $subject)
+    public function update(\SplSubject $subject): void
     {
         $this->callback->execute($subject->getCustomer());
     }
