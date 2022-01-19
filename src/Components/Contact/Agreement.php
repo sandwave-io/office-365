@@ -20,7 +20,7 @@ final class Agreement extends AbstractComponent
         $tenant = EntityHelper::deserialize(AgreementContact::class, AgreementContactDataTransformer::transform(...func_get_args()));
 
         if ($tenant === null) {
-            throw new Office365Exception("Tenant could not be created");
+            throw new Office365Exception('Tenant could not be created');
         }
 
         return $tenant;

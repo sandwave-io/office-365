@@ -19,7 +19,7 @@ final class Tenant extends AbstractComponent
         $tenant = EntityHelper::deserialize(CloudTenant::class, TenantDataTransformer::transform(...func_get_args()));
 
         if ($tenant === null) {
-            throw new Office365Exception("Tenant could not be created");
+            throw new Office365Exception('Tenant could not be created');
         }
 
         return $tenant;

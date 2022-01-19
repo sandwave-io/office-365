@@ -1,8 +1,7 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 namespace SandwaveIo\Office365\Library\Serializer;
 
-use JMS\Serializer\SerializationContext;
 use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\SerializerInterface;
 use SandwaveIo\Office365\Exception\Office365Exception;
@@ -37,10 +36,10 @@ final class Serializer
 
     public function getRootNode(string $class): string
     {
-        $name = explode("\\", $class);
+        $name = explode('\\', $class);
         $meta = Yaml::parseFile($this->meta['entity']->dir . '/' . end($name) . '.yaml');
 
-        if (!array_key_exists('xml_root_name', $meta[array_key_first($meta)])) {
+        if (! array_key_exists('xml_root_name', $meta[array_key_first($meta)])) {
             throw new Office365Exception('XML root name does not exist in ' . end($name));
         }
 
@@ -53,7 +52,6 @@ final class Serializer
 
         if ($configDirectory !== false) {
             while (false !== ($entry = readdir($configDirectory))) {
-
                 $file = $this->meta['entity']->dir . '/' . $entry;
 
                 if (is_file($file)) {
