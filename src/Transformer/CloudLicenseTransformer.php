@@ -9,18 +9,17 @@ use SandwaveIo\Office365\Entity\Header\PartnerReferenceHeader;
 final class CloudLicenseTransformer
 {
     /**
-     * @param CloudTenant      $tenant
+     * @param CloudTenant $tenant
      * @param AgreementContact $contact
-     * @param string           $partnerReference
-     *
-     * @return array
+     * @param string $partnerReference
+     * @return array<mixed>
      */
     public static function transform(CloudTenant $tenant, AgreementContact $contact, string $partnerReference): array
     {
         return [
-            'CloudTenant_V2' => (array) $tenant,
-            'CustomerAgreementContact_V1' => (array) $contact,
-            'Header' => (array) $partnerReference !== '' ? (new PartnerReferenceHeader($partnerReference)) : null,
+            'CloudTenant_V2' => $tenant,
+            'CustomerAgreementContact_V1' => $contact,
+            'Header' => $partnerReference !== '' ? (new PartnerReferenceHeader($partnerReference)) : null
         ];
     }
 }

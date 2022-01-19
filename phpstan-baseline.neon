@@ -47,14 +47,3 @@ parameters:
 			message: "#^Method SandwaveIo\\\\Office365\\\\Webhook\\\\Webhook\\:\\:addEventSubscriber\\(\\) has parameter \\$callback with no type specified\\.$#"
 			count: 1
 			path: src/Webhook/Webhook.php
-
-		-
-			message: "#^Method SandwaveIo\\\\Office365\\\\Webhook\\\\Webhook\\:\\:dispatch\\(\\) should return SandwaveIo\\\\Office365\\\\Entity\\\\EntityInterface but returns SandwaveIo\\\\Office365\\\\Entity\\\\EntityInterface\\|null\\.$#"
-			count: 1
-			path: src/Webhook/Webhook.php
-
-		-
-			message: "#^Parameter \\#2 \\$entity of method SandwaveIo\\\\Office365\\\\Library\\\\Observer\\\\Subjects\\:\\:getSubject\\(\\) expects SandwaveIo\\\\Office365\\\\Entity\\\\EntityInterface, SandwaveIo\\\\Office365\\\\Entity\\\\EntityInterface\\|null given\\.$#"
-			count: 1
-			path: src/Webhook/Webhook.php
-
