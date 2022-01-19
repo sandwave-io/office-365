@@ -11,16 +11,6 @@ parameters:
 			path: src/Entity/Header/CustomerHeader.php
 
 		-
-			message: "#^Cannot call method appendChild\\(\\) on DOMElement\\|null\\.$#"
-			count: 1
-			path: src/Helper/EntityHelper.php
-
-		-
-			message: "#^Parameter \\#1 \\$class of static method SandwaveIo\\\\Office365\\\\Helper\\\\EntityHelper\\:\\:deserialize\\(\\) expects string, string\\|null given\\.$#"
-			count: 1
-			path: src/Helper/EntityHelper.php
-
-		-
 			message: "#^Call to an undefined method SplSubject\\:\\:getCustomer\\(\\)\\.$#"
 			count: 1
 			path: src/Library/Observer/Customer/CustomerObserver.php
@@ -29,14 +19,6 @@ parameters:
 			message: "#^Method SandwaveIo\\\\Office365\\\\Library\\\\Observer\\\\Subjects\\:\\:attach\\(\\) has parameter \\$callback with no type specified\\.$#"
 			count: 1
 			path: src/Library/Observer/Subjects.php
-
-		-
-			message: """
-				#^Instantiation of deprecated class SandwaveIo\\\\Office365\\\\Webhook\\\\Webhook\\:
-				This should go into the implementer\\.$#
-			"""
-			count: 1
-			path: src/Office/OfficeClient.php
 
 		-
 			message: "#^Class SandwaveIo\\\\Office365\\\\Webhook\\\\Webhook is neither abstract nor final\\.$#"
