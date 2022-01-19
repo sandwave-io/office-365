@@ -19,7 +19,7 @@ final class EntityHelper
 
     public static function createSerializer(): Serializer
     {
-        if (!self::$serializer instanceof Serializer) {
+        if (! self::$serializer instanceof Serializer) {
             self::$serializer = new Serializer();
         }
 
@@ -58,6 +58,9 @@ final class EntityHelper
         return self::deserializeArray($class, $data);
     }
 
+    /**
+     * @throws Office365Exception
+     */
     public static function createFromXML(string $xml): ?EntityInterface
     {
         $simpleXml = XmlHelper::loadXML($xml);
