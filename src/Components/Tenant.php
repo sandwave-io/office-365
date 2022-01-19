@@ -2,8 +2,6 @@
 
 namespace SandwaveIo\Office365\Components;
 
-use DOMException;
-use JMS\Serializer\Exception\RuntimeException;
 use SandwaveIo\Office365\Entity\CloudTenant;
 use SandwaveIo\Office365\Exception\Office365Exception;
 use SandwaveIo\Office365\Helper\EntityHelper;
