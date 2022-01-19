@@ -13,6 +13,7 @@ final class CloudLicenseObserver implements \SplObserver
 
     public function update(\SplSubject $subject): void
     {
+        /** @var CloudLicenseSubject $subject */
         $this->callback->execute($subject->getCloudLicense());
     }
 }
