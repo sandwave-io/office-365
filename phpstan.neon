@@ -16,6 +16,9 @@ parameters:
         # Extending classes.
         - '#Class \"[a-zA-Z0-9\\_]+\" is not allowed to extend \"[a-zA-Z0-9\\_]+\".#'
 
+        # Using null as default parameter in a function.
+        - '#Method \"[a-zA-Z0-9\\_]+\" has parameter \"[a-zA-Z0-9\\_]+\" with null as default value.#'
+
         # No switch rule.
         - '#Control structures using switch should not be used.#'
 
