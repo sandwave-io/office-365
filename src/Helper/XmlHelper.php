@@ -41,7 +41,7 @@ final class XmlHelper
     /**
      * @param array<mixed> $data
      * @param string       $rootNode
-     * @param mixed        $simpleXmlElement
+     * @param mixed|null   $simpleXmlElement
      *
      * @return string
      */
