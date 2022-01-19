@@ -33,8 +33,6 @@ final class OfficeClient
 
     private RouterInterface $router;
 
-
-
     /**
      * @param array<mixed> $webApiOptions
      */

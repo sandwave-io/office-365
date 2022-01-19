@@ -3,10 +3,11 @@
 namespace SandwaveIo\Office365\Webhook;
 
 use SandwaveIo\Office365\Entity\EntityInterface;
-use SandwaveIo\Office365\Enum\RequestAction;
 use SandwaveIo\Office365\Exception\Office365Exception;
 use SandwaveIo\Office365\Helper\EntityHelper;
+use SandwaveIo\Office365\Helper\XmlHelper;
 use SandwaveIo\Office365\Library\Observer\Subjects;
+use SandwaveIo\Office365\Library\Serializer\Serializer;
 use SandwaveIo\Office365\Transformer\RootnodeTransformer;
 
 /**
@@ -14,7 +15,6 @@ use SandwaveIo\Office365\Transformer\RootnodeTransformer;
  *
  * @package SandwaveIo\Office365\Webhook
  *
- * @deprecated This should go into the implementer.
  */
 class Webhook
 {
@@ -30,24 +30,34 @@ class Webhook
         $this->subjects->attach($type, $callback);
     }
 
-    /**
-     * @throws Office365Exception
-     */
-    public function dispatch(string $xml): EntityInterface
+    public function dispatch(EntityInterface $entity, string $event): void
     {
-        $xmlObject = simplexml_load_string($xml);
-
-        if ($xmlObject === false) {
-            throw new Office365Exception(self::class . '::dispatch - unable to load XML from supplied string.');
-        }
-
-        $entity = EntityHelper::createFromXML($xml, RequestAction::NEW_CUSTOMER_REQUEST_V1);
-        $eventName = RootnodeTransformer::transform($xmlObject->getName());
-        $subject = $this->subjects->getSubject($eventName, $entity);
+        $subject = $this->subjects->getSubject($event, $entity);
 
         if ($subject !== null) {
             $subject->notify();
         }
+    }
+
+    public function process(string $xml): EntityInterface
+    {
+        $simpleXml = XmlHelper::loadXML($xml);
+
+        if ($simpleXml === null) {
+            throw new Office365Exception('Could not parse received XML');
+        }
+
+        $rootName = $simpleXml->getName();
+        $eventName = RootnodeTransformer::transform($rootName);
+        $className = (new Serializer())->findClassByRootname($rootName);
+
+        if ($className === null) {
+            throw new Office365Exception('Could not create entity from received XML');
+        }
+
+        $entity = EntityHelper::deserializeXml($className, $xml);
+
+        $this->dispatch($entity, $eventName);
 
         return $entity;
     }
