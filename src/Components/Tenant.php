@@ -3,6 +3,7 @@
 namespace SandwaveIo\Office365\Components;
 
 use DOMException;
+use JMS\Serializer\Exception\RuntimeException;
 use SandwaveIo\Office365\Entity\CloudTenant;
 use SandwaveIo\Office365\Exception\Office365Exception;
 use SandwaveIo\Office365\Helper\EntityHelper;
@@ -13,7 +14,6 @@ use SandwaveIo\Office365\Transformer\TenantDataTransformer;
 final class Tenant extends AbstractComponent
 {
     /**
-     * @throws DOMException
      * @throws Office365Exception
      */
     public function exists(string $tenantName): TenantExistsResponse
@@ -22,7 +22,7 @@ final class Tenant extends AbstractComponent
 
         try {
             $document = EntityHelper::serialize($tenantDomainOwnership);
-        } catch (\Exception $e) {
+        } catch (\RuntimeException $e) {
             throw new Office365Exception(sprintf('%s:exists unable to check tenant existence. Tenant %s.', self::class, $tenantName), 0, $e);
         }
 
