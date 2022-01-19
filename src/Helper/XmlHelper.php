@@ -36,4 +36,28 @@ class XmlHelper
 
         return $simpleXml;
     }
+
+    public static function arrayToXml(array $data, string $rootNode, &$simpleXmlElement = null): string
+    {
+        if ($simpleXmlElement === null) {
+            $simpleXmlElement = new \SimpleXMLElement('<?xml version="1.0"?><' . $rootNode . '/>');
+        }
+
+        foreach( $data as $key => $value ) {
+            if( is_array($value)) {
+
+                if( is_numeric($key)){
+                    $key = 'item' . $key;
+                }
+
+                $subnode = $simpleXmlElement->addChild($key);
+                self::arrayToXml($value, $rootNode, $subnode);
+
+            } else {
+                $simpleXmlElement->addChild("$key", htmlspecialchars("$value"));
+            }
+        }
+
+        return $simpleXmlElement->saveXML();
+    }
 }

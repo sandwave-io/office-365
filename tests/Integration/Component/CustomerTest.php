@@ -20,6 +20,7 @@ final class CustomerTest extends TestCase
         $mockHandler = new MockHandler(
             [new Response(200, [], (string) file_get_contents(__DIR__ . '/../Data/Response/NinaResponse_Success.xml'))]
         );
+
         $stack = HandlerStack::create($mockHandler);
         $officeClient = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
 
