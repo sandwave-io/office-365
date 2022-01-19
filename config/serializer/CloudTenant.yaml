@@ -1,0 +1,36 @@
+SandwaveIo\Office365\Entity\CloudTenant:
+  exclusion_policy: ALL
+
+  xml_root_name: Tenant
+
+  properties:
+
+    tenantId:
+      expose: true
+      type: string
+      serialized_name: TenantId
+
+    name:
+      expose: true
+      type: string
+      serialized_name: TenantName
+
+    firstname:
+      expose: true
+      type: string
+      serialized_name: FirstName
+
+    lastname:
+      expose: true
+      type: string
+      serialized_name: LastName
+
+    email:
+      expose: true
+      type: string
+      serialized_name: EmailAddress
+
+    agreementContact:
+      expose: true
+      type: SandwaveIo\Office365\Entity\AgreementContact
+      serialized_name: AgreementContact

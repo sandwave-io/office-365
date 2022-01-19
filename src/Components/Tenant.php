@@ -3,12 +3,12 @@
 namespace SandwaveIo\Office365\Components;
 
 use DOMException;
-use SandwaveIo\Office365\Enum\RequestAction;
+use SandwaveIo\Office365\Entity\CloudTenant;
 use SandwaveIo\Office365\Exception\Office365Exception;
 use SandwaveIo\Office365\Helper\EntityHelper;
-use SandwaveIo\Office365\Response\TenantDomainOwnershipResponse;
 use SandwaveIo\Office365\Response\TenantExistsResponse;
 use SandwaveIo\Office365\Transformer\TenantDataBuilder;
+use SandwaveIo\Office365\Transformer\TenantDataTransformer;
 
 final class Tenant extends AbstractComponent
 {
@@ -18,7 +18,7 @@ final class Tenant extends AbstractComponent
      */
     public function exists(string $tenantName): TenantExistsResponse
     {
-        $tenantDomainOwnership = EntityHelper::deserializeArray(\SandwaveIo\Office365\Entity\Tenant::class, TenantDataBuilder::build($tenantName), RequestAction::TENANT_EXISTS_CHECK_REQUEST_V1);
+        $tenantDomainOwnership = EntityHelper::deserializeArray(\SandwaveIo\Office365\Entity\Tenant::class, TenantDataBuilder::build($tenantName));
 
         try {
             $document = EntityHelper::serialize($tenantDomainOwnership);
@@ -43,5 +43,16 @@ final class Tenant extends AbstractComponent
         }
 
         return EntityHelper::deserializeXml(TenantExistsResponse::class, $body);
+    }
+
+    public function create(string $tenantId, string $name, string $firstname, string $lastname, string $email): CloudTenant
+    {
+        $tenant = EntityHelper::deserialize(CloudTenant::class, TenantDataTransformer::transform(...func_get_args()));
+
+        if ($tenant === null) {
+            throw new Office365Exception('Tenant could not be created');
+        }
+
+        return $tenant;
     }
 }

@@ -5,6 +5,7 @@ namespace SandwaveIo\Office365\Response;
 final class TenantExistsResponse
 {
     private bool $isExistingTenant;
+
     private RequestStatus $status;
 
     /**

@@ -2,18 +2,19 @@
 
 namespace SandwaveIo\Office365\Transformer;
 
-use SandwaveIo\Office365\Entity\Customer;
-use SandwaveIo\Office365\Enum\RequestAction;
+use SandwaveIo\Office365\Library\Serializer\Serializer;
 
 final class ClassTransformer
 {
-    public static function transform(string $rootNode): ?string
+    public static function transform(string $rootNode): string
     {
-        switch ($rootNode) {
-            case RequestAction::NEW_CUSTOMER_REQUEST_V1:
-                return Customer::class;
-            default:
-                return null;
+        $serializer = new Serializer();
+        $className = $serializer->findClassByRootname($rootNode);
+
+        if ($className !== null) {
+            return $className;
         }
+
+        return '';
     }
 }
