@@ -6,3 +6,8 @@ customer:
   has_domain_ownership:
     method: post
     url: '/foo/bar'
+
+addon:
+  create:
+    method: post
+    url: '/foo/bar'
