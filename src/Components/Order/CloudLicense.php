@@ -9,6 +9,7 @@ use SandwaveIo\Office365\Entity\CloudTenant;
 use SandwaveIo\Office365\Entity\Header\PartnerReferenceHeader;
 use SandwaveIo\Office365\Exception\Office365Exception;
 use SandwaveIo\Office365\Helper\EntityHelper;
+use SandwaveIo\Office365\Helper\XmlHelper;
 use SandwaveIo\Office365\Response\QueuedResponse;
 
 final class CloudLicense extends AbstractComponent
@@ -41,6 +42,7 @@ final class CloudLicense extends AbstractComponent
 
         $route = $this->getRouter()->get('order_license_create');
         $response = $this->getClient()->request($route->method(), $route->url(), $document);
+        $body = $response->getBody()->getContents();
 
         try {
             $xml = simplexml_load_string($response->getBody()->getContents());
@@ -48,10 +50,10 @@ final class CloudLicense extends AbstractComponent
             throw new Office365Exception(self::class . ':create unable to process cloud license create response', 0, $e);
         }
 
-        return new QueuedResponse(
-            (string) $xml->IsSuccess === 'true',
-            (string) $xml->ErrorMessage,
-            (int) $xml->ErrorCode
-        );
+        if ($xml === null) {
+            throw new Office365Exception(self::class . ':create unable to process cloud license create response');
+        }
+
+        return EntityHelper::deserializeXml(QueuedResponse::class, $body);
     }
 }

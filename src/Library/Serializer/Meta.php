@@ -2,7 +2,7 @@
 
 namespace SandwaveIo\Office365\Library\Serializer;
 
-class Meta
+final class Meta
 {
     public string $dir;
 

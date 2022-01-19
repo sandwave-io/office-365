@@ -58,6 +58,9 @@ final class EntityHelper
         return self::deserializeArray($class, $data);
     }
 
+    /**
+     * @throws Office365Exception
+     */
     public static function createFromXML(string $xml): ?EntityInterface
     {
         $simpleXml = XmlHelper::loadXML($xml);

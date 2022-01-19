@@ -2,7 +2,7 @@
 
 namespace SandwaveIo\Office365\Helper;
 
-class XmlHelper
+final class XmlHelper
 {
     /**
      * @param string $xml
@@ -38,6 +38,13 @@ class XmlHelper
         return $simpleXml;
     }
 
+    /**
+     * @param array<mixed> $data
+     * @param string       $rootNode
+     * @param mixed|null   $simpleXmlElement
+     *
+     * @return string
+     */
     public static function arrayToXml(array $data, string $rootNode, &$simpleXmlElement = null): string
     {
         if ($simpleXmlElement === null) {
