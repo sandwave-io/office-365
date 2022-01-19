@@ -5,7 +5,6 @@
   "license": "MIT",
   "require": {
     "php": "^7.4|^8.0",
-    "digitickets/lalit": "^3.1",
     "guzzlehttp/guzzle": "^7.4",
     "jms/serializer": "^3.17",
     "symfony/yaml": "^4.4|^6.0",

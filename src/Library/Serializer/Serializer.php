@@ -2,6 +2,7 @@
 
 namespace SandwaveIo\Office365\Library\Serializer;
 
+use JMS\Serializer\SerializationContext;
 use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\SerializerInterface;
 use SandwaveIo\Office365\Exception\Office365Exception;
@@ -20,11 +21,12 @@ final class Serializer
     {
         $this->meta['entity'] = new Meta(__DIR__ . '/../../../config/serializer', 'SandwaveIo\Office365\Entity');
         $this->meta['response'] = new Meta(__DIR__ . '/../../../config/serializer/response', 'SandwaveIo\Office365\Response');
-        $this->meta['response'] = new Meta(__DIR__ . '/../../../config/serializer/header', 'SandwaveIo\Office365\Entity\Header');
+        $this->meta['header'] = new Meta(__DIR__ . '/../../../config/serializer/header', 'SandwaveIo\Office365\Entity\Header');
 
         $this->serializer = SerializerBuilder::create()
             ->addMetadataDir($this->meta['entity']->dir, $this->meta['entity']->prefix)
             ->addMetadataDir($this->meta['response']->dir, $this->meta['response']->prefix)
+            ->addMetadataDir($this->meta['header']->dir, $this->meta['header']->prefix)
             ->build();
     }
 

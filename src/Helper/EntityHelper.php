@@ -2,8 +2,6 @@
 
 namespace SandwaveIo\Office365\Helper;
 
-use Exception;
-use LaLit\Array2XML;
 use SandwaveIo\Office365\Entity\EntityInterface;
 use SandwaveIo\Office365\Exception\Office365Exception;
 use SandwaveIo\Office365\Library\Serializer\Serializer;
@@ -44,7 +42,7 @@ final class EntityHelper
      */
     public static function deserializeArray(string $class, array $data)
     {
-        $xml = self::toXML($data, self::createSerializer()->getRootNode($class));
+        $xml = XmlHelper::arrayToXml($data, self::createSerializer()->getRootNode($class));
         $serializer = self::createSerializer()->getSerializer();
 
         return $serializer->deserialize($xml, $class, 'xml');
@@ -58,22 +56,6 @@ final class EntityHelper
     public static function deserialize(string $class, array $data)
     {
         return self::deserializeArray($class, $data);
-    }
-
-    /**
-     * @param array<mixed> $data
-     *
-     * @throws Exception
-     */
-    public static function toXML(array $data, string $action): string
-    {
-        $xml = (Array2XML::createXML($action, $data))->saveXML();
-
-        if ($xml === false) {
-            return '';
-        }
-
-        return $xml;
     }
 
     public static function createFromXML(string $xml): ?EntityInterface
