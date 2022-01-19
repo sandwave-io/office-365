@@ -21,7 +21,7 @@ final class CloudLicenseOrderTest extends TestCase
     public function createCloudLicenseTest(): void
     {
         /** @var CloudLicense $license */
-        $license = EntityHelper::createFromXML( (string) file_get_contents(__DIR__ . '/../Data/Request/NewCloudLicenseOrderRequest.xml'));
+        $license = EntityHelper::createFromXML((string) file_get_contents(__DIR__ . '/../Data/Request/NewCloudLicenseOrderRequest.xml'));
         Assert::assertInstanceOf(CloudLicense::class, $license);
         Assert::assertSame($license->getCloudTenant()->getName(), 'JohnDoe');
         Assert::assertSame($license->getCloudTenant()->getAgreementContact()->getFirstName(), 'Jane');
@@ -40,8 +40,7 @@ final class CloudLicenseOrderTest extends TestCase
         $stack = HandlerStack::create($mockHandler);
         $client = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
 
-        $client->webhook->addEventSubscriber(Event::CLOUD_LICENSE_ORDER_CREATE, new class implements CloudLicenseObserverInterface
-        {
+        $client->webhook->addEventSubscriber(Event::CLOUD_LICENSE_ORDER_CREATE, new class() implements CloudLicenseObserverInterface {
             public function execute(CloudLicense $license): void
             {
                 Assert::assertEquals('JohnDoe', $license->getCloudTenant()->getName());

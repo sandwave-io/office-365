@@ -4,9 +4,9 @@ namespace SandwaveIo\Office365\Entity;
 
 final class CloudTenant implements EntityInterface
 {
-    private ?string $tenantId = null;
+    private ?string $tenantId;
 
-    private ?string $status = null;
+    private ?string $status;
 
     private string $name;
 
@@ -17,6 +17,11 @@ final class CloudTenant implements EntityInterface
     private string $email;
 
     private AgreementContact $agreementContact;
+
+    public function getTenantId(): ?string
+    {
+        return $this->tenantId;
+    }
 
     public function getStatus(): ?string
     {

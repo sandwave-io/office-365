@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 namespace SandwaveIo\Office365\Transformer;
 
@@ -9,9 +9,10 @@ use SandwaveIo\Office365\Entity\Header\PartnerReferenceHeader;
 final class CloudLicenseTransformer
 {
     /**
-     * @param CloudTenant $tenant
+     * @param CloudTenant      $tenant
      * @param AgreementContact $contact
-     * @param string $partnerReference
+     * @param string           $partnerReference
+     *
      * @return array<mixed>
      */
     public static function transform(CloudTenant $tenant, AgreementContact $contact, string $partnerReference): array
@@ -19,7 +20,7 @@ final class CloudLicenseTransformer
         return [
             'CloudTenant_V2' => $tenant,
             'CustomerAgreementContact_V1' => $contact,
-            'Header' => $partnerReference !== '' ? (new PartnerReferenceHeader($partnerReference)) : null
+            'Header' => $partnerReference !== '' ? (new PartnerReferenceHeader($partnerReference)) : null,
         ];
     }
 }

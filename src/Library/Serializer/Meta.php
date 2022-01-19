@@ -1,8 +1,8 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 namespace SandwaveIo\Office365\Library\Serializer;
 
-class Meta
+final class Meta
 {
     public string $dir;
 

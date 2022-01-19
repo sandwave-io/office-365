@@ -14,7 +14,7 @@ final class AgreementContactDataTransformer
             'FirstName' => $firstname,
             'LastName' => $lastname,
             'EmailAddress' => $email,
-            'DateAgreed' => $agreed->format('Y-m-d')
+            'DateAgreed' => $agreed->format('Y-m-d'),
         ];
     }
 }

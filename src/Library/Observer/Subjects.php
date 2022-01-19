@@ -48,7 +48,7 @@ final class Subjects
             switch ($event) {
                 case Event::CUSTOMER_CREATE:
                     /** @var CustomerSubject $subject */
-                    if (!$entity instanceof Customer) {
+                    if (! $entity instanceof Customer) {
                         return null;
                     }
                     $subject->setCustomer($entity);
@@ -56,10 +56,11 @@ final class Subjects
 
                 case Event::CLOUD_LICENSE_ORDER_CREATE:
                     /** @var CloudLicense $subject */
-                    if (!$entity instanceof CloudLicense) {
+                    if (! $entity instanceof CloudLicense) {
                         return null;
                     }
 
+                    /** @var CloudLicenseSubject $subject */
                     $subject->setCloudLicense($entity);
                     break;
             }

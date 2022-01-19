@@ -28,7 +28,11 @@ final class CloudLicenseOrderTest extends TestCase
         $contact = $officeClient->contact->agreement->create('my contact', 'john', 'doe', 'john@doe.com', new \DateTime());
 
         $customerResponse = $officeClient->order->cloudLicense->create(
-            $tenant, $contact, '1234', "PC", 2
+            $tenant,
+            $contact,
+            '1234',
+            'PC',
+            2
         );
 
         Assert::assertInstanceOf(QueuedResponse::class, $customerResponse);
