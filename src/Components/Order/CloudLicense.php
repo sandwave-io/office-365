@@ -45,7 +45,7 @@ final class CloudLicense extends AbstractComponent
         $body = $response->getBody()->getContents();
 
         try {
-            $xml = simplexml_load_string($response->getBody()->getContents());
+            $xml = XmlHelper::loadXML($body);
         } catch (\Exception $e) {
             throw new Office365Exception(self::class . ':create unable to process cloud license create response', 0, $e);
         }
