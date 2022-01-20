@@ -8,6 +8,16 @@ final class CustomerHeader
 
     private \DateTime $dateCreated;
 
+    /**
+     * @param int       $partnerReference
+     * @param \DateTime $dateCreated
+     */
+    public function __construct(int $partnerReference, \DateTime $dateCreated)
+    {
+        $this->partnerReference = $partnerReference;
+        $this->dateCreated = $dateCreated;
+    }
+
     public function getPartnerReference(): int
     {
         return $this->partnerReference;
