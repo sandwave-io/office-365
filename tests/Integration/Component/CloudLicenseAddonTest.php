@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 use SandwaveIo\Office365\Office\OfficeClient;
 use SandwaveIo\Office365\Response\QueuedResponse;
 
-final class AddonTest extends TestCase
+final class CloudLicenseAddonTest extends TestCase
 {
     /**
      * @test

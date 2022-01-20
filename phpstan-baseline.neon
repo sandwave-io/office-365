@@ -1,11 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Call to an undefined method SplSubject\\:\\:getCustomer\\(\\)\\.$#"
-			count: 1
-			path: src/Library/Observer/Customer/CustomerObserver.php
-
-		-
 			message: "#^Method SandwaveIo\\\\Office365\\\\Library\\\\Observer\\\\Subjects\\:\\:attach\\(\\) has parameter \\$callback with no type specified\\.$#"
 			count: 1
 			path: src/Library/Observer/Subjects.php
