@@ -18,6 +18,7 @@ order:
     url: '/order/cloud/license'
 
 addon:
+contact:
   create:
     method: post
     url: '/foo/bar'

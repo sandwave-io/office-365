@@ -15,7 +15,7 @@ final class Agreement extends AbstractComponent
      * @throws DOMException
      * @throws Office365Exception
      */
-    public function create(string $name, string $firstname, string $lastname, string $email, \DateTime $agreed): AgreementContact
+    public function create(string $name, string $firstname, string $lastname, string $email, string $phonenumber, \DateTime $agreed): AgreementContact
     {
         $tenant = EntityHelper::deserialize(AgreementContact::class, AgreementContactDataTransformer::transform(...func_get_args()));
 
