@@ -20,7 +20,6 @@ final class OfficeClient
 {
     public Customer $customer;
 
-    public CloudAgreementContact $cloudAgreementContact;
     public Order $order;
 
     public Tenant $tenant;
@@ -28,6 +27,8 @@ final class OfficeClient
     public Webhook $webhook;
 
     public Contact $contact;
+
+    public CloudAgreementContact $cloudAgreementContact;
 
     private Subjects $subjects;
 
@@ -51,10 +52,10 @@ final class OfficeClient
         $webApiClient = (new WebApiClientFactory($this->parameterContainer))->create($webApiOptions);
 
         $this->customer = new Customer($webApiClient, $this->router);
-        $this->cloudAgreementContact = new CloudAgreementContact($webApiClient, $this->router);
         $this->order = new Order($webApiClient, $this->router);
         $this->tenant = new Tenant($webApiClient, $this->router);
         $this->contact = new Contact(new Agreement($webApiClient, $this->router));
+        $this->cloudAgreementContact = new CloudAgreementContact($webApiClient, $this->router);
 
         $this->subjects = new Subjects();
         $this->webhook = new Webhook($this->subjects);

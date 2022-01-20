@@ -7,11 +7,12 @@ customer:
     method: post
     url: '/foo/bar'
 
-contact:
-  create:
-    method: post
-    url: '/foo/bar'
 order:
   license_create:
     method: post
     url: '/order/cloud/license'
+
+contact:
+  create:
+    method: post
+    url: '/foo/bar'

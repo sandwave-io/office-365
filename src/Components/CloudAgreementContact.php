@@ -6,9 +6,9 @@ use DOMException;
 use SandwaveIo\Office365\Entity\CloudAgreementContact\AgreementContact;
 use SandwaveIo\Office365\Entity\CloudAgreementContact as CloudAgreementContactEntity;
 use SandwaveIo\Office365\Entity\Header\CustomerHeader;
-use SandwaveIo\Office365\Enum\RequestAction;
 use SandwaveIo\Office365\Exception\Office365Exception;
 use SandwaveIo\Office365\Helper\EntityHelper;
+use SandwaveIo\Office365\Helper\XmlHelper;
 use SandwaveIo\Office365\Response\QueuedResponse;
 
 final class CloudAgreementContact extends AbstractComponent
@@ -22,7 +22,10 @@ final class CloudAgreementContact extends AbstractComponent
         int $customerId,
         AgreementContact $contact
     ): QueuedResponse {
-        $cloudAgreement = EntityHelper::deserialize(CloudAgreementContactEntity::class, [], RequestAction::NEW_CLOUD_AGREEMENT_CONTACT_REQUEST_V1);
+        $cloudAgreement = EntityHelper::deserialize(CloudAgreementContactEntity::class, [
+            'CustomerId' => $customerId,
+        ]);
+
         $cloudAgreement->setCustomerId($customerId);
         $cloudAgreement->setContact($contact);
 
@@ -39,10 +42,15 @@ final class CloudAgreementContact extends AbstractComponent
         $route = $this->getRouter()->get('contact_create');
         $response = $this->getClient()->request($route->method(), $route->url(), $document);
         $body = $response->getBody()->getContents();
-        $xml = simplexml_load_string($body);
 
-        if ($xml === false) {
-            throw new Office365Exception(self::class . ':create unable to process cloud license create response');
+        try {
+            $xml = XmlHelper::loadXML($body);
+        } catch (\Exception $e) {
+            throw new Office365Exception(self::class . ':create unable to loadxml.', 0, $e);
+        }
+
+        if ($xml === null) {
+            throw new Office365Exception(self::class . ':create the xml is null.');
         }
 
         return EntityHelper::deserializeXml(QueuedResponse::class, $body);
