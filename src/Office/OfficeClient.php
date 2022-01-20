@@ -49,8 +49,8 @@ final class OfficeClient
         $webApiClient = (new WebApiClientFactory($this->parameterContainer))->create($webApiOptions);
 
         $this->customer = new Customer($webApiClient, $this->router);
-        $this->order = new Order($webApiClient, $this->router);
         $this->tenant = new Tenant($webApiClient, $this->router);
+        $this->order = new Order($webApiClient, $this->router);
         $this->contact = new Contact(new Agreement($webApiClient, $this->router));
 
         $this->subjects = new Subjects();

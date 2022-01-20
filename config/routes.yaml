@@ -6,6 +6,11 @@ customer:
   has_domain_ownership:
     method: post
     url: '/foo/bar'
+    
+tenant:
+  exists:
+    method: post
+    url: '/foo/bar'
 
 order:
   license_create:

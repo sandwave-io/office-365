@@ -11,7 +11,7 @@ use SandwaveIo\Office365\Helper\XmlHelper;
 use SandwaveIo\Office365\Response\QueuedResponse;
 use SandwaveIo\Office365\Response\TenantDomainOwnershipResponse;
 use SandwaveIo\Office365\Transformer\CustomerDataBuilder;
-use SandwaveIo\Office365\Transformer\TenantDataBuilder;
+use SandwaveIo\Office365\Transformer\TenantDomainOwnerDataBuilder;
 
 final class Customer extends AbstractComponent
 {
@@ -21,7 +21,7 @@ final class Customer extends AbstractComponent
      */
     public function hasTenantDomainOwnership(int $customerId, string $tenantId): TenantDomainOwnershipResponse
     {
-        $tenantDomainOwnership = EntityHelper::deserializeArray(TenantDomainOwner::class, TenantDataBuilder::build($customerId, $tenantId));
+        $tenantDomainOwnership = EntityHelper::deserializeArray(TenantDomainOwner::class, TenantDomainOwnerDataBuilder::build($customerId, $tenantId));
 
         try {
             $document = EntityHelper::serialize($tenantDomainOwnership);
