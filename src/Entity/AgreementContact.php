@@ -40,7 +40,7 @@ final class AgreementContact implements EntityInterface
         return $this->lastname;
     }
 
-    public function getEmailAddress(): string
+    public function getEmail(): string
     {
         return $this->email;
     }
