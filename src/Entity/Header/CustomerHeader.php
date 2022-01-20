@@ -2,7 +2,9 @@
 
 namespace SandwaveIo\Office365\Entity\Header;
 
-final class CustomerHeader
+use SandwaveIo\Office365\Entity\EntityInterface;
+
+final class CustomerHeader implements EntityInterface
 {
     private int $partnerReference;
 

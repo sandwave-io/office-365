@@ -16,3 +16,8 @@ order:
   license_create:
     method: post
     url: '/order/cloud/license'
+
+contact:
+  create:
+    method: post
+    url: '/foo/bar'
