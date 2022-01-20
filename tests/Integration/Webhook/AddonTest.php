@@ -12,7 +12,7 @@ final class AddonTest extends TestCase
     /**
      * @test
      */
-    public function incomingCustomer(): void
+    public function incomingAddon(): void
     {
         /** @var Addon $addon */
         $addon = EntityHelper::createFromXML(

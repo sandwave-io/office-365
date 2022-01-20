@@ -2,11 +2,11 @@
 
 namespace SandwaveIo\Office365\Entity;
 
-use SandwaveIo\Office365\Entity\Header\CustomerHeader;
+use SandwaveIo\Office365\Entity\Header\PartnerReferenceHeader;
 
 final class Addon implements EntityInterface
 {
-    private ?CustomerHeader $header = null;
+    private ?PartnerReferenceHeader $header = null;
 
     private int $parentOrderId;
 
@@ -14,12 +14,12 @@ final class Addon implements EntityInterface
 
     private int $quantity;
 
-    public function getHeader(): ?CustomerHeader
+    public function getHeader(): ?PartnerReferenceHeader
     {
         return $this->header;
     }
 
-    public function setHeader(CustomerHeader $header): void
+    public function setHeader(PartnerReferenceHeader $header): void
     {
         $this->header = $header;
     }
