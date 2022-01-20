@@ -5,6 +5,7 @@ namespace SandwaveIo\Office365\Components;
 use SandwaveIo\Office365\Entity\CloudTenant;
 use SandwaveIo\Office365\Exception\Office365Exception;
 use SandwaveIo\Office365\Helper\EntityHelper;
+use SandwaveIo\Office365\Helper\XmlHelper;
 use SandwaveIo\Office365\Response\TenantExistsResponse;
 use SandwaveIo\Office365\Transformer\TenantDataBuilder;
 use SandwaveIo\Office365\Transformer\TenantDataTransformer;
@@ -29,10 +30,10 @@ final class Tenant extends AbstractComponent
         $body = $response->getBody()->getContents();
         $val = libxml_use_internal_errors();
         libxml_use_internal_errors(true);
-        $xml = simplexml_load_string($body);
+        $xml = Xmlhelper::loadXML($body);
         libxml_use_internal_errors($val) ;
 
-        if ($xml === false) {
+        if ($xml === null) {
             throw new Office365Exception(sprintf('%s:exists unable to check tenant existence. Tenant %s.', self::class, $tenantName));
         }
 
