@@ -36,7 +36,7 @@ final class CloudAgreementTest extends TestCase
     /**
      * @test
      */
-    public function callbackContactCreate(): void
+    public function callbackCloudAgreementCreate(): void
     {
         $mockHandler = new MockHandler(
             [new Response(200, [], (string) file_get_contents(__DIR__ . '/../Data/Request/CloudAgreementRequest.xml'))]
