@@ -45,7 +45,7 @@ final class Subjects
             case Event::CLOUD_LICENSE_ADDON_CREATE:
                 $observer = new AddonObserver($callback);
                 $subject = new AddonSubject();
-                // no break
+                break;
             default:
                 return;
         }
