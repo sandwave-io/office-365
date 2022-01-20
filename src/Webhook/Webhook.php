@@ -16,7 +16,7 @@ use SandwaveIo\Office365\Transformer\RootnodeTransformer;
  * @package SandwaveIo\Office365\Webhook
  *
  */
-class Webhook
+final class Webhook
 {
     private Subjects $subjects;
 
@@ -25,6 +25,7 @@ class Webhook
         $this->subjects = $subjects;
     }
 
+    /** @param mixed $callback */
     public function addEventSubscriber(string $type, $callback): void
     {
         $this->subjects->attach($type, $callback);
