@@ -26,6 +26,4 @@ final class CloudAgreementTest extends TestCase
         Assert::assertInstanceOf(PartnerReferenceHeader::class, $cloudAgreement->getHeader());
         Assert::assertInstanceOf(AgreementContact::class, $cloudAgreement->getContact());
     }
-
-    
 }
