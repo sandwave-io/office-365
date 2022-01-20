@@ -5,7 +5,6 @@ namespace SandwaveIo\Office365\Tests\Integration\Webhook;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
 use SandwaveIo\Office365\Entity\Addon;
-use SandwaveIo\Office365\Enum\RequestAction;
 use SandwaveIo\Office365\Helper\EntityHelper;
 
 final class AddonTest extends TestCase
