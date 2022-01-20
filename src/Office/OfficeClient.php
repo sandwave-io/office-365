@@ -20,10 +20,11 @@ final class OfficeClient
 {
     public Customer $customer;
 
-    public CloudLicenseAddon $cloudLicenseAddon;
     public Order $order;
 
     public Tenant $tenant;
+
+    public CloudLicenseAddon $cloudLicenseAddon;
 
     public Webhook $webhook;
 

@@ -15,10 +15,11 @@ final class AddonTest extends TestCase
      */
     public function incomingCustomer(): void
     {
-        $incomingAddonXml = (string) file_get_contents(__DIR__ . '/../Data/Webhook/Addon.xml');
-
         /** @var Addon $addon */
-        $addon = EntityHelper::createFromXML($incomingAddonXml, RequestAction::NEW_CLOUD_LICENSE_ADDON_ORDER_REQUEST_V1);
+        $addon = EntityHelper::createFromXML(
+            (string) file_get_contents(__DIR__ . '/../Data/Request/AddonRequest.xml')
+        );
+
         Assert::assertInstanceOf(Addon::class, $addon);
         Assert::assertSame($addon->getParentOrderId(), 12345);
         Assert::assertSame($addon->getProductCode(), 'sandwave1');

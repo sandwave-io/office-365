@@ -1,5 +1,8 @@
 SandwaveIo\Office365\Entity\Addon:
+
   exclusion_policy: ALL
+
+  xml_root_name: NewCloudLicenseAddOnOrderRequest_V1
 
   properties:
 

@@ -1,24 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Cannot call method appendChild\\(\\) on DOMElement\\|null\\.$#"
-			count: 1
-			path: src/Helper/EntityHelper.php
-
-		-
-			message: "#^Parameter \\#1 \\$class of static method SandwaveIo\\\\Office365\\\\Helper\\\\EntityHelper\\:\\:deserialize\\(\\) expects string, string\\|null given\\.$#"
-			count: 1
-			path: src/Helper/EntityHelper.php
-			message: "#^Property SandwaveIo\\\\Office365\\\\Entity\\\\Header\\\\CustomerHeader\\:\\:\\$dateCreated is never written, only read\\.$#"
-			count: 1
-			path: src/Entity/Header/CustomerHeader.php
-
-		-
-			message: "#^Property SandwaveIo\\\\Office365\\\\Entity\\\\Header\\\\CustomerHeader\\:\\:\\$partnerReference is never written, only read\\.$#"
-			count: 1
-			path: src/Entity/Header/CustomerHeader.php
-
-		-
 			message: "#^Call to an undefined method SplSubject\\:\\:getCustomer\\(\\)\\.$#"
 			count: 1
 			path: src/Library/Observer/Customer/CustomerObserver.php
@@ -37,3 +19,4 @@ parameters:
 			message: "#^Method SandwaveIo\\\\Office365\\\\Webhook\\\\Webhook\\:\\:addEventSubscriber\\(\\) has parameter \\$callback with no type specified\\.$#"
 			count: 1
 			path: src/Webhook/Webhook.php
+
