@@ -10,6 +10,10 @@ final class CustomerHeader implements EntityInterface
 
     private \DateTime $dateCreated;
 
+    /**
+     * @param int       $partnerReference
+     * @param \DateTime $dateCreated
+     */
     public function __construct(int $partnerReference, \DateTime $dateCreated)
     {
         $this->partnerReference = $partnerReference;
