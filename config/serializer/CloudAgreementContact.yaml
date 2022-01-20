@@ -17,5 +17,5 @@ SandwaveIo\Office365\Entity\CloudAgreementContact:
 
     contact:
       expose: true
-      type: SandwaveIo\Office365\Entity\CloudAgreementContact\AgreementContact
+      type: SandwaveIo\Office365\Entity\AgreementContact
       serialized_name: AgreementContact

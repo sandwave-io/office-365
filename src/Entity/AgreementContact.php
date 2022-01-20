@@ -12,7 +12,18 @@ final class AgreementContact implements EntityInterface
 
     private string $email;
 
+    private string $phonenumber;
+
     private \DateTime $agreed;
+
+    public function __construct(string $firstname, string $lastname, string $email, string $phonenumber, \DateTime $agreed)
+    {
+        $this->firstname = $firstname;
+        $this->lastname = $lastname;
+        $this->email = $email;
+        $this->phonenumber = $phonenumber;
+        $this->agreed = $agreed;
+    }
 
     public function getStatus(): ?string
     {
@@ -29,9 +40,14 @@ final class AgreementContact implements EntityInterface
         return $this->lastname;
     }
 
-    public function getEmail(): string
+    public function getEmailAddress(): string
     {
         return $this->email;
+    }
+
+    public function getPhoneNumber(): string
+    {
+        return $this->phonenumber;
     }
 
     public function getAgreed(): \DateTime

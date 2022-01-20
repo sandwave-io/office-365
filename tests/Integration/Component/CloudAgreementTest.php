@@ -8,7 +8,7 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
-use SandwaveIo\Office365\Entity\CloudAgreementContact\AgreementContact;
+use SandwaveIo\Office365\Entity\AgreementContact;
 use SandwaveIo\Office365\Entity\Header\PartnerReferenceHeader;
 use SandwaveIo\Office365\Office\OfficeClient;
 use SandwaveIo\Office365\Response\QueuedResponse;

@@ -2,7 +2,6 @@
 
 namespace SandwaveIo\Office365\Entity;
 
-use SandwaveIo\Office365\Entity\CloudAgreementContact\AgreementContact;
 use SandwaveIo\Office365\Entity\Header\PartnerReferenceHeader;
 
 final class CloudAgreementContact implements EntityInterface

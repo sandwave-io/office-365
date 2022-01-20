@@ -3,7 +3,7 @@
 namespace SandwaveIo\Office365\Components;
 
 use DOMException;
-use SandwaveIo\Office365\Entity\CloudAgreementContact\AgreementContact;
+use SandwaveIo\Office365\Entity\AgreementContact;
 use SandwaveIo\Office365\Entity\CloudAgreementContact as CloudAgreementContactEntity;
 use SandwaveIo\Office365\Entity\Header\PartnerReferenceHeader;
 use SandwaveIo\Office365\Exception\Office365Exception;
