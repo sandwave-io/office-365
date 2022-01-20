@@ -16,7 +16,7 @@ use SandwaveIo\Office365\Transformer\RootnodeTransformer;
  * @package SandwaveIo\Office365\Webhook
  *
  */
-class Webhook
+final class Webhook
 {
     private Subjects $subjects;
 
