@@ -37,13 +37,15 @@ final class Subjects
                 $subject = new CloudLicenseSubject();
                 break;
 
-            case Event::CLOUD_LICENSE_ADDON_CREATE:
-                $observer = new AddonObserver($callback);
-                $subject = new AddonSubject();
             case Event::CLOUD_AGREEMENT_CREATE:
                 $observer = new ContactObserver($callback);
                 $subject = new ContactSubject();
                 break;
+
+            case Event::CLOUD_LICENSE_ADDON_CREATE:
+                $observer = new AddonObserver($callback);
+                $subject = new AddonSubject();
+                // no break
             default:
                 return;
         }
@@ -79,12 +81,6 @@ final class Subjects
                     $subject->setCloudLicense($entity);
                     break;
 
-                case Event::CLOUD_LICENSE_ADDON_CREATE:
-                    /** @var AddonSubject $subject */
-                    if (! $entity instanceof Addon) {
-                        return null;
-                    }
-                    $subject->setAddon($entity);
                 case Event::CLOUD_AGREEMENT_CREATE:
                     /** @var ContactSubject $subject */
                     if (! $entity instanceof CloudAgreementContact) {
@@ -92,6 +88,13 @@ final class Subjects
                     }
                     $subject->setContact($entity);
                     break;
+
+                case Event::CLOUD_LICENSE_ADDON_CREATE:
+                    /** @var AddonSubject $subject */
+                    if (! $entity instanceof Addon) {
+                        return null;
+                    }
+                    $subject->setAddon($entity);
             }
 
             return $this->subject[$event];
