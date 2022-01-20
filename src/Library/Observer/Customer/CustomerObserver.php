@@ -13,6 +13,7 @@ final class CustomerObserver implements \SplObserver
 
     public function update(\SplSubject $subject): void
     {
+        /** @var CustomerSubject $subject */
         $this->callback->execute($subject->getCustomer());
     }
 }
