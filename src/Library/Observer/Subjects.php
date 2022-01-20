@@ -2,11 +2,14 @@
 
 namespace SandwaveIo\Office365\Library\Observer;
 
+use SandwaveIo\Office365\Entity\Addon;
 use SandwaveIo\Office365\Entity\CloudAgreementContact;
 use SandwaveIo\Office365\Entity\CloudLicense;
 use SandwaveIo\Office365\Entity\Customer;
 use SandwaveIo\Office365\Entity\EntityInterface;
 use SandwaveIo\Office365\Enum\Event;
+use SandwaveIo\Office365\Library\Observer\Addon\AddonObserver;
+use SandwaveIo\Office365\Library\Observer\Addon\AddonSubject;
 use SandwaveIo\Office365\Library\Observer\CloudLicense\CloudLicenseObserver;
 use SandwaveIo\Office365\Library\Observer\CloudLicense\CloudLicenseSubject;
 use SandwaveIo\Office365\Library\Observer\Contact\ContactObserver;
@@ -37,6 +40,11 @@ final class Subjects
             case Event::CLOUD_AGREEMENT_CREATE:
                 $observer = new ContactObserver($callback);
                 $subject = new ContactSubject();
+                break;
+
+            case Event::CLOUD_LICENSE_ADDON_CREATE:
+                $observer = new AddonObserver($callback);
+                $subject = new AddonSubject();
                 break;
             default:
                 return;
@@ -80,6 +88,13 @@ final class Subjects
                     }
                     $subject->setContact($entity);
                     break;
+
+                case Event::CLOUD_LICENSE_ADDON_CREATE:
+                    /** @var AddonSubject $subject */
+                    if (! $entity instanceof Addon) {
+                        return null;
+                    }
+                    $subject->setAddon($entity);
             }
 
             return $this->subject[$event];

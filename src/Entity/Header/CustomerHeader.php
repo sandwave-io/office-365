@@ -25,8 +25,18 @@ final class CustomerHeader implements EntityInterface
         return $this->partnerReference;
     }
 
+    public function setPartnerReference(int $partnerReference): void
+    {
+        $this->partnerReference = $partnerReference;
+    }
+
     public function getDateCreated(): \DateTime
     {
         return $this->dateCreated;
+    }
+
+    public function setDateCreated(\DateTime $dateCreated): void
+    {
+        $this->dateCreated = $dateCreated;
     }
 }
