@@ -5,9 +5,9 @@ namespace SandwaveIo\Office365\Components;
 use DOMException;
 use SandwaveIo\Office365\Entity\Customer as CustomerEntity;
 use SandwaveIo\Office365\Entity\TenantDomainOwner;
-use SandwaveIo\Office365\Enum\RequestAction;
 use SandwaveIo\Office365\Exception\Office365Exception;
 use SandwaveIo\Office365\Helper\EntityHelper;
+use SandwaveIo\Office365\Helper\XmlHelper;
 use SandwaveIo\Office365\Response\QueuedResponse;
 use SandwaveIo\Office365\Response\TenantDomainOwnershipResponse;
 use SandwaveIo\Office365\Transformer\CustomerDataBuilder;
@@ -21,7 +21,7 @@ final class Customer extends AbstractComponent
      */
     public function hasTenantDomainOwnership(int $customerId, string $tenantId): TenantDomainOwnershipResponse
     {
-        $tenantDomainOwnership = EntityHelper::deserializeArray(TenantDomainOwner::class, TenantDataBuilder::build($customerId, $tenantId), RequestAction::TENANT_DOMAIN_OWNERSHIP_REQUEST_V1);
+        $tenantDomainOwnership = EntityHelper::deserializeArray(TenantDomainOwner::class, TenantDataBuilder::build($customerId, $tenantId));
 
         try {
             $document = EntityHelper::serialize($tenantDomainOwnership);
@@ -32,12 +32,10 @@ final class Customer extends AbstractComponent
         $route = $this->getRouter()->get('customer_has_domain_ownership');
         $response = $this->getClient()->request($route->method(), $route->url(), $document);
         $body = $response->getBody()->getContents();
-        $val = libxml_use_internal_errors();
-        libxml_use_internal_errors(true);
-        $xml = simplexml_load_string($body);
-        libxml_use_internal_errors($val) ;
 
-        if ($xml === false) {
+        $xml = XmlHelper::loadXML($body);
+
+        if ($xml === null) {
             throw new Office365Exception(sprintf('%s:hasDomainOwnership unable to check tenant domain ownership. Tenant %s, customer %s.', self::class, $tenantId, $customerId));
         }
 
@@ -76,18 +74,20 @@ final class Customer extends AbstractComponent
             ... func_get_args()
         );
 
-        $customer = EntityHelper::deserialize(CustomerEntity::class, $customerData, RequestAction::NEW_CUSTOMER_REQUEST_V1);
-        $document = EntityHelper::prepare(RequestAction::NEW_CUSTOMER_REQUEST_V1, $customer);
-        if ($document === false) {
-            throw new Office365Exception(self::class . ':create unable to create customer entity.');
+        $customer = EntityHelper::deserialize(CustomerEntity::class, $customerData);
+
+        try {
+            $document = EntityHelper::serialize($customer);
+        } catch (\Exception $e) {
+            throw new Office365Exception(self::class . ':create unable to create customer entity.', 0, $e);
         }
 
         $route = $this->getRouter()->get('customer_create');
         $response = $this->getClient()->request($route->method(), $route->url(), $document);
         $body = $response->getBody()->getContents();
-        $xml = simplexml_load_string($body);
+        $xml = XmlHelper::loadXML($body);
 
-        if ($xml === false) {
+        if ($xml === null) {
             throw new Office365Exception(self::class . ':create unable to create customer entity.');
         }
 

@@ -1,29 +1,32 @@
-SandwaveIo\Office365\Entity\CloudAgreementContact\AgreementContact:
+SandwaveIo\Office365\Entity\AgreementContact:
+
   exclusion_policy: ALL
+
+  xml_root_name: CustomerAgreementContact_V1
 
   properties:
 
-    firstName:
+    firstname:
       expose: true
       type: string
       serialized_name: FirstName
 
-    lastName:
+    lastname:
       expose: true
       type: string
       serialized_name: LastName
 
-    emailAddress:
+    email:
       expose: true
       type: string
       serialized_name: EmailAddress
 
-    phoneNumber:
+    phone:
       expose: true
-      type: int
+      type: string
       serialized_name: PhoneNumber
 
-    dateAgreed:
+    agreed:
       expose: true
-      type: DateTime<'Y-m-d\TH:i:s'>
+      type: DateTime<'Y-m-d'>
       serialized_name: DateAgreed

@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 
-namespace Integration\Component;
+namespace SandwaveIo\Office365\Tests\Integration\Component;
 
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 use SandwaveIo\Office365\Office\OfficeClient;
 use SandwaveIo\Office365\Response\QueuedResponse;
 
-final class CustomerTest extends TestCase
+final class CloudLicenseOrderTest extends TestCase
 {
     /**
      * @test
@@ -18,31 +18,21 @@ final class CustomerTest extends TestCase
     public function create(): void
     {
         $mockHandler = new MockHandler(
-            [new Response(200, [], (string) file_get_contents(__DIR__ . '/../Data/Response/NinaResponse_Success.xml'))]
+            [new Response(200, [], (string) file_get_contents(__DIR__ . '/../Data/Response/NinaResponseSuccess.xml'))]
         );
 
         $stack = HandlerStack::create($mockHandler);
         $officeClient = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
 
-        $customerResponse = $officeClient->customer->create(
-            'Naam Klant',
-            'StraatNaam',
-            38,
-            null,
-            '1234AB',
-            'Amsterdam',
-            'NLD',
-            '0612345678',
-            null,
-            null,
-            'klant@email.nl',
-            null,
-            null,
-            null,
-            null,
-            'CV',
-            null,
-            null,
+        $tenant = $officeClient->tenant->create('1', 'my tenant', 'john', 'doe', 'john@doe.com');
+        $contact = $officeClient->contact->agreement->create('my contact', 'john', 'doe', 'john@doe.com', new \DateTime());
+
+        $customerResponse = $officeClient->order->cloudLicense->create(
+            $tenant,
+            $contact,
+            '1234',
+            'PC',
+            2
         );
 
         Assert::assertInstanceOf(QueuedResponse::class, $customerResponse);
