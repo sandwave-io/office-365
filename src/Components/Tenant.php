@@ -28,10 +28,7 @@ final class Tenant extends AbstractComponent
         $route = $this->getRouter()->get('tenant_exists');
         $response = $this->getClient()->request($route->method(), $route->url(), $document);
         $body = $response->getBody()->getContents();
-        $val = libxml_use_internal_errors();
-        libxml_use_internal_errors(true);
         $xml = Xmlhelper::loadXML($body);
-        libxml_use_internal_errors($val) ;
 
         if ($xml === null) {
             throw new Office365Exception(sprintf('%s:exists unable to check tenant existence. Tenant %s.', self::class, $tenantName));
