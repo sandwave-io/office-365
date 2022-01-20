@@ -1,0 +1,31 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Property SandwaveIo\\\\Office365\\\\Entity\\\\Header\\\\CustomerHeader\\:\\:\\$dateCreated is never written, only read\\.$#"
+			count: 1
+			path: src/Entity/Header/CustomerHeader.php
+
+		-
+			message: "#^Property SandwaveIo\\\\Office365\\\\Entity\\\\Header\\\\CustomerHeader\\:\\:\\$partnerReference is never written, only read\\.$#"
+			count: 1
+			path: src/Entity/Header/CustomerHeader.php
+
+		-
+			message: "#^Call to an undefined method SplSubject\\:\\:getCustomer\\(\\)\\.$#"
+			count: 1
+			path: src/Library/Observer/Customer/CustomerObserver.php
+
+		-
+			message: "#^Method SandwaveIo\\\\Office365\\\\Library\\\\Observer\\\\Subjects\\:\\:attach\\(\\) has parameter \\$callback with no type specified\\.$#"
+			count: 1
+			path: src/Library/Observer/Subjects.php
+
+		-
+			message: "#^Class SandwaveIo\\\\Office365\\\\Webhook\\\\Webhook is neither abstract nor final\\.$#"
+			count: 1
+			path: src/Webhook/Webhook.php
+
+		-
+			message: "#^Method SandwaveIo\\\\Office365\\\\Webhook\\\\Webhook\\:\\:addEventSubscriber\\(\\) has parameter \\$callback with no type specified\\.$#"
+			count: 1
+			path: src/Webhook/Webhook.php
