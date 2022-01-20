@@ -6,7 +6,7 @@ use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
 use SandwaveIo\Office365\Entity\CloudAgreementContact;
 use SandwaveIo\Office365\Entity\CloudAgreementContact\AgreementContact;
-use SandwaveIo\Office365\Entity\Header\CustomerHeader;
+use SandwaveIo\Office365\Entity\Header\PartnerReferenceHeader;
 use SandwaveIo\Office365\Helper\EntityHelper;
 
 final class CloudAgreementTest extends TestCase
@@ -23,7 +23,7 @@ final class CloudAgreementTest extends TestCase
 
         Assert::assertInstanceOf(CloudAgreementContact::class, $cloudAgreement);
         Assert::assertSame($cloudAgreement->getCustomerId(), 1);
-        Assert::assertInstanceOf(CustomerHeader::class, $cloudAgreement->getHeader());
+        Assert::assertInstanceOf(PartnerReferenceHeader::class, $cloudAgreement->getHeader());
         Assert::assertInstanceOf(AgreementContact::class, $cloudAgreement->getContact());
     }
 }

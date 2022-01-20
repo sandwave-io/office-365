@@ -5,7 +5,7 @@ namespace SandwaveIo\Office365\Components;
 use DOMException;
 use SandwaveIo\Office365\Entity\CloudAgreementContact\AgreementContact;
 use SandwaveIo\Office365\Entity\CloudAgreementContact as CloudAgreementContactEntity;
-use SandwaveIo\Office365\Entity\Header\CustomerHeader;
+use SandwaveIo\Office365\Entity\Header\PartnerReferenceHeader;
 use SandwaveIo\Office365\Exception\Office365Exception;
 use SandwaveIo\Office365\Helper\EntityHelper;
 use SandwaveIo\Office365\Helper\XmlHelper;
@@ -18,7 +18,7 @@ final class CloudAgreementContact extends AbstractComponent
      * @throws Office365Exception
      */
     public function create(
-        ?CustomerHeader $header,
+        ?PartnerReferenceHeader $header,
         int $customerId,
         AgreementContact $contact
     ): QueuedResponse {
