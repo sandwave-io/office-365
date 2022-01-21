@@ -6,7 +6,7 @@ customer:
   has_domain_ownership:
     method: post
     url: '/foo/bar'
-    
+
 tenant:
   exists:
     method: post
@@ -24,5 +24,10 @@ contact:
 
 addon:
   create:
+    method: post
+    url: '/foo/bar'
+
+terminate:
+  order:
     method: post
     url: '/foo/bar'

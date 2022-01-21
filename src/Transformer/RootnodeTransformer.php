@@ -21,6 +21,9 @@ final class RootnodeTransformer
 
             case RequestAction::NEW_CLOUD_LICENSE_ADDON_ORDER_REQUEST_V1:
                 return Event::CLOUD_LICENSE_ADDON_CREATE;
+
+            case RequestAction::TERMINATE_ORDER_REQUEST_V2:
+                return Event::TERMINATE_ORDER;
             default:
                 return '';
         }

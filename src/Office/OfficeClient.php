@@ -9,6 +9,7 @@ use SandwaveIo\Office365\Components\Contact\Agreement;
 use SandwaveIo\Office365\Components\Customer;
 use SandwaveIo\Office365\Components\Order\Order;
 use SandwaveIo\Office365\Components\Tenant;
+use SandwaveIo\Office365\Components\Terminate;
 use SandwaveIo\Office365\Library\Client\WebApiClientFactory;
 use SandwaveIo\Office365\Library\Observer\Subjects;
 use SandwaveIo\Office365\Library\Parameter\ParameterContainer;
@@ -32,6 +33,8 @@ final class OfficeClient
     public CloudAgreementContact $cloudAgreementContact;
 
     public CloudLicenseAddon $cloudLicenseAddon;
+
+    public Terminate $terminate;
 
     private Subjects $subjects;
 
@@ -60,6 +63,7 @@ final class OfficeClient
         $this->contact = new Contact(new Agreement($webApiClient, $this->router));
         $this->cloudAgreementContact = new CloudAgreementContact($webApiClient, $this->router);
         $this->cloudLicenseAddon = new CloudLicenseAddon($webApiClient, $this->router);
+        $this->terminate = new Terminate($webApiClient, $this->router);
 
         $this->subjects = new Subjects();
         $this->webhook = new Webhook($this->subjects);
