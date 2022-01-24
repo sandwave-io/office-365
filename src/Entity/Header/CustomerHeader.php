@@ -2,7 +2,9 @@
 
 namespace SandwaveIo\Office365\Entity\Header;
 
-final class CustomerHeader
+use SandwaveIo\Office365\Entity\EntityInterface;
+
+final class CustomerHeader implements EntityInterface
 {
     private int $partnerReference;
 
@@ -23,8 +25,18 @@ final class CustomerHeader
         return $this->partnerReference;
     }
 
+    public function setPartnerReference(int $partnerReference): void
+    {
+        $this->partnerReference = $partnerReference;
+    }
+
     public function getDateCreated(): \DateTime
     {
         return $this->dateCreated;
+    }
+
+    public function setDateCreated(\DateTime $dateCreated): void
+    {
+        $this->dateCreated = $dateCreated;
     }
 }

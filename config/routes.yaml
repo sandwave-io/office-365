@@ -20,3 +20,13 @@ order:
   modify:
     method: post
     url: '/order/modify'
+
+contact:
+  create:
+    method: post
+    url: '/foo/bar'
+
+addon:
+  create:
+    method: post
+    url: '/foo/bar'

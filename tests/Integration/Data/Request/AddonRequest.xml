@@ -1,0 +1,9 @@
+<NewCloudLicenseAddOnOrderRequest_V1>
+    <Header>
+        <PartnerReference>21139</PartnerReference>
+        <DateCreated>2014-06-20T14:37:00</DateCreated>
+    </Header>
+    <ParentOrderId>12345</ParentOrderId>
+    <ProductCode>sandwave1</ProductCode>
+    <Quantity>38</Quantity>
+</NewCloudLicenseAddOnOrderRequest_V1>

@@ -25,7 +25,7 @@ final class CloudLicenseOrderTest extends TestCase
         $officeClient = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
 
         $tenant = $officeClient->tenant->create('1', 'my tenant', 'john', 'doe', 'john@doe.com');
-        $contact = $officeClient->contact->agreement->create('my contact', 'john', 'doe', 'john@doe.com', new \DateTime());
+        $contact = $officeClient->contact->agreement->create('my contact', 'john', 'doe', 'john@doe.com', '12345', new \DateTime());
 
         $customerResponse = $officeClient->order->cloudLicense->create(
             $tenant,
