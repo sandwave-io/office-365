@@ -10,7 +10,6 @@ final class CloudTenantResponse
 
     private RequestStatus $status;
 
-
     public function getTenant(): CloudTenant
     {
         return $this->cloudTenant;

@@ -4,7 +4,6 @@ namespace SandwaveIo\Office365\Components;
 
 use SandwaveIo\Office365\Entity\CloudTenant;
 use SandwaveIo\Office365\Entity\CloudTenantRequest;
-use SandwaveIo\Office365\Entity\TenantRequest;
 use SandwaveIo\Office365\Exception\Office365Exception;
 use SandwaveIo\Office365\Helper\EntityHelper;
 use SandwaveIo\Office365\Helper\XmlHelper;

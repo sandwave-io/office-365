@@ -7,7 +7,6 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
-use SandwaveIo\Office365\Entity\CloudTenant;
 use SandwaveIo\Office365\Office\OfficeClient;
 use SandwaveIo\Office365\Response\CloudTenantResponse;
 use SandwaveIo\Office365\Response\TenantExistsResponse;
