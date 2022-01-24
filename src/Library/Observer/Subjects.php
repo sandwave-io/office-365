@@ -103,14 +103,15 @@ final class Subjects
                         return null;
                     }
                     $subject->setAddon($entity);
+                    break;
 
-                    // no break
                 case Event::TERMINATE_ORDER:
                     /** @var TerminateSubject $subject */
                     if (! $entity instanceof Terminate) {
                         return null;
                     }
                     $subject->setTerminate($entity);
+                    break;
             }
 
             return $this->subject[$event];
