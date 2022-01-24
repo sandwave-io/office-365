@@ -15,7 +15,7 @@ final class OrderModifyQuantityBuilder
             'IsDelta' => $delta ? 1 : 0,
             'Header' => $partnerReference !== '' ? [
                 'PartnerReference' => $partnerReference,
-                'DateCreated' => (new \DateTime())->format('Y-m-d\TH:i:s')
+                'DateCreated' => (new \DateTime())->format('Y-m-d\TH:i:s'),
             ] : null,
         ];
     }

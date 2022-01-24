@@ -2,8 +2,6 @@
 
 namespace SandwaveIo\Office365\Library\Observer\Order;
 
-use SandwaveIo\Office365\Entity\OrderModifyQuantity;
-
 final class OrderModifyQuantityObserver implements \SplObserver
 {
     private OrderModifyQuantityObserverInterface $callback;

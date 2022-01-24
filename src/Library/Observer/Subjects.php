@@ -105,6 +105,7 @@ final class Subjects
                     }
                     $subject->setAddon($entity);
 
+                    // no break
                 case Event::ORDER_MODIFY_QUANTITY:
                     /** @var OrderModifyQuantity $subject */
                     if (! $entity instanceof OrderModifyQuantity) {
