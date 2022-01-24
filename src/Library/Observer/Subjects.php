@@ -104,6 +104,7 @@ final class Subjects
                     }
                     $subject->setAddon($entity);
 
+                    // no break
                 case Event::TERMINATE_ORDER:
                     /** @var TerminateSubject $subject */
                     if (! $entity instanceof Terminate) {

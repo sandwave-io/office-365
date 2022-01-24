@@ -18,7 +18,7 @@ SandwaveIo\Office365\Entity\Terminate:
 
     desiredTerminateDate:
       expose: true
-      type: DateTime<'Y-m-d\TH:i:s'>
+      type: DateTime<'Y-m-d'>
       serialized_name: DesiredTerminateDate
 
     terminateAsSoonAsPossible:

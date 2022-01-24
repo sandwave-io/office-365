@@ -50,8 +50,8 @@ final class AgreementContact implements EntityInterface
         return $this->phonenumber;
     }
 
-    public function getAgreed(): \DateTime
+    public function getAgreed(): string
     {
-        return $this->agreed;
+        return $this->agreed->format('Y-m-d');
     }
 }

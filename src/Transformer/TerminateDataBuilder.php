@@ -7,7 +7,7 @@ use DateTime;
 final class TerminateDataBuilder
 {
     /**
-     * @return array<string, string|bool|DateTime>
+     * @return array<string, string|bool>
      */
     public static function build(
         string $orderId,
@@ -16,7 +16,7 @@ final class TerminateDataBuilder
     ): array {
         return [
             'OrderId' => $orderId,
-            'DesiredTerminateDate' => $desiredTerminateDate,
+            'DesiredTerminateDate' => $desiredTerminateDate->format('Y-m-d'),
             'TerminateAsSoonAsPossible' => $terminateAsSoonAsPossible,
         ];
     }
