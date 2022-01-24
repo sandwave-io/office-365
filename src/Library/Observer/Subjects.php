@@ -80,7 +80,7 @@ final class Subjects
                         return null;
                     }
 
-                    /** @var OrderModifyQuantity $subject */
+                    /** @var OrderModifyQuantitySubject $subject */
                     $subject->setOrderModifyQuantity($entity);
                     break;
             }
