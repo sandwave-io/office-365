@@ -5,11 +5,14 @@ namespace SandwaveIo\Office365\Library\Observer;
 use SandwaveIo\Office365\Entity\CloudLicense;
 use SandwaveIo\Office365\Entity\Customer;
 use SandwaveIo\Office365\Entity\EntityInterface;
+use SandwaveIo\Office365\Entity\OrderModifyQuantity;
 use SandwaveIo\Office365\Enum\Event;
 use SandwaveIo\Office365\Library\Observer\CloudLicense\CloudLicenseObserver;
 use SandwaveIo\Office365\Library\Observer\CloudLicense\CloudLicenseSubject;
+use SandwaveIo\Office365\Library\Observer\Order\OrderModifyQuantitySubject;
 use SandwaveIo\Office365\Library\Observer\Customer\CustomerObserver;
 use SandwaveIo\Office365\Library\Observer\Customer\CustomerSubject;
+use SandwaveIo\Office365\Library\Observer\Order\OrderModifyQuantityObserver;
 use SplSubject;
 
 final class Subjects
@@ -30,6 +33,12 @@ final class Subjects
                 $observer = new CloudLicenseObserver($callback);
                 $subject = new CloudLicenseSubject();
                 break;
+
+            case Event::ORDER_MODIFY_QUANTITY:
+                $observer = new OrderModifyQuantityObserver($callback);
+                $subject = new OrderModifyQuantitySubject();
+                break;
+
             default:
                 return;
         }
@@ -63,6 +72,16 @@ final class Subjects
 
                     /** @var CloudLicenseSubject $subject */
                     $subject->setCloudLicense($entity);
+                    break;
+
+                case Event::ORDER_MODIFY_QUANTITY:
+                    /** @var OrderModifyQuantity $subject */
+                    if (! $entity instanceof OrderModifyQuantity) {
+                        return null;
+                    }
+
+                    /** @var OrderModifyQuantity $subject */
+                    $subject->setOrderModifyQuantity($entity);
                     break;
             }
 

@@ -6,7 +6,7 @@ customer:
   has_domain_ownership:
     method: post
     url: '/foo/bar'
-    
+
 tenant:
   exists:
     method: post
@@ -16,3 +16,7 @@ order:
   license_create:
     method: post
     url: '/order/cloud/license'
+
+  modify:
+    method: post
+    url: '/order/modify'

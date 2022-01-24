@@ -7,10 +7,12 @@ use SandwaveIo\Office365\Entity\AgreementContact;
 use SandwaveIo\Office365\Entity\CloudLicense as License;
 use SandwaveIo\Office365\Entity\CloudTenant;
 use SandwaveIo\Office365\Entity\Header\PartnerReferenceHeader;
+use SandwaveIo\Office365\Entity\OrderModifyQuantity;
 use SandwaveIo\Office365\Exception\Office365Exception;
 use SandwaveIo\Office365\Helper\EntityHelper;
 use SandwaveIo\Office365\Helper\XmlHelper;
 use SandwaveIo\Office365\Response\QueuedResponse;
+use SandwaveIo\Office365\Transformer\OrderModifyQuantityBuilder;
 
 final class CloudLicense extends AbstractComponent
 {
@@ -52,6 +54,36 @@ final class CloudLicense extends AbstractComponent
 
         if ($xml === null) {
             throw new Office365Exception(self::class . ':create unable to process cloud license create response');
+        }
+
+        return EntityHelper::deserializeXml(QueuedResponse::class, $body);
+    }
+
+    public function modify(int $orderId, int $quantity, bool $isDelta = false, string $partnerReference = ''): QueuedResponse
+    {
+        $modification = EntityHelper::deserialize(
+            OrderModifyQuantity::class,
+            OrderModifyQuantityBuilder::build(...func_get_args())
+        );
+
+        try {
+            $document = EntityHelper::serialize($modification);
+        } catch (\Exception $e) {
+            throw new Office365Exception(self::class . ':create unable to process order quantity modification', 0, $e);
+        }
+
+        $route = $this->getRouter()->get('order_modify');
+        $response = $this->getClient()->request($route->method(), $route->url(), $document);
+        $body = $response->getBody()->getContents();
+
+        try {
+            $xml = XmlHelper::loadXML($body);
+        } catch (\Exception $e) {
+            throw new Office365Exception(self::class . ':create unable to process order modify response', 0, $e);
+        }
+
+        if ($xml === null) {
+            throw new Office365Exception(self::class . ':create unable to process order modify response');
         }
 
         return EntityHelper::deserializeXml(QueuedResponse::class, $body);
