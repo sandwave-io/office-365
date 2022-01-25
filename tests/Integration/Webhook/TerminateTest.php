@@ -47,6 +47,12 @@ final class TerminateTest extends TestCase
             public function execute(Terminate $terminate): void
             {
                 Assert::assertEquals('sandwave12345', $terminate->getOrderId());
+                Assert::assertTrue($terminate->getTerminateAsSoonAsPossible());
+                Assert::assertSame('2014-06-20', $terminate->getDesiredTerminateDate()->format('Y-m-d'));
+
+                if ($terminate->getHeader() !== null) {
+                    Assert::assertEquals('21139', $terminate->getHeader()->getPartnerReference());
+                }
             }
         });
 

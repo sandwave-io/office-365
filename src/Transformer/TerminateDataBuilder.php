@@ -7,17 +7,22 @@ use DateTime;
 final class TerminateDataBuilder
 {
     /**
-     * @return array<string, string|bool>
+     * @return array<string, string|mixed>
      */
     public static function build(
         string $orderId,
         DateTime $desiredTerminateDate,
-        bool $terminateAsSoonAsPossible
+        bool $terminateAsSoonAsPossible,
+        string $partnerReference = ''
     ): array {
         return [
             'OrderId' => $orderId,
             'DesiredTerminateDate' => $desiredTerminateDate->format('Y-m-d'),
             'TerminateAsSoonAsPossible' => $terminateAsSoonAsPossible,
+            'Header' => $partnerReference !== '' ? [
+                'PartnerReference' => $partnerReference,
+                'DateCreated' => (new \DateTime())->format('Y-m-d\TH:i:s'),
+            ] : null,
         ];
     }
 }

@@ -19,7 +19,8 @@ final class Terminate extends AbstractComponent
     public function create(
         string $orderId,
         DateTime $desiredTerminateDate,
-        bool $terminateAsSoonAsPossible
+        bool $terminateAsSoonAsPossible,
+        string $partnerReference = ''
     ): QueuedResponse {
         $terminationData = TerminateDataBuilder::build(
             ... func_get_args()

@@ -27,7 +27,8 @@ final class TerminateTest extends TestCase
         $terminateResponse = $officeClient->terminate->create(
             '12345',
             new DateTime('NOW'),
-            true
+            true,
+            '123'
         );
 
         Assert::assertInstanceOf(QueuedResponse::class, $terminateResponse);
