@@ -18,7 +18,7 @@ final class OrderModifyQuantityTest extends TestCase
     /**
      * @test
      */
-    public function testCreateOrdermodify(): void
+    public function createOrdermodify(): void
     {
         /** @var OrderModifyQuantity $modification */
         $modification = EntityHelper::createFromXML((string) file_get_contents(__DIR__ . '/../Data/Request/OrderModifyQuantityRequest.xml'));
@@ -30,7 +30,10 @@ final class OrderModifyQuantityTest extends TestCase
         }
     }
 
-    public function testCallbackOrderModify(): void
+    /**
+     * @test
+     */
+    public function callbackOrderModify(): void
     {
         $mockHandler = new MockHandler(
             [new Response(200, [], (string) file_get_contents(__DIR__ . '/../Data/Request/OrderModifyQuantityRequest.xml'))]
