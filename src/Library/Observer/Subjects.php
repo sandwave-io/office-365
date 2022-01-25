@@ -7,6 +7,7 @@ use SandwaveIo\Office365\Entity\CloudAgreementContact;
 use SandwaveIo\Office365\Entity\CloudLicense;
 use SandwaveIo\Office365\Entity\Customer;
 use SandwaveIo\Office365\Entity\EntityInterface;
+use SandwaveIo\Office365\Entity\OrderModifyQuantity;
 use SandwaveIo\Office365\Enum\Event;
 use SandwaveIo\Office365\Library\Observer\Addon\AddonObserver;
 use SandwaveIo\Office365\Library\Observer\Addon\AddonSubject;
@@ -16,6 +17,8 @@ use SandwaveIo\Office365\Library\Observer\Contact\ContactObserver;
 use SandwaveIo\Office365\Library\Observer\Contact\ContactSubject;
 use SandwaveIo\Office365\Library\Observer\Customer\CustomerObserver;
 use SandwaveIo\Office365\Library\Observer\Customer\CustomerSubject;
+use SandwaveIo\Office365\Library\Observer\Order\OrderModifyQuantityObserver;
+use SandwaveIo\Office365\Library\Observer\Order\OrderModifyQuantitySubject;
 use SplSubject;
 
 final class Subjects
@@ -46,6 +49,12 @@ final class Subjects
                 $observer = new AddonObserver($callback);
                 $subject = new AddonSubject();
                 break;
+
+            case Event::ORDER_MODIFY_QUANTITY:
+                $observer = new OrderModifyQuantityObserver($callback);
+                $subject = new OrderModifyQuantitySubject();
+                break;
+
             default:
                 return;
         }
@@ -95,6 +104,17 @@ final class Subjects
                         return null;
                     }
                     $subject->setAddon($entity);
+
+                    // no break
+                case Event::ORDER_MODIFY_QUANTITY:
+                    /** @var OrderModifyQuantity $subject */
+                    if (! $entity instanceof OrderModifyQuantity) {
+                        return null;
+                    }
+
+                    /** @var OrderModifyQuantitySubject $subject */
+                    $subject->setOrderModifyQuantity($entity);
+                    break;
             }
 
             return $this->subject[$event];
