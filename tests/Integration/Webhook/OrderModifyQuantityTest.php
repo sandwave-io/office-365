@@ -44,6 +44,7 @@ final class OrderModifyQuantityTest extends TestCase
             {
                 Assert::assertEquals(4, $modifyQuantity->getQuantity());
                 Assert::assertEquals(123, $modifyQuantity->getOrderId());
+                Assert::assertTrue($modifyQuantity->isDelta());
 
                 if ($modifyQuantity->getHeader() !== null) {
                     Assert::assertEquals('12345', $modifyQuantity->getHeader()->getPartnerReference());
