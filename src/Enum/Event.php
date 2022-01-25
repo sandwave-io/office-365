@@ -13,4 +13,5 @@ final class Event
     const CLOUD_LICENSE_ADDON_CREATE = 'cloud_license_addon_create';
 
     const TERMINATE_ORDER = 'terminate-order';
+    const ORDER_MODIFY_QUANTITY = 'order_modify_quantity';
 }

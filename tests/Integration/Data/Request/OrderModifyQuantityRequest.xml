@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<ModifyOrderQuantityRequest_V1>
+    <Header>
+        <PartnerReference>12345</PartnerReference>
+        <DateCreated>2012-12-13T12:12:12</DateCreated>
+    </Header>
+    <OrderId>123</OrderId>
+    <Quantity>4</Quantity>
+    <IsDelta>true</IsDelta>
+</ModifyOrderQuantityRequest_V1>

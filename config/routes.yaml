@@ -1,26 +1,34 @@
 customer:
   create:
     method: post
-    url: '/foo/bar'
+    url: '/queued'
 
   has_domain_ownership:
     method: post
-    url: '/foo/bar'
+    url: '/realtime'
 
 tenant:
   exists:
     method: post
     url: '/foo/bar'
 
+  fetch_tenant:
+    method: post
+    url: '/foo/bar'
+
 order:
   license_create:
     method: post
-    url: '/order/cloud/license'
+    url: '/queued'
+
+  modify:
+    method: post
+    url: '/queued'
 
 contact:
   create:
     method: post
-    url: '/foo/bar'
+    url: '/queued'
 
 addon:
   create:
@@ -31,3 +39,4 @@ terminate:
   order:
     method: post
     url: '/foo/bar'
+    url: '/queued'
