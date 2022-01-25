@@ -1,8 +1,9 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\Office365\Components;
+namespace SandwaveIo\Office365\Components\Order;
 
 use DateTime;
+use SandwaveIo\Office365\Components\AbstractComponent;
 use SandwaveIo\Office365\Entity\Terminate as TerminateEntity;
 use SandwaveIo\Office365\Exception\Office365Exception;
 use SandwaveIo\Office365\Helper\EntityHelper;
