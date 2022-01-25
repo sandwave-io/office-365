@@ -2,7 +2,6 @@
 
 namespace SandwaveIo\Office365\Components;
 
-use DOMException;
 use SandwaveIo\Office365\Entity\Customer as CustomerEntity;
 use SandwaveIo\Office365\Entity\TenantDomainOwner;
 use SandwaveIo\Office365\Exception\Office365Exception;
@@ -16,7 +15,6 @@ use SandwaveIo\Office365\Transformer\TenantDomainOwnerDataBuilder;
 final class Customer extends AbstractComponent
 {
     /**
-     * @throws DOMException
      * @throws Office365Exception
      */
     public function hasTenantDomainOwnership(int $customerId, string $tenantId): TenantDomainOwnershipResponse
@@ -47,7 +45,6 @@ final class Customer extends AbstractComponent
     }
 
     /**
-     * @throws DOMException
      * @throws Office365Exception
      */
     public function create(

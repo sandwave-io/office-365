@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <NewCloudAgreementContactRequest_V1>
     <Header>
         <PartnerReference>12345</PartnerReference>

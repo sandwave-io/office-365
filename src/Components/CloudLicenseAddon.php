@@ -2,7 +2,6 @@
 
 namespace SandwaveIo\Office365\Components;
 
-use DOMException;
 use SandwaveIo\Office365\Entity\Addon as AddonEntity;
 use SandwaveIo\Office365\Exception\Office365Exception;
 use SandwaveIo\Office365\Helper\EntityHelper;
@@ -13,7 +12,6 @@ use SandwaveIo\Office365\Transformer\AddonDataBuilder;
 final class CloudLicenseAddon extends AbstractComponent
 {
     /**
-     * @throws DOMException
      * @throws Office365Exception
      */
     public function create(

@@ -10,10 +10,18 @@ customer:
 tenant:
   exists:
     method: post
-    url: '/realtime'
+    url: '/foo/bar'
+
+  fetch_tenant:
+    method: post
+    url: '/foo/bar'
 
 order:
   license_create:
+    method: post
+    url: '/queued'
+
+  modify:
     method: post
     url: '/queued'
 
@@ -24,5 +32,10 @@ contact:
 
 addon:
   create:
+    method: post
+    url: '/queued'
+
+terminate:
+  order:
     method: post
     url: '/queued'
