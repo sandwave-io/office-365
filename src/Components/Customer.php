@@ -71,6 +71,7 @@ final class Customer extends AbstractComponent
         ?string $chamberOfCommerceNr
     ): QueuedResponse {
         $customerData = CustomerDataBuilder::build(
+            null,
             ... func_get_args()
         );
 
@@ -85,6 +86,7 @@ final class Customer extends AbstractComponent
         $route = $this->getRouter()->get('customer_create');
         $response = $this->getClient()->request($route->method(), $route->url(), $document);
         $body = $response->getBody()->getContents();
+        var_dump($body);
         $xml = XmlHelper::loadXML($body);
 
         if ($xml === null) {
@@ -93,4 +95,33 @@ final class Customer extends AbstractComponent
 
         return EntityHelper::deserializeXml(QueuedResponse::class, $body);
     }
+//
+//    public function modify(
+//        string $customerId,
+//        string $name,
+//        string $street,
+//        ?int $houseNr,
+//        ?string $houseNrExtension,
+//        string $zipCode,
+//        string $city,
+//        string $countryCode,
+//        ?string $phone1,
+//        ?string $phone2,
+//        ?string $fax,
+//        ?string $email,
+//        ?string $website,
+//        ?string $debitNr,
+//        ?string $iban,
+//        ?string $bic,
+//        ?string $legalStatus,
+//        ?string $externalId,
+//        ?string $chamberOfCommerceNr
+//    ): QueuedResponse
+//    {
+//        $customerData = CustomerDataBuilder::build(
+//            ... func_get_args()
+//        );
+//
+//
+//    }
 }

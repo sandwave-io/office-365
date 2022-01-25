@@ -1,7 +1,7 @@
 customer:
   create:
     method: post
-    url: '/queued'
+    url: 'api/queued'
 
   has_domain_ownership:
     method: post

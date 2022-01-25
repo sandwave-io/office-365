@@ -8,6 +8,7 @@ final class CustomerDataBuilder
      * @return array<string, int|string|null>
      */
     public static function build(
+        ?string $customerId,
         string $name,
         string $street,
         int $houseNr,
@@ -27,7 +28,8 @@ final class CustomerDataBuilder
         ?string $externalId,
         ?string $chamberOfCommerceNr
     ): array {
-        return [
+        return array_filter([
+            'CustomerId' => $customerId,
             'Name'   => $name,
             'Street' => $street,
             'HouseNr' => $houseNr,
@@ -46,6 +48,6 @@ final class CustomerDataBuilder
             'LegalStatus' => $legalStatus,
             'ExternalId' => $externalId,
             'ChamberOfCommerceNr' => $chamberOfCommerceNr,
-        ];
+        ]);
     }
 }

@@ -12,19 +12,24 @@ use SandwaveIo\Office365\Response\QueuedResponse;
 
 final class CustomerTest extends TestCase
 {
-    /**
-     * @test
-     */
-    public function create(): void
+    private OfficeClient $officeClient;
+
+    protected function setUp(): void
     {
+        parent::setUp();
+
         $mockHandler = new MockHandler(
             [new Response(200, [], (string) file_get_contents(__DIR__ . '/../Data/Response/NinaResponse_Success.xml'))]
         );
 
         $stack = HandlerStack::create($mockHandler);
-        $officeClient = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
+        $this->officeClient = new OfficeClient('https://api-prep.routit.nl/api', 'tws_prep', '5oRnj9z4KF4Ju_wKpbVLD');
+    }
 
-        $customerResponse = $officeClient->customer->create(
+    /** @test **/
+    public function create(): void
+    {
+        $customerResponse = $this->officeClient->customer->create(
             'Naam Klant',
             'StraatNaam',
             38,
@@ -50,4 +55,17 @@ final class CustomerTest extends TestCase
         Assert::assertSame('Success', $customerResponse->getErrorMessage());
         Assert::assertSame(0, $customerResponse->getErrorCode());
     }
+
+//    /** @test **/
+//    public function modify(): void
+//    {
+//        $customerResponse = $this->officeClient->customer->modify(
+//
+//        );
+//
+//        Assert::assertInstanceOf(QueuedResponse::class, $customerResponse);
+//        Assert::assertTrue($customerResponse->isSuccess());
+//        Assert::assertSame('Success', $customerResponse->getErrorMessage());
+//        Assert::assertSame(0, $customerResponse->getErrorCode());
+//    }
 }
