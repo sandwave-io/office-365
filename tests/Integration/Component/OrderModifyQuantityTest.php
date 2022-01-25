@@ -15,7 +15,7 @@ final class OrderModifyQuantityTest extends TestCase
     /**
      * @test
      */
-    public function testCreate(): void
+    public function create(): void
     {
         $mockHandler = new MockHandler(
             [new Response(200, [], (string) file_get_contents(__DIR__ . '/../Data/Response/NinaResponseSuccess.xml'))]
