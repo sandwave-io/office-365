@@ -41,7 +41,7 @@ final class TenantTest extends TestCase
         $stack = HandlerStack::create($mockHandler);
         $officeClient = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
 
-        $cloudTenantResponse = $officeClient->tenant->get('test');
+        $cloudTenantResponse = $officeClient->tenant->fetchTenant('test');
 
         Assert::assertInstanceOf(CloudTenantResponse::class, $cloudTenantResponse);
         Assert::assertSame('Success', $cloudTenantResponse->getStatus()->getCode());

@@ -11,6 +11,9 @@ tenant:
   exists:
     method: post
     url: '/foo/bar'
+  fetch_tenant:
+    method: post
+    url: '/foo/bar'
 
 order:
   license_create:

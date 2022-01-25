@@ -47,7 +47,7 @@ final class Tenant extends AbstractComponent
     /**
      * @throws Office365Exception
      */
-    public function get(string $customerId): CloudTenantResponse
+    public function fetchTenant(string $customerId): CloudTenantResponse
     {
         $tenantRequest = EntityHelper::deserializeArray(CloudTenantRequest::class, TenantRequestDataBuilder::build($customerId));
 
@@ -57,7 +57,7 @@ final class Tenant extends AbstractComponent
             throw new Office365Exception(sprintf('%s:get unable to get tenant. Customer %s.', self::class, $customerId), 0, $e);
         }
 
-        $route = $this->getRouter()->get('tenant_exists');
+        $route = $this->getRouter()->get('tenant_fetch_tenant');
         $response = $this->getClient()->request($route->method(), $route->url(), $document);
         $body = $response->getBody()->getContents();
         $xml = Xmlhelper::loadXML($body);
