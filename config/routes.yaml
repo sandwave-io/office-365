@@ -11,7 +11,7 @@ tenant:
   exists:
     method: post
     url: '/foo/bar'
-    
+
   fetch_tenant:
     method: post
     url: '/foo/bar'
@@ -23,7 +23,7 @@ order:
 
   modify:
     method: post
-    url: '/order/modify'
+    url: '/queued'
 
 contact:
   create:
