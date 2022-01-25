@@ -24,6 +24,7 @@ final class RootnodeTransformer
 
             case RequestAction::TERMINATE_ORDER_REQUEST_V2:
                 return Event::TERMINATE_ORDER;
+
             case RequestAction::MODIFY_ORDER_QUANTITY_REQUEST_V1:
                 return Event::ORDER_MODIFY_QUANTITY;
 
