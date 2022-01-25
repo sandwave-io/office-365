@@ -1,0 +1,14 @@
+<CloudTenantResponse_V1>
+    <Status>
+        <Messages>
+            <string>Hello world!</string>
+        </Messages>
+        <Code>Success</Code>
+    </Status>
+    <CloudTenant>
+        <TenantName>Tenant name</TenantName>
+        <FirstName>First name</FirstName>
+        <LastName>Last name</LastName>
+        <EmailAddress>test@example.com</EmailAddress>
+    </CloudTenant>
+</CloudTenantResponse_V1>
