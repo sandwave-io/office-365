@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 
-namespace SandwaveIo\Office365\Tests\Integration\Webhook;
+namespace Integration\Webhook;
 
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;

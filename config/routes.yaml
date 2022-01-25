@@ -34,3 +34,8 @@ addon:
   create:
     method: post
     url: '/queued'
+
+terminate:
+  order:
+    method: post
+    url: '/queued'

@@ -8,6 +8,7 @@ use SandwaveIo\Office365\Entity\CloudLicense;
 use SandwaveIo\Office365\Entity\Customer;
 use SandwaveIo\Office365\Entity\EntityInterface;
 use SandwaveIo\Office365\Entity\OrderModifyQuantity;
+use SandwaveIo\Office365\Entity\Terminate;
 use SandwaveIo\Office365\Enum\Event;
 use SandwaveIo\Office365\Library\Observer\Addon\AddonObserver;
 use SandwaveIo\Office365\Library\Observer\Addon\AddonSubject;
@@ -19,6 +20,8 @@ use SandwaveIo\Office365\Library\Observer\Customer\CustomerObserver;
 use SandwaveIo\Office365\Library\Observer\Customer\CustomerSubject;
 use SandwaveIo\Office365\Library\Observer\Order\OrderModifyQuantityObserver;
 use SandwaveIo\Office365\Library\Observer\Order\OrderModifyQuantitySubject;
+use SandwaveIo\Office365\Library\Observer\Terminate\TerminateObserver;
+use SandwaveIo\Office365\Library\Observer\Terminate\TerminateSubject;
 use SplSubject;
 
 final class Subjects
@@ -48,6 +51,11 @@ final class Subjects
             case Event::CLOUD_LICENSE_ADDON_CREATE:
                 $observer = new AddonObserver($callback);
                 $subject = new AddonSubject();
+                break;
+
+            case Event::TERMINATE_ORDER:
+                $observer = new TerminateObserver($callback);
+                $subject = new TerminateSubject();
                 break;
 
             case Event::ORDER_MODIFY_QUANTITY:
@@ -104,8 +112,16 @@ final class Subjects
                         return null;
                     }
                     $subject->setAddon($entity);
+                    break;
 
-                    // no break
+                case Event::TERMINATE_ORDER:
+                    /** @var TerminateSubject $subject */
+                    if (! $entity instanceof Terminate) {
+                        return null;
+                    }
+                    $subject->setTerminate($entity);
+                    break;
+
                 case Event::ORDER_MODIFY_QUANTITY:
                     /** @var OrderModifyQuantity $subject */
                     if (! $entity instanceof OrderModifyQuantity) {
