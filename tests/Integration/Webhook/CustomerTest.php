@@ -2,25 +2,29 @@
 
 namespace Integration\Webhook;
 
+use GuzzleHttp\Handler\MockHandler;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
 use SandwaveIo\Office365\Entity\Customer;
 use SandwaveIo\Office365\Helper\EntityHelper;
+use SandwaveIo\Office365\Office\OfficeClient;
 
 final class CustomerTest extends TestCase
 {
     /** @test **/
     public function create(): void
     {
-        /** @var Customer $customer */
-        $customer = EntityHelper::createFromXML(
-            (string) file_get_contents(__DIR__ . '/../Data/Response/CreateCustomer.xml')
-        );
-
-        var_dump($customer);
-
-        Assert::assertInstanceOf(Customer::class, $customer);
-        Assert::assertSame($customer->getName(), 'Naam Klant');
+//        /** @var Customer $customer */
+//        $customer = EntityHelper::createFromXML(
+//            (string) file_get_contents(__DIR__ . '/../Data/Response/CreateCustomer.xml')
+//        );
+//
+//        var_dump($customer);
+//
+//        Assert::assertInstanceOf(Customer::class, $customer);
+//        Assert::assertSame($customer->getName(), 'Naam Klant');
 //        Assert::assertSame($customer->getStreet(), 'StraatNaam');
 //        Assert::assertSame($customer->getHouseNr(), 38);
 //        Assert::assertSame($customer->getHouseNrExtension(), '');
@@ -40,6 +44,20 @@ final class CustomerTest extends TestCase
 //        Assert::assertSame($customer->getExternalId(), null);
 //        Assert::assertSame($customer->getChamberOfCommerceNr(), null);
 //        Assert::assertSame($customer->getCustomerId(), null);
+
+
+
+        $mockHandler = new MockHandler(
+            [new Response(200, [], (string) file_get_contents(__DIR__ . '/../Data/Response/CreateCustomer.xml'))]
+        );
+
+        $stack = HandlerStack::create($mockHandler);
+        $client = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
+
+
+        $client->webhook->process(
+            (string) file_get_contents(__DIR__ . '/../Data/Response/CreateCustomer.xml')
+        );
     }
 //
 //    public function modify(): void

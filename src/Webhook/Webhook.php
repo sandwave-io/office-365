@@ -52,12 +52,14 @@ final class Webhook
         $eventName = RootnodeTransformer::transform($rootName);
         $className = (new Serializer())->findClassByRootname($rootName);
 
+        var_dump($xml);
         if ($className === null) {
             throw new Office365Exception('Could not create entity from received XML');
         }
 
         $entity = EntityHelper::deserializeXml($className, $xml);
-
+//        var_dump($entity);
+        exit;
         $this->dispatch($entity, $eventName);
 
         return $entity;
