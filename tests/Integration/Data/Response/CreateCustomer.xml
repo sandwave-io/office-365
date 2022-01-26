@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<NewCustomerResponse_V3 xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Header>
+        <PartnerReference>211393459348</PartnerReference>
+        <DateCreated>2022-01-18T16:05:48.8599238+01:00</DateCreated>
+    </Header>
+    <State>
+        <Code>0</Code>
+    </State>
+    <CustomerId>CID1322912</CustomerId>
+    <Name>Naam Klant</Name>
+    <Street>StraatNaam</Street>
+    <HouseNr>38</HouseNr>
+    <ZipCode>1234AB</ZipCode>
+    <City>Amsterdam</City>
+    <CountryCode>NLD</CountryCode>
+    <Phone1>0612345678</Phone1>
+    <Email>klant@email.nl</Email>
+    <LegalStatus>CV</LegalStatus>
+</NewCustomerResponse_V3>

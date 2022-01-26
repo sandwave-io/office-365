@@ -5,7 +5,7 @@ namespace SandwaveIo\Office365\Transformer;
 final class CustomerDataBuilder
 {
     /**
-     * @return array<string, int|string|null>
+     * @return array<string, mixed>
      */
     public static function build(
         ?string $customerId,
@@ -23,12 +23,14 @@ final class CustomerDataBuilder
         ?string $website,
         ?string $debitNr,
         ?string $iban,
+        ?string $vatNr,
         ?string $bic,
         string $legalStatus,
         ?string $externalId,
-        ?string $chamberOfCommerceNr
+        ?string $chamberOfCommerceNr,
+        string $partnerReference
     ): array {
-        return array_filter([
+        return [
             'CustomerId' => $customerId,
             'Name'   => $name,
             'Street' => $street,
@@ -45,9 +47,14 @@ final class CustomerDataBuilder
             'DebitNr' => $debitNr,
             'IBAN' => $iban,
             'BIC' => $bic,
+            'VATnr' => $vatNr,
             'LegalStatus' => $legalStatus,
             'ExternalId' => $externalId,
             'ChamberOfCommerceNr' => $chamberOfCommerceNr,
-        ]);
+            'Header' => [
+                'PartnerReference' => $partnerReference,
+                'DateCreated' => (new \DateTime())->format('Y-m-d\TH:i:s'),
+            ],
+        ];
     }
 }

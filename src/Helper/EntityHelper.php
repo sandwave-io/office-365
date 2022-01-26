@@ -71,8 +71,8 @@ final class EntityHelper
 
         $className = ClassTransformer::transform($simpleXml->getName());
 
-        $data = XmlHelper::XmlToArray($xml);
+//        $data = XmlHelper::XmlToArray($xml);
 
-        return EntityHelper::deserialize($className, $data);
+        return EntityHelper::deserializeXml($className, $xml);
     }
 }

@@ -1,6 +1,9 @@
-<?xml version="1.0"?>
-<NinaResponse>
+<?xml version="1.0" encoding="utf-8"?>
+<NinaResponse xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <IsSuccess>false</IsSuccess>
-    <ErrorCode>108</ErrorCode>
-    <ErrorMessage>Failed</ErrorMessage>
+    <ErrorCode>109</ErrorCode>
+    <ErrorMessage>XML validation error</ErrorMessage>
+    <ErrorDetails>
+        <string>The 'Name' element is invalid - The value '' is invalid according to its datatype 'String' - The actual length is less than the MinLength value.</string>
+    </ErrorDetails>
 </NinaResponse>

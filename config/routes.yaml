@@ -3,6 +3,10 @@ customer:
     method: post
     url: 'api/queued'
 
+  modify:
+    method: post
+    url: 'api/queued'
+
   has_domain_ownership:
     method: post
     url: '/realtime'

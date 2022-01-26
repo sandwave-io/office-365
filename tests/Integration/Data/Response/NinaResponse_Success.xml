@@ -1,6 +1,5 @@
-<?xml version="1.0"?>
-<NinaResponse>
+<?xml version="1.0" encoding="utf-8"?>
+<NinaResponse xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <IsSuccess>true</IsSuccess>
     <ErrorCode>0</ErrorCode>
-    <ErrorMessage>Success</ErrorMessage>
 </NinaResponse>

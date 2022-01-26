@@ -63,15 +63,60 @@ final class Customer extends AbstractComponent
         ?string $debitNr,
         ?string $iban,
         ?string $bic,
+        ?string $vatNr,
         string $legalStatus,
         ?string $externalId,
-        ?string $chamberOfCommerceNr
+        ?string $chamberOfCommerceNr,
+        string $partnerReference
     ): QueuedResponse {
         $customerData = CustomerDataBuilder::build(
             null,
             ... func_get_args()
         );
 
+        return $this->doRequest($customerData);
+    }
+
+
+    /**
+     * @throws Office365Exception
+     */
+    public function modify(
+        string $customerId,
+        string $name,
+        string $street,
+        int $houseNr,
+        ?string $houseNrExtension,
+        string $zipCode,
+        string $city,
+        string $countryCode,
+        string $phone1,
+        ?string $phone2,
+        ?string $fax,
+        ?string $email,
+        ?string $website,
+        ?string $debitNr,
+        ?string $iban,
+        ?string $bic,
+        ?string $vatNr,
+        string $legalStatus,
+        ?string $externalId,
+        ?string $chamberOfCommerceNr
+    ): QueuedResponse {
+        $customerData = CustomerDataBuilder::build(
+            ... func_get_args()
+        );
+
+        return $this->doRequest($customerData);
+    }
+
+    /**
+     * @param array<string, mixed> $customerData
+     *
+     * @throws Office365Exception
+     */
+    private function doRequest(array $customerData): QueuedResponse
+    {
         $customer = EntityHelper::deserialize(CustomerEntity::class, $customerData);
 
         try {
@@ -80,10 +125,9 @@ final class Customer extends AbstractComponent
             throw new Office365Exception(self::class . ':create unable to create customer entity.', 0, $e);
         }
 
-        $route = $this->getRouter()->get('customer_create');
+        $route = $this->getRouter()->get('customer_modify');
         $response = $this->getClient()->request($route->method(), $route->url(), $document);
         $body = $response->getBody()->getContents();
-        var_dump($body);
         $xml = XmlHelper::loadXML($body);
 
         if ($xml === null) {
@@ -92,33 +136,4 @@ final class Customer extends AbstractComponent
 
         return EntityHelper::deserializeXml(QueuedResponse::class, $body);
     }
-//
-//    public function modify(
-//        string $customerId,
-//        string $name,
-//        string $street,
-//        ?int $houseNr,
-//        ?string $houseNrExtension,
-//        string $zipCode,
-//        string $city,
-//        string $countryCode,
-//        ?string $phone1,
-//        ?string $phone2,
-//        ?string $fax,
-//        ?string $email,
-//        ?string $website,
-//        ?string $debitNr,
-//        ?string $iban,
-//        ?string $bic,
-//        ?string $legalStatus,
-//        ?string $externalId,
-//        ?string $chamberOfCommerceNr
-//    ): QueuedResponse
-//    {
-//        $customerData = CustomerDataBuilder::build(
-//            ... func_get_args()
-//        );
-//
-//
-//    }
 }
