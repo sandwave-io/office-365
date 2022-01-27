@@ -47,7 +47,7 @@ final class Tenant extends AbstractComponent
     /**
      * @throws Office365Exception
      */
-    public function fetchTenant(string $customerId): CloudTenantResponse
+    public function fetchTenant(int $customerId): CloudTenantResponse
     {
         $tenantRequest = EntityHelper::deserializeArray(CloudTenantRequest::class, TenantRequestDataBuilder::build($customerId));
 

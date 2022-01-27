@@ -33,7 +33,7 @@ final class TenantTest extends TestCase
     /**
      * @test
      */
-    public function get(): void
+    public function fetchTenant(): void
     {
         $mockHandler = new MockHandler(
             [new Response(200, [], (string) file_get_contents(__DIR__ . '/../Data/Response/CloudTenantResponse_V1.xml'))]
@@ -41,7 +41,7 @@ final class TenantTest extends TestCase
         $stack = HandlerStack::create($mockHandler);
         $officeClient = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
 
-        $cloudTenantResponse = $officeClient->tenant->fetchTenant('test');
+        $cloudTenantResponse = $officeClient->tenant->fetchTenant(1234);
 
         Assert::assertInstanceOf(CloudTenantResponse::class, $cloudTenantResponse);
         Assert::assertSame('Success', $cloudTenantResponse->getStatus()->getCode());
