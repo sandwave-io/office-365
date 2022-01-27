@@ -69,5 +69,4 @@ final class CustomerTest extends TestCase
             (string) file_get_contents(__DIR__ . '/../Data/Response/CreateCustomer.xml')
         );
     }
-
 }

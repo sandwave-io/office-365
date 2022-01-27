@@ -77,7 +77,6 @@ final class Customer extends AbstractComponent
         return $this->doRequest($customerData);
     }
 
-
     /**
      * @throws Office365Exception
      */

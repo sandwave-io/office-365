@@ -71,6 +71,7 @@ final class Serializer
 
     /**
      * @param array<string, mixed> $config
+     *
      * @return string|null
      */
     public function findClassByConfig(array $config): ?string
@@ -92,7 +93,7 @@ final class Serializer
         $className = array_key_first($config);
 
         if (array_key_exists('transformer', $config[$className]) && array_key_exists('response', $config[$className]['transformer'])) {
-            return new $config[$className]['transformer']['response'];
+            return new $config[$className]['transformer']['response']();
         }
 
         return null;
