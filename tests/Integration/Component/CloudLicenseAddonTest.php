@@ -31,7 +31,6 @@ final class CloudLicenseAddonTest extends TestCase
 
         Assert::assertInstanceOf(QueuedResponse::class, $customerResponse);
         Assert::assertTrue($customerResponse->isSuccess());
-        Assert::assertSame('Success', $customerResponse->getErrorMessage());
         Assert::assertSame(0, $customerResponse->getErrorCode());
     }
 }

@@ -18,7 +18,7 @@ final class CloudLicenseOrderTest extends TestCase
     public function create(): void
     {
         $mockHandler = new MockHandler(
-            [new Response(200, [], (string) file_get_contents(__DIR__ . '/../Data/Response/NinaResponseSuccess.xml'))]
+            [new Response(200, [], (string) file_get_contents(__DIR__ . '/../Data/Response/NinaResponse_Success.xml'))]
         );
 
         $stack = HandlerStack::create($mockHandler);
@@ -37,7 +37,6 @@ final class CloudLicenseOrderTest extends TestCase
 
         Assert::assertInstanceOf(QueuedResponse::class, $customerResponse);
         Assert::assertTrue($customerResponse->isSuccess());
-        Assert::assertSame('Success', $customerResponse->getErrorMessage());
         Assert::assertSame(0, $customerResponse->getErrorCode());
     }
 }

@@ -21,7 +21,7 @@ final class CloudAgreementTest extends TestCase
     public function create(): void
     {
         $mockHandler = new MockHandler(
-            [new Response(200, [], (string) file_get_contents(__DIR__ . '/../Data/Response/NinaResponseSuccess.xml'))]
+            [new Response(200, [], (string) file_get_contents(__DIR__ . '/../Data/Response/NinaResponse_Success.xml'))]
         );
 
         $stack = HandlerStack::create($mockHandler);
@@ -35,7 +35,6 @@ final class CloudAgreementTest extends TestCase
 
         Assert::assertInstanceOf(QueuedResponse::class, $cloudAgreementResponse);
         Assert::assertTrue($cloudAgreementResponse->isSuccess());
-        Assert::assertSame('Success', $cloudAgreementResponse->getErrorMessage());
         Assert::assertSame(0, $cloudAgreementResponse->getErrorCode());
     }
 }
