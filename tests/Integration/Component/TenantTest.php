@@ -24,7 +24,7 @@ final class TenantTest extends TestCase
         $stack = HandlerStack::create($mockHandler);
         $officeClient = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
 
-        $tenantExistsResponse = $officeClient->tenant->exists('test');
+        $tenantExistsResponse = $officeClient->tenant->exists('test.onmicrosoft.com');
 
         Assert::assertInstanceOf(TenantExistsResponse::class, $tenantExistsResponse);
         Assert::assertSame('Success', $tenantExistsResponse->getStatus()->getCode());
