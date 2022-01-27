@@ -11,6 +11,7 @@ final class RootnodeTransformer
     {
         switch ($rootNode) {
             case RequestAction::NEW_CUSTOMER_REQUEST_V1:
+            case RequestAction::NEW_CUSTOMER_RESPONSE_V3:
                 return Event::CUSTOMER_CREATE;
 
             case RequestAction::NEW_CLOUD_LICENSE_ORDER_REQUEST_V2:

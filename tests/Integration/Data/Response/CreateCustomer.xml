@@ -7,14 +7,16 @@
     <State>
         <Code>0</Code>
     </State>
-    <CustomerId>CID1322912</CustomerId>
-    <Name>Naam Klant</Name>
-    <Street>StraatNaam</Street>
-    <HouseNr>38</HouseNr>
-    <ZipCode>1234AB</ZipCode>
-    <City>Amsterdam</City>
-    <CountryCode>NLD</CountryCode>
-    <Phone1>0612345678</Phone1>
-    <Email>klant@email.nl</Email>
-    <LegalStatus>CV</LegalStatus>
+    <CustomerData>
+        <CustomerId>CID1322912</CustomerId>
+        <Name>Naam Klant</Name>
+        <Street>StraatNaam</Street>
+        <HouseNr>38</HouseNr>
+        <ZipCode>1234AB</ZipCode>
+        <City>Amsterdam</City>
+        <CountryCode>NLD</CountryCode>
+        <Phone1>0612345678</Phone1>
+        <Email>klant@email.nl</Email>
+        <LegalStatus>CV</LegalStatus>
+    </CustomerData>
 </NewCustomerResponse_V3>

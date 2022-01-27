@@ -5,6 +5,7 @@ namespace SandwaveIo\Office365\Library\Serializer;
 use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\SerializerInterface;
 use SandwaveIo\Office365\Exception\Office365Exception;
+use SandwaveIo\Office365\Transformer\TransformerInterface;
 use Symfony\Component\Yaml\Yaml;
 
 final class Serializer
@@ -46,7 +47,7 @@ final class Serializer
         return $meta[array_key_first($meta)]['xml_root_name'];
     }
 
-    public function findClassByRootname(string $rootNode): ?string
+    public function findConfigByRootname(string $rootNode): ?array
     {
         $configDirectory = opendir($this->meta['entity']->dir);
 
@@ -56,13 +57,42 @@ final class Serializer
 
                 if (is_file($file)) {
                     $meta = Yaml::parseFile($file);
-
                     $className = array_key_first($meta);
+
                     if (array_key_exists('xml_root_name', $meta[$className]) && $rootNode === $meta[$className]['xml_root_name']) {
-                        return $className;
+                        return $meta;
                     }
                 }
             }
+        }
+
+        return null;
+    }
+
+    /**
+     * @param array<string, mixed> $config
+     * @return string|null
+     */
+    public function findClassByConfig(array $config): ?string
+    {
+        $className = array_key_first($config);
+
+        if (array_key_exists('xml_root_name', $config[$className])) {
+            return $className;
+        }
+
+        return null;
+    }
+
+    /**
+     * @param array<string, mixed> $config
+     */
+    public function findResponseTransformerByConfig(array $config): ?TransformerInterface
+    {
+        $className = array_key_first($config);
+
+        if (array_key_exists('transformer', $config[$className]) && array_key_exists('response', $config[$className]['transformer'])) {
+            return new $config[$className]['transformer']['response'];
         }
 
         return null;
