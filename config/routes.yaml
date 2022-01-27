@@ -5,16 +5,16 @@ customer:
 
   has_domain_ownership:
     method: post
-    url: '/realtime'
+    url: '/api/realtime'
 
 tenant:
   exists:
     method: post
-    url: '/foo/bar'
+    url: '/api/realtime'
 
   fetch_tenant:
     method: post
-    url: '/foo/bar'
+    url: '/api/realtime'
 
 order:
   license_create:
