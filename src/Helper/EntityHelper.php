@@ -6,6 +6,7 @@ use SandwaveIo\Office365\Entity\EntityInterface;
 use SandwaveIo\Office365\Exception\Office365Exception;
 use SandwaveIo\Office365\Library\Serializer\Serializer;
 use SandwaveIo\Office365\Transformer\ClassTransformer;
+use SandwaveIo\Office365\Transformer\TransformerInterface;
 
 final class EntityHelper
 {
@@ -61,8 +62,12 @@ final class EntityHelper
     /**
      * @throws Office365Exception
      */
-    public static function createFromXML(string $xml): ?EntityInterface
+    public static function createFromXML(string $xml, TransformerInterface $transformer = null): ?EntityInterface
     {
+        if ($transformer !== null) {
+            $xml = $transformer->transform($xml);
+        }
+
         $simpleXml = XmlHelper::loadXML($xml);
 
         if ($simpleXml === null) {
@@ -71,8 +76,8 @@ final class EntityHelper
 
         $className = ClassTransformer::transform($simpleXml->getName());
 
-//        $data = XmlHelper::XmlToArray($xml);
+        $data = XmlHelper::XmlToArray($xml);
 
-        return EntityHelper::deserializeXml($className, $xml);
+        return EntityHelper::deserialize($className, $data);
     }
 }
