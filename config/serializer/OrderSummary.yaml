@@ -1,0 +1,62 @@
+SandwaveIo\Office365\Entity\OrderSummary:
+
+  exclusion_policy: ALL
+
+  xml_root_name: OrderSummaryRequest_V1
+
+  properties:
+
+    customerId:
+      expose: true
+      type: int
+      serialized_name: CustomerId
+
+    orderState:
+      expose: true
+      type: string
+      serialized_name: OrderState
+
+    productGroup:
+      expose: true
+      type: string
+      serialized_name: ProductGroup
+
+    dateActiveFrom:
+      expose: true
+      type: DateTime<'Y-m-d'>
+      serialized_name: DateActiveFrom
+
+    dateActiveTo:
+      expose: true
+      type: DateTime<'Y-m-d'>
+      serialized_name: DateActiveTo
+
+    dateModifiedFrom:
+      expose: true
+      type: DateTime<'Y-m-d'>
+      serialized_name: DateModifiedFrom
+
+    dateModifiedTo:
+      expose: true
+      type: DateTime<'Y-m-d'>
+      serialized_name: DateModifiedTo
+
+    label:
+      expose: true
+      type: string
+      serialized_name: Label
+
+    attribute:
+      expose: true
+      type: string
+      serialized_name: Attribute
+
+    skip:
+      expose: true
+      type: int
+      serialized_name: Skip
+
+    take:
+      expose: true
+      type: int
+      serialized_name: Take

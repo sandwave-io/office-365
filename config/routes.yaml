@@ -39,3 +39,8 @@ terminate:
   order:
     method: post
     url: '/queued'
+
+summary:
+  order:
+    method: post
+    url: '/realtime'
