@@ -43,6 +43,7 @@ final class Webhook
     public function process(string $xml): EntityInterface
     {
         $simpleXml = XmlHelper::loadXML($xml);
+        $serializer = (new Serializer());
 
         if ($simpleXml === null) {
             throw new Office365Exception('Could not parse received XML');
@@ -50,7 +51,14 @@ final class Webhook
 
         $rootName = $simpleXml->getName();
         $eventName = RootnodeTransformer::transform($rootName);
-        $className = (new Serializer())->findClassByRootname($rootName);
+        $config = $serializer->findConfigByRootname($rootName);
+
+        $className = $serializer->findClassByConfig($config);
+        $transformer = $serializer->findResponseTransformerByConfig($config);
+
+        if ($transformer !== null) {
+            $xml = $transformer->transform($xml);
+        }
 
         if ($className === null) {
             throw new Office365Exception('Could not create entity from received XML');

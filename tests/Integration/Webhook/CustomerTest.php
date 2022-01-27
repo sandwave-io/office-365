@@ -48,7 +48,7 @@ final class CustomerTest extends TestCase
         Assert::assertSame($customer->getCustomerId(), null);
     }
 
-
+    /** @test **/
     public function callbackWebhook(): void
     {
         $mockHandler = new MockHandler(
