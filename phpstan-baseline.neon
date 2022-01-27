@@ -1,0 +1,37 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Method SandwaveIo\\\\Office365\\\\Library\\\\Serializer\\\\Serializer\\:\\:findResponseTransformerByConfig\\(\\) should return SandwaveIo\\\\Office365\\\\Transformer\\\\TransformerInterface\\|null but returns object\\.$#"
+			count: 1
+			path: src/Library/Serializer/Serializer.php
+
+		-
+			message: "#^Cannot access property \\$nodeValue on DOMElement\\|null\\.$#"
+			count: 2
+			path: src/Transformer/CustomerResponseXmlTransformer.php
+
+		-
+			message: "#^Cannot call method appendChild\\(\\) on DOMElement\\|null\\.$#"
+			count: 1
+			path: src/Transformer/CustomerResponseXmlTransformer.php
+
+		-
+			message: "#^Casting to string something that's already string\\.$#"
+			count: 1
+			path: src/Transformer/CustomerResponseXmlTransformer.php
+
+		-
+			message: "#^Method SandwaveIo\\\\Office365\\\\Transformer\\\\CustomerResponseXmlTransformer\\:\\:transform\\(\\) should return string but returns string\\|false\\.$#"
+			count: 1
+			path: src/Transformer/CustomerResponseXmlTransformer.php
+
+		-
+			message: "#^Parameter \\#1 \\$config of method SandwaveIo\\\\Office365\\\\Library\\\\Serializer\\\\Serializer\\:\\:findClassByConfig\\(\\) expects array\\<string, mixed\\>, array\\|null given\\.$#"
+			count: 1
+			path: src/Webhook/Webhook.php
+
+		-
+			message: "#^Parameter \\#1 \\$config of method SandwaveIo\\\\Office365\\\\Library\\\\Serializer\\\\Serializer\\:\\:findResponseTransformerByConfig\\(\\) expects array\\<string, mixed\\>, array\\|null given\\.$#"
+			count: 1
+			path: src/Webhook/Webhook.php
+

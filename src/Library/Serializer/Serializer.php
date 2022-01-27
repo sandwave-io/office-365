@@ -47,6 +47,7 @@ final class Serializer
         return $meta[array_key_first($meta)]['xml_root_name'];
     }
 
+    /** @return array<mixed>|null */
     public function findConfigByRootname(string $rootNode): ?array
     {
         $configDirectory = opendir($this->meta['entity']->dir);
