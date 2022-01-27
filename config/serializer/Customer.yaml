@@ -104,3 +104,8 @@ SandwaveIo\Office365\Entity\Customer:
       expose: true
       type: string
       serialized_name: ChamberOfCommerceNr
+
+    customerId:
+      expose: true
+      type: string
+      serialized_name: CustomerId

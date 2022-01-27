@@ -101,7 +101,7 @@ final class CustomerTest extends TestCase
         $officeClient = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
 
         $customerResponse = $officeClient->customer->modify(
-            '1',
+            'CID1322912',
             'StraatNaam',
             'StraatNaam',
             38,

@@ -3,6 +3,7 @@
 namespace SandwaveIo\Office365\Components;
 
 use SandwaveIo\Office365\Entity\Customer as CustomerEntity;
+use SandwaveIo\Office365\Entity\CustomerModify as CustomerModifyEntity;
 use SandwaveIo\Office365\Entity\TenantDomainOwner;
 use SandwaveIo\Office365\Exception\Office365Exception;
 use SandwaveIo\Office365\Helper\EntityHelper;
@@ -74,7 +75,24 @@ final class Customer extends AbstractComponent
             ... func_get_args()
         );
 
-        return $this->doRequest($customerData);
+        $customer = EntityHelper::deserialize(CustomerEntity::class, $customerData);
+
+        try {
+            $document = EntityHelper::serialize($customer);
+        } catch (\Exception $e) {
+            throw new Office365Exception(self::class . ':create unable to create customer entity.', 0, $e);
+        }
+
+        $route = $this->getRouter()->get('customer_create');
+        $response = $this->getClient()->request($route->method(), $route->url(), $document);
+        $body = $response->getBody()->getContents();
+        $xml = XmlHelper::loadXML($body);
+
+        if ($xml === null) {
+            throw new Office365Exception(self::class . ':create unable to create customer entity.');
+        }
+
+        return EntityHelper::deserializeXml(QueuedResponse::class, $body);
     }
 
     /**
@@ -106,20 +124,10 @@ final class Customer extends AbstractComponent
             ... func_get_args()
         );
 
-        return $this->doRequest($customerData);
-    }
-
-    /**
-     * @param array<string, mixed> $customerData
-     *
-     * @throws Office365Exception
-     */
-    private function doRequest(array $customerData): QueuedResponse
-    {
         $customer = EntityHelper::deserialize(CustomerEntity::class, $customerData);
 
         try {
-            $document = EntityHelper::serialize($customer);
+            $document = EntityHelper::serialize($customer, 'ModifyCustomerRequest_V3');
         } catch (\Exception $e) {
             throw new Office365Exception(self::class . ':create unable to create customer entity.', 0, $e);
         }

@@ -12,10 +12,16 @@ final class EntityHelper
 {
     private static ?Serializer $serializer = null;
 
-    public static function serialize(EntityInterface $entity): string
+    public static function serialize(EntityInterface $entity, ?string $tag = null): string
     {
         $serializer = self::createSerializer()->getSerializer();
-        return $serializer->serialize($entity, 'xml');
+        $xml = $serializer->serialize($entity, 'xml');
+
+        if ($tag === null) {
+            return $xml;
+        }
+        $simplexml = simplexml_load_string($xml);
+        return str_replace($simplexml->getName(), $tag, $xml);
     }
 
     public static function createSerializer(): Serializer

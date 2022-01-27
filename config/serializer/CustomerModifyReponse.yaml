@@ -1,7 +1,7 @@
 SandwaveIo\Office365\Entity\Customer:
   exclusion_policy: ALL
 
-  xml_root_name: NewCustomerResponse_V3
+  xml_root_name: ModifyCustomerResponse_V3
 
   transformer:
     response: \SandwaveIo\Office365\Transformer\CustomerResponseXmlTransformer
