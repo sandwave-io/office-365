@@ -3,7 +3,6 @@
 namespace SandwaveIo\Office365\Components;
 
 use SandwaveIo\Office365\Entity\Customer as CustomerEntity;
-use SandwaveIo\Office365\Entity\CustomerModify as CustomerModifyEntity;
 use SandwaveIo\Office365\Entity\TenantDomainOwner;
 use SandwaveIo\Office365\Exception\Office365Exception;
 use SandwaveIo\Office365\Helper\EntityHelper;
