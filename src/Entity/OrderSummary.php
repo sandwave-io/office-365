@@ -2,6 +2,8 @@
 
 namespace SandwaveIo\Office365\Entity;
 
+use DateTime;
+
 final class OrderSummary implements EntityInterface
 {
     private ?int $customerId = null;
@@ -12,13 +14,13 @@ final class OrderSummary implements EntityInterface
 
     private ?string $productName;
 
-    private ?\DateTime $dateActiveFrom = null;
+    private ?DateTime $dateActiveFrom = null;
 
-    private ?\DateTime $dateActiveTo = null;
+    private ?DateTime $dateActiveTo = null;
 
-    private ?\DateTime $dateModifiedFrom = null;
+    private ?DateTime $dateModifiedFrom = null;
 
-    private ?\DateTime $dateModifiedTo = null;
+    private ?DateTime $dateModifiedTo = null;
 
     private ?string $label;
 
@@ -48,22 +50,22 @@ final class OrderSummary implements EntityInterface
         return $this->productName;
     }
 
-    public function getDateActiveFrom(): ?\DateTime
+    public function getDateActiveFrom(): ?DateTime
     {
         return $this->dateActiveFrom;
     }
 
-    public function getDateActiveTo(): ?\DateTime
+    public function getDateActiveTo(): ?DateTime
     {
         return $this->dateActiveTo;
     }
 
-    public function getDateModifiedFrom(): ?\DateTime
+    public function getDateModifiedFrom(): ?DateTime
     {
         return $this->dateModifiedFrom;
     }
 
-    public function getDateModifiedTo(): ?\DateTime
+    public function getDateModifiedTo(): ?DateTime
     {
         return $this->dateModifiedTo;
     }

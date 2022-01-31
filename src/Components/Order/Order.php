@@ -2,8 +2,10 @@
 
 namespace SandwaveIo\Office365\Components\Order;
 
+use DateTime;
 use SandwaveIo\Office365\Components\AbstractComponent;
 use SandwaveIo\Office365\Entity\OrderModifyQuantity;
+use SandwaveIo\Office365\Entity\OrderSummary;
 use SandwaveIo\Office365\Entity\Terminate as TerminateEntity;
 use SandwaveIo\Office365\Exception\Office365Exception;
 use SandwaveIo\Office365\Helper\EntityHelper;
@@ -96,23 +98,23 @@ final class Order extends AbstractComponent
      * @throws Office365Exception
      */
     public function summary(
-        int $customerId,
-        string $orderState,
-        string $productGroup,
-        \DateTime $dateActiveFrom,
-        \DateTime $dateActiveTo,
-        \DateTime $dateModifiedFrom,
-        \DateTime $dateModifiedTo,
-        string $label,
-        string $attribute,
-        int $skip,
-        int $take
+        ?int $customerId,
+        ?string $orderState,
+        ?string $productGroup,
+        ?DateTime $dateActiveFrom,
+        ?DateTime $dateActiveTo,
+        ?DateTime $dateModifiedFrom,
+        ?DateTime $dateModifiedTo,
+        ?string $label,
+        ?string $attribute,
+        ?int $skip,
+        ?int $take
     ): OrderSummaryResponse {
         $summaryData = OrderSummaryBuilder::build(
             ... func_get_args()
         );
 
-        $summary = EntityHelper::deserialize(TerminateEntity::class, $summaryData);
+        $summary = EntityHelper::deserialize(OrderSummary::class, $summaryData);
 
         try {
             $document = EntityHelper::serialize($summary);

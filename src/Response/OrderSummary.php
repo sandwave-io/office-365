@@ -2,6 +2,8 @@
 
 namespace SandwaveIo\Office365\Response;
 
+use DateTime;
+
 final class OrderSummary
 {
     private int $orderId;
@@ -10,29 +12,29 @@ final class OrderSummary
 
     private int $parentId;
 
-    private int $customerId;
+    private ?int $customerId;
 
     private string $productId;
 
-    private string $ProductName;
+    private string $productName;
 
     private string $productGroup;
 
     private string $productCommercialTypeName;
 
-    private \DateTime $dateCreated;
+    private DateTime $dateCreated;
 
-    private \DateTime $dateActive;
+    private DateTime $dateActive;
 
-    private \DateTime $dateModified;
+    private DateTime $dateModified;
 
-    private \DateTime $dateTerminate;
+    private ?DateTime $dateTerminate;
 
-    private \DateTime $dateTerminated;
+    private DateTime $dateTerminated;
 
-    private string $label;
+    private ?string $label;
 
-    private string $attribute;
+    private ?string $attribute;
 
     private string $orderState;
 
@@ -55,7 +57,7 @@ final class OrderSummary
         return $this->parentId;
     }
 
-    public function getCustomerId(): int
+    public function getCustomerId(): ?int
     {
         return $this->customerId;
     }
@@ -67,7 +69,7 @@ final class OrderSummary
 
     public function getProductName(): string
     {
-        return $this->ProductName;
+        return $this->productName;
     }
 
     public function getProductGroup(): string
@@ -80,37 +82,37 @@ final class OrderSummary
         return $this->productCommercialTypeName;
     }
 
-    public function getDateCreated(): \DateTime
+    public function getDateCreated(): DateTime
     {
         return $this->dateCreated;
     }
 
-    public function getDateActive(): \DateTime
+    public function getDateActive(): DateTime
     {
         return $this->dateActive;
     }
 
-    public function getDateModified(): \DateTime
+    public function getDateModified(): DateTime
     {
         return $this->dateModified;
     }
 
-    public function getDateTerminate(): \DateTime
+    public function getDateTerminate(): ?DateTime
     {
         return $this->dateTerminate;
     }
 
-    public function getDateTerminated(): \DateTime
+    public function getDateTerminated(): DateTime
     {
         return $this->dateTerminated;
     }
 
-    public function getLabel(): string
+    public function getLabel(): ?string
     {
         return $this->label;
     }
 
-    public function getAttribute(): string
+    public function getAttribute(): ?string
     {
         return $this->attribute;
     }
