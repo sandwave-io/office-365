@@ -122,7 +122,7 @@ final class Order extends AbstractComponent
             throw new Office365Exception(self::class . ':create unable to create summary entity.', 0, $e);
         }
 
-        $route = $this->getRouter()->get('summary_order');
+        $route = $this->getRouter()->get('order_summary');
         $response = $this->getClient()->request($route->method(), $route->url(), $document);
         $body = $response->getBody()->getContents();
         $xml = XmlHelper::loadXML($body);

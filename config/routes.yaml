@@ -46,7 +46,7 @@ addon:
 terminate:
   order:
     method: post
-    url: '/queued'
+    url: '/api/queued'
 
 summary:
   order:
