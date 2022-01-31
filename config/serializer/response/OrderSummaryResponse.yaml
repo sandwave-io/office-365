@@ -1,0 +1,15 @@
+SandwaveIo\Office365\Response\OrderSummaryResponse:
+  exclusion_policy: ALL
+  xml_root_name: OrderSummaryResponse_V1
+
+  properties:
+
+    status:
+      expose: true
+      type: SandwaveIo\Office365\Response\RequestStatus
+      serialized_name: Status
+
+    pagedResult:
+      expose: true
+      type: SandwaveIo\Office365\Response\PagedResultOfOrderSummary
+      serialized_name: IsExistingTenant

@@ -1,0 +1,94 @@
+SandwaveIo\Office365\Response\OrderSummary:
+  exclusion_policy: ALL
+
+  properties:
+
+    orderId:
+      expose: true
+      type: int
+      serialized_name: OrderId
+
+    referenceOrderId:
+      expose: true
+      type: int
+      serialized_name: ReferenceOrderId
+
+    parentId:
+      expose: true
+      type: int
+      serialized_name: ParentId
+
+    customerId:
+      expose: true
+      type: int
+      serialized_name: CustomerId
+
+    productId:
+      expose: true
+      type: string
+      serialized_name: ProductId
+
+    productName:
+      expose: true
+      type: string
+      serialized_name: ProductName
+
+    productGroup:
+      expose: true
+      type: string
+      serialized_name: ProductGroup
+
+    productCommercialTypeName:
+      expose: true
+      type: string
+      serialized_name: ProductCommercialTypeName
+
+    dateCreated:
+      expose: true
+      type: DateTime<'Y-m-d\TH:i:s'>
+      serialized_name: DateCreated
+
+    dateActive:
+      expose: true
+      type: DateTime<'Y-m-d\TH:i:s'>
+      serialized_name: DateActive
+
+    dateModified:
+      expose: true
+      type: DateTime<'Y-m-d\TH:i:s'>
+      serialized_name: DateModified
+
+    dateTerminate:
+      expose: true
+      type: DateTime<'Y-m-d\TH:i:s'>
+      serialized_name: DateTerminate
+
+    dateTerminated:
+      expose: true
+      type: DateTime<'Y-m-d\TH:i:s'>
+      serialized_name: DateTerminated
+
+    label:
+      expose: true
+      type: string
+      serialized_name: Label
+
+    attribute:
+      expose: true
+      type: string
+      serialized_name: Attribute
+
+    orderState:
+      expose: true
+      type: string
+      serialized_name: OrderState
+
+    quantity:
+      expose: true
+      type: int
+      serialized_name: Quantity
+
+    serviceLevelAgreement:
+      expose: true
+      type: string
+      serialized_name: ServiceLevelAgreement

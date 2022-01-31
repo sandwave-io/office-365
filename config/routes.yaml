@@ -29,6 +29,10 @@ order:
     method: post
     url: '/api/queued'
 
+  summary:
+    method: post
+    url: '/api/realtime'
+
 contact:
   create:
     method: post
@@ -42,4 +46,9 @@ addon:
 terminate:
   order:
     method: post
-    url: '/api/queued'
+    url: '/queued'
+
+summary:
+  order:
+    method: post
+    url: '/api/realtime'
