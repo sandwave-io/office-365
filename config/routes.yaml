@@ -43,4 +43,4 @@ terminate:
 summary:
   order:
     method: post
-    url: '/realtime'
+    url: '/api/realtime'
