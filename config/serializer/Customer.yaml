@@ -7,7 +7,7 @@ SandwaveIo\Office365\Entity\Customer:
 
     header:
       expose: true
-      type: SandwaveIo\Office365\Entity\Header\CustomerHeader
+      type: SandwaveIo\Office365\Entity\Header\PartnerReferenceHeader
       serialized_name: Header
 
     name:
@@ -85,6 +85,11 @@ SandwaveIo\Office365\Entity\Customer:
       type: string
       serialized_name: BIC
 
+    vatNr:
+      expose: true
+      type: string
+      serialized_name: VATNr
+
     legalStatus:
       expose: true
       type: string
@@ -99,3 +104,8 @@ SandwaveIo\Office365\Entity\Customer:
       expose: true
       type: string
       serialized_name: ChamberOfCommerceNr
+
+    customerId:
+      expose: true
+      type: string
+      serialized_name: CustomerId

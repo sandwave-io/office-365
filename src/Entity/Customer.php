@@ -2,11 +2,11 @@
 
 namespace SandwaveIo\Office365\Entity;
 
-use SandwaveIo\Office365\Entity\Header\CustomerHeader;
+use SandwaveIo\Office365\Entity\Header\PartnerReferenceHeader;
 
 final class Customer implements EntityInterface
 {
-    private ?CustomerHeader $header = null;
+    private ?PartnerReferenceHeader $header = null;
 
     private string $name;
 
@@ -38,11 +38,20 @@ final class Customer implements EntityInterface
 
     private ?string $bic = null;
 
+    private ?string $vatNr = null;
+
     private string $legalStatus;
 
     private ?string $externalId = null;
 
     private ?string $chamberOfCommerceNr = null;
+
+    private ?string $customerId = null;
+
+    public function getCustomerId(): ?string
+    {
+        return $this->customerId;
+    }
 
     public function getName(): string
     {
@@ -119,6 +128,11 @@ final class Customer implements EntityInterface
         return $this->bic;
     }
 
+    public function getVatNr(): ?string
+    {
+        return $this->vatNr;
+    }
+
     public function getLegalStatus(): string
     {
         return $this->legalStatus;
@@ -134,7 +148,7 @@ final class Customer implements EntityInterface
         return $this->chamberOfCommerceNr;
     }
 
-    public function getHeader(): ?CustomerHeader
+    public function getHeader(): ?PartnerReferenceHeader
     {
         return $this->header;
     }

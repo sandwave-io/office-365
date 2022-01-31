@@ -1,7 +1,11 @@
 customer:
   create:
     method: post
-    url: '/queued'
+    url: '/api/queued'
+
+  modify:
+    method: post
+    url: '/api/queued'
 
   has_domain_ownership:
     method: post
@@ -19,26 +23,30 @@ tenant:
 order:
   license_create:
     method: post
-    url: '/queued'
+    url: '/api/queued'
 
   modify:
     method: post
-    url: '/queued'
+    url: '/api/queued'
+
+  summary:
+    method: post
+    url: '/api/realtime'
 
 contact:
   create:
     method: post
-    url: '/queued'
+    url: '/api/queued'
 
 addon:
   create:
     method: post
-    url: '/queued'
+    url: '/api/queued'
 
 terminate:
   order:
     method: post
-    url: '/queued'
+    url: '/api/queued'
 
 summary:
   order:

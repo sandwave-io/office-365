@@ -63,11 +63,14 @@ final class Customer extends AbstractComponent
         ?string $debitNr,
         ?string $iban,
         ?string $bic,
+        ?string $vatNr,
         string $legalStatus,
         ?string $externalId,
-        ?string $chamberOfCommerceNr
+        ?string $chamberOfCommerceNr,
+        string $partnerReference
     ): QueuedResponse {
         $customerData = CustomerDataBuilder::build(
+            null,
             ... func_get_args()
         );
 
@@ -80,6 +83,55 @@ final class Customer extends AbstractComponent
         }
 
         $route = $this->getRouter()->get('customer_create');
+        $response = $this->getClient()->request($route->method(), $route->url(), $document);
+        $body = $response->getBody()->getContents();
+        $xml = XmlHelper::loadXML($body);
+
+        if ($xml === null) {
+            throw new Office365Exception(self::class . ':create unable to create customer entity.');
+        }
+
+        return EntityHelper::deserializeXml(QueuedResponse::class, $body);
+    }
+
+    /**
+     * @throws Office365Exception
+     */
+    public function modify(
+        string $customerId,
+        string $name,
+        string $street,
+        int $houseNr,
+        ?string $houseNrExtension,
+        string $zipCode,
+        string $city,
+        string $countryCode,
+        string $phone1,
+        ?string $phone2,
+        ?string $fax,
+        ?string $email,
+        ?string $website,
+        ?string $debitNr,
+        ?string $iban,
+        ?string $bic,
+        ?string $vatNr,
+        string $legalStatus,
+        ?string $externalId,
+        ?string $chamberOfCommerceNr
+    ): QueuedResponse {
+        $customerData = CustomerDataBuilder::build(
+            ... func_get_args()
+        );
+
+        $customer = EntityHelper::deserialize(CustomerEntity::class, $customerData);
+
+        try {
+            $document = EntityHelper::serialize($customer, 'ModifyCustomerRequest_V3');
+        } catch (\Exception $e) {
+            throw new Office365Exception(self::class . ':create unable to create customer entity.', 0, $e);
+        }
+
+        $route = $this->getRouter()->get('customer_modify');
         $response = $this->getClient()->request($route->method(), $route->url(), $document);
         $body = $response->getBody()->getContents();
         $xml = XmlHelper::loadXML($body);
