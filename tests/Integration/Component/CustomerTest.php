@@ -22,8 +22,7 @@ final class CustomerTest extends TestCase
         );
 
         $stack = HandlerStack::create($mockHandler);
-       // $officeClient = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
-        $officeClient = new OfficeClient('https://api-prep.routit.nl', 'tws_prep', '5oRnj9z4KF4Ju_wKpbVLD');
+        $officeClient = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
 
         $customerResponse = $officeClient->customer->create(
             'Naam Klant',
@@ -63,8 +62,7 @@ final class CustomerTest extends TestCase
         );
 
         $stack = HandlerStack::create($mockHandler);
-        // $officeClient = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
-        $officeClient = new OfficeClient('https://api-prep.routit.nl', 'tws_prep', '5oRnj9z4KF4Ju_wKpbVLD');
+        $officeClient = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
 
         $customerResponse = $officeClient->customer->modify(
             'CID1322912',
