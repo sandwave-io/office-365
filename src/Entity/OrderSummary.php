@@ -12,7 +12,7 @@ final class OrderSummary implements EntityInterface
 
     private ?string $productGroup = null;
 
-    private ?string $productName;
+    private string $productName;
 
     private ?DateTime $dateActiveFrom = null;
 
@@ -22,9 +22,9 @@ final class OrderSummary implements EntityInterface
 
     private ?DateTime $dateModifiedTo = null;
 
-    private ?string $label;
+    private string $label;
 
-    private ?string $attribute;
+    private string $attribute;
 
     private ?int $skip = null;
 
