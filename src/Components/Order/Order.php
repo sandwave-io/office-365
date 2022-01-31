@@ -15,8 +15,8 @@ use SandwaveIo\Office365\Library\Router\RouterInterface;
 use SandwaveIo\Office365\Response\OrderSummaryResponse;
 use SandwaveIo\Office365\Response\QueuedResponse;
 use SandwaveIo\Office365\Transformer\OrderModifyQuantityBuilder;
-use SandwaveIo\Office365\Transformer\TerminateDataBuilder;
 use SandwaveIo\Office365\Transformer\OrderSummaryBuilder;
+use SandwaveIo\Office365\Transformer\TerminateDataBuilder;
 
 final class Order extends AbstractComponent
 {
