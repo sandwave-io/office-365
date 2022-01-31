@@ -1,0 +1,24 @@
+SandwaveIo\Office365\Response\PagedResultOfOrderSummary:
+  exclusion_policy: ALL
+
+  properties:
+
+    skip:
+      expose: true
+      type: int
+      serialized_name: Skip
+
+    take:
+      expose: true
+      type: int
+      serialized_name: Take
+
+    totalNumberOfRecords:
+      expose: true
+      type: int
+      serialized_name: TotalNumberOfRecords
+
+    results:
+      expose: true
+      type: SandwaveIo\Office365\Response\OrderSummary
+      serialized_name: Results

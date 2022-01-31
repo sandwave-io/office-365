@@ -27,3 +27,7 @@ parameters:
         -
             message: "#^Property SandwaveIo\\\\Office365\\\\Entity\\\\[a-zA-Z0-9\\]+:\\:\\$[a-zA-Z0-9]+ is never written, only read\\.$#"
             path: src/Entity/*
+
+        -
+            message: "#^Property SandwaveIo\\\\Office365\\\\Response\\\\[a-zA-Z0-9\\]+:\\:\\$[a-zA-Z0-9]+ is never written, only read\\.$#"
+            path: src/Response/*

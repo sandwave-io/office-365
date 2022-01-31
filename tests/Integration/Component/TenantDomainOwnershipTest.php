@@ -1,5 +1,7 @@
 <?php declare(strict_types = 1);
 
+namespace Integration\Component;
+
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;

@@ -31,9 +31,9 @@ SandwaveIo\Office365\Entity\Customer:
       serialized_name: HouseNrExtension
 
     zipCode:
-        expose: true
-        type: string
-        serialized_name: ZipCode
+      expose: true
+      type: string
+      serialized_name: ZipCode
 
     city:
       expose: true
