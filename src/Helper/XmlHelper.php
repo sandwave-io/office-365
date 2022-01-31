@@ -60,7 +60,9 @@ final class XmlHelper
                 $subnode = $simpleXmlElement->addChild($key);
                 self::arrayToXml($value, $rootNode, $subnode);
             } else {
-                $simpleXmlElement->addChild("$key", htmlspecialchars("$value"));
+                if ($value !== null) {
+                    $simpleXmlElement->addChild("$key", htmlspecialchars("$value"));
+                }
             }
         }
 

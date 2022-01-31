@@ -1,0 +1,4 @@
+SandwaveIo\Office365\Entity\Customer:
+  exclusion_policy: ALL
+
+  xml_root_name: ModifyCustomerRequest_V3
