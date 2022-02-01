@@ -23,7 +23,7 @@ final class OrderModifyQuantityTest extends TestCase
         /** @var OrderModifyQuantity $modification */
         $modification = EntityHelper::createFromXML((string) file_get_contents(__DIR__ . '/../Data/Request/OrderModifyQuantityRequest.xml'));
         Assert::assertInstanceOf(OrderModifyQuantity::class, $modification);
-        Assert::assertSame($modification->getQuantity(), 4);
+        Assert::assertSame(4, $modification->getQuantity());
 
         if ($modification->getHeader() !== null) {
             Assert::assertSame($modification->getHeader()->getPartnerReference(), '12345');
@@ -45,12 +45,12 @@ final class OrderModifyQuantityTest extends TestCase
         $client->webhook->addEventSubscriber(Event::ORDER_MODIFY_QUANTITY, new class() implements OrderModifyQuantityObserverInterface {
             public function execute(OrderModifyQuantity $modifyQuantity): void
             {
-                Assert::assertEquals(4, $modifyQuantity->getQuantity());
-                Assert::assertEquals(123, $modifyQuantity->getOrderId());
+                Assert::assertSame(4, $modifyQuantity->getQuantity());
+                Assert::assertSame(123, $modifyQuantity->getOrderId());
                 Assert::assertTrue($modifyQuantity->isDelta());
 
                 if ($modifyQuantity->getHeader() !== null) {
-                    Assert::assertEquals('12345', $modifyQuantity->getHeader()->getPartnerReference());
+                    Assert::assertSame('12345', $modifyQuantity->getHeader()->getPartnerReference());
                 }
             }
         });
