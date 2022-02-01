@@ -13,7 +13,7 @@ final class OrderSummaryBuilder
         ?int $customerId,
         ?string $orderState,
         ?string $productGroup,
-        string $productName,
+        ?string $productName,
         ?DateTime $dateActiveFrom,
         ?DateTime $dateActiveTo,
         ?DateTime $dateModifiedFrom,
