@@ -101,6 +101,7 @@ final class Order extends AbstractComponent
         ?int $customerId,
         ?string $orderState,
         ?string $productGroup,
+        ?string $productName,
         ?DateTime $dateActiveFrom,
         ?DateTime $dateActiveTo,
         ?DateTime $dateModifiedFrom,
