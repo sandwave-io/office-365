@@ -101,13 +101,13 @@ final class Order extends AbstractComponent
         ?int $customerId,
         ?string $orderState,
         ?string $productGroup,
-        string $productName,
+        ?string $productName,
         ?DateTime $dateActiveFrom,
         ?DateTime $dateActiveTo,
         ?DateTime $dateModifiedFrom,
         ?DateTime $dateModifiedTo,
-        string $label,
-        string $attribute,
+        ?string $label,
+        ?string $attribute,
         ?int $skip,
         ?int $take
     ): OrderSummaryResponse {

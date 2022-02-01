@@ -45,7 +45,7 @@ final class OrderSummary implements EntityInterface
         return $this->productGroup;
     }
 
-    public function getProductName(): ?string
+    public function getProductName(): string
     {
         return $this->productName;
     }
@@ -70,12 +70,12 @@ final class OrderSummary implements EntityInterface
         return $this->dateModifiedTo;
     }
 
-    public function getLabel(): ?string
+    public function getLabel(): string
     {
         return $this->label;
     }
 
-    public function getAttribute(): ?string
+    public function getAttribute(): string
     {
         return $this->attribute;
     }
