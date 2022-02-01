@@ -26,9 +26,9 @@ final class TerminateTest extends TestCase
         );
 
         Assert::assertInstanceOf(Terminate::class, $terminate);
-        Assert::assertSame($terminate->getOrderId(), 'sandwave12345');
-        Assert::assertSame($terminate->getDesiredTerminateDate()->format('Y-m-d'), '2014-06-20');
-        Assert::assertSame($terminate->getTerminateAsSoonAsPossible(), true);
+        Assert::assertSame('OID330', $terminate->getOrderId());
+        Assert::assertSame('2014-06-20', $terminate->getDesiredTerminateDate()->format('Y-m-d'));
+        Assert::assertTrue($terminate->getTerminateAsSoonAsPossible());
     }
 
     /**
@@ -46,12 +46,12 @@ final class TerminateTest extends TestCase
         $client->webhook->addEventSubscriber(Event::TERMINATE_ORDER, new class() implements TerminateObserverInterface {
             public function execute(Terminate $terminate): void
             {
-                Assert::assertEquals('sandwave12345', $terminate->getOrderId());
+                Assert::assertSame('OID330', $terminate->getOrderId());
                 Assert::assertTrue($terminate->getTerminateAsSoonAsPossible());
                 Assert::assertSame('2014-06-20', $terminate->getDesiredTerminateDate()->format('Y-m-d'));
 
                 if ($terminate->getHeader() !== null) {
-                    Assert::assertEquals('21139', $terminate->getHeader()->getPartnerReference());
+                    Assert::assertSame('21139', $terminate->getHeader()->getPartnerReference());
                 }
             }
         });

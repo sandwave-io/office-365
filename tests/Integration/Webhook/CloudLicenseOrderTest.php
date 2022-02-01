@@ -23,11 +23,11 @@ final class CloudLicenseOrderTest extends TestCase
         /** @var CloudLicense $license */
         $license = EntityHelper::createFromXML((string) file_get_contents(__DIR__ . '/../Data/Request/NewCloudLicenseOrderRequest.xml'));
         Assert::assertInstanceOf(CloudLicense::class, $license);
-        Assert::assertSame($license->getCloudTenant()->getName(), 'JohnDoe');
-        Assert::assertSame($license->getCloudTenant()->getAgreementContact()->getFirstName(), 'Jane');
+        Assert::assertSame('JohnDoe', $license->getCloudTenant()->getName());
+        Assert::assertSame('Jane', $license->getCloudTenant()->getAgreementContact()->getFirstName());
 
         if ($license->getHeader() !== null) {
-            Assert::assertSame($license->getHeader()->getPartnerReference(), '12345');
+            Assert::assertSame('12345', $license->getHeader()->getPartnerReference());
         }
     }
 
@@ -43,7 +43,7 @@ final class CloudLicenseOrderTest extends TestCase
         $client->webhook->addEventSubscriber(Event::CLOUD_LICENSE_ORDER_CREATE, new class() implements CloudLicenseObserverInterface {
             public function execute(CloudLicense $license): void
             {
-                Assert::assertEquals('JohnDoe', $license->getCloudTenant()->getName());
+                Assert::assertSame('JohnDoe', $license->getCloudTenant()->getName());
             }
         });
 
