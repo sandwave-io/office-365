@@ -34,7 +34,7 @@ final class OrderSummaryTest extends TestCase
             new DateTime(),
             null,
             'label',
-            'attribute',
+            null,
             null,
             50,
         );

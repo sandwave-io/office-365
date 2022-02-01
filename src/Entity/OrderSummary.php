@@ -12,7 +12,7 @@ final class OrderSummary implements EntityInterface
 
     private ?string $productGroup = null;
 
-    private string $productName;
+    private ?string $productName = null;
 
     private ?DateTime $dateActiveFrom = null;
 
@@ -22,9 +22,9 @@ final class OrderSummary implements EntityInterface
 
     private ?DateTime $dateModifiedTo = null;
 
-    private string $label;
+    private ?string $label = null;
 
-    private string $attribute;
+    private ?string $attribute = null;
 
     private ?int $skip = null;
 
@@ -45,7 +45,7 @@ final class OrderSummary implements EntityInterface
         return $this->productGroup;
     }
 
-    public function getProductName(): string
+    public function getProductName(): ?string
     {
         return $this->productName;
     }
@@ -70,12 +70,12 @@ final class OrderSummary implements EntityInterface
         return $this->dateModifiedTo;
     }
 
-    public function getLabel(): string
+    public function getLabel(): ?string
     {
         return $this->label;
     }
 
-    public function getAttribute(): string
+    public function getAttribute(): ?string
     {
         return $this->attribute;
     }
