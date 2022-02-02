@@ -33,4 +33,4 @@ SandwaveIo\Office365\Entity\CloudTenant:
     agreementContact:
       expose: true
       type: SandwaveIo\Office365\Entity\AgreementContact
-      serialized_name: AgreementContact
+      serialized_name: CustomerAgreementContact
