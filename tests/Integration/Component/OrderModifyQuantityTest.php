@@ -28,7 +28,6 @@ final class OrderModifyQuantityTest extends TestCase
 
         Assert::assertInstanceOf(QueuedResponse::class, $response);
         Assert::assertTrue($response->isSuccess());
-        Assert::assertSame('Success', $response->getErrorMessage());
         Assert::assertSame(0, $response->getErrorCode());
     }
 }
