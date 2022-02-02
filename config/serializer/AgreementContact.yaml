@@ -1,7 +1,5 @@
 SandwaveIo\Office365\Entity\AgreementContact:
-
   exclusion_policy: ALL
-
   xml_root_name: CustomerAgreementContact_V1
 
   properties:

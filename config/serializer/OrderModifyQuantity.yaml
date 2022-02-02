@@ -1,5 +1,4 @@
 SandwaveIo\Office365\Entity\OrderModifyQuantity:
-
   exclusion_policy: ALL
   xml_root_name: ModifyOrderQuantityRequest_V1
 
