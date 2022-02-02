@@ -19,8 +19,14 @@ final class CloudLicense extends AbstractComponent
      *
      * @return QueuedResponse
      */
-    public function create(CloudTenant $tenant, AgreementContact $contact, string $customerId, string $productCode, int $quantity, string $partnerReference = ''): QueuedResponse
-    {
+    public function create(
+        CloudTenant $tenant,
+        AgreementContact $contact,
+        string $customerId,
+        string $productCode,
+        int $quantity,
+        string $partnerReference = ''
+    ): QueuedResponse {
         $license = EntityHelper::deserialize(License::class, [
             'CustomerId' => $customerId,
             'ProductCode' => $productCode,

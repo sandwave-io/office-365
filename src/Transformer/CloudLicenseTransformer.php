@@ -15,8 +15,11 @@ final class CloudLicenseTransformer
      *
      * @return array<mixed>
      */
-    public static function transform(CloudTenant $tenant, AgreementContact $contact, string $partnerReference): array
-    {
+    public static function transform(
+        CloudTenant $tenant,
+        AgreementContact $contact,
+        string $partnerReference
+    ): array {
         return [
             'CloudTenant_V2' => $tenant,
             'CustomerAgreementContact_V1' => $contact,
