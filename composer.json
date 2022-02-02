@@ -10,7 +10,8 @@
     "symfony/yaml": "^4.4|^6.0",
     "ext-simplexml": "*",
     "ext-dom": "*",
-    "ext-libxml": "*"
+    "ext-libxml": "*",
+    "ext-json": "*"
   },
   "require-dev": {
     "ekino/phpstan-banned-code": "^1.0",

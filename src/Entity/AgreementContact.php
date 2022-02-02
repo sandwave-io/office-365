@@ -12,7 +12,7 @@ final class AgreementContact implements EntityInterface
 
     private string $email;
 
-    private string $phonenumber;
+    private string $phoneNumber;
 
     private \DateTime $agreed;
 
@@ -20,13 +20,13 @@ final class AgreementContact implements EntityInterface
         string $firstname,
         string $lastname,
         string $email,
-        string $phonenumber,
+        string $phoneNumber,
         \DateTime $agreed
     ) {
         $this->firstname = $firstname;
         $this->lastname = $lastname;
         $this->email = $email;
-        $this->phonenumber = $phonenumber;
+        $this->phoneNumber = $phoneNumber;
         $this->agreed = $agreed;
     }
 
@@ -52,7 +52,7 @@ final class AgreementContact implements EntityInterface
 
     public function getPhoneNumber(): string
     {
-        return $this->phonenumber;
+        return $this->phoneNumber;
     }
 
     public function getAgreed(): string
