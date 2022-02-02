@@ -5,12 +5,13 @@
   "license": "MIT",
   "require": {
     "php": "^7.4|^8.0",
+    "ext-dom": "*",
+    "ext-json": "^8.0",
+    "ext-libxml": "*",
+    "ext-simplexml": "*",
     "guzzlehttp/guzzle": "^7.4",
     "jms/serializer": "^3.17",
-    "symfony/yaml": "^4.4|^6.0",
-    "ext-simplexml": "*",
-    "ext-dom": "*",
-    "ext-libxml": "*"
+    "symfony/yaml": "^4.4|^6.0"
   },
   "require-dev": {
     "ekino/phpstan-banned-code": "^1.0",
