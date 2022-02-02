@@ -19,7 +19,7 @@ SandwaveIo\Office365\Response\TenantDomainOwnershipResponse:
       type: bool
       serialized_name: IsAcceptanceMcaRequired
 
-    isOnboardingReady:
+    isOnBoardingReady:
       expose: true
       type: bool
       serialized_name: IsOnboardingReady

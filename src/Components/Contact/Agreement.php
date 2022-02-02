@@ -18,7 +18,7 @@ final class Agreement extends AbstractComponent
         string $firstname,
         string $lastname,
         string $email,
-        string $phonenumber,
+        string $phoneNumber,
         \DateTime $agreed
     ): AgreementContact {
         $tenant = EntityHelper::deserialize(AgreementContact::class, AgreementContactDataTransformer::transform(...func_get_args()));
