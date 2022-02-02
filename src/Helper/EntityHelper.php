@@ -6,6 +6,7 @@ use SandwaveIo\Office365\Entity\EntityInterface;
 use SandwaveIo\Office365\Exception\Office365Exception;
 use SandwaveIo\Office365\Library\Serializer\Serializer;
 use SandwaveIo\Office365\Transformer\ClassTransformer;
+use SimpleXMLElement;
 
 final class EntityHelper
 {
@@ -21,6 +22,7 @@ final class EntityHelper
         }
 
         $simplexml = simplexml_load_string($xml);
+        /** @var SimpleXMLElement $simplexml */
         return str_replace($simplexml->getName(), $tag, $xml);
     }
 
