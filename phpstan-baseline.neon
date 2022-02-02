@@ -1,7 +1,0 @@
-parameters:
-	ignoreErrors:
-		-
-			message: "#^Cannot call method getName\\(\\) on SimpleXMLElement\\|false\\.$#"
-			count: 1
-			path: src/Helper/EntityHelper.php
-
