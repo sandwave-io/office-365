@@ -23,8 +23,13 @@ final class TenantDomainOwnershipResponse
      * @param string $dnsBoardingRecordName
      * @param string $dnsBoardingRecordValue
      */
-    public function __construct(bool $isDelegatedAccessAllowed, bool $isAcceptanceMcaRequired, bool $isOnboardingReady, string $dnsBoardingRecordName, string $dnsBoardingRecordValue)
-    {
+    public function __construct(
+        bool $isDelegatedAccessAllowed,
+        bool $isAcceptanceMcaRequired,
+        bool $isOnboardingReady,
+        string $dnsBoardingRecordName,
+        string $dnsBoardingRecordValue
+    ) {
         $this->isDelegatedAccessAllowed = $isDelegatedAccessAllowed;
         $this->isAcceptanceMcaRequired = $isAcceptanceMcaRequired;
         $this->isOnboardingReady = $isOnboardingReady;

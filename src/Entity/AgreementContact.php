@@ -16,8 +16,13 @@ final class AgreementContact implements EntityInterface
 
     private \DateTime $agreed;
 
-    public function __construct(string $firstname, string $lastname, string $email, string $phonenumber, \DateTime $agreed)
-    {
+    public function __construct(
+        string $firstname,
+        string $lastname,
+        string $email,
+        string $phonenumber,
+        \DateTime $agreed
+    ) {
         $this->firstname = $firstname;
         $this->lastname = $lastname;
         $this->email = $email;

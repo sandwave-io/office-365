@@ -7,8 +7,12 @@ final class OrderModifyQuantityBuilder
     /**
      * @return array<string, mixed>
      */
-    public static function build(int $orderId, int $quantity, bool $delta = false, string $partnerReference = ''): array
-    {
+    public static function build(
+        int $orderId,
+        int $quantity,
+        bool $delta = false,
+        string $partnerReference = ''
+    ): array {
         return [
             'OrderId' => $orderId,
             'Quantity' => $quantity,

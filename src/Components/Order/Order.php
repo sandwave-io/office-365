@@ -31,8 +31,12 @@ final class Order extends AbstractComponent
     /**
      * @throws Office365Exception
      */
-    public function modify(int $orderId, int $quantity, bool $isDelta = false, string $partnerReference = ''): QueuedResponse
-    {
+    public function modify(
+        int $orderId,
+        int $quantity,
+        bool $isDelta = false,
+        string $partnerReference = ''
+    ): QueuedResponse {
         $modification = EntityHelper::deserialize(
             OrderModifyQuantity::class,
             OrderModifyQuantityBuilder::build(...func_get_args())
