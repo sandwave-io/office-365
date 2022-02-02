@@ -16,8 +16,6 @@ final class CloudLicense extends AbstractComponent
 {
     /**
      * @throws Office365Exception
-     *
-     * @return QueuedResponse
      */
     public function create(CloudTenant $tenant, AgreementContact $contact, string $customerId, string $productCode, int $quantity, string $partnerReference = ''): QueuedResponse
     {
@@ -43,15 +41,10 @@ final class CloudLicense extends AbstractComponent
         $route = $this->getRouter()->get('order_license_create');
         $response = $this->getClient()->request($route->method(), $route->url(), $document);
         $body = $response->getBody()->getContents();
-
-        try {
-            $xml = XmlHelper::loadXML($body);
-        } catch (\Exception $e) {
-            throw new Office365Exception(self::class . ':create unable to process cloud license create response', 0, $e);
-        }
+        $xml = XmlHelper::loadXML($body);
 
         if ($xml === null) {
-            throw new Office365Exception(self::class . ':create unable to process cloud license create response');
+            throw new Office365Exception(self::class . ':create xml is null');
         }
 
         return EntityHelper::deserializeXml(QueuedResponse::class, $body);
