@@ -35,7 +35,6 @@ final class CloudAgreementTest extends TestCase
 
         Assert::assertInstanceOf(QueuedResponse::class, $cloudAgreementResponse);
         Assert::assertTrue($cloudAgreementResponse->isSuccess());
-        Assert::assertSame('Success', $cloudAgreementResponse->getErrorMessage());
         Assert::assertSame(0, $cloudAgreementResponse->getErrorCode());
     }
 }
