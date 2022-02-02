@@ -11,15 +11,6 @@ customer:
     method: post
     url: '/api/realtime'
 
-tenant:
-  exists:
-    method: post
-    url: '/api/realtime'
-
-  fetch_tenant:
-    method: post
-    url: '/api/realtime'
-
 order:
   license_create:
     method: post
@@ -50,5 +41,14 @@ terminate:
 
 summary:
   order:
+    method: post
+    url: '/api/realtime'
+
+tenant:
+  exists:
+    method: post
+    url: '/api/realtime'
+
+  fetch_tenant:
     method: post
     url: '/api/realtime'

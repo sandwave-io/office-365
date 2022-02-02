@@ -10,7 +10,7 @@ final class TenantDomainOwnershipResponse
 
     private bool $isAcceptanceMcaRequired;
 
-    private bool $isOnboardingReady;
+    private bool $isOnBoardingReady;
 
     private string $dnsBoardingRecordName;
 
@@ -19,15 +19,20 @@ final class TenantDomainOwnershipResponse
     /**
      * @param bool   $isDelegatedAccessAllowed
      * @param bool   $isAcceptanceMcaRequired
-     * @param bool   $isOnboardingReady
+     * @param bool   $isOnBoardingReady
      * @param string $dnsBoardingRecordName
      * @param string $dnsBoardingRecordValue
      */
-    public function __construct(bool $isDelegatedAccessAllowed, bool $isAcceptanceMcaRequired, bool $isOnboardingReady, string $dnsBoardingRecordName, string $dnsBoardingRecordValue)
-    {
+    public function __construct(
+        bool $isDelegatedAccessAllowed,
+        bool $isAcceptanceMcaRequired,
+        bool $isOnBoardingReady,
+        string $dnsBoardingRecordName,
+        string $dnsBoardingRecordValue
+    ) {
         $this->isDelegatedAccessAllowed = $isDelegatedAccessAllowed;
         $this->isAcceptanceMcaRequired = $isAcceptanceMcaRequired;
-        $this->isOnboardingReady = $isOnboardingReady;
+        $this->isOnBoardingReady = $isOnBoardingReady;
         $this->dnsBoardingRecordName = $dnsBoardingRecordName;
         $this->dnsBoardingRecordValue = $dnsBoardingRecordValue;
     }
@@ -52,9 +57,9 @@ final class TenantDomainOwnershipResponse
         return $this->isAcceptanceMcaRequired;
     }
 
-    public function getIsOnboardingReady(): bool
+    public function getIsOnBoardingReady(): bool
     {
-        return $this->isOnboardingReady;
+        return $this->isOnBoardingReady;
     }
 
     public function getDnsBoardingRecordName(): string

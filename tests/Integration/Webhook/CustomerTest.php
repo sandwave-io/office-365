@@ -20,23 +20,23 @@ final class CustomerTest extends TestCase
         );
 
         Assert::assertInstanceOf(Customer::class, $customer);
-        Assert::assertSame($customer->getName(), 'Naam Klant');
-        Assert::assertSame($customer->getStreet(), 'StraatNaam');
-        Assert::assertSame($customer->getHouseNr(), 38);
-        Assert::assertSame($customer->getHouseNrExtension(), '');
-        Assert::assertSame($customer->getZipCode(), '1234AB');
-        Assert::assertSame($customer->getCity(), 'Amsterdam');
-        Assert::assertSame($customer->getCountryCode(), 'NLD');
-        Assert::assertSame($customer->getPhone1(), '0612345678');
-        Assert::assertSame($customer->getPhone2(), null);
-        Assert::assertSame($customer->getFax(), null);
-        Assert::assertSame($customer->getEmail(), 'klant@email.nl');
-        Assert::assertSame($customer->getWebsite(), '');
-        Assert::assertSame($customer->getDebitNr(), '');
-        Assert::assertSame($customer->getIban(), null);
-        Assert::assertSame($customer->getBic(), null);
-        Assert::assertSame($customer->getLegalStatus(), 'CV');
-        Assert::assertSame($customer->getExternalId(), null);
-        Assert::assertSame($customer->getChamberOfCommerceNr(), null);
+        Assert::assertSame('Naam Klant', $customer->getName());
+        Assert::assertSame('StraatNaam', $customer->getStreet());
+        Assert::assertSame(38, $customer->getHouseNr());
+        Assert::assertSame('', $customer->getHouseNrExtension());
+        Assert::assertSame('1234AB', $customer->getZipCode());
+        Assert::assertSame('Amsterdam', $customer->getCity());
+        Assert::assertSame('NLD', $customer->getCountryCode());
+        Assert::assertSame('0612345678', $customer->getPhone1());
+        Assert::assertSame(null, $customer->getPhone2());
+        Assert::assertSame(null, $customer->getFax());
+        Assert::assertSame('klant@email.nl', $customer->getEmail());
+        Assert::assertSame('', $customer->getWebsite());
+        Assert::assertSame('', $customer->getDebitNr());
+        Assert::assertSame(null, $customer->getIban());
+        Assert::assertSame(null, $customer->getBic());
+        Assert::assertSame('CV', $customer->getLegalStatus());
+        Assert::assertSame(null, $customer->getExternalId());
+        Assert::assertSame(null, $customer->getChamberOfCommerceNr());
     }
 }

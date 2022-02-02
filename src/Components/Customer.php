@@ -30,7 +30,6 @@ final class Customer extends AbstractComponent
         $route = $this->getRouter()->get('customer_has_domain_ownership');
         $response = $this->getClient()->request($route->method(), $route->url(), $document);
         $body = $response->getBody()->getContents();
-
         $xml = XmlHelper::loadXML($body);
 
         if ($xml === null) {
@@ -79,7 +78,7 @@ final class Customer extends AbstractComponent
         try {
             $document = EntityHelper::serialize($customer);
         } catch (\Exception $e) {
-            throw new Office365Exception(self::class . ':create unable to create customer entity.', 0, $e);
+            throw new Office365Exception(self::class . ':create unable to create customer entity', 0, $e);
         }
 
         $route = $this->getRouter()->get('customer_create');
@@ -88,7 +87,7 @@ final class Customer extends AbstractComponent
         $xml = XmlHelper::loadXML($body);
 
         if ($xml === null) {
-            throw new Office365Exception(self::class . ':create unable to create customer entity.');
+            throw new Office365Exception(self::class . ':create xml is null');
         }
 
         return EntityHelper::deserializeXml(QueuedResponse::class, $body);
@@ -128,7 +127,7 @@ final class Customer extends AbstractComponent
         try {
             $document = EntityHelper::serialize($customer, 'ModifyCustomerRequest_V3');
         } catch (\Exception $e) {
-            throw new Office365Exception(self::class . ':create unable to create customer entity.', 0, $e);
+            throw new Office365Exception(self::class . ':modify unable to create customer entity', 0, $e);
         }
 
         $route = $this->getRouter()->get('customer_modify');
@@ -137,7 +136,7 @@ final class Customer extends AbstractComponent
         $xml = XmlHelper::loadXML($body);
 
         if ($xml === null) {
-            throw new Office365Exception(self::class . ':create unable to create customer entity.');
+            throw new Office365Exception(self::class . ':modify xml is null');
         }
 
         return EntityHelper::deserializeXml(QueuedResponse::class, $body);

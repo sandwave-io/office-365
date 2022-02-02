@@ -28,7 +28,7 @@ final class CloudAgreementTest extends TestCase
         );
 
         Assert::assertInstanceOf(CloudAgreementContact::class, $cloudAgreement);
-        Assert::assertSame($cloudAgreement->getCustomerId(), 1);
+        Assert::assertSame(1, $cloudAgreement->getCustomerId());
         Assert::assertInstanceOf(PartnerReferenceHeader::class, $cloudAgreement->getHeader());
         Assert::assertInstanceOf(AgreementContact::class, $cloudAgreement->getContact());
     }
@@ -48,8 +48,8 @@ final class CloudAgreementTest extends TestCase
         $client->webhook->addEventSubscriber(Event::CLOUD_AGREEMENT_CREATE, new class() implements ContactObserverInterface {
             public function execute(CloudAgreementContact $agreementContact): void
             {
-                Assert::assertEquals('john', $agreementContact->getContact()->getFirstName());
-                Assert::assertEquals('doe', $agreementContact->getContact()->getLastName());
+                Assert::assertSame('john', $agreementContact->getContact()->getFirstName());
+                Assert::assertSame('doe', $agreementContact->getContact()->getLastName());
             }
         });
 

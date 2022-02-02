@@ -1,7 +1,5 @@
 SandwaveIo\Office365\Entity\CloudLicense:
-
   exclusion_policy: ALL
-
   xml_root_name: NewCloudLicenseOrderRequest_V2
 
   properties:

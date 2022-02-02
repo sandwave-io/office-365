@@ -28,7 +28,7 @@ final class CloudLicenseAddon extends AbstractComponent
         try {
             $document = EntityHelper::serialize($addon);
         } catch (\Exception $e) {
-            throw new Office365Exception(self::class . ':create unable to create addon entity.', 0, $e);
+            throw new Office365Exception(self::class . ':create unable to create addon entity', 0, $e);
         }
 
         $route = $this->getRouter()->get('addon_create');
@@ -37,7 +37,7 @@ final class CloudLicenseAddon extends AbstractComponent
         $xml = XmlHelper::loadXML($body);
 
         if ($xml === null) {
-            throw new Office365Exception(self::class . ':create xml could not be loaded for addon.');
+            throw new Office365Exception(self::class . ':create xml is null');
         }
 
         return EntityHelper::deserializeXml(QueuedResponse::class, $body);

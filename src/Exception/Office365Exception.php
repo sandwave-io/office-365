@@ -2,6 +2,8 @@
 
 namespace SandwaveIo\Office365\Exception;
 
-final class Office365Exception extends \Exception
+use Exception;
+
+final class Office365Exception extends Exception
 {
 }

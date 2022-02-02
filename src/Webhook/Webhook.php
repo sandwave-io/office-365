@@ -40,6 +40,9 @@ final class Webhook
         }
     }
 
+    /**
+     * @throws Office365Exception
+     */
     public function process(string $xml): EntityInterface
     {
         $simpleXml = XmlHelper::loadXML($xml);

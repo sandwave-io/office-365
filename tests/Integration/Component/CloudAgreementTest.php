@@ -28,14 +28,22 @@ final class CloudAgreementTest extends TestCase
         $officeClient = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
 
         $cloudAgreementResponse = $officeClient->cloudAgreementContact->create(
-            new PartnerReferenceHeader('ABC123', new DateTime('NOW')),
+            new PartnerReferenceHeader(
+                'ABC123',
+                new DateTime('NOW')
+            ),
             1,
-            new AgreementContact('john', 'doe', 'test@sandwave.io', '123456', new DateTime('NOW'))
+            new AgreementContact(
+                'john',
+                'doe',
+                'test@sandwave.io',
+                '123456',
+                new DateTime('NOW')
+            )
         );
 
         Assert::assertInstanceOf(QueuedResponse::class, $cloudAgreementResponse);
         Assert::assertTrue($cloudAgreementResponse->isSuccess());
-        Assert::assertSame('Success', $cloudAgreementResponse->getErrorMessage());
         Assert::assertSame(0, $cloudAgreementResponse->getErrorCode());
     }
 }

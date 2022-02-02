@@ -34,6 +34,9 @@ final class Serializer
         return $this->serializer;
     }
 
+    /**
+     * @throws Office365Exception
+     */
     public function getRootNode(string $class): string
     {
         $name = explode('\\', $class);

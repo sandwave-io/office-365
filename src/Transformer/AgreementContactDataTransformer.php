@@ -7,8 +7,14 @@ final class AgreementContactDataTransformer
     /**
      * @return string[]
      */
-    public static function transform(string $name, string $firstname, string $lastname, string $email, string $phonenumber, \DateTime $agreed): array
-    {
+    public static function transform(
+        string $name,
+        string $firstname,
+        string $lastname,
+        string $email,
+        string $phonenumber,
+        \DateTime $agreed
+    ): array {
         return [
             'TenantName' => $name,
             'FirstName' => $firstname,

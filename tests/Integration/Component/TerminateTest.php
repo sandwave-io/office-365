@@ -33,7 +33,6 @@ final class TerminateTest extends TestCase
 
         Assert::assertInstanceOf(QueuedResponse::class, $terminateResponse);
         Assert::assertTrue($terminateResponse->isSuccess());
-        Assert::assertSame('Success', $terminateResponse->getErrorMessage());
         Assert::assertSame(0, $terminateResponse->getErrorCode());
     }
 }

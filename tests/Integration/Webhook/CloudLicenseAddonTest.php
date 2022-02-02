@@ -26,9 +26,9 @@ final class CloudLicenseAddonTest extends TestCase
         );
 
         Assert::assertInstanceOf(Addon::class, $addon);
-        Assert::assertSame($addon->getParentOrderId(), 12345);
-        Assert::assertSame($addon->getProductCode(), 'sandwave1');
-        Assert::assertSame($addon->getQuantity(), 38);
+        Assert::assertSame(12345, $addon->getParentOrderId());
+        Assert::assertSame('sandwave1', $addon->getProductCode());
+        Assert::assertSame(38, $addon->getQuantity());
     }
 
     /**
@@ -46,7 +46,7 @@ final class CloudLicenseAddonTest extends TestCase
         $client->webhook->addEventSubscriber(Event::CLOUD_LICENSE_ADDON_CREATE, new class() implements AddonObserverInterface {
             public function execute(Addon $addon): void
             {
-                Assert::assertEquals('sandwave1', $addon->getProductCode());
+                Assert::assertSame('sandwave1', $addon->getProductCode());
             }
         });
 

@@ -33,8 +33,12 @@ final class Order extends AbstractComponent
     /**
      * @throws Office365Exception
      */
-    public function modify(int $orderId, int $quantity, bool $isDelta = false, string $partnerReference = ''): QueuedResponse
-    {
+    public function modify(
+        int $orderId,
+        int $quantity,
+        bool $isDelta = false,
+        string $partnerReference = ''
+    ): QueuedResponse {
         $modification = EntityHelper::deserialize(
             OrderModifyQuantity::class,
             OrderModifyQuantityBuilder::build(...func_get_args())
@@ -43,21 +47,16 @@ final class Order extends AbstractComponent
         try {
             $document = EntityHelper::serialize($modification);
         } catch (\Exception $e) {
-            throw new Office365Exception(self::class . ':create unable to process order quantity modification', 0, $e);
+            throw new Office365Exception(self::class . ':modify unable to process order quantity modification', 0, $e);
         }
 
         $route = $this->getRouter()->get('order_modify');
         $response = $this->getClient()->request($route->method(), $route->url(), $document);
         $body = $response->getBody()->getContents();
-
-        try {
-            $xml = XmlHelper::loadXML($body);
-        } catch (\Exception $e) {
-            throw new Office365Exception(self::class . ':create unable to process order modify response', 0, $e);
-        }
+        $xml = XmlHelper::loadXML($body);
 
         if ($xml === null) {
-            throw new Office365Exception(self::class . ':create unable to process order modify response');
+            throw new Office365Exception(self::class . ':modify create xml is null');
         }
 
         return EntityHelper::deserializeXml(QueuedResponse::class, $body);
@@ -81,7 +80,7 @@ final class Order extends AbstractComponent
         try {
             $document = EntityHelper::serialize($terminate);
         } catch (\Exception $e) {
-            throw new Office365Exception(self::class . ':create unable to create terminate entity.', 0, $e);
+            throw new Office365Exception(self::class . ':terminate unable to create terminate entity', 0, $e);
         }
 
         $route = $this->getRouter()->get('terminate_order');
@@ -90,7 +89,7 @@ final class Order extends AbstractComponent
         $xml = XmlHelper::loadXML($body);
 
         if ($xml === null) {
-            throw new Office365Exception(self::class . ':create xml could not be loaded for terminate.');
+            throw new Office365Exception(self::class . ':terminate xml is null');
         }
 
         return EntityHelper::deserializeXml(QueuedResponse::class, $body);
@@ -103,6 +102,7 @@ final class Order extends AbstractComponent
         ?int $customerId,
         ?string $orderState,
         ?string $productGroup,
+        ?string $productName,
         ?DateTime $dateActiveFrom,
         ?DateTime $dateActiveTo,
         ?DateTime $dateModifiedFrom,
@@ -121,7 +121,7 @@ final class Order extends AbstractComponent
         try {
             $document = EntityHelper::serialize($summary);
         } catch (\Exception $e) {
-            throw new Office365Exception(self::class . ':create unable to create summary entity.', 0, $e);
+            throw new Office365Exception(self::class . ':summary unable to create summary entity', 0, $e);
         }
 
         $route = $this->getRouter()->get('order_summary');
@@ -130,7 +130,7 @@ final class Order extends AbstractComponent
         $xml = XmlHelper::loadXML($body);
 
         if ($xml === null) {
-            throw new Office365Exception(self::class . ':create xml could not be loaded for summary.');
+            throw new Office365Exception(self::class . ':summary xml is null');
         }
 
         return EntityHelper::deserializeXml(OrderSummaryResponse::class, $body);
