@@ -20,6 +20,8 @@ use SandwaveIo\Office365\Transformer\TerminateDataBuilder;
 
 final class Order extends AbstractComponent
 {
+    const ORDER_PREFIX = 'OID';
+
     public CloudLicense $cloudLicense;
 
     public function __construct(WebApiClientInterface $client, RouterInterface $router)
