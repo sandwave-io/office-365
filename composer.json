@@ -6,7 +6,7 @@
   "require": {
     "php": "^7.4|^8.0",
     "ext-dom": "*",
-    "ext-json": "^8.0",
+    "ext-json": "*",
     "ext-libxml": "*",
     "ext-simplexml": "*",
     "guzzlehttp/guzzle": "^7.4",
