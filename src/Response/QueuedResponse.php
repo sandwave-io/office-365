@@ -8,7 +8,7 @@ final class QueuedResponse
 
     private int $errorCode;
 
-    private ?string $errorMessage;
+    private ?string $errorMessage = null;
 
     public function __construct(bool $success, int $errorCode, ?string $errorMessage = null)
     {
