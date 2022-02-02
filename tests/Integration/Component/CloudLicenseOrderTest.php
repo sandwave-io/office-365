@@ -24,15 +24,15 @@ final class CloudLicenseOrderTest extends TestCase
         $stack = HandlerStack::create($mockHandler);
         $officeClient = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
 
-        $tenant = $officeClient->tenant->create('1', 'my tenant', 'john', 'doe', 'john@doe.com');
-        $contact = $officeClient->contact->agreement->create('my contact', 'john', 'doe', 'john@doe.com', '12345', new \DateTime());
+        $tenant = $officeClient->tenant->create('test.onmicrosoft.com', 'Sandwave', 'Test', 'john@doe.com');
+        $contact = $officeClient->contact->agreement->create('sandwave test', 'john', 'doe', 'john@doe.com', '12345', new \DateTime());
 
         $customerResponse = $officeClient->order->cloudLicense->create(
             $tenant,
             $contact,
-            '1234',
-            'PC',
-            2
+            '507201',
+            '120A00064B',
+            1
         );
 
         Assert::assertInstanceOf(QueuedResponse::class, $customerResponse);

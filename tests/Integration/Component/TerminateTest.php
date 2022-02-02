@@ -25,7 +25,7 @@ final class TerminateTest extends TestCase
         $officeClient = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
 
         $terminateResponse = $officeClient->order->terminate(
-            '12345',
+            '10035367',
             new DateTime('NOW'),
             true,
             '123'

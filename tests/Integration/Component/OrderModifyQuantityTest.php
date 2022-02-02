@@ -24,7 +24,7 @@ final class OrderModifyQuantityTest extends TestCase
         $stack = HandlerStack::create($mockHandler);
         $officeClient = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
 
-        $response = $officeClient->order->modify(1234, 1, false, '123');
+        $response = $officeClient->order->modify(10035367, 0, false, '123');
 
         Assert::assertInstanceOf(QueuedResponse::class, $response);
         Assert::assertTrue($response->isSuccess());
