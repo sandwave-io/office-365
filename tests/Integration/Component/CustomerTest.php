@@ -24,8 +24,6 @@ final class CustomerTest extends TestCase
         $stack = HandlerStack::create($mockHandler);
         $officeClient = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
 
-        $officeClient = new OfficeClient('https://api.routit.nl', 'yourhosting_bv', 'm_wyd44MRbfEJLgqDiEgA');
-
         $customerResponse = $officeClient->customer->create(
             'Sandwave test',
             'StraatNaam',
@@ -48,8 +46,6 @@ final class CustomerTest extends TestCase
             null,
             '134534659043869034809635435',
         );
-
-        var_dump($customerResponse);
 
         Assert::assertInstanceOf(QueuedResponse::class, $customerResponse);
         Assert::assertTrue($customerResponse->isSuccess());
