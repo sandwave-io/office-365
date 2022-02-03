@@ -27,7 +27,8 @@ final class OrderModifyQuantityTest extends TestCase
         $response = $officeClient->order->modify(
             10035367,
             0,
-            false,'123'
+            false,
+            '123'
         );
 
         Assert::assertInstanceOf(QueuedResponse::class, $response);
