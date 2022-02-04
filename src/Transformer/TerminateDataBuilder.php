@@ -3,6 +3,7 @@
 namespace SandwaveIo\Office365\Transformer;
 
 use DateTime;
+use SandwaveIo\Office365\Components\Order\Order;
 
 final class TerminateDataBuilder
 {
@@ -16,7 +17,7 @@ final class TerminateDataBuilder
         string $partnerReference = ''
     ): array {
         return [
-            'OrderId' => $orderId,
+            'OrderId' => Order::ORDER_PREFIX . $orderId,
             'DesiredTerminateDate' => $desiredTerminateDate->format('Y-m-d'),
             'TerminateAsSoonAsPossible' => $terminateAsSoonAsPossible,
             'Header' => $partnerReference !== '' ? [
