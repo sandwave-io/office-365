@@ -2,6 +2,8 @@
 
 namespace SandwaveIo\Office365\Transformer;
 
+use SandwaveIo\Office365\Components\Order\Order;
+
 final class OrderModifyQuantityBuilder
 {
     /**
@@ -14,7 +16,7 @@ final class OrderModifyQuantityBuilder
         string $partnerReference = ''
     ): array {
         return [
-            'OrderId' => $orderId,
+            'OrderId' => Order::ORDER_PREFIX . $orderId,
             'Quantity' => $quantity,
             'IsDelta' => $delta ? 1 : 0,
             'Header' => $partnerReference !== '' ? [

@@ -22,6 +22,7 @@ final class CloudLicenseOrderTest extends TestCase
     {
         /** @var CloudLicense $license */
         $license = EntityHelper::createFromXML((string) file_get_contents(__DIR__ . '/../Data/Request/NewCloudLicenseOrderRequest.xml'));
+
         Assert::assertInstanceOf(CloudLicense::class, $license);
         Assert::assertSame('JohnDoe', $license->getCloudTenant()->getName());
         Assert::assertSame('Jane', $license->getCloudTenant()->getAgreementContact()->getFirstName());

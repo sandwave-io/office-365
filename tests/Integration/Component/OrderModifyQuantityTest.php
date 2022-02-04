@@ -25,8 +25,8 @@ final class OrderModifyQuantityTest extends TestCase
         $officeClient = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
 
         $response = $officeClient->order->modify(
-            1234,
-            1,
+            10035367,
+            0,
             false,
             '123'
         );
