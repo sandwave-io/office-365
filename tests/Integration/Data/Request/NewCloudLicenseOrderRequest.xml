@@ -10,13 +10,13 @@
         <LastName>Doe</LastName>
         <EmailAddress>john@doe.com</EmailAddress>
         <TenantId>1223</TenantId>
-        <AgreementContact>
+        <CustomerAgreementContact>
             <FirstName>Jane</FirstName>
             <LastName>Doe</LastName>
             <EmailAddress>jane@doe.com</EmailAddress>
             <PhoneNumber>555-1111</PhoneNumber>
             <DateAgreed>2021-01-01</DateAgreed>
-        </AgreementContact>
+        </CustomerAgreementContact>
     </Tenant>
     <LicenseAddOns>
         <NewCloudLicenseAddOn_V1>
