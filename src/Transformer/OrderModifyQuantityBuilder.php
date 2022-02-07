@@ -2,8 +2,6 @@
 
 namespace SandwaveIo\Office365\Transformer;
 
-use SandwaveIo\Office365\Components\Order\Order;
-
 final class OrderModifyQuantityBuilder
 {
     /**
