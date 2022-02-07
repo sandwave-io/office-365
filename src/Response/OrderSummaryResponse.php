@@ -2,16 +2,9 @@
 
 namespace SandwaveIo\Office365\Response;
 
-final class OrderSummaryResponse
+final class OrderSummaryResponse extends AbstractRealtimeResponse
 {
-    private RequestStatus $status;
-
     private PagedResultOfOrderSummary $pagedResult;
-
-    public function getStatus(): RequestStatus
-    {
-        return $this->status;
-    }
 
     public function getPagedResult(): PagedResultOfOrderSummary
     {

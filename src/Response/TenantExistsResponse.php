@@ -2,11 +2,9 @@
 
 namespace SandwaveIo\Office365\Response;
 
-final class TenantExistsResponse
+final class TenantExistsResponse extends AbstractRealtimeResponse
 {
     private bool $isExistingTenant;
-
-    private RequestStatus $status;
 
     /**
      * @param bool $isExistingTenant
@@ -19,15 +17,5 @@ final class TenantExistsResponse
     public function isExistingTenant(): bool
     {
         return $this->isExistingTenant;
-    }
-
-    public function setStatus(RequestStatus $status): void
-    {
-        $this->status = $status;
-    }
-
-    public function getStatus(): RequestStatus
-    {
-        return $this->status;
     }
 }
