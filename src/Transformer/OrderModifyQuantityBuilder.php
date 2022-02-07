@@ -16,7 +16,7 @@ final class OrderModifyQuantityBuilder
         string $partnerReference = ''
     ): array {
         return [
-            'OrderId' => Order::ORDER_PREFIX . $orderId,
+            'OrderId' => $orderId,
             'Quantity' => $quantity,
             'IsDelta' => $delta ? 1 : 0,
             'Header' => $partnerReference !== '' ? [
