@@ -56,9 +56,15 @@ final class Webhook
         $rootName = $simpleXml->getName();
         $eventName = RootnodeTransformer::transform($rootName);
         $className = (new Serializer())->findClassByRootname($rootName);
-        $status = strtolower((string) $simpleXml->Status->Code);
+
+        if ($simpleXml->Status === null || $simpleXml->State !== null) {
+            $status = strtolower((string) $simpleXml->State->Code);
+        } else {
+            $status = strtolower((string) $simpleXml->Status->Code);
+        }
 
         if ($status !== 'success' && $status !== '') {
+            var_dump('go kpn');
             $this->dispatch(
                 Event::CALLBACK_ERROR,
                 ResponseErrorTransformer::transformXml($simpleXml)
