@@ -18,7 +18,7 @@ final class CloudLicenseOrderTest extends TestCase
     /**
      * @test
      */
-    public function createCloudLicenseTest(): void
+    public function cloudLicenseOrderTest(): void
     {
         /** @var CloudLicense $license */
         $license = EntityHelper::createFromXML((string) file_get_contents(__DIR__ . '/../Data/Request/NewCloudLicenseOrderRequest.xml'));
@@ -32,7 +32,10 @@ final class CloudLicenseOrderTest extends TestCase
         }
     }
 
-    public function testCallbackLicenseCreate(): void
+    /**
+     * @test
+     */
+    public function callbackLicenseOrderCreate(): void
     {
         $mockHandler = new MockHandler(
             [new Response(200, [], (string) file_get_contents(__DIR__ . '/../Data/Request/NewCloudLicenseOrderRequest.xml'))]
