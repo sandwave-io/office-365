@@ -74,7 +74,6 @@ final class CloudLicenseOrderTest extends TestCase
             public function execute(Error $error): void
             {
                 Assert::assertEquals(1, count($error->getMessages()));
-                var_dump($error->getMessages()[0]);
                 Assert::assertEquals('ProductCode: Product SANDWAVE111 kan niet besteld worden als addon bij product 120A00044B', $error->getMessages()[0]);
             }
         });
