@@ -15,4 +15,6 @@ final class Event
     const TERMINATE_ORDER = 'terminate-order';
 
     const ORDER_MODIFY_QUANTITY = 'order_modify_quantity';
+
+    const CALLBACK_ERROR = 'callback_error';
 }
