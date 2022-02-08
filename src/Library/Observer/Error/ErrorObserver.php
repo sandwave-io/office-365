@@ -13,6 +13,7 @@ final class ErrorObserver implements \SplObserver
 
     public function update(\SplSubject $subject): void
     {
+        /** @var ErrorSubject $subject */
         $this->callback->execute($subject->getError());
     }
 }

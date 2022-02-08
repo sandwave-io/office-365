@@ -90,7 +90,7 @@ final class Subjects
             switch ($event) {
 
                 case Event::CALLBACK_ERROR:
-                    /** @var Error $subject */
+                    /** @var ErrorSubject $subject */
                     if (! $entity instanceof Error) {
                         return null;
                     }
