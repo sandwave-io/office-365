@@ -7,6 +7,7 @@ use SandwaveIo\Office365\Entity\CloudAgreementContact;
 use SandwaveIo\Office365\Entity\CloudLicense;
 use SandwaveIo\Office365\Entity\Customer;
 use SandwaveIo\Office365\Entity\EntityInterface;
+use SandwaveIo\Office365\Entity\Error;
 use SandwaveIo\Office365\Entity\OrderModifyQuantity;
 use SandwaveIo\Office365\Entity\Terminate;
 use SandwaveIo\Office365\Enum\Event;
@@ -18,6 +19,8 @@ use SandwaveIo\Office365\Library\Observer\Contact\ContactObserver;
 use SandwaveIo\Office365\Library\Observer\Contact\ContactSubject;
 use SandwaveIo\Office365\Library\Observer\Customer\CustomerObserver;
 use SandwaveIo\Office365\Library\Observer\Customer\CustomerSubject;
+use SandwaveIo\Office365\Library\Observer\Error\ErrorObserver;
+use SandwaveIo\Office365\Library\Observer\Error\ErrorSubject;
 use SandwaveIo\Office365\Library\Observer\Order\OrderModifyQuantityObserver;
 use SandwaveIo\Office365\Library\Observer\Order\OrderModifyQuantitySubject;
 use SandwaveIo\Office365\Library\Observer\Terminate\TerminateObserver;
@@ -63,6 +66,11 @@ final class Subjects
                 $subject = new OrderModifyQuantitySubject();
                 break;
 
+            case Event::CALLBACK_ERROR:
+                $observer = new ErrorObserver($callback);
+                $subject = new ErrorSubject();
+                break;
+
             default:
                 return;
         }
@@ -74,12 +82,21 @@ final class Subjects
         $this->subject[$event]->attach($observer);
     }
 
-    public function getSubject(string $event, EntityInterface $entity): ?SplSubject
+    public function getSubject(string $event, ?EntityInterface $entity = null): ?SplSubject
     {
         if (array_key_exists($event, $this->subject)) {
             $subject = $this->subject[$event];
 
             switch ($event) {
+
+                case Event::CALLBACK_ERROR:
+                    /** @var Error $subject */
+                    if (! $entity instanceof Error) {
+                        return null;
+                    }
+                    $subject->setError($entity);
+                    break;
+
                 case Event::CUSTOMER_CREATE:
                     /** @var CustomerSubject $subject */
                     if (! $entity instanceof Customer) {
@@ -131,6 +148,7 @@ final class Subjects
                     /** @var OrderModifyQuantitySubject $subject */
                     $subject->setOrderModifyQuantity($entity);
                     break;
+
             }
 
             return $this->subject[$event];
