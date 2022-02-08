@@ -58,7 +58,7 @@ final class Webhook
         $className = (new Serializer())->findClassByRootname($rootName);
         $status = strtolower((string) $simpleXml->Status->Code);
 
-        if ($status !== 'success') {
+        if ($status !== 'success' && $status !== '') {
             $this->dispatch(
                 Event::CALLBACK_ERROR,
                 ResponseErrorTransformer::transformXml($simpleXml)
