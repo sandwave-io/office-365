@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<NewCustomerDeclined_V1>
+    <Header>
+        <PartnerReference>123</PartnerReference>
+        <DateCreated>2022-02-07T16:36:47.5975315+01:00</DateCreated>
+    </Header>
+    <Status>
+        <Code>213</Code>
+        <Message>Unexpected error while try to create a new customer</Message>
+    </Status>
+</NewCustomerDeclined_V1>
