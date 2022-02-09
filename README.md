@@ -1,6 +1,6 @@
 # Office 365
 
-This is a package for the microsoft 365 implementation of KPN.
+This is a package for the Microsoft 365 implementation of KPN.
 
 ## SERVER COMMUNICATION
 
