@@ -8,6 +8,9 @@ SandwaveIo\Office365\Response\OrderSummaryResponse:
       expose: true
       type: SandwaveIo\Office365\Response\RequestStatus
       serialized_name: Status
+      xml_list:
+        inline: false
+        entry_name: string
 
     pagedResult:
       expose: true
