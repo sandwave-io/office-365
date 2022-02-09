@@ -37,16 +37,14 @@ final class ResponseErrorTransformer
         $messages = [];
         $xmlMessages = [];
 
-        if (property_exists($xml, 'State')) {
-            $messages = [(string) $xml->State->Message];
+        if (property_exists($xml, 'Status')) {
+            $xmlMessages = $xml->Status->Messages->string;
+        } elseif (property_exists($xml, 'State')) {
+            $xmlMessages = $xml->State->Comments->string;
         }
 
-        if (property_exists($xml, 'Status')) {
-            foreach ($xml->Status->Messages as $message) {
-                if (property_exists($message, 'string')) {
-                    $messages[] = trim((string) $message->string);
-                }
-            }
+        foreach ($xmlMessages as $message) {
+            $messages[] = trim((string) $message);
         }
 
         return $messages;
