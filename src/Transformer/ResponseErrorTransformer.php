@@ -1,0 +1,53 @@
+<?php declare(strict_types = 1);
+
+namespace SandwaveIo\Office365\Transformer;
+
+use SandwaveIo\Office365\Entity\Error;
+
+final class ResponseErrorTransformer
+{
+    public static function transformXml(\SimpleXMLElement $xml): Error
+    {
+        $error = new Error();
+        $error->setMessages(self::getMessages($xml));
+
+        return $error;
+    }
+
+    public static function hasErrorState(\SimpleXMLElement $xml): bool
+    {
+        if (property_exists($xml, 'State')) {
+            return strtolower((string) $xml->State->Code) !== 'success';
+        }
+
+        if (property_exists($xml, 'Status')) {
+            return strtolower((string) $xml->Status->Code) !== 'success';
+        }
+
+        return false;
+    }
+
+    /**
+     * @param \SimpleXMLElement $xml
+     *
+     * @return array<string>
+     */
+    public static function getMessages(\SimpleXMLElement $xml): array
+    {
+        $messages = [];
+
+        if (property_exists($xml, 'State')) {
+            $messages = [(string) $xml->State->Message];
+        }
+
+        if (property_exists($xml, 'Status')) {
+            foreach ($xml->Status->Messages as $message) {
+                if (property_exists($message, 'string')) {
+                    $messages[] = trim((string) $message->string);
+                }
+            }
+        }
+
+        return $messages;
+    }
+}
