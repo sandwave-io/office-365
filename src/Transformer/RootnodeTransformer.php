@@ -16,9 +16,6 @@ final class RootnodeTransformer
             case RequestAction::NEW_CLOUD_LICENSE_ORDER_REQUEST_V2:
                 return Event::CLOUD_LICENSE_ORDER_CREATE;
 
-            case RequestAction::NEW_CLOUD_AGREEMENT_CONTACT_REQUEST_V1:
-                return Event::CLOUD_AGREEMENT_CREATE;
-
             case RequestAction::NEW_CLOUD_LICENSE_ADDON_ORDER_REQUEST_V1:
                 return Event::CLOUD_LICENSE_ADDON_CREATE;
 
