@@ -29,6 +29,7 @@ final class ResponseErrorTransformer
 
     /**
      * @param \SimpleXMLElement $xml
+     *
      * @return array<string>
      */
     public static function getMessages(\SimpleXMLElement $xml): array
