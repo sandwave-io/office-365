@@ -41,8 +41,8 @@ final class OrderSummaryTest extends TestCase
 
         Assert::assertInstanceOf(OrderSummaryResponse::class, $response);
         Assert::assertSame('Success', $response->getStatus()->getCode());
-        Assert::assertEquals(25, $response->getPagedResult()->getTotal());
-        Assert::assertEquals(1, count($response->getPagedResult()->getResults()));
-        Assert::assertEquals('Activate', $response->getPagedResult()->getResults()[0]->getOrderState());
+        Assert::assertSame(25, $response->getPagedResult()->getTotal());
+        Assert::assertSame(1, count($response->getPagedResult()->getResults()));
+        Assert::assertSame('Activate', $response->getPagedResult()->getResults()[0]->getOrderState());
     }
 }
