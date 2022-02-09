@@ -11,5 +11,8 @@ SandwaveIo\Office365\Response\OrderSummaryResponse:
 
     pagedResult:
       expose: true
-      type: SandwaveIo\Office365\Response\PagedResultOfOrderSummary
-      serialized_name: IsExistingTenant
+      type: SandwaveIo\Office365\Entity\PagedResult
+      serialized_name: PagedResult
+      xml_list:
+        inline: false
+        entry_name: OrderSummary_V1
