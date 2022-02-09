@@ -56,14 +56,8 @@ final class Webhook
         $rootName = $simpleXml->getName();
         $eventName = RootnodeTransformer::transform($rootName);
         $className = (new Serializer())->findClassByRootname($rootName);
-        $status = '';
-        if (property_exists($simpleXml, 'Status')) {
-            $status = strtolower((string) $simpleXml->Status->Code);
-        } elseif (property_exists($simpleXml, 'State')) {
-            $status = strtolower((string) $simpleXml->State->Code);
-        }
 
-        if ($status !== 'success' && $status !== '') {
+        if (ResponseErrorTransformer::hasErrorState($simpleXml)) {
             $this->dispatch(
                 Event::CALLBACK_ERROR,
                 ResponseErrorTransformer::transformXml($simpleXml)
