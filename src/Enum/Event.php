@@ -6,6 +6,8 @@ final class Event
 {
     const CUSTOMER_CREATE = 'customer_create';
 
+    const CUSTOMER_MODIFY = 'customer_modify';
+
     const CLOUD_LICENSE_ORDER_CREATE = 'cloud_license_order_create';
 
     const CLOUD_LICENSE_ADDON_CREATE = 'cloud_license_addon_create';

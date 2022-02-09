@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<ModifyCustomerRequest_V3>
+    <Header>
+        <PartnerReference>134534659043869034809635435</PartnerReference>
+        <DateCreated>2022-02-08T15:42:35</DateCreated>
+    </Header>
+    <Name>Naam</Name>
+    <Street>Changed street</Street>
+    <HouseNr>38</HouseNr>
+    <HouseNrExtension></HouseNrExtension>
+    <ZipCode>1234AB</ZipCode>
+    <City>Amsterdam</City>
+    <CountryCode>NLD</CountryCode>
+    <Phone1>0612345678</Phone1>
+    <Email>klant@email.nl</Email>
+    <LegalStatus>CV</LegalStatus>
+    <CustomerId>CID1322912</CustomerId>
+</ModifyCustomerRequest_V3>

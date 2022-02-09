@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<ModifyDeclined_V1>
+    <Header>
+        <PartnerReference>123</PartnerReference>
+        <DateCreated>2022-02-07T16:33:04.1100362+01:00</DateCreated>
+    </Header>
+    <Status>
+        <Code>ValidationError</Code>
+        <Messages>
+            <string>Order is bezet. Detailgegevens van order 13608691 kunnen niet worden bewerkt.</string>
+        </Messages>
+    </Status>
+    <OrderId>13608691</OrderId>
+</ModifyDeclined_V1>
