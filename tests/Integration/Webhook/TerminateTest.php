@@ -78,8 +78,9 @@ final class TerminateTest extends TestCase
         $client->webhook->addEventSubscriber(Event::CALLBACK_ERROR, new class() implements ErrorObserverInterface {
             public function execute(Error $error): void
             {
-                Assert::assertEquals(1, count($error->getMessages()));
-                Assert::assertEquals('Order is bezet. Detailgegevens van order 13608691 kunnen niet worden bewerkt.', $error->getMessages()[0]);
+                Assert::assertEquals(2, count($error->getMessages()));
+                Assert::assertEquals('Opheffing van order 13608691 kan niet worden uitgevoerd.', $error->getMessages()[0]);
+                Assert::assertEquals('Order heeft een ongeldige status. Opheffing van order 13608691 kan niet worden uitgevoerd.', $error->getMessages()[1]);
             }
         });
 

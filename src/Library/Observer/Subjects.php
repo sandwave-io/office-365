@@ -37,6 +37,7 @@ final class Subjects
     {
         switch ($event) {
             case Event::CUSTOMER_CREATE:
+            case Event::CUSTOMER_MODIFY:
                 $observer = new CustomerObserver($callback);
                 $subject = new CustomerSubject();
                 break;
@@ -97,6 +98,7 @@ final class Subjects
                     $subject->setError($entity);
                     break;
 
+                case Event::CUSTOMER_MODIFY:
                 case Event::CUSTOMER_CREATE:
                     /** @var CustomerSubject $subject */
                     if (! $entity instanceof Customer) {

@@ -9,11 +9,16 @@ final class ResponseErrorTransformer
     public static function transformXml(\SimpleXMLElement $xml): Error
     {
         $messages = [];
+        $xmlMessages = [];
 
-        foreach ($xml->Status->Messages as $message) {
-            if (property_exists($message, 'string')) {
-                $messages[] = trim((string) $message->string);
-            }
+        if (property_exists($xml, 'Status')) {
+            $xmlMessages = $xml->Status->Messages->string;
+        } elseif (property_exists($xml, 'State')) {
+            $xmlMessages = $xml->State->Comments->string;
+        }
+
+        foreach ($xmlMessages as $message) {
+            $messages[] = trim((string) $message);
         }
 
         $error = new Error();

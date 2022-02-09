@@ -10,8 +10,11 @@ final class RootnodeTransformer
     public static function transform(string $rootNode): string
     {
         switch ($rootNode) {
-            case RequestAction::NEW_CUSTOMER_REQUEST_V1:
+            case RequestAction::NEW_CUSTOMER_REQUEST_V3:
                 return Event::CUSTOMER_CREATE;
+
+            case RequestAction::MODIFY_CUSTOMER_REQUEST_V3:
+                return Event::CUSTOMER_MODIFY;
 
             case RequestAction::NEW_CLOUD_LICENSE_ORDER_REQUEST_V2:
                 return Event::CLOUD_LICENSE_ORDER_CREATE;
