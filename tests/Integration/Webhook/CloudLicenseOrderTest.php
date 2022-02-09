@@ -46,7 +46,6 @@ final class CloudLicenseOrderTest extends TestCase
         $stack = HandlerStack::create($mockHandler);
         $client = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
 
-
         $client->webhook->addEventSubscriber(Event::CLOUD_LICENSE_ORDER_CREATE, new class() implements CloudLicenseObserverInterface {
             public function execute(CloudLicense $license): void
             {

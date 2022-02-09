@@ -11,8 +11,8 @@ use SandwaveIo\Office365\Entity\Customer;
 use SandwaveIo\Office365\Entity\Error;
 use SandwaveIo\Office365\Enum\Event;
 use SandwaveIo\Office365\Helper\EntityHelper;
-use SandwaveIo\Office365\Library\Observer\Error\ErrorObserverInterface;
 use SandwaveIo\Office365\Library\Observer\Customer\CustomerObserverInterface;
+use SandwaveIo\Office365\Library\Observer\Error\ErrorObserverInterface;
 use SandwaveIo\Office365\Office\OfficeClient;
 
 final class CustomerTest extends TestCase
