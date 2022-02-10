@@ -1,0 +1,15 @@
+SandwaveIo\Office365\Response\CloudTenantResponse:
+  exclusion_policy: ALL
+  xml_root_name: MicrosoftTenantExistsCheckResponse_V1
+
+  properties:
+
+    status:
+      expose: true
+      type: SandwaveIo\Office365\Response\RequestStatus
+      serialized_name: Status
+
+    cloudTenant:
+      expose: true
+      type: SandwaveIo\Office365\Entity\CloudTenant
+      serialized_name: CloudTenant

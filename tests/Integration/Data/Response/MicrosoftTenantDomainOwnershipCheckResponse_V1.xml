@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<MicrosoftTenantDomainOwnershipCheckResponse_V1>
+    <Status>
+        <Messages>
+            <string>Hello world!</string>
+        </Messages>
+        <Code>Success</Code>
+    </Status>
+    <IsDelegatedAccessAllowed>true</IsDelegatedAccessAllowed>
+    <IsAcceptanceMcaRequired>false</IsAcceptanceMcaRequired>
+    <IsOnboardingReady>true</IsOnboardingReady>
+    <DnsBoardingRecordName>dns-name</DnsBoardingRecordName>
+    <DnsBoardingRecordValue>dns-value</DnsBoardingRecordValue>
+</MicrosoftTenantDomainOwnershipCheckResponse_V1>

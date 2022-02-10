@@ -1,0 +1,35 @@
+SandwaveIo\Office365\Entity\CloudLicense:
+  exclusion_policy: ALL
+  xml_root_name: NewCloudLicenseOrderRequest_V2
+
+  properties:
+
+    header:
+      expose: true
+      type: SandwaveIo\Office365\Entity\Header\PartnerReferenceHeader
+      serialized_name: Header
+
+    tenant:
+      expose: true
+      type: SandwaveIo\Office365\Entity\CloudTenant
+      serialized_name: Tenant
+
+    addOns:
+      expose: true
+      type: string
+      serialized_name: LicenseAddOns
+
+    customerId:
+      expose: true
+      type: string
+      serialized_name: CustomerId
+
+    productCode:
+      expose: true
+      type: string
+      serialized_name: ProductCode
+
+    quantity:
+      expose: true
+      type: integer
+      serialized_name: Quantity

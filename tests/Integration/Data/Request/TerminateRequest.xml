@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<TerminateOrderRequest_V2>
+    <Header>
+        <PartnerReference>21139</PartnerReference>
+        <DateCreated>2014-06-20T14:37:00</DateCreated>
+    </Header>
+    <OrderId>OID330</OrderId>
+    <DesiredTerminateDate>2014-06-20</DesiredTerminateDate>
+    <TerminateAsSoonAsPossible>true</TerminateAsSoonAsPossible>
+</TerminateOrderRequest_V2>

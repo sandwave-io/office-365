@@ -1,0 +1,14 @@
+SandwaveIo\Office365\Response\RequestStatus:
+  exclusion_policy: ALL
+
+  properties:
+
+    messages:
+      expose: true
+      type: array<string>
+      serialized_name: Messages
+
+    code:
+      expose: true
+      type: string
+      serialized_name: Code

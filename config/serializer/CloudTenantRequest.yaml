@@ -1,0 +1,10 @@
+SandwaveIo\Office365\Entity\CloudTenantRequest:
+  exclusion_policy: ALL
+  xml_root_name: CloudTenantRequest_V1
+
+  properties:
+
+    customerId:
+      expose: true
+      type: string
+      serialized_name: CustomerId

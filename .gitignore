@@ -1,0 +1,9 @@
+vendor
+.idea
+.php_cs.cache
+.DS_Store
+clover.xml
+coverage
+.phpunit.result.cache
+.php-cs-fixer.cache
+.env

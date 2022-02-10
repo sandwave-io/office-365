@@ -1,0 +1,15 @@
+SandwaveIo\Office365\Entity\PagedResult:
+
+  exclusion_policy: ALL
+
+  properties:
+
+    total:
+      expose: true
+      type: integer
+      serialized_name: TotalNumberOfRecords
+
+    results:
+      expose: true
+      type: array<SandwaveIo\Office365\Response\OrderSummary>
+      serialized_name: Results

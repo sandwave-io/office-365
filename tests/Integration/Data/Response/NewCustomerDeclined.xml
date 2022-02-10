@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<NewCustomerDeclined_V1>
+    <Header>
+        <PartnerReference>134534659043869034809635435</PartnerReference>
+        <DateCreated>2022-02-08T16:37:25.2695702+01:00</DateCreated>
+    </Header>
+    <State>
+        <Code>214</Code>
+        <Message>Model validation failed</Message>
+        <Comments>
+            <string>Email: E-mailadres is ongeldig. Vul een geldig e-mailadres in.</string>
+        </Comments>
+    </State>
+</NewCustomerDeclined_V1>

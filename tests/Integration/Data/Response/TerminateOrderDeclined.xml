@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<TerminateOrderDeclined_V1>
+    <Header>
+        <PartnerReference>123</PartnerReference>
+        <DateCreated>2022-02-07T16:36:47.5975315+01:00</DateCreated>
+    </Header>
+    <State>
+        <Code>214</Code>
+        <Message>Termination failed.</Message>
+        <Comments>
+            <string>Opheffing van order 13608691 kan niet worden uitgevoerd.</string>
+            <string>Order heeft een ongeldige status. Opheffing van order 13608691 kan niet worden uitgevoerd.</string>
+        </Comments>
+    </State>
+    <OrderId>13608691</OrderId>
+</TerminateOrderDeclined_V1>

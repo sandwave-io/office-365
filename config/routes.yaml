@@ -1,0 +1,49 @@
+customer:
+  create:
+    method: post
+    url: '/api/queued'
+
+  modify:
+    method: post
+    url: '/api/queued'
+
+  has_domain_ownership:
+    method: post
+    url: '/api/realtime'
+
+order:
+  license_create:
+    method: post
+    url: '/api/queued'
+
+  modify:
+    method: post
+    url: '/api/queued'
+
+  summary:
+    method: post
+    url: '/api/realtime'
+
+addon:
+  create:
+    method: post
+    url: '/api/queued'
+
+terminate:
+  order:
+    method: post
+    url: '/api/queued'
+
+summary:
+  order:
+    method: post
+    url: '/api/realtime'
+
+tenant:
+  exists:
+    method: post
+    url: '/api/realtime'
+
+  fetch_tenant:
+    method: post
+    url: '/api/realtime'

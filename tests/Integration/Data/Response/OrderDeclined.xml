@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<OrderDeclined_V2>
+    <Header>
+        <DateCreated>2022-02-07T16:36:47.5975315+01:00</DateCreated>
+    </Header>
+    <Status>
+        <Code>ValidationError</Code>
+        <Messages>
+            <string>ProductCode: Product SANDWAVE111 kan niet besteld worden als addon bij product 120A00044B</string>
+        </Messages>
+    </Status>
+    <CustomerId p2:nil="true" xmlns:p2="http://www.w3.org/2001/XMLSchema-instance" />
+    <OrderId p2:nil="true" xmlns:p2="http://www.w3.org/2001/XMLSchema-instance" />
+    <ParentOrderId p2:nil="true" xmlns:p2="http://www.w3.org/2001/XMLSchema-instance" />
+</OrderDeclined_V2>

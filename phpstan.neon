@@ -1,0 +1,34 @@
+includes:
+    - vendor/phpstan/phpstan-strict-rules/rules.neon
+    - vendor/phpstan/phpstan-deprecation-rules/rules.neon
+    - vendor/ergebnis/phpstan-rules/rules.neon
+    - vendor/thecodingmachine/phpstan-strict-rules/phpstan-strict-rules.neon
+    - vendor/ekino/phpstan-banned-code/extension.neon
+
+parameters:
+    checkGenericClassInNonGenericObjectType: false
+    level: 8
+    paths:
+        - src
+        - tests
+
+    ignoreErrors:
+        # Extending classes.
+        - '#Class \"[a-zA-Z0-9\\_]+\" is not allowed to extend \"[a-zA-Z0-9\\_]+\".#'
+
+        # Using null as default parameter in a function.
+        - '#Method [a-zA-Z0-9\\_]+::[a-zA-Z0-9\\_]+\(\) has parameter \$[a-zA-Z0-9\\_]+ with null as default value.#'
+
+        # No switch rule.
+        - '#Control structures using switch should not be used.#'
+
+        - '#Constructor in [a-zA-Z0-9\\_]+ has parameter \$[a-zA-Z0-9\\_]+ with default value.#'
+        - '#Method [a-zA-Z0-9\\_]+::[a-zA-Z0-9\\_]+\(\) has a nullable return type declaration.#'
+        - '#Method [a-zA-Z0-9\\_]+::[a-zA-Z0-9\\_]+\(\) has parameter \$[a-zA-Z0-9\\_]+ with a nullable type declaration.#'
+        -
+            message: "#^Property SandwaveIo\\\\Office365\\\\Entity\\\\[a-zA-Z0-9\\]+:\\:\\$[a-zA-Z0-9]+ is never written, only read\\.$#"
+            path: src/Entity/*
+
+        -
+            message: "#^Property SandwaveIo\\\\Office365\\\\Response\\\\[a-zA-Z0-9\\]+:\\:\\$[a-zA-Z0-9]+ is never written, only read\\.$#"
+            path: src/Response/*

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<OrderSummaryResponse_V1>
+    <Status>
+        <Messages>
+            <string>Hello world!</string>
+        </Messages>
+        <Code>Success</Code>
+    </Status>
+    <PagedResult>
+        <Skip>1</Skip>
+        <Take>1</Take>
+        <TotalNumberOfRecords>25</TotalNumberOfRecords>
+        <Results>
+            <OrderSummary_V1>
+                <OrderId>1</OrderId>
+                <ReferenceOrderId>1</ReferenceOrderId>
+                <ParentId>1</ParentId>
+                <CustomerId>1</CustomerId>
+                <ProductId>sandwave1</ProductId>
+                <ProductName>product</ProductName>
+                <ProductGroup>Security</ProductGroup>
+                <ProductCommercialTypeName>product</ProductCommercialTypeName>
+                <DateCreated>2014-06-20T14:37:00</DateCreated>
+                <DateActive>2014-06-20T14:37:00</DateActive>
+                <DateModified>2014-06-20T14:37:00</DateModified>
+                <DateTerminate>2014-06-20T14:37:00</DateTerminate>
+                <DateTerminated>2014-06-20T14:37:00</DateTerminated>
+                <Label>label</Label>
+                <Attribute>attribute</Attribute>
+                <OrderState>Activate</OrderState>
+                <Quantity>10</Quantity>
+                <ServiceLevelAgreement>BestEffort</ServiceLevelAgreement>
+            </OrderSummary_V1>
+        </Results>
+    </PagedResult>
+</OrderSummaryResponse_V1>
