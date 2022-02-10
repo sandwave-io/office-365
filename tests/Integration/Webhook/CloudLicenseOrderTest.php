@@ -73,8 +73,8 @@ final class CloudLicenseOrderTest extends TestCase
         $client->webhook->addEventSubscriber(Event::CALLBACK_ERROR, new class() implements ErrorObserverInterface {
             public function execute(Error $error): void
             {
-                Assert::assertEquals(1, count($error->getMessages()));
-                Assert::assertEquals('ProductCode: Product SANDWAVE111 kan niet besteld worden als addon bij product 120A00044B', $error->getMessages()[0]);
+                Assert::assertSame(1, count($error->getMessages()));
+                Assert::assertSame('ProductCode: Product SANDWAVE111 kan niet besteld worden als addon bij product 120A00044B', $error->getMessages()[0]);
             }
         });
 

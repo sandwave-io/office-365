@@ -5,7 +5,7 @@ SandwaveIo\Office365\Response\RequestStatus:
 
     messages:
       expose: true
-      type: array
+      type: array<string>
       serialized_name: Messages
 
     code:
