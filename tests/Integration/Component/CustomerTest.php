@@ -92,42 +92,4 @@ final class CustomerTest extends TestCase
         Assert::assertTrue($customerResponse->isSuccess());
         Assert::assertSame(0, $customerResponse->getErrorCode());
     }
-
-    public function customerUpdate(): void
-    {
-        $mockHandler = new MockHandler(
-            [new Response(200, [], (string) file_get_contents(__DIR__ . '/../Data/Response/NinaResponse_Success.xml'))]
-        );
-
-        $stack = HandlerStack::create($mockHandler);
-        $officeClient = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
-
-        $customerResponse = $officeClient->customer->modify(
-            'CID1322912',
-            'Naam',
-            'StraatNaam',
-            38,
-            '',
-            '1234AB',
-            'Amsterdam',
-            'NLD',
-            '0612345678',
-            null,
-            null,
-            'klant@email.nl',
-            null,
-            null,
-            null,
-            null,
-            null,
-            'CV',
-            null,
-            null,
-            '134534659043869034809635435',
-        );
-
-        Assert::assertInstanceOf(QueuedResponse::class, $customerResponse);
-        Assert::assertTrue($customerResponse->isSuccess());
-        Assert::assertSame(0, $customerResponse->getErrorCode());
-    }
 }

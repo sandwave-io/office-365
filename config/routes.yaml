@@ -24,11 +24,6 @@ order:
     method: post
     url: '/api/realtime'
 
-contact:
-  create:
-    method: post
-    url: '/api/queued'
-
 addon:
   create:
     method: post

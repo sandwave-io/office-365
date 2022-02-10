@@ -10,7 +10,7 @@ use SandwaveIo\Office365\Helper\XmlHelper;
 use SandwaveIo\Office365\Library\Observer\Subjects;
 use SandwaveIo\Office365\Library\Serializer\Serializer;
 use SandwaveIo\Office365\Transformer\ResponseErrorTransformer;
-use SandwaveIo\Office365\Transformer\RootnodeTransformer;
+use SandwaveIo\Office365\Transformer\RootNodeTransformer;
 
 /**
  * Class Webhook.
@@ -54,7 +54,7 @@ final class Webhook
         }
 
         $rootName = $simpleXml->getName();
-        $eventName = RootnodeTransformer::transform($rootName);
+        $eventName = RootNodeTransformer::transform($rootName);
         $className = (new Serializer())->findClassByRootname($rootName);
 
         if (ResponseErrorTransformer::hasErrorState($simpleXml)) {
