@@ -4,10 +4,10 @@ This is a package for the Microsoft 365 implementation of KPN.
 
 ## SERVER COMMUNICATION
 
-### RouteIT
+### RoutIT
 
-This package will not communicate directly with KPN but with an intermediate party called RouteIT.
-RouteIT handles every other request detail.
+This package will not communicate directly with KPN but with an intermediate party called RoutIT.
+RoutIT handles every other request detail.
 
 ### Authentication
 
@@ -81,13 +81,13 @@ $customer = $client->customer->create('name', ...);
 
 ### Subscribed events
 
-Not every request will be synchronous and will give back a resource immediately. RouteIT will call our webhook with the particular 
+Not every request will be synchronous and will give back a resource immediately. RoutIT will call our webhook with the particular 
 object that has been created. This will cause that the Office365 package dispatches an event. Each subscriber that is attached to 
 that particular event will receive the notification.
 
 ### Subscribe to an event
 
-For example: a customer create request is sent. RouteIT will not give back the resource immediately but will send this later
+For example: a customer create request is sent. RoutIT will not give back the resource immediately but will send this later
 through the webhook. In order to subscribe for this particular event, a new class must be created that implements the `CustomerObserverInterface`.
 Each component holds his own observers. The interface name will always look like this `{ComponentName}ObserverInterface`.
 
