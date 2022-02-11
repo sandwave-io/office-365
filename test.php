@@ -61,7 +61,7 @@ $response = $client->webhook->parse($xml);
 
 /**
  * Create a new customer through the client
- * This will result in a async request on the RouteIT server and will use a webhook as a callback service.
+ * This will result in a async request on the RoutIT server and will use a webhook as a callback service.
  * The callback/event will contain the full created Customer (see the CustomerCreateListener)
  * The object returned from this create method is a Customer object but most likely incomplete
  */
