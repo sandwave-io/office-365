@@ -9,7 +9,7 @@
     "ext-json": "*",
     "ext-libxml": "*",
     "ext-simplexml": "*",
-    "guzzlehttp/guzzle": "^7.4",
+    "guzzlehttp/guzzle": "^6.2|^7.4",
     "jms/serializer": "^3.17",
     "symfony/yaml": "^4.4|^6.0"
   },
