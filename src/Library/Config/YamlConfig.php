@@ -20,13 +20,7 @@ final class YamlConfig
 
     public function getClassName(): ?string
     {
-        $className = array_key_first($this->yaml);
-
-        if ($className !== null) {
-            return $className;
-        }
-
-        return null;
+        return array_key_first($this->yaml);
     }
 
     public function getReferenceNode(): ?string
