@@ -10,7 +10,6 @@ final class YamlConfig
     private array $yaml;
 
     /**
-     * YamlConfig constructor.
      *
      * @param array<string, array<string>> $yaml
      */
