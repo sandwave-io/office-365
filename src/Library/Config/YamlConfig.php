@@ -5,13 +5,13 @@ namespace SandwaveIo\Office365\Library\Config;
 final class YamlConfig
 {
     /**
-     * @var array<string, array>
+     * @var array<string, array<string>>
      */
     private array $yaml;
 
     /**
      * YamlConfig constructor.
-     * @param array<string, array> $yaml
+     * @param array<string, array<string>> $yaml
      */
     public function __construct(array $yaml)
     {
