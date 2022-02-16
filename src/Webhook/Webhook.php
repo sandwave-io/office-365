@@ -53,10 +53,6 @@ final class Webhook
             throw new Office365Exception('Could not parse received XML');
         }
 
-        $rootName = $simpleXml->getName();
-        $eventName = RootNodeTransformer::transform($rootName);
-        $className = (new Serializer())->findClassByRootname($rootName);
-
         if (ResponseErrorTransformer::hasErrorState($simpleXml)) {
             $this->dispatch(
                 Event::CALLBACK_ERROR,
@@ -66,11 +62,25 @@ final class Webhook
             return null;
         }
 
-        if ($className === null) {
+        $rootName = $simpleXml->getName();
+        $eventName = RootNodeTransformer::transform($rootName);
+        $config = (new Serializer())->findConfigByRootname($rootName);
+
+        if ($config === null) {
+            throw new Office365Exception('Could not find matching config');
+        }
+
+        if ($config->getClassName() === null) {
             throw new Office365Exception('Could not create entity from received XML');
         }
 
-        $entity = EntityHelper::deserializeXml($className, $xml);
+        $entity = $config->getReferenceNode() !== null
+            ? EntityHelper::deserializeArray(
+                $config->getClassName(),
+                XmlHelper::fetchChildNodes($config->getReferenceNode(), $simpleXml)
+            )
+            : EntityHelper::deserializeXml($config->getClassName(), $xml)
+        ;
 
         $this->dispatch($eventName, $entity);
 

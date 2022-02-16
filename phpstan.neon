@@ -32,3 +32,6 @@ parameters:
         -
             message: "#^Property SandwaveIo\\\\Office365\\\\Response\\\\[a-zA-Z0-9\\]+:\\:\\$[a-zA-Z0-9]+ is never written, only read\\.$#"
             path: src/Response/*
+
+        # Non type hinted property fetching
+        - '#Variable property access on SimpleXMLElement.#'

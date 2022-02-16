@@ -68,4 +68,19 @@ final class XmlHelper
 
         return $simpleXmlElement->saveXML();
     }
+
+    /**
+     * @param string            $node
+     * @param \SimpleXMLElement $xml
+     *
+     * @return array<string>
+     */
+    public static function fetchChildNodes(string $node, \SimpleXMLElement $xml): array
+    {
+        if (property_exists($xml, $node)) {
+            return (array) $xml->$node;
+        }
+
+        return [];
+    }
 }

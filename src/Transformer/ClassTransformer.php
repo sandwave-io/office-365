@@ -9,7 +9,13 @@ final class ClassTransformer
     public static function transform(string $rootNode): string
     {
         $serializer = new Serializer();
-        $className = $serializer->findClassByRootname($rootNode);
+        $config = $serializer->findConfigByRootname($rootNode);
+
+        if ($config === null) {
+            return '';
+        }
+
+        $className = $config->getClassName();
 
         if ($className !== null) {
             return $className;
