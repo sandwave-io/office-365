@@ -70,8 +70,9 @@ final class XmlHelper
     }
 
     /**
-     * @param string $node
+     * @param string            $node
      * @param \SimpleXMLElement $xml
+     *
      * @return array<string>
      */
     public static function fetchChildNodes(string $node, \SimpleXMLElement $xml): array

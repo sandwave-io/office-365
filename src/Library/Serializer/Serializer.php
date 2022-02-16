@@ -59,7 +59,6 @@ final class Serializer
                 $file = $this->meta['entity']->dir . '/' . $entry;
 
                 if (is_file($file)) {
-
                     $meta = Yaml::parseFile($file);
                     $className = array_key_first($meta);
 

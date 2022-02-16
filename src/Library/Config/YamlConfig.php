@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 namespace SandwaveIo\Office365\Library\Config;
 
@@ -11,6 +11,7 @@ final class YamlConfig
 
     /**
      * YamlConfig constructor.
+     *
      * @param array<string, array<string>> $yaml
      */
     public function __construct(array $yaml)

@@ -17,7 +17,6 @@ final class ResponseErrorTransformer
     public static function hasErrorState(\SimpleXMLElement $xml): bool
     {
         if (property_exists($xml, 'State')) {
-
             if ((string) $xml->State->Code === '0') {
                 $xml->State->Code = 'success';
             }

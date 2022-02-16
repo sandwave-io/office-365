@@ -78,7 +78,7 @@ final class Webhook
             ? EntityHelper::deserializeArray(
                 $config->getClassName(),
                 XmlHelper::fetchChildNodes($config->getReferenceNode(), $simpleXml)
-              )
+            )
             : EntityHelper::deserializeXml($config->getClassName(), $xml)
         ;
 
