@@ -2,16 +2,16 @@
 
 namespace SandwaveIo\Office365\Library\Config;
 
-class YamlConfig
+final class YamlConfig
 {
     /**
-     * @var array<array>
+     * @var array<string, array>
      */
     private array $yaml;
 
     /**
      * YamlConfig constructor.
-     * @param array<array> $yaml
+     * @param array<string, array> $yaml
      */
     public function __construct(array $yaml)
     {
@@ -23,8 +23,9 @@ class YamlConfig
         $className = array_key_first($this->yaml);
 
         if ($className !== null) {
-            return (string) $className;
+            return $className;
         }
+
         return null;
     }
 

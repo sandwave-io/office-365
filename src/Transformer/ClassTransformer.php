@@ -10,7 +10,12 @@ final class ClassTransformer
     {
         $serializer = new Serializer();
         $config = $serializer->findConfigByRootname($rootNode);
-        $className = $config->getClassName($config);
+
+        if ($config === null) {
+            return '';
+        }
+
+        $className = $config->getClassName();
 
         if ($className !== null) {
             return $className;
