@@ -78,7 +78,7 @@ final class XmlHelper
     public static function fetchChildNodes(string $node, \SimpleXMLElement $xml): array
     {
         if (property_exists($xml, $node)) {
-            return $xml->$node;
+            return (array) $xml->$node;
         }
 
         return [];
