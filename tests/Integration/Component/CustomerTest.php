@@ -15,7 +15,7 @@ final class CustomerTest extends TestCase
     /**
      * @test
      */
-    public function customerCreate(): void
+    public function CustomerCreateV3(): void
     {
         $mockHandler = new MockHandler(
             [new Response(200, [], (string) file_get_contents(__DIR__ . '/../Data/Response/NinaResponse_Success.xml'))]

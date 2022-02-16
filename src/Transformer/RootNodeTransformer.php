@@ -10,6 +10,7 @@ final class RootNodeTransformer
     public static function transform(string $rootNode): string
     {
         switch ($rootNode) {
+            case RequestAction::NEW_CUSTOMER_RESPONSE_V3:
             case RequestAction::NEW_CUSTOMER_REQUEST_V3:
                 return Event::CUSTOMER_CREATE;
 

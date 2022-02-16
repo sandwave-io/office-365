@@ -6,6 +6,8 @@ final class RequestAction
 {
     const NEW_CUSTOMER_REQUEST_V3 = 'NewCustomerRequest_V3';
 
+    const NEW_CUSTOMER_RESPONSE_V3 = 'NewCustomerResponse_V3';
+
     const MODIFY_CUSTOMER_REQUEST_V3 = 'ModifyCustomerRequest_V3';
 
     const NEW_CLOUD_LICENSE_ORDER_REQUEST_V2 = 'NewCloudLicenseOrderRequest_V2';

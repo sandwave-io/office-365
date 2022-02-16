@@ -5,6 +5,7 @@ namespace SandwaveIo\Office365\Library\Serializer;
 use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\SerializerInterface;
 use SandwaveIo\Office365\Exception\Office365Exception;
+use SandwaveIo\Office365\Library\Config\YamlConfig;
 use Symfony\Component\Yaml\Yaml;
 
 final class Serializer
@@ -49,7 +50,7 @@ final class Serializer
         return $meta[array_key_first($meta)]['xml_root_name'];
     }
 
-    public function findClassByRootname(string $rootNode): ?string
+    public function findConfigByRootname(string $rootNode): ?YamlConfig
     {
         $configDirectory = opendir($this->meta['entity']->dir);
 
@@ -58,11 +59,12 @@ final class Serializer
                 $file = $this->meta['entity']->dir . '/' . $entry;
 
                 if (is_file($file)) {
-                    $meta = Yaml::parseFile($file);
 
+                    $meta = Yaml::parseFile($file);
                     $className = array_key_first($meta);
+
                     if (array_key_exists('xml_root_name', $meta[$className]) && $rootNode === $meta[$className]['xml_root_name']) {
-                        return $className;
+                        return new YamlConfig($meta);
                     }
                 }
             }

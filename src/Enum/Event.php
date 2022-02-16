@@ -17,4 +17,6 @@ final class Event
     const ORDER_MODIFY_QUANTITY = 'order_modify_quantity';
 
     const CALLBACK_ERROR = 'callback_error';
+
+    const ROOT_NODE_ERROR = 'root_node_error';
 }

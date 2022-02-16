@@ -51,7 +51,7 @@ final class CustomerTest extends TestCase
     /**
      * @test
      */
-    public function callbackCustomerCreate(): void
+    public function callbackCustomerCreateV3(): void
     {
         $mockHandler = new MockHandler(
             [new Response(200, [], (string) file_get_contents(__DIR__ . '/../Data/Request/NewCustomerRequest.xml'))]
@@ -63,8 +63,20 @@ final class CustomerTest extends TestCase
         $client->webhook->addEventSubscriber(Event::CUSTOMER_CREATE, new class() implements CustomerObserverInterface {
             public function execute(Customer $customer): void
             {
-                Assert::assertSame('Naam Klant', $customer->getName());
+                Assert::assertSame('CID1323371', $customer->getCustomerId());
+                Assert::assertSame('Sandwave test', $customer->getName());
                 Assert::assertSame('StraatNaam', $customer->getStreet());
+                Assert::assertSame(38, $customer->getHouseNr());
+                Assert::assertSame('1234AB', $customer->getZipCode());
+                Assert::assertSame('Amsterdam', $customer->getCity());
+                Assert::assertSame('NLD', $customer->getCountryCode());
+                Assert::assertSame('0612345678', $customer->getPhone1());
+                Assert::assertSame('klant@email.nl', $customer->getEmail());
+                Assert::assertSame('CV', $customer->getLegalStatus());
+
+                Assert::assertNull($customer->getHouseNrExtension());
+                Assert::assertNull($customer->getPhone2());
+
 
                 if ($customer->getHeader() !== null) {
                     Assert::assertSame('21139', $customer->getHeader()->getPartnerReference());
@@ -73,7 +85,7 @@ final class CustomerTest extends TestCase
         });
 
         $client->webhook->process(
-            (string) file_get_contents(__DIR__ . '/../Data/Request/NewCustomerRequest.xml')
+            (string) file_get_contents(__DIR__ . '/../Data/Response/NewCustomerResponse_V3.xml')
         );
     }
 
