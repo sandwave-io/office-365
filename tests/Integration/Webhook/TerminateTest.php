@@ -36,7 +36,7 @@ final class TerminateTest extends TestCase
     /**
      * @test
      */
-    public function callbackTerminateCreate(): void
+    public function callbackTerminateSuccess(): void
     {
         $mockHandler = new MockHandler(
             [new Response(200, [], (string) file_get_contents(__DIR__ . '/../Data/Request/TerminateRequest.xml'))]
@@ -48,18 +48,17 @@ final class TerminateTest extends TestCase
         $client->webhook->addEventSubscriber(Event::TERMINATE_ORDER, new class() implements TerminateObserverInterface {
             public function execute(Terminate $terminate): void
             {
-                Assert::assertSame('OID330', $terminate->getOrderId());
-                Assert::assertTrue($terminate->getTerminateAsSoonAsPossible());
-                Assert::assertSame('2014-06-20', $terminate->getDesiredTerminateDate()->format('Y-m-d'));
+                Assert::assertSame('13608704', $terminate->getOrderId());
+                Assert::assertNotNull($terminate->getHeader());
 
                 if ($terminate->getHeader() !== null) {
-                    Assert::assertSame('21139', $terminate->getHeader()->getPartnerReference());
+                    Assert::assertSame('123456', $terminate->getHeader()->getPartnerReference());
                 }
             }
         });
 
         $client->webhook->process(
-            (string) file_get_contents(__DIR__ . '/../Data/Request/TerminateRequest.xml')
+            (string) file_get_contents(__DIR__ . '/../Data/Response/TerminateOrderResponse.xml')
         );
     }
 

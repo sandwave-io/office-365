@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TerminateOrderResponse_V1>
+    <Header>
+        <PartnerReference>123456</PartnerReference>
+        <DateCreated>2022-12-13T12:12:12</DateCreated>
+    </Header>
+    <State>
+        <Code>0</Code>
+        <Message></Message>
+        <Comments>
+            <string></string>
+        </Comments>
+    </State>
+    <OrderId>13608704</OrderId>
+    <PlanDate>2022-12-13T12:12:12</PlanDate>
+</TerminateOrderResponse_V1>
