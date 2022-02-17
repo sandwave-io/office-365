@@ -77,10 +77,17 @@ final class XmlHelper
      */
     public static function fetchChildNodes(string $node, \SimpleXMLElement $xml): array
     {
+        $data = [];
+
         if (property_exists($xml, $node)) {
-            return (array) $xml->$node;
+            $data = (array) $xml->$node;
         }
 
-        return [];
+        if (property_exists($xml, 'Header')) {
+            $data['Header'] = (array) $xml->Header;
+            $data['Header']['DateCreated'] = (new \DateTime($data['Header']['DateCreated']))->format('Y-m-d\TH:i:s');
+        }
+
+        return $data;
     }
 }
