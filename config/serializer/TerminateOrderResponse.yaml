@@ -1,0 +1,7 @@
+SandwaveIo\Office365\Entity\Terminate:
+
+  exclusion_policy: ALL
+
+  xml_root_name: TerminateOrderResponse_V1
+
+  xml_data_node: TerminateOrderResponse_V1
