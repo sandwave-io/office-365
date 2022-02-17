@@ -1,0 +1,7 @@
+SandwaveIo\Office365\Entity\Customer:
+
+  exclusion_policy: ALL
+
+  xml_root_name: ModifyCustomerResponse_V3
+
+  xml_data_node: CustomerData
