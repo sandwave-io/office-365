@@ -78,7 +78,7 @@ final class CustomerTest extends TestCase
                 Assert::assertNull($customer->getPhone2());
 
                 if ($customer->getHeader() !== null) {
-                    Assert::assertSame('21139', $customer->getHeader()->getPartnerReference());
+                    Assert::assertSame('134534659043869034809635435', $customer->getHeader()->getPartnerReference());
                 }
             }
         });
