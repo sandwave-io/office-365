@@ -55,7 +55,7 @@ final class CustomerTest extends TestCase
     /**
      * @test
      */
-    public function customerModify(): void
+    public function customerModifySuccess(): void
     {
         $mockHandler = new MockHandler(
             [new Response(200, [], (string) file_get_contents(__DIR__ . '/../Data/Response/NinaResponse_Success.xml'))]
@@ -65,8 +65,8 @@ final class CustomerTest extends TestCase
         $officeClient = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
 
         $customerResponse = $officeClient->customer->modify(
-            'CID1322912',
-            'Naam',
+            'CID1322911',
+            'Sandwave test',
             'StraatNaam',
             38,
             '',

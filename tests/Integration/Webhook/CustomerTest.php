@@ -160,8 +160,9 @@ final class CustomerTest extends TestCase
         $client->webhook->addEventSubscriber(Event::CUSTOMER_MODIFY, new class() implements CustomerObserverInterface {
             public function execute(Customer $customer): void
             {
-                Assert::assertSame('Naam', $customer->getName());
-                Assert::assertSame('Changed street', $customer->getStreet());
+                Assert::assertSame('Sandwave test', $customer->getName());
+                Assert::assertSame('CID1322911', $customer->getCustomerId());
+                Assert::assertNotNull($customer->getHeader());
 
                 if ($customer->getHeader() !== null) {
                     Assert::assertSame('134534659043869034809635435', $customer->getHeader()->getPartnerReference());
@@ -170,7 +171,7 @@ final class CustomerTest extends TestCase
         });
 
         $client->webhook->process(
-            (string) file_get_contents(__DIR__ . '/../Data/Request/ModifyCustomerRequest.xml')
+            (string) file_get_contents(__DIR__ . '/../Data/Response/ModifyCustomerResponse.xml')
         );
     }
 

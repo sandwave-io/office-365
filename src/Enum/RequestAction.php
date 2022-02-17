@@ -10,6 +10,8 @@ final class RequestAction
 
     const MODIFY_CUSTOMER_REQUEST_V3 = 'ModifyCustomerRequest_V3';
 
+    const MODIFY_CUSTOMER_RESPONSE_V3 = 'ModifyCustomerResponse_V3';
+
     const NEW_CLOUD_LICENSE_ORDER_REQUEST_V2 = 'NewCloudLicenseOrderRequest_V2';
 
     const NEW_CLOUD_LICENSE_ADDON_ORDER_REQUEST_V1 = 'NewCloudLicenseAddOnOrderRequest_V1';

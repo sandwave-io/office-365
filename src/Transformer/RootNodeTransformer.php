@@ -15,6 +15,7 @@ final class RootNodeTransformer
                 return Event::CUSTOMER_CREATE;
 
             case RequestAction::MODIFY_CUSTOMER_REQUEST_V3:
+            case RequestAction::MODIFY_CUSTOMER_RESPONSE_V3:
                 return Event::CUSTOMER_MODIFY;
 
             case RequestAction::NEW_CLOUD_LICENSE_ORDER_REQUEST_V2:
