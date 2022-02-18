@@ -25,6 +25,7 @@ final class CloudLicense extends AbstractComponent
         int $quantity,
         string $partnerReference = ''
     ): QueuedResponse {
+        /** @var License $license */
         $license = EntityHelper::deserialize(License::class, [
             'CustomerId' => $customerId,
             'ProductCode' => $productCode,
@@ -35,7 +36,7 @@ final class CloudLicense extends AbstractComponent
         $license->setCloudTenant($tenant);
 
         if ($partnerReference !== '') {
-            $license->setPartnerReference(new PartnerReferenceHeader($partnerReference));
+            $license->setPartnerReferenceHeader(new PartnerReferenceHeader($partnerReference));
         }
 
         try {
