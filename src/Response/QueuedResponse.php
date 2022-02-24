@@ -16,9 +16,9 @@ final class QueuedResponse
     private array $errorDetails = [];
 
     /**
-     * @param bool $success
-     * @param int $errorCode
-     * @param string|null $errorMessage
+     * @param bool               $success
+     * @param int                $errorCode
+     * @param string|null        $errorMessage
      * @param array<int, string> $errorDetails
      */
     public function __construct(bool $success, int $errorCode, ?string $errorMessage = null, array $errorDetails = [])
