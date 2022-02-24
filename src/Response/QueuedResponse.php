@@ -10,11 +10,23 @@ final class QueuedResponse
 
     private ?string $errorMessage = null;
 
-    public function __construct(bool $success, int $errorCode, ?string $errorMessage = null)
+    /**
+     * @var array<int, string>
+     */
+    private array $errorDetails = [];
+
+    /**
+     * @param bool $success
+     * @param int $errorCode
+     * @param string|null $errorMessage
+     * @param array<int, string> $errorDetails
+     */
+    public function __construct(bool $success, int $errorCode, ?string $errorMessage = null, array $errorDetails = [])
     {
         $this->success = $success;
         $this->errorCode = $errorCode;
         $this->errorMessage = $errorMessage;
+        $this->errorDetails = $errorDetails;
     }
 
     public function isSuccess(): bool
@@ -30,5 +42,13 @@ final class QueuedResponse
     public function getErrorCode(): int
     {
         return $this->errorCode;
+    }
+
+    /**
+     * @return array<int, string>
+     */
+    public function getErrorDetails(): array
+    {
+        return $this->errorDetails;
     }
 }
