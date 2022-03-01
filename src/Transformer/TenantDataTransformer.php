@@ -7,7 +7,7 @@ use SandwaveIo\Office365\Entity\AgreementContact;
 final class TenantDataTransformer
 {
     /**
-     * @return array<string, string|null>
+     * @return array<string, string|AgreementContact|null>
      */
     public static function transform(
         string $name,

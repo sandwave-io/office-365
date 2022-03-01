@@ -16,7 +16,7 @@ final class CloudLicense implements EntityInterface
 
     private int $quantity;
 
-    public function getCloudTenant(): CloudTenant
+    public function getCloudTenant(): ?CloudTenant
     {
         return $this->tenant;
     }
