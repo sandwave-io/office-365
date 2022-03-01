@@ -75,6 +75,8 @@ final class Tenant extends AbstractComponent
     }
 
     /**
+     * @param array<string> $argeementContact
+     *
      * @throws Office365Exception
      */
     public function create(
@@ -82,6 +84,7 @@ final class Tenant extends AbstractComponent
         string $firstname,
         string $lastname,
         string $email,
+        array $argeementContact,
         ?string $tenantId = null
     ): CloudTenant {
         $tenant = EntityHelper::deserialize(CloudTenant::class, TenantDataTransformer::transform(...func_get_args()));

@@ -28,23 +28,22 @@ final class CloudLicenseOrderTest extends TestCase
             'test.onmicrosoft.com',
             'Sandwave',
             'Test',
-            'john@doe.com'
-        );
-        $contact = $officeClient->contact->agreement->create(
-            'sandwave test',
-            'john',
-            'doe',
             'john@doe.com',
-            '12345',
-            new \DateTime()
+            [
+                'firstname' => 'john',
+                'lastname' => 'doe',
+                'email' => 'john@doe.com',
+                'phoneNumber' => '12345',
+                'agreed' => (new \DateTime())->format('Y-m-d'),
+            ]
         );
 
         $customerResponse = $officeClient->order->cloudLicense->create(
-            $tenant,
-            $contact,
             '507201',
             '120A00064B',
-            1
+            1,
+            '',
+            $tenant
         );
 
         Assert::assertInstanceOf(QueuedResponse::class, $customerResponse);
