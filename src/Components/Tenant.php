@@ -2,6 +2,7 @@
 
 namespace SandwaveIo\Office365\Components;
 
+use SandwaveIo\Office365\Entity\AgreementContact;
 use SandwaveIo\Office365\Entity\CloudTenant;
 use SandwaveIo\Office365\Entity\CloudTenantRequest;
 use SandwaveIo\Office365\Entity\Tenant as TenantEntity;
@@ -82,6 +83,7 @@ final class Tenant extends AbstractComponent
         string $firstname,
         string $lastname,
         string $email,
+        AgreementContact $contact,
         ?string $tenantId = null
     ): CloudTenant {
         $tenant = EntityHelper::deserialize(CloudTenant::class, TenantDataTransformer::transform(...func_get_args()));

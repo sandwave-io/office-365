@@ -3,7 +3,6 @@
 namespace SandwaveIo\Office365\Components\Order;
 
 use SandwaveIo\Office365\Components\AbstractComponent;
-use SandwaveIo\Office365\Entity\AgreementContact;
 use SandwaveIo\Office365\Entity\CloudLicense as License;
 use SandwaveIo\Office365\Entity\CloudTenant;
 use SandwaveIo\Office365\Entity\Header\PartnerReferenceHeader;
@@ -18,12 +17,11 @@ final class CloudLicense extends AbstractComponent
      * @throws Office365Exception
      */
     public function create(
-        CloudTenant $tenant,
-        AgreementContact $contact,
         string $customerId,
         string $productCode,
         int $quantity,
-        string $partnerReference = ''
+        string $partnerReference = '',
+        CloudTenant $tenant = null
     ): QueuedResponse {
         /** @var License $license */
         $license = EntityHelper::deserialize(License::class, [
@@ -32,8 +30,9 @@ final class CloudLicense extends AbstractComponent
             'Quantity' => $quantity,
         ]);
 
-        $tenant->setAgreementContact($contact);
-        $license->setCloudTenant($tenant);
+        if ($tenant !== null) {
+            $license->setCloudTenant($tenant);
+        }
 
         if ($partnerReference !== '') {
             $license->setPartnerReferenceHeader(new PartnerReferenceHeader($partnerReference));
