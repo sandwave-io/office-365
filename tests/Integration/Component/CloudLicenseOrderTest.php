@@ -41,7 +41,6 @@ final class CloudLicenseOrderTest extends TestCase
             $contact,
         );
 
-
         $customerResponse = $officeClient->order->cloudLicense->create(
             '507201',
             '120A00064B',
