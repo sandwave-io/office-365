@@ -6,6 +6,7 @@ final class TenantDataTransformer
 {
     /**
      * @param array<string> $contact
+     *
      * @return array<string, array<string,string>|string|null>
      */
     public static function transform(

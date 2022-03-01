@@ -34,7 +34,7 @@ final class CloudLicenseOrderTest extends TestCase
                 'lastname' => 'doe',
                 'email' => 'john@doe.com',
                 'phoneNumber' => '12345',
-                'agreed' => (new \DateTime())->format('Y-m-d')
+                'agreed' => (new \DateTime())->format('Y-m-d'),
             ]
         );
 

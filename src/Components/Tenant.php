@@ -2,7 +2,6 @@
 
 namespace SandwaveIo\Office365\Components;
 
-use SandwaveIo\Office365\Entity\AgreementContact;
 use SandwaveIo\Office365\Entity\CloudTenant;
 use SandwaveIo\Office365\Entity\CloudTenantRequest;
 use SandwaveIo\Office365\Entity\Tenant as TenantEntity;
@@ -76,8 +75,9 @@ final class Tenant extends AbstractComponent
     }
 
     /**
-     * @throws Office365Exception
      * @param array<string> $argeementContact
+     *
+     * @throws Office365Exception
      */
     public function create(
         string $name,
