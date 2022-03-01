@@ -24,21 +24,18 @@ final class CloudLicenseOrderTest extends TestCase
         $stack = HandlerStack::create($mockHandler);
         $officeClient = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
 
-        $contact = $officeClient->contact->agreement->create(
-            'sandwave test',
-            'john',
-            'doe',
-            'john@doe.com',
-            '12345',
-            new \DateTime()
-        );
-
         $tenant = $officeClient->tenant->create(
             'test.onmicrosoft.com',
             'Sandwave',
             'Test',
             'john@doe.com',
-            $contact,
+            [
+                'firstname' => 'john',
+                'lastname' => 'doe',
+                'email' => 'john@doe.com',
+                'phoneNumber' => '12345',
+                'agreed' => (new \DateTime())->format('Y-m-d')
+            ]
         );
 
         $customerResponse = $officeClient->order->cloudLicense->create(

@@ -2,19 +2,18 @@
 
 namespace SandwaveIo\Office365\Transformer;
 
-use SandwaveIo\Office365\Entity\AgreementContact;
-
 final class TenantDataTransformer
 {
     /**
-     * @return array<string, string|AgreementContact|null>
+     * @param array<string> $contact
+     * @return array<string, array<string,string>|string|null>
      */
     public static function transform(
         string $name,
         string $firstname,
         string $lastname,
         string $email,
-        AgreementContact $contact,
+        array $contact,
         string $tenantId = null
     ): array {
         return [
@@ -23,7 +22,13 @@ final class TenantDataTransformer
             'FirstName' => $firstname,
             'LastName' => $lastname,
             'EmailAddress' => $email,
-            'CustomerAgreementContact' => $contact,
+            'CustomerAgreementContact' => [
+                'FirstName' => $contact['firstname'],
+                'LastName' => $contact['lastname'],
+                'EmailAddress' => $contact['email'],
+                'PhoneNumber' => $contact['phoneNumber'],
+                'DateAgreed' => $contact['agreed'],
+            ],
         ];
     }
 }
