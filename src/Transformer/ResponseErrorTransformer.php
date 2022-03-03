@@ -49,7 +49,7 @@ final class ResponseErrorTransformer
 
         if ($xmlMessages !== null) {
             foreach ($xmlMessages as $message) {
-                $messages[] = trim((string)$message);
+                $messages[] = trim((string) $message);
             }
         }
 
