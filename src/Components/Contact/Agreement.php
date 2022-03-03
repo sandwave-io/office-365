@@ -20,12 +20,12 @@ final class Agreement extends AbstractComponent
         string $phoneNumber,
         \DateTime $agreed
     ): AgreementContact {
-        $agreement = EntityHelper::deserialize(AgreementContact::class, AgreementContactDataTransformer::transform(...func_get_args()));
+        $agreementContact = EntityHelper::deserialize(AgreementContact::class, AgreementContactDataTransformer::transform(...func_get_args()));
 
-        if ($agreement === null) {
+        if ($agreementContact === null) {
             throw new Office365Exception(self::class . ':create Tenant could not be created');
         }
 
-        return $agreement;
+        return $agreementContact;
     }
 }
