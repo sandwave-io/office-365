@@ -39,7 +39,7 @@ final class ResponseErrorTransformer
     public static function getMessages(\SimpleXMLElement $xml): array
     {
         $messages = [];
-        $xmlMessages = [];
+        $xmlMessages = null;
 
         if (property_exists($xml, 'Status')) {
             $xmlMessages = $xml->Status->Messages->string;
@@ -47,8 +47,10 @@ final class ResponseErrorTransformer
             $xmlMessages = $xml->State->Comments->string;
         }
 
-        foreach ($xmlMessages as $message) {
-            $messages[] = trim((string) $message);
+        if ($xmlMessages !== null) {
+            foreach ($xmlMessages as $message) {
+                $messages[] = trim((string) $message);
+            }
         }
 
         return $messages;
