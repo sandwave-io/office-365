@@ -8,7 +8,6 @@ final class AgreementContactDataTransformer
      * @return string[]
      */
     public static function transform(
-        string $name,
         string $firstname,
         string $lastname,
         string $email,
