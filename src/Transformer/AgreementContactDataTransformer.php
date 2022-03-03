@@ -16,7 +16,6 @@ final class AgreementContactDataTransformer
         \DateTime $agreed
     ): array {
         return [
-            'TenantName' => $name,
             'FirstName' => $firstname,
             'LastName' => $lastname,
             'EmailAddress' => $email,
