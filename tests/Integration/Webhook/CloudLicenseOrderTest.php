@@ -82,4 +82,29 @@ final class CloudLicenseOrderTest extends TestCase
             (string) file_get_contents(__DIR__ . '/../Data/Response/OrderDeclined.xml')
         );
     }
+
+    /**
+     * @test
+     */
+    public function callbackOrderActive(): void
+    {
+        $mockHandler = new MockHandler(
+            [new Response(200, [], (string) file_get_contents(__DIR__ . '/../Data/Request/NewCloudLicenseOrderRequest.xml'))]
+        );
+
+        $stack = HandlerStack::create($mockHandler);
+        $client = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
+
+        $client->webhook->addEventSubscriber(Event::CLOUD_LICENSE_ORDER_CREATE, new class() implements CloudLicenseObserverInterface {
+            public function execute(CloudLicense $cloudLicense, string $statusCode): void
+            {
+                Assert::assertSame(10233813, $cloudLicense->getOrderId());
+                Assert::assertSame('active', $cloudLicense->getStatus());
+            }
+        });
+
+        $client->webhook->process(
+            (string) file_get_contents(__DIR__ . '/../Data/Response/CloudLicenseActiveResponse.xml')
+        );
+    }
 }

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<NewCloudLicenseOrderResponse_V2>
+    <Header>
+        <DateCreated>2022-03-01T15:29:15.9561288</DateCreated>
+    </Header>
+    <Status>
+        <Code>Active</Code>
+    </Status>
+    <CloudLicense>
+        <OrderId>10233813</OrderId>
+        <Tenant>
+            <TenantName>testwillem1.onmicrosoft.com</TenantName>
+            <TenantId>19971729-e2bb-4000-ad3c-7a22f3db023b</TenantId>
+            <FirstName>Sandwave</FirstName>
+            <LastName>Test</LastName>
+            <EmailAddress>john@doe.com</EmailAddress>
+            <CustomerAgreementContact>
+                <FirstName>john</FirstName>
+                <LastName>doe</LastName>
+                <EmailAddress>john@doe.com</EmailAddress>
+                <PhoneNumber>12345</PhoneNumber>
+                <DateAgreed>2022-03-01</DateAgreed>
+            </CustomerAgreementContact>
+        </Tenant>
+        <LicenseAddOns />
+        <CustomerId>507201</CustomerId>
+        <ProductCode>120A00001B</ProductCode>
+        <Quantity>2</Quantity>
+    </CloudLicense>
+</NewCloudLicenseOrderResponse_V2>

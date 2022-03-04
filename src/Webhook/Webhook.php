@@ -33,7 +33,7 @@ final class Webhook
         $this->subjects->attach($type, $callback);
     }
 
-    public function dispatch(string $event, EntityInterface $entity = null): void
+    public function dispatch(string $event, string $statusCode, EntityInterface $entity = null): void
     {
         $subject = $this->subjects->getSubject($event, $entity);
 
@@ -82,7 +82,7 @@ final class Webhook
             : EntityHelper::deserializeXml($config->getClassName(), $xml)
         ;
 
-        $this->dispatch($eventName, $entity);
+        $this->dispatch($eventName, ResponseErrorTransformer::getStatusCode($simpleXml), $entity);
 
         return $entity;
     }

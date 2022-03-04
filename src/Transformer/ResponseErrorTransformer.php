@@ -6,6 +6,13 @@ use SandwaveIo\Office365\Entity\Error;
 
 final class ResponseErrorTransformer
 {
+    /**
+     * @var array<string> $successStatuses
+     */
+    private static array $successStatuses = [
+        'success', 'active', '0'
+    ];
+
     public static function transformXml(\SimpleXMLElement $xml): Error
     {
         $error = new Error();
@@ -16,19 +23,24 @@ final class ResponseErrorTransformer
 
     public static function hasErrorState(\SimpleXMLElement $xml): bool
     {
-        if (property_exists($xml, 'State')) {
-            if ((string) $xml->State->Code === '0') {
-                $xml->State->Code = 'success';
-            }
-
-            return strtolower((string) $xml->State->Code) !== 'success';
-        }
-
-        if (property_exists($xml, 'Status')) {
-            return strtolower((string) $xml->Status->Code) !== 'success';
+        if (self::getStatusCode($xml) !== '') {
+            return !in_array(strtolower((string) $xml->Status->Code), self::$successStatuses, true);
         }
 
         return false;
+    }
+
+    public static function getStatusCode(\SimpleXMLElement $xml): string
+    {
+        if (property_exists($xml, 'State')) {
+            return strtolower((string) $xml->State->Code);
+        }
+
+        if (property_exists($xml, 'Status')) {
+            return strtolower((string) $xml->Status->Code);
+        }
+
+        return '';
     }
 
     /**
