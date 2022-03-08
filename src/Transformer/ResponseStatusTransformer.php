@@ -46,7 +46,7 @@ final class ResponseStatusTransformer
         }
 
         foreach ($xmlMessages as $message) {
-            $messages[] = trim((string)$message);
+            $messages[] = trim((string) $message);
         }
 
         return $messages;

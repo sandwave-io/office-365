@@ -71,6 +71,7 @@ final class XmlHelper
 
     /**
      * @param array<mixed> $array
+     *
      * @return array<mixed>
      */
     public static function recursiveArray(array $array): array

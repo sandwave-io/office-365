@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 namespace SandwaveIo\Office365\Library\Observer\Status;
 
@@ -7,7 +7,7 @@ final class Status
     private string $statusCode;
 
     /**
-     * @var array<string> $messages
+     * @var array<string>
      */
     private array $messages;
 
