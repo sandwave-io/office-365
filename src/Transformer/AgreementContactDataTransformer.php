@@ -8,7 +8,6 @@ final class AgreementContactDataTransformer
      * @return string[]
      */
     public static function transform(
-        string $name,
         string $firstname,
         string $lastname,
         string $email,
@@ -16,7 +15,6 @@ final class AgreementContactDataTransformer
         \DateTime $agreed
     ): array {
         return [
-            'TenantName' => $name,
             'FirstName' => $firstname,
             'LastName' => $lastname,
             'EmailAddress' => $email,

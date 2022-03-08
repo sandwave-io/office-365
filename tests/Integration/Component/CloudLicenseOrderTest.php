@@ -31,7 +31,6 @@ final class CloudLicenseOrderTest extends TestCase
             'john@doe.com'
         );
         $contact = $officeClient->contact->agreement->create(
-            'sandwave test',
             'john',
             'doe',
             'john@doe.com',
