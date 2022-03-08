@@ -13,6 +13,7 @@ use SandwaveIo\Office365\Enum\Event;
 use SandwaveIo\Office365\Helper\EntityHelper;
 use SandwaveIo\Office365\Library\Observer\Customer\CustomerObserverInterface;
 use SandwaveIo\Office365\Library\Observer\Error\ErrorObserverInterface;
+use SandwaveIo\Office365\Library\Observer\Status\Status;
 use SandwaveIo\Office365\Office\OfficeClient;
 
 final class CustomerTest extends TestCase
@@ -61,7 +62,7 @@ final class CustomerTest extends TestCase
         $client = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
 
         $client->webhook->addEventSubscriber(Event::CUSTOMER_CREATE, new class() implements CustomerObserverInterface {
-            public function execute(Customer $customer): void
+            public function execute(Customer $customer, Status $status): void
             {
                 Assert::assertSame('CID1323371', $customer->getCustomerId());
                 Assert::assertSame('Sandwave test', $customer->getName());
@@ -158,7 +159,7 @@ final class CustomerTest extends TestCase
         $client = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
 
         $client->webhook->addEventSubscriber(Event::CUSTOMER_MODIFY, new class() implements CustomerObserverInterface {
-            public function execute(Customer $customer): void
+            public function execute(Customer $customer, Status $status): void
             {
                 Assert::assertSame('Sandwave test', $customer->getName());
                 Assert::assertSame('CID1322911', $customer->getCustomerId());

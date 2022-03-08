@@ -3,8 +3,9 @@
 namespace SandwaveIo\Office365\Library\Observer\Customer;
 
 use SandwaveIo\Office365\Entity\Customer;
+use SandwaveIo\Office365\Library\Observer\Status\Status;
 
 interface CustomerObserverInterface
 {
-    public function execute(Customer $customer): void;
+    public function execute(Customer $customer, Status $status): void;
 }

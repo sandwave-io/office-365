@@ -3,13 +3,17 @@
 namespace SandwaveIo\Office365\Library\Observer\Error;
 
 use SandwaveIo\Office365\Entity\Error;
+use SandwaveIo\Office365\Library\Observer\Office365SubjectInterface;
+use SandwaveIo\Office365\Library\Observer\Status\Status;
 use SplObserver;
 
-final class ErrorSubject implements \SplSubject
+final class ErrorSubject implements \SplSubject, Office365SubjectInterface
 {
     private \SplObjectStorage $observers;
 
     private Error $error;
+
+    private ?Status $status = null;
 
     public function __construct()
     {
@@ -42,5 +46,15 @@ final class ErrorSubject implements \SplSubject
     public function getError(): Error
     {
         return $this->error;
+    }
+
+    public function setStatus(Status $status): void
+    {
+        $this->status = $status;
+    }
+
+    public function getStatus(): ?Status
+    {
+        return $this->status;
     }
 }

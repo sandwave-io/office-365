@@ -3,8 +3,9 @@
 namespace SandwaveIo\Office365\Library\Observer\Terminate;
 
 use SandwaveIo\Office365\Entity\Terminate;
+use SandwaveIo\Office365\Library\Observer\Status\Status;
 
 interface TerminateObserverInterface
 {
-    public function execute(Terminate $terminate): void;
+    public function execute(Terminate $terminate, Status $status): void;
 }

@@ -70,6 +70,21 @@ final class XmlHelper
     }
 
     /**
+     * @param array<mixed> $array
+     * @return array<mixed>
+     */
+    public static function recursiveArray(array $array): array
+    {
+        foreach ($array as $key => $node) {
+            if (is_object($node)) {
+                $array[$key] = self::recursiveArray((array) $node);
+            }
+        }
+
+        return $array;
+    }
+
+    /**
      * @param string            $node
      * @param \SimpleXMLElement $xml
      *
@@ -80,7 +95,7 @@ final class XmlHelper
         $data = (array) $xml;
 
         if (property_exists($xml, $node)) {
-            $data = (array) $xml->$node;
+            $data = self::recursiveArray((array) $xml->$node);
         }
 
         if (property_exists($xml, 'Header')) {

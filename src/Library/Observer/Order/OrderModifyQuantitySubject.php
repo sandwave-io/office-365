@@ -3,6 +3,7 @@
 namespace SandwaveIo\Office365\Library\Observer\Order;
 
 use SandwaveIo\Office365\Entity\OrderModifyQuantity;
+use SandwaveIo\Office365\Library\Observer\Status\Status;
 use SplObserver;
 
 final class OrderModifyQuantitySubject implements \SplSubject
@@ -10,6 +11,8 @@ final class OrderModifyQuantitySubject implements \SplSubject
     private \SplObjectStorage $observers;
 
     private OrderModifyQuantity $orderModifyQuantity;
+
+    private ?Status $status = null;
 
     public function __construct()
     {
@@ -42,5 +45,15 @@ final class OrderModifyQuantitySubject implements \SplSubject
     public function getOrderModifyQuantity(): OrderModifyQuantity
     {
         return $this->orderModifyQuantity;
+    }
+
+    public function setStatus(Status $status): void
+    {
+        $this->status = $status;
+    }
+
+    public function getStatus(): ?Status
+    {
+        return $this->status;
     }
 }

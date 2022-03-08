@@ -14,6 +14,8 @@ final class Addon implements EntityInterface
 
     private int $quantity;
 
+    private ?string $licenseKey = null;
+
     public function getHeader(): ?PartnerReferenceHeader
     {
         return $this->header;
@@ -52,5 +54,10 @@ final class Addon implements EntityInterface
     public function setQuantity(int $quantity): void
     {
         $this->quantity = $quantity;
+    }
+
+    public function getLicenseKey(): string
+    {
+        return $this->licenseKey;
     }
 }

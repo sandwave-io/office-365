@@ -13,6 +13,7 @@ use SandwaveIo\Office365\Enum\Event;
 use SandwaveIo\Office365\Helper\EntityHelper;
 use SandwaveIo\Office365\Library\Observer\Addon\AddonObserverInterface;
 use SandwaveIo\Office365\Library\Observer\Error\ErrorObserverInterface;
+use SandwaveIo\Office365\Library\Observer\Status\Status;
 use SandwaveIo\Office365\Office\OfficeClient;
 
 final class CloudLicenseAddonTest extends TestCase
@@ -46,14 +47,19 @@ final class CloudLicenseAddonTest extends TestCase
         $client = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
 
         $client->webhook->addEventSubscriber(Event::CLOUD_LICENSE_ADDON_CREATE, new class() implements AddonObserverInterface {
-            public function execute(Addon $addon): void
+            public function execute(Addon $addon, Status $status): void
             {
+                Assert::assertSame('active', $status->getStatusCode());
+                Assert::assertSame('actived product', $status->getMessages()[0]);
                 Assert::assertSame('sandwave1', $addon->getProductCode());
+                Assert::assertSame(1, $addon->getQuantity());
+                Assert::assertSame(123, $addon->getParentOrderId());
+                Assert::assertSame('ABCDEFGH', $addon->getLicenseKey());
             }
         });
 
         $client->webhook->process(
-            (string) file_get_contents(__DIR__ . '/../Data/Request/AddonRequest.xml')
+            (string) file_get_contents(__DIR__ . '/../Data/Response/AddonResponseSuccess.xml')
         );
     }
 

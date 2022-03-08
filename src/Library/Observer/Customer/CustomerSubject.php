@@ -3,13 +3,17 @@
 namespace SandwaveIo\Office365\Library\Observer\Customer;
 
 use SandwaveIo\Office365\Entity\Customer;
+use SandwaveIo\Office365\Library\Observer\Office365SubjectInterface;
+use SandwaveIo\Office365\Library\Observer\Status\Status;
 use SplObserver;
 
-final class CustomerSubject implements \SplSubject
+final class CustomerSubject implements \SplSubject, Office365SubjectInterface
 {
     private \SplObjectStorage $observers;
 
     private Customer $customer;
+
+    private ?Status $status = null;
 
     public function __construct()
     {
@@ -42,5 +46,15 @@ final class CustomerSubject implements \SplSubject
     public function getCustomer(): Customer
     {
         return $this->customer;
+    }
+
+    public function setStatus(Status $status): void
+    {
+        $this->status = $status;
+    }
+
+    public function getStatus(): ?Status
+    {
+        return $this->status;
     }
 }

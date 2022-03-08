@@ -12,6 +12,7 @@ use SandwaveIo\Office365\Entity\Terminate;
 use SandwaveIo\Office365\Enum\Event;
 use SandwaveIo\Office365\Helper\EntityHelper;
 use SandwaveIo\Office365\Library\Observer\Error\ErrorObserverInterface;
+use SandwaveIo\Office365\Library\Observer\Status\Status;
 use SandwaveIo\Office365\Library\Observer\Terminate\TerminateObserverInterface;
 use SandwaveIo\Office365\Office\OfficeClient;
 
@@ -46,7 +47,7 @@ final class TerminateTest extends TestCase
         $client = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
 
         $client->webhook->addEventSubscriber(Event::TERMINATE_ORDER, new class() implements TerminateObserverInterface {
-            public function execute(Terminate $terminate): void
+            public function execute(Terminate $terminate, Status $status): void
             {
                 Assert::assertSame('13608704', $terminate->getOrderId());
                 Assert::assertNotNull($terminate->getHeader());

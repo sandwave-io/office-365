@@ -3,13 +3,17 @@
 namespace SandwaveIo\Office365\Library\Observer\CloudLicense;
 
 use SandwaveIo\Office365\Entity\CloudLicense;
+use SandwaveIo\Office365\Library\Observer\Office365SubjectInterface;
+use SandwaveIo\Office365\Library\Observer\Status\Status;
 use SplObserver;
 
-final class CloudLicenseSubject implements \SplSubject
+final class CloudLicenseSubject implements \SplSubject, Office365SubjectInterface
 {
     private \SplObjectStorage $observers;
 
     private CloudLicense $license;
+
+    private ?Status $status = null;
 
     public function __construct()
     {
@@ -42,5 +46,15 @@ final class CloudLicenseSubject implements \SplSubject
     public function getCloudLicense(): CloudLicense
     {
         return $this->license;
+    }
+
+    public function setStatus(Status $status): void
+    {
+        $this->status = $status;
+    }
+
+    public function getStatus(): ?Status
+    {
+        return $this->status;
     }
 }
