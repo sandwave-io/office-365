@@ -47,7 +47,7 @@ final class TerminateTest extends TestCase
         $client = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
 
         $client->webhook->addEventSubscriber(Event::TERMINATE_ORDER, new class() implements TerminateObserverInterface {
-            public function execute(Terminate $terminate, Status $status): void
+            public function execute(Terminate $terminate, ?Status $status): void
             {
                 Assert::assertSame('13608704', $terminate->getOrderId());
                 Assert::assertNotNull($terminate->getHeader());

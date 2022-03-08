@@ -56,7 +56,7 @@ final class Addon implements EntityInterface
         $this->quantity = $quantity;
     }
 
-    public function getLicenseKey(): string
+    public function getLicenseKey(): ?string
     {
         return $this->licenseKey;
     }

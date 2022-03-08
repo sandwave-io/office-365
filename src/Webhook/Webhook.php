@@ -38,9 +38,9 @@ final class Webhook
     public function dispatch(string $event, Status $status, EntityInterface $entity = null): void
     {
         $subject = $this->subjects->getSubject($event, $entity);
-        $subject->setStatus($status);
 
         if ($subject !== null) {
+            $subject->setStatus($status);
             $subject->notify();
         }
     }

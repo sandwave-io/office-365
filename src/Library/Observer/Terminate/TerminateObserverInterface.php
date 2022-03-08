@@ -7,5 +7,5 @@ use SandwaveIo\Office365\Library\Observer\Status\Status;
 
 interface TerminateObserverInterface
 {
-    public function execute(Terminate $terminate, Status $status): void;
+    public function execute(Terminate $terminate, ?Status $status): void;
 }

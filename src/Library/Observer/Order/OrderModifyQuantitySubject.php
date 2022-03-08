@@ -3,39 +3,11 @@
 namespace SandwaveIo\Office365\Library\Observer\Order;
 
 use SandwaveIo\Office365\Entity\OrderModifyQuantity;
-use SandwaveIo\Office365\Library\Observer\Status\Status;
-use SplObserver;
+use SandwaveIo\Office365\Library\Observer\Subject\AbstractSubject;
 
-final class OrderModifyQuantitySubject implements \SplSubject
+final class OrderModifyQuantitySubject extends AbstractSubject
 {
-    private \SplObjectStorage $observers;
-
     private OrderModifyQuantity $orderModifyQuantity;
-
-    private ?Status $status = null;
-
-    public function __construct()
-    {
-        $this->observers = new \SplObjectStorage();
-    }
-
-    public function attach(SplObserver $observer): void
-    {
-        $this->observers->attach($observer);
-    }
-
-    public function detach(SplObserver $observer): void
-    {
-        $this->observers->detach($observer);
-    }
-
-    public function notify(): void
-    {
-        foreach ($this->observers as $observer) {
-            /** @var SplObserver $observer */
-            $observer->update($this);
-        }
-    }
 
     public function setOrderModifyQuantity(OrderModifyQuantity $modifyQuantity): void
     {
@@ -45,15 +17,5 @@ final class OrderModifyQuantitySubject implements \SplSubject
     public function getOrderModifyQuantity(): OrderModifyQuantity
     {
         return $this->orderModifyQuantity;
-    }
-
-    public function setStatus(Status $status): void
-    {
-        $this->status = $status;
-    }
-
-    public function getStatus(): ?Status
-    {
-        return $this->status;
     }
 }
