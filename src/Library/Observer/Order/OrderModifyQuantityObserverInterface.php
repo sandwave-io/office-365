@@ -7,5 +7,5 @@ use SandwaveIo\Office365\Library\Observer\Status\Status;
 
 interface OrderModifyQuantityObserverInterface
 {
-    public function execute(OrderModifyQuantity $modification, Status $status): void;
+    public function execute(OrderModifyQuantity $modification, ?Status $status): void;
 }

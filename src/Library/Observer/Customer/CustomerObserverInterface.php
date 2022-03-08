@@ -7,5 +7,5 @@ use SandwaveIo\Office365\Library\Observer\Status\Status;
 
 interface CustomerObserverInterface
 {
-    public function execute(Customer $customer, Status $status): void;
+    public function execute(Customer $customer, ?Status $status): void;
 }

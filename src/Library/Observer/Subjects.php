@@ -138,7 +138,7 @@ final class Subjects
 
             }
 
-            return $this->subject[$event];
+            return $subject;
         }
 
         return null;

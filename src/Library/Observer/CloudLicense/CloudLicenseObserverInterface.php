@@ -7,5 +7,5 @@ use SandwaveIo\Office365\Library\Observer\Status\Status;
 
 interface CloudLicenseObserverInterface
 {
-    public function execute(CloudLicense $customer, Status $statusCode): void;
+    public function execute(CloudLicense $customer, ?Status $statusCode): void;
 }

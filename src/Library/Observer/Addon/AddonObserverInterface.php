@@ -7,5 +7,5 @@ use SandwaveIo\Office365\Library\Observer\Status\Status;
 
 interface AddonObserverInterface
 {
-    public function execute(Addon $addon, Status $statusCode): void;
+    public function execute(Addon $addon, ?Status $statusCode): void;
 }
