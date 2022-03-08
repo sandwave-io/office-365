@@ -47,10 +47,13 @@ final class CloudLicenseAddonTest extends TestCase
         $client = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
 
         $client->webhook->addEventSubscriber(Event::CLOUD_LICENSE_ADDON_CREATE, new class() implements AddonObserverInterface {
-            public function execute(Addon $addon, Status $status): void
+            public function execute(Addon $addon, ?Status $status): void
             {
-                Assert::assertSame('active', $status->getStatusCode());
-                Assert::assertSame('actived product', $status->getMessages()[0]);
+                if ($status !== null) {
+                    Assert::assertSame('active', $status->getStatusCode());
+                    Assert::assertSame('actived product', $status->getMessages()[0]);
+                }
+
                 Assert::assertSame('sandwave1', $addon->getProductCode());
                 Assert::assertSame(1, $addon->getQuantity());
                 Assert::assertSame(123, $addon->getParentOrderId());

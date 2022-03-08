@@ -62,7 +62,7 @@ final class CustomerTest extends TestCase
         $client = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
 
         $client->webhook->addEventSubscriber(Event::CUSTOMER_CREATE, new class() implements CustomerObserverInterface {
-            public function execute(Customer $customer, Status $status): void
+            public function execute(Customer $customer, ?Status $status): void
             {
                 Assert::assertSame('CID1323371', $customer->getCustomerId());
                 Assert::assertSame('Sandwave test', $customer->getName());
@@ -159,7 +159,7 @@ final class CustomerTest extends TestCase
         $client = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
 
         $client->webhook->addEventSubscriber(Event::CUSTOMER_MODIFY, new class() implements CustomerObserverInterface {
-            public function execute(Customer $customer, Status $status): void
+            public function execute(Customer $customer, ?Status $status): void
             {
                 Assert::assertSame('Sandwave test', $customer->getName());
                 Assert::assertSame('CID1322911', $customer->getCustomerId());

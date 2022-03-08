@@ -48,7 +48,7 @@ final class CloudLicenseOrderTest extends TestCase
         $client = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
 
         $client->webhook->addEventSubscriber(Event::CLOUD_LICENSE_ORDER_CREATE, new class() implements CloudLicenseObserverInterface {
-            public function execute(CloudLicense $license, Status $status): void
+            public function execute(CloudLicense $license, ?Status $status): void
             {
                 Assert::assertSame('Sandwave', $license->getCloudTenant()->getFirstName());
                 Assert::assertSame('Test', $license->getCloudTenant()->getLastName());
@@ -59,7 +59,10 @@ final class CloudLicenseOrderTest extends TestCase
                 Assert::assertSame('doe', $license->getCloudTenant()->getAgreementContact()->getLastName());
                 Assert::assertSame('2022-03-01', $license->getCloudTenant()->getAgreementContact()->getAgreed());
                 Assert::assertSame('12345', $license->getCloudTenant()->getAgreementContact()->getPhoneNumber());
-                Assert::assertSame('active', $status->getStatusCode());
+
+                if ($status !== null) {
+                    Assert::assertSame('active', $status->getStatusCode());
+                }
             }
         });
 
@@ -106,7 +109,7 @@ final class CloudLicenseOrderTest extends TestCase
         $client = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
 
         $client->webhook->addEventSubscriber(Event::CLOUD_LICENSE_ORDER_CREATE, new class() implements CloudLicenseObserverInterface {
-            public function execute(CloudLicense $cloudLicense, Status $status): void
+            public function execute(CloudLicense $cloudLicense, ?Status $status): void
             {
                 Assert::assertSame(10233813, $cloudLicense->getOrderId());
                 Assert::assertSame('120A00001B', $cloudLicense->getProductCode());
@@ -121,7 +124,10 @@ final class CloudLicenseOrderTest extends TestCase
                 Assert::assertSame('doe', $cloudLicense->getCloudTenant()->getAgreementContact()->getLastName());
                 Assert::assertSame('12345', $cloudLicense->getCloudTenant()->getAgreementContact()->getPhoneNumber());
                 Assert::assertSame('2022-03-01', $cloudLicense->getCloudTenant()->getAgreementContact()->getAgreed());
-                Assert::assertSame('active', $status->getStatusCode());
+
+                if ($status !== null) {
+                    Assert::assertSame('active', $status->getStatusCode());
+                }
             }
         });
 
