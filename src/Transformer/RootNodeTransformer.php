@@ -30,6 +30,7 @@ final class RootNodeTransformer
             case RequestAction::TERMINATE_ORDER_RESPONSE_V1:
                 return Event::TERMINATE_ORDER;
 
+            case RequestAction::MODIFY_ORDER_QUANTITY_RESPONSE_V1:
             case RequestAction::MODIFY_ORDER_QUANTITY_REQUEST_V1:
                 return Event::ORDER_MODIFY_QUANTITY;
 

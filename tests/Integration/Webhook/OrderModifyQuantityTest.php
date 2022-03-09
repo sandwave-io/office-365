@@ -48,18 +48,20 @@ final class OrderModifyQuantityTest extends TestCase
         $client->webhook->addEventSubscriber(Event::ORDER_MODIFY_QUANTITY, new class() implements OrderModifyQuantityObserverInterface {
             public function execute(OrderModifyQuantity $modifyQuantity, ?Status $status): void
             {
-                Assert::assertSame(4, $modifyQuantity->getQuantity());
-                Assert::assertSame(123, $modifyQuantity->getOrderId());
-                Assert::assertTrue($modifyQuantity->isDelta());
+                Assert::assertSame(10264559, $modifyQuantity->getUpgradeOrderId());
+                Assert::assertSame(10264351, $modifyQuantity->getOrderId());
+                Assert::assertNull($modifyQuantity->isDelta());
+                Assert::assertNull($modifyQuantity->getQuantity());
 
                 if ($modifyQuantity->getHeader() !== null) {
-                    Assert::assertSame('12345', $modifyQuantity->getHeader()->getPartnerReference());
+                    Assert::assertSame('OFFICE365-ID-14775-29241', $modifyQuantity->getHeader()->getPartnerReference());
+                    Assert::assertSame('2022-03-07T12:09:56', $modifyQuantity->getHeader()->getDateCreated()->format('Y-m-d\TH:i:s'));
                 }
             }
         });
 
         $client->webhook->process(
-            (string) file_get_contents(__DIR__ . '/../Data/Request/OrderModifyQuantityRequest.xml')
+            (string) file_get_contents(__DIR__ . '/../Data/Response/ModifyOrderQuantityResponse.xml')
         );
     }
 

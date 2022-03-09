@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<ModifyOrderQuantityResponse_V1>
+    <Header>
+        <PartnerReference>OFFICE365-ID-14775-29241</PartnerReference>
+        <DateCreated>2022-03-07T12:09:56</DateCreated>
+    </Header>
+    <Status>
+        <Code>Modified</Code>
+    </Status>
+    <OrderId>10264351</OrderId>
+    <UpgradeOrderId>10264559</UpgradeOrderId>
+</ModifyOrderQuantityResponse_V1>
