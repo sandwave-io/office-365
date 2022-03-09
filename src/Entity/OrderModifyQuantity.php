@@ -10,9 +10,11 @@ final class OrderModifyQuantity implements EntityInterface
 
     private int $orderId;
 
-    private int $quantity;
+    private ?int $quantity = null;
 
-    private bool $delta;
+    private ?bool $delta = null;
+
+    private ?int $upgradeOrderId = null;
 
     public function getHeader(): ?PartnerReferenceHeader
     {
@@ -24,13 +26,18 @@ final class OrderModifyQuantity implements EntityInterface
         return $this->orderId;
     }
 
-    public function getQuantity(): int
+    public function getQuantity(): ?int
     {
         return $this->quantity;
     }
 
-    public function isDelta(): bool
+    public function isDelta(): ?bool
     {
         return $this->delta;
+    }
+
+    public function getUpgradeOrderId(): ?int
+    {
+        return $this->upgradeOrderId;
     }
 }

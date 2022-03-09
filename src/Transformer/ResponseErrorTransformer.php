@@ -10,7 +10,7 @@ final class ResponseErrorTransformer
      * @var array<string>
      */
     private static array $successStatuses = [
-        'success', 'active', '0', 'accepted',
+        'success', 'active', '0', 'accepted', 'modified',
     ];
 
     public static function transformXml(\SimpleXMLElement $xml): Error

@@ -25,4 +25,6 @@ final class RequestAction
     const TERMINATE_ORDER_RESPONSE_V1 = 'TerminateOrderResponse_V1';
 
     const MODIFY_ORDER_QUANTITY_REQUEST_V1 = 'ModifyOrderQuantityRequest_V1';
+
+    const MODIFY_ORDER_QUANTITY_RESPONSE_V1 = 'ModifyOrderQuantityResponse_V1';
 }
