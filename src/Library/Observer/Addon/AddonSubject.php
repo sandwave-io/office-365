@@ -3,36 +3,11 @@
 namespace SandwaveIo\Office365\Library\Observer\Addon;
 
 use SandwaveIo\Office365\Entity\Addon;
-use SplObserver;
+use SandwaveIo\Office365\Library\Observer\Subject\AbstractSubject;
 
-final class AddonSubject implements \SplSubject
+final class AddonSubject extends AbstractSubject
 {
-    private \SplObjectStorage $observers;
-
     private Addon $addon;
-
-    public function __construct()
-    {
-        $this->observers = new \SplObjectStorage();
-    }
-
-    public function attach(SplObserver $observer): void
-    {
-        $this->observers->attach($observer);
-    }
-
-    public function detach(SplObserver $observer): void
-    {
-        $this->observers->detach($observer);
-    }
-
-    public function notify(): void
-    {
-        foreach ($this->observers as $observer) {
-            /** @var SplObserver $observer */
-            $observer->update($this);
-        }
-    }
 
     public function setAddon(Addon $addon): void
     {

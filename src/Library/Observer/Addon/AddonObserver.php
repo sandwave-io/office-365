@@ -14,6 +14,6 @@ final class AddonObserver implements \SplObserver
     public function update(\SplSubject $subject): void
     {
         /** @var AddonSubject $subject */
-        $this->callback->execute($subject->getAddon());
+        $this->callback->execute($subject->getAddon(), $subject->getStatus());
     }
 }

@@ -6,17 +6,21 @@ use SandwaveIo\Office365\Entity\Header\PartnerReferenceHeader;
 
 final class CloudLicense implements EntityInterface
 {
-    private ?PartnerReferenceHeader $header = null;
+    private ?PartnerReferenceHeader $partnerReferenceHeader = null;
 
     private AgreementContact $contact;
 
     private CloudTenant $tenant;
+
+    private ?int $orderId = null;
 
     private string $customerId;
 
     private string $productCode;
 
     private int $quantity;
+
+    private ?string $status = null;
 
     public function getAgreementContact(): AgreementContact
     {
@@ -28,9 +32,12 @@ final class CloudLicense implements EntityInterface
         return $this->tenant;
     }
 
+    /**
+     * @deprecated use getPartnerReferenceHeader
+     */
     public function getHeader(): ?PartnerReferenceHeader
     {
-        return $this->header;
+        return $this->getPartnerReferenceHeader();
     }
 
     public function setCloudTenant(CloudTenant $tenant): void
@@ -38,14 +45,24 @@ final class CloudLicense implements EntityInterface
         $this->tenant = $tenant;
     }
 
+    public function getPartnerReferenceHeader(): ?PartnerReferenceHeader
+    {
+        return $this->partnerReferenceHeader;
+    }
+
     public function setPartnerReferenceHeader(PartnerReferenceHeader $header): void
     {
-        $this->header = $header;
+        $this->partnerReferenceHeader = $header;
     }
 
     public function setAgreementContact(AgreementContact $contact): void
     {
         $this->contact = $contact;
+    }
+
+    public function getOrderId(): ?int
+    {
+        return $this->orderId;
     }
 
     public function getCustomerId(): string
@@ -61,5 +78,10 @@ final class CloudLicense implements EntityInterface
     public function getQuantity(): int
     {
         return $this->quantity;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
     }
 }

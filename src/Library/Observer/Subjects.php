@@ -20,6 +20,7 @@ use SandwaveIo\Office365\Library\Observer\Error\ErrorObserver;
 use SandwaveIo\Office365\Library\Observer\Error\ErrorSubject;
 use SandwaveIo\Office365\Library\Observer\Order\OrderModifyQuantityObserver;
 use SandwaveIo\Office365\Library\Observer\Order\OrderModifyQuantitySubject;
+use SandwaveIo\Office365\Library\Observer\Subject\AbstractSubject;
 use SandwaveIo\Office365\Library\Observer\Terminate\TerminateObserver;
 use SandwaveIo\Office365\Library\Observer\Terminate\TerminateSubject;
 use SplSubject;
@@ -75,7 +76,7 @@ final class Subjects
         $this->subject[$event]->attach($observer);
     }
 
-    public function getSubject(string $event, ?EntityInterface $entity = null): ?SplSubject
+    public function getSubject(string $event, ?EntityInterface $entity = null): ?AbstractSubject
     {
         if (array_key_exists($event, $this->subject)) {
             $subject = $this->subject[$event];
@@ -137,7 +138,7 @@ final class Subjects
 
             }
 
-            return $this->subject[$event];
+            return $subject;
         }
 
         return null;

@@ -14,6 +14,6 @@ final class TerminateObserver implements \SplObserver
     public function update(\SplSubject $subject): void
     {
         /** @var TerminateSubject $subject */
-        $this->callback->execute($subject->getTerminate());
+        $this->callback->execute($subject->getTerminate(), $subject->getStatus());
     }
 }

@@ -13,6 +13,7 @@ use SandwaveIo\Office365\Enum\Event;
 use SandwaveIo\Office365\Helper\EntityHelper;
 use SandwaveIo\Office365\Library\Observer\Error\ErrorObserverInterface;
 use SandwaveIo\Office365\Library\Observer\Order\OrderModifyQuantityObserverInterface;
+use SandwaveIo\Office365\Library\Observer\Status\Status;
 use SandwaveIo\Office365\Office\OfficeClient;
 
 final class OrderModifyQuantityTest extends TestCase
@@ -45,7 +46,7 @@ final class OrderModifyQuantityTest extends TestCase
         $client = new OfficeClient('example.com', 'test', 'test', ['handler' => $stack]);
 
         $client->webhook->addEventSubscriber(Event::ORDER_MODIFY_QUANTITY, new class() implements OrderModifyQuantityObserverInterface {
-            public function execute(OrderModifyQuantity $modifyQuantity): void
+            public function execute(OrderModifyQuantity $modifyQuantity, ?Status $status): void
             {
                 Assert::assertSame(4, $modifyQuantity->getQuantity());
                 Assert::assertSame(123, $modifyQuantity->getOrderId());

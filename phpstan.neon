@@ -35,3 +35,9 @@ parameters:
 
         # Non type hinted property fetching
         - '#Variable property access on SimpleXMLElement.#'
+
+        # Allow null as status parameter
+        - '#Method execute\(\) in anonymous class has parameter \$status with a nullable type declaration#'
+
+        # AbstractSubject implements the SplSubject
+        - '#Method SandwaveIo\\Office365\\Library\\Observer\\Subjects::getSubject\(\) should return SandwaveIo\\Office365\\Library\\Observer\\Subject\\AbstractSubject\|null but returns SplSubject.#'
