@@ -47,8 +47,6 @@ final class ResponseStatusTransformer
             $messages[] = trim((string) $message);
         }
 
-        var_dump($result);
-        die();
         return $messages;
     }
 }
