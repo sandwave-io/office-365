@@ -10,6 +10,7 @@ final class ResponseErrorTransformer
     {
         $error = new Error();
         $error->setMessages(self::getMessages($xml));
+        $error->setOriginalXml($xml);
 
         return $error;
     }
@@ -41,10 +42,16 @@ final class ResponseErrorTransformer
         $messages = [];
         $xmlMessages = [];
 
-        if (property_exists($xml, 'Status')) {
-            $xmlMessages = $xml->Status->Messages->string;
-        } elseif (property_exists($xml, 'State')) {
-            $xmlMessages = $xml->State->Comments->string;
+        $result = $xml->xpath('//*[local-name() = "Comments"]');
+
+        if (count($result) > 0) {
+            $xmlMessages = $result[0]->children();
+        } else {
+            $result = $xml->xpath('//*[local-name() = "Messages"]');
+
+            if (count($result) > 0) {
+                $xmlMessages = $result[0]->children();
+            }
         }
 
         foreach ($xmlMessages as $message) {

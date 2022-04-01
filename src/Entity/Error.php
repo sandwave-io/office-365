@@ -24,4 +24,25 @@ final class Error implements EntityInterface
     {
         $this->messages = $messages;
     }
+
+    /**
+     * @var \SimpleXMLElement $xml
+     */
+    private \SimpleXMLElement $originalXml;
+
+    /**
+     * @return \SimpleXMLElement $xml
+     */
+    public function getOriginalXml(): \SimpleXMLElement
+    {
+        return $this->originalXml;
+    }
+
+    /**
+     * @param \SimpleXMLElement $xml
+     */
+    public function setOriginalXml(\SimpleXMLElement $xml): void
+    {
+        $this->originalXml = $xml;
+    }
 }
