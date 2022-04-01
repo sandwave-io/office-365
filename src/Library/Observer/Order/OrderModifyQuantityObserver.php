@@ -14,6 +14,6 @@ final class OrderModifyQuantityObserver implements \SplObserver
     public function update(\SplSubject $subject): void
     {
         /** @var OrderModifyQuantitySubject $subject */
-        $this->callback->execute($subject->getOrderModifyQuantity());
+        $this->callback->execute($subject->getOrderModifyQuantity(), $subject->getStatus());
     }
 }

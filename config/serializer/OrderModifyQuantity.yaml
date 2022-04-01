@@ -23,3 +23,8 @@ SandwaveIo\Office365\Entity\OrderModifyQuantity:
       expose: true
       type: bool
       serialized_name: IsDelta
+
+    upgradeOrderId:
+      expose: true
+      type: int
+      serialized_name: UpgradeOrderId

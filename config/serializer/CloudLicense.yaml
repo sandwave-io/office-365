@@ -4,7 +4,7 @@ SandwaveIo\Office365\Entity\CloudLicense:
 
   properties:
 
-    header:
+    partnerReferenceHeader:
       expose: true
       type: SandwaveIo\Office365\Entity\Header\PartnerReferenceHeader
       serialized_name: Header
@@ -18,6 +18,11 @@ SandwaveIo\Office365\Entity\CloudLicense:
       expose: true
       type: string
       serialized_name: LicenseAddOns
+
+    orderId:
+      expose: true
+      type: integer
+      serialized_name: OrderId
 
     customerId:
       expose: true
@@ -33,3 +38,7 @@ SandwaveIo\Office365\Entity\CloudLicense:
       expose: true
       type: integer
       serialized_name: Quantity
+
+    status:
+      expose: true
+      type: string

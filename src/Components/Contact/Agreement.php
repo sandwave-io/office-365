@@ -14,19 +14,18 @@ final class Agreement extends AbstractComponent
      * @throws Office365Exception
      */
     public function create(
-        string $name,
         string $firstname,
         string $lastname,
         string $email,
         string $phoneNumber,
         \DateTime $agreed
     ): AgreementContact {
-        $tenant = EntityHelper::deserialize(AgreementContact::class, AgreementContactDataTransformer::transform(...func_get_args()));
+        $agreementContact = EntityHelper::deserialize(AgreementContact::class, AgreementContactDataTransformer::transform(...func_get_args()));
 
-        if ($tenant === null) {
+        if ($agreementContact === null) {
             throw new Office365Exception(self::class . ':create Tenant could not be created');
         }
 
-        return $tenant;
+        return $agreementContact;
     }
 }

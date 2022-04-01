@@ -7,9 +7,11 @@ use SandwaveIo\Office365\Enum\Event;
 use SandwaveIo\Office365\Exception\Office365Exception;
 use SandwaveIo\Office365\Helper\EntityHelper;
 use SandwaveIo\Office365\Helper\XmlHelper;
+use SandwaveIo\Office365\Library\Observer\Status\Status;
 use SandwaveIo\Office365\Library\Observer\Subjects;
 use SandwaveIo\Office365\Library\Serializer\Serializer;
 use SandwaveIo\Office365\Transformer\ResponseErrorTransformer;
+use SandwaveIo\Office365\Transformer\ResponseStatusTransformer;
 use SandwaveIo\Office365\Transformer\RootNodeTransformer;
 
 /**
@@ -33,11 +35,12 @@ final class Webhook
         $this->subjects->attach($type, $callback);
     }
 
-    public function dispatch(string $event, EntityInterface $entity = null): void
+    public function dispatch(string $event, Status $status, EntityInterface $entity = null): void
     {
         $subject = $this->subjects->getSubject($event, $entity);
 
         if ($subject !== null) {
+            $subject->setStatus($status);
             $subject->notify();
         }
     }
@@ -56,6 +59,7 @@ final class Webhook
         if (ResponseErrorTransformer::hasErrorState($simpleXml)) {
             $this->dispatch(
                 Event::CALLBACK_ERROR,
+                ResponseStatusTransformer::transform($simpleXml),
                 ResponseErrorTransformer::transformXml($simpleXml)
             );
 
@@ -63,6 +67,7 @@ final class Webhook
         }
 
         $rootName = $simpleXml->getName();
+
         $eventName = RootNodeTransformer::transform($rootName);
         $config = (new Serializer())->findConfigByRootname($rootName);
 
@@ -82,7 +87,7 @@ final class Webhook
             : EntityHelper::deserializeXml($config->getClassName(), $xml)
         ;
 
-        $this->dispatch($eventName, $entity);
+        $this->dispatch($eventName, ResponseStatusTransformer::transform($simpleXml), $entity);
 
         return $entity;
     }

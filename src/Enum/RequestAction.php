@@ -14,6 +14,10 @@ final class RequestAction
 
     const NEW_CLOUD_LICENSE_ORDER_REQUEST_V2 = 'NewCloudLicenseOrderRequest_V2';
 
+    const NEW_CLOUD_LICENSE_ORDER_RESPONSE_V2 = 'NewCloudLicenseOrderResponse_V2';
+
+    const NEW_CLOUD_LICENSE_ADDON_ORDER_RESPONSE_V1 = 'NewCloudLicenseAddOnOrderResponse_V1';
+
     const NEW_CLOUD_LICENSE_ADDON_ORDER_REQUEST_V1 = 'NewCloudLicenseAddOnOrderRequest_V1';
 
     const TERMINATE_ORDER_REQUEST_V2 = 'TerminateOrderRequest_V2';
@@ -21,4 +25,6 @@ final class RequestAction
     const TERMINATE_ORDER_RESPONSE_V1 = 'TerminateOrderResponse_V1';
 
     const MODIFY_ORDER_QUANTITY_REQUEST_V1 = 'ModifyOrderQuantityRequest_V1';
+
+    const MODIFY_ORDER_QUANTITY_RESPONSE_V1 = 'ModifyOrderQuantityResponse_V1';
 }

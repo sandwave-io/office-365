@@ -3,36 +3,11 @@
 namespace SandwaveIo\Office365\Library\Observer\Customer;
 
 use SandwaveIo\Office365\Entity\Customer;
-use SplObserver;
+use SandwaveIo\Office365\Library\Observer\Subject\AbstractSubject;
 
-final class CustomerSubject implements \SplSubject
+final class CustomerSubject extends AbstractSubject
 {
-    private \SplObjectStorage $observers;
-
     private Customer $customer;
-
-    public function __construct()
-    {
-        $this->observers = new \SplObjectStorage();
-    }
-
-    public function attach(SplObserver $observer): void
-    {
-        $this->observers->attach($observer);
-    }
-
-    public function detach(SplObserver $observer): void
-    {
-        $this->observers->detach($observer);
-    }
-
-    public function notify(): void
-    {
-        foreach ($this->observers as $observer) {
-            /** @var SplObserver $observer */
-            $observer->update($this);
-        }
-    }
 
     public function setCustomer(Customer $customer): void
     {

@@ -23,3 +23,8 @@ SandwaveIo\Office365\Entity\Addon:
       expose: true
       type: int
       serialized_name: Quantity
+
+    licenseKey:
+      expose: true
+      type: string
+      serialized_name: LicenseKey
