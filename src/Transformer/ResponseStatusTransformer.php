@@ -37,22 +37,18 @@ final class ResponseStatusTransformer
         $messages = [];
         $xmlMessages = [];
 
-        $result = $xml->xpath('//*[local-name() = "Comments"]');
+        $result = $xml->xpath('//*[local-name() = "Comments" or local-name() = "Messages"]');
 
         if (count($result) > 0) {
             $xmlMessages = $result[0]->children();
-        } else {
-            $result = $xml->xpath('//*[local-name() = "Messages"]');
-
-            if (count($result) > 0) {
-                $xmlMessages = $result[0]->children();
-            }
         }
 
         foreach ($xmlMessages as $message) {
             $messages[] = trim((string) $message);
         }
 
+        var_dump($result);
+        die();
         return $messages;
     }
 }
