@@ -28,21 +28,25 @@ final class ResponseStatusTransformer
     }
 
     /**
+     * @param \SimpleXMLElement $xml
+     *
      * @return array<string>
      */
     public static function getMessages(\SimpleXMLElement $xml): array
     {
         $messages = [];
-        $xmlMessages = null;
+        $xmlMessages = [];
 
-        if (property_exists($xml, 'Status')) {
-            $xmlMessages = $xml->Status->Messages->string;
-        } elseif (property_exists($xml, 'State')) {
-            $xmlMessages = $xml->State->Comments->string;
-        }
+        $result = $xml->xpath('//*[local-name() = "Comments"]');
 
-        if ($xmlMessages === null) {
-            return [];
+        if (count($result) > 0) {
+            $xmlMessages = $result[0]->children();
+        } else {
+            $result = $xml->xpath('//*[local-name() = "Messages"]');
+
+            if (count($result) > 0) {
+                $xmlMessages = $result[0]->children();
+            }
         }
 
         foreach ($xmlMessages as $message) {
