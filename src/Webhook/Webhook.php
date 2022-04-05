@@ -79,13 +79,21 @@ final class Webhook
             throw new Office365Exception('Could not create entity from received XML');
         }
 
-        $entity = $config->getReferenceNode() !== null
-            ? EntityHelper::deserializeArray(
+        if ($config->getReferenceNode() !== null) {
+            $entity = EntityHelper::deserializeArray(
                 $config->getClassName(),
                 XmlHelper::fetchChildNodes($config->getReferenceNode(), $simpleXml)
-            )
-            : EntityHelper::deserializeXml($config->getClassName(), $xml)
-        ;
+            );
+        } else {
+            $data = (array) $simpleXml;
+
+            if (property_exists($simpleXml, 'Header')) {
+                $data['Header'] = (array) $simpleXml->Header;
+                $data['Header']['DateCreated'] = (new \DateTime($data['Header']['DateCreated']))->format('Y-m-d\TH:i:s');
+            }
+
+            $entity = EntityHelper::deserializeArray($config->getClassName(), $data);
+        }
 
         $this->dispatch($eventName, ResponseStatusTransformer::transform($simpleXml), $entity);
 
