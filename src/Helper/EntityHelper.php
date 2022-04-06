@@ -53,13 +53,7 @@ final class EntityHelper
             $simpleXml->Header->DateCreated = self::formatDateCreated((string) $simpleXml->Header->DateCreated);
         }
 
-        return $serializer->deserialize($simpleXml->saveXML(), $class, 'xml');
-    }
-
-    public static function deserializeXml2(string $class, string $xml)
-    {
-        $serializer = self::createSerializer()->getSerializer();
-        return $serializer->deserialize($xml, $class, 'xml');
+        return $serializer->deserialize((string) $simpleXml->saveXML(), $class, 'xml');
     }
 
     /**
