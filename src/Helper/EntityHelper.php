@@ -40,8 +40,14 @@ final class EntityHelper
      */
     public static function deserializeXml(string $class, string $xml)
     {
-        $serializer = self::createSerializer()->getSerializer();
-        return $serializer->deserialize($xml, $class, 'xml');
+        //$serializer = self::createSerializer()->getSerializer();
+        $entity = XmlHelper::XmlToArray($xml);
+
+//        if (array_key_exists('Header', $entity)) {
+//            $entity['Header']['DateCreated'] = (new \DateTime($entity['Header']['DateCreated']))->format('Y-m-d\ H:i:s');
+//        }
+
+        return self::deserializeArray($class, $entity);
     }
 
     /**
