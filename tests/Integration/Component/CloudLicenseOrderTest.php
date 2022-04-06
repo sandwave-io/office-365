@@ -30,11 +30,12 @@ final class CloudLicenseOrderTest extends TestCase
             'Test',
             'john@doe.com'
         );
+
         $contact = $officeClient->contact->agreement->create(
-            'john',
-            'doe',
-            'john@doe.com',
-            '12345',
+            'Sandwave',
+            'Test',
+            'willem@sandwave.io',
+            '0622029880',
             new \DateTime()
         );
 
@@ -42,7 +43,7 @@ final class CloudLicenseOrderTest extends TestCase
             $tenant,
             $contact,
             '507201',
-            '120A00064B',
+            '120A00385B',
             1
         );
 
