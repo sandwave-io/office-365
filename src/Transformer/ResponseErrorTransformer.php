@@ -17,6 +17,7 @@ final class ResponseErrorTransformer
     {
         $error = new Error();
         $error->setMessages(ResponseStatusTransformer::getMessages($xml));
+        $error->setOriginalXml($xml);
 
         return $error;
     }

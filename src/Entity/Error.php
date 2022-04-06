@@ -10,6 +10,11 @@ final class Error implements EntityInterface
     private array $messages;
 
     /**
+     * @var \SimpleXMLElement
+     */
+    private \SimpleXMLElement $originalXml;
+
+    /**
      * @return array<string>
      */
     public function getMessages(): array
@@ -23,5 +28,21 @@ final class Error implements EntityInterface
     public function setMessages(array $messages): void
     {
         $this->messages = $messages;
+    }
+
+    /**
+     * @return \SimpleXMLElement $xml
+     */
+    public function getOriginalXml(): \SimpleXMLElement
+    {
+        return $this->originalXml;
+    }
+
+    /**
+     * @param \SimpleXMLElement $xml
+     */
+    public function setOriginalXml(\SimpleXMLElement $xml): void
+    {
+        $this->originalXml = $xml;
     }
 }
