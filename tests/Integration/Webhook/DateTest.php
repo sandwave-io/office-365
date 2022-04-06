@@ -8,16 +8,11 @@ use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
 use SandwaveIo\Office365\Entity\Customer;
-use SandwaveIo\Office365\Entity\Error;
 use SandwaveIo\Office365\Entity\OrderModifyQuantity;
-use SandwaveIo\Office365\Entity\Terminate;
 use SandwaveIo\Office365\Enum\Event;
-use SandwaveIo\Office365\Helper\EntityHelper;
 use SandwaveIo\Office365\Library\Observer\Customer\CustomerObserverInterface;
-use SandwaveIo\Office365\Library\Observer\Error\ErrorObserverInterface;
 use SandwaveIo\Office365\Library\Observer\Order\OrderModifyQuantityObserverInterface;
 use SandwaveIo\Office365\Library\Observer\Status\Status;
-use SandwaveIo\Office365\Library\Observer\Terminate\TerminateObserverInterface;
 use SandwaveIo\Office365\Office\OfficeClient;
 
 final class DateTest extends TestCase
