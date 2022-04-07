@@ -34,6 +34,22 @@ final class RootNodeTransformer
             case RequestAction::MODIFY_ORDER_QUANTITY_REQUEST_V1:
                 return Event::ORDER_MODIFY_QUANTITY;
 
+            case RequestAction::MODIFY_CUSTOMER_DECLINED:
+                return Event::MODIFY_CUSTOMER_DECLINED;
+
+            case RequestAction::NEW_CUSTOMER_DECLINED:
+                return Event::NEW_CUSTOMER_DECLINED;
+
+            case RequestAction::MODIFY_ORDER_DECLINED:
+                return Event::MODIFY_ORDER_DECLINED;
+
+            case RequestAction::NEW_CLOUD_LICENSE_ADDON_ORDER_DECLINED:
+            case RequestAction::NEW_CLOUD_LICENSE_ORDER_DECLINED:
+                return Event::ORDER_DECLINED;
+
+            case RequestAction::TERMINATE_ORDER_DECLINED:
+                return Event::TERMINATE_ORDER_DECLINED;
+
             default:
                 return '';
         }

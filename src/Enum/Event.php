@@ -19,4 +19,14 @@ final class Event
     const CALLBACK_ERROR = 'callback_error';
 
     const ROOT_NODE_ERROR = 'root_node_error';
+
+    const NEW_CUSTOMER_DECLINED = 'new_customer_declined';
+
+    const MODIFY_CUSTOMER_DECLINED = 'modify_customer_declined';
+
+    const ORDER_DECLINED = 'order_declined';
+
+    const MODIFY_ORDER_DECLINED = 'modify_declined';
+
+    const TERMINATE_ORDER_DECLINED = 'terminate_order_declined';
 }
