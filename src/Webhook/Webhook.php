@@ -3,7 +3,6 @@
 namespace SandwaveIo\Office365\Webhook;
 
 use SandwaveIo\Office365\Entity\EntityInterface;
-use SandwaveIo\Office365\Enum\Event;
 use SandwaveIo\Office365\Exception\Office365Exception;
 use SandwaveIo\Office365\Helper\EntityHelper;
 use SandwaveIo\Office365\Helper\XmlHelper;
@@ -56,9 +55,12 @@ final class Webhook
             throw new Office365Exception('Could not parse received XML');
         }
 
+        $rootName = $simpleXml->getName();
+        $eventName = RootNodeTransformer::transform($rootName);
+
         if (ResponseErrorTransformer::hasErrorState($simpleXml)) {
             $this->dispatch(
-                Event::CALLBACK_ERROR,
+                $eventName,
                 ResponseStatusTransformer::transform($simpleXml),
                 ResponseErrorTransformer::transformXml($simpleXml)
             );
@@ -66,9 +68,6 @@ final class Webhook
             return null;
         }
 
-        $rootName = $simpleXml->getName();
-
-        $eventName = RootNodeTransformer::transform($rootName);
         $config = (new Serializer())->findConfigByRootname($rootName);
 
         if ($config === null) {

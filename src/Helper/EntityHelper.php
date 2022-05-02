@@ -35,13 +35,25 @@ final class EntityHelper
         return self::$serializer;
     }
 
+    public static function formatDateCreated(string $dateCreated): string
+    {
+        return  (new \DateTime($dateCreated))->format('Y-m-d\TH:i:s');
+    }
+
     /**
      * @return mixed
      */
     public static function deserializeXml(string $class, string $xml)
     {
         $serializer = self::createSerializer()->getSerializer();
-        return $serializer->deserialize($xml, $class, 'xml');
+
+        $simpleXml = new \SimpleXMLElement($xml);
+
+        if (property_exists($simpleXml, 'Header')) {
+            $simpleXml->Header->DateCreated = self::formatDateCreated((string) $simpleXml->Header->DateCreated);
+        }
+
+        return $serializer->deserialize((string) $simpleXml->saveXML(), $class, 'xml');
     }
 
     /**

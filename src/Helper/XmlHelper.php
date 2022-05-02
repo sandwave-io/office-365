@@ -101,7 +101,7 @@ final class XmlHelper
 
         if (property_exists($xml, 'Header')) {
             $data['Header'] = (array) $xml->Header;
-            $data['Header']['DateCreated'] = (new \DateTime($data['Header']['DateCreated']))->format('Y-m-d\TH:i:s');
+            $data['Header']['DateCreated'] = EntityHelper::formatDateCreated($data['Header']['DateCreated']);
         }
 
         return $data;
