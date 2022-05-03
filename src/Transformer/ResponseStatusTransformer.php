@@ -36,7 +36,6 @@ final class ResponseStatusTransformer
     public static function getMessages(\SimpleXMLElement $xml): array
     {
         $messages = [];
-        /** @var array<SimpleXMLElement> $xmlMessages */
         $xmlMessages = [];
 
         $result = $xml->xpath('//*[local-name() = "Comments" or local-name() = "Messages"]');
@@ -45,6 +44,7 @@ final class ResponseStatusTransformer
             $xmlMessages = $result[0]->children();
         }
 
+        /** @var array<SimpleXMLElement> $xmlMessages */
         foreach ($xmlMessages as $message) {
             $messages[] = trim((string) $message);
         }
