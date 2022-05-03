@@ -99,18 +99,18 @@ final class Order extends AbstractComponent
      * @throws Office365Exception
      */
     public function summary(
-        ?int $customerId,
-        ?string $orderState,
-        ?string $productGroup,
-        ?string $productName,
-        ?DateTime $dateActiveFrom,
-        ?DateTime $dateActiveTo,
-        ?DateTime $dateModifiedFrom,
-        ?DateTime $dateModifiedTo,
-        ?string $label,
-        ?string $attribute,
-        ?int $skip,
-        ?int $take
+        ?int $customerId = null,
+        ?string $orderState = null,
+        ?string $productGroup = null,
+        ?string $productName = null,
+        ?DateTime $dateActiveFrom = null,
+        ?DateTime $dateActiveTo = null,
+        ?DateTime $dateModifiedFrom = null,
+        ?DateTime $dateModifiedTo = null,
+        ?string $label = null,
+        ?string $attribute = null,
+        ?int $skip = null,
+        ?int $take = null
     ): OrderSummaryResponse {
         $summaryData = OrderSummaryBuilder::build(
             ... func_get_args()
