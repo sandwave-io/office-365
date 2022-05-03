@@ -10,18 +10,18 @@ final class OrderSummaryBuilder
      * @return array<string, mixed>
      */
     public static function build(
-        ?int $customerId,
-        ?string $orderState,
-        ?string $productGroup,
-        ?string $productName,
-        ?DateTime $dateActiveFrom,
-        ?DateTime $dateActiveTo,
-        ?DateTime $dateModifiedFrom,
-        ?DateTime $dateModifiedTo,
-        ?string $label,
-        ?string $attribute,
-        ?int $skip,
-        ?int $take
+        ?int $customerId = null,
+        ?string $orderState = null,
+        ?string $productGroup = null,
+        ?string $productName = null,
+        ?DateTime $dateActiveFrom = null,
+        ?DateTime $dateActiveTo = null,
+        ?DateTime $dateModifiedFrom = null,
+        ?DateTime $dateModifiedTo = null,
+        ?string $label = null,
+        ?string $attribute = null,
+        ?int $skip = null,
+        ?int $take = null
     ): array {
         return [
             'CustomerId' => $customerId,
