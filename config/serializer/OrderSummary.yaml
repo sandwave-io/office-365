@@ -24,6 +24,11 @@ SandwaveIo\Office365\Entity\OrderSummary:
       type: string
       serialized_name: ProductName
 
+    quantity:
+      expose: true
+      type: string
+      serialized_name: Quantity
+
     dateActiveFrom:
       expose: true
       type: DateTime<'Y-m-d\TH:i:s'>

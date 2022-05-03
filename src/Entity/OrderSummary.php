@@ -30,6 +30,8 @@ final class OrderSummary implements EntityInterface
 
     private ?int $take = null;
 
+    private ?int $quantity = null;
+
     public function getCustomerId(): ?int
     {
         return $this->customerId;
@@ -88,5 +90,10 @@ final class OrderSummary implements EntityInterface
     public function getTake(): ?int
     {
         return $this->take;
+    }
+
+    public function getQuantity(): int
+    {
+        return $this->quantity;
     }
 }
