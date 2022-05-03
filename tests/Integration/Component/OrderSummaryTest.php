@@ -40,6 +40,7 @@ final class OrderSummaryTest extends TestCase
         );
 
         Assert::assertInstanceOf(OrderSummaryResponse::class, $response);
+        Assert::assertCount(2, $response->getPagedResult()->getResults());
         Assert::assertSame('Success', $response->getStatus()->getCode());
         Assert::assertSame(25, $response->getPagedResult()->getTotal());
         Assert::assertSame(1, count($response->getPagedResult()->getResults()));

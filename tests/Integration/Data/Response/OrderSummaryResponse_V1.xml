@@ -31,6 +31,26 @@
                 <Quantity>10</Quantity>
                 <ServiceLevelAgreement>BestEffort</ServiceLevelAgreement>
             </OrderSummary_V1>
+            <OrderSummary_V1>
+                <OrderId>2</OrderId>
+                <ReferenceOrderId>2</ReferenceOrderId>
+                <ParentId>2</ParentId>
+                <CustomerId>1</CustomerId>
+                <ProductId>sandwave1</ProductId>
+                <ProductName>product</ProductName>
+                <ProductGroup>Security</ProductGroup>
+                <ProductCommercialTypeName>product</ProductCommercialTypeName>
+                <DateCreated>2015-06-20T14:37:00</DateCreated>
+                <DateActive>2015-06-20T14:37:00</DateActive>
+                <DateModified>2015-06-20T14:37:00</DateModified>
+                <DateTerminate>2015-06-20T14:37:00</DateTerminate>
+                <DateTerminated>2015-06-20T14:37:00</DateTerminated>
+                <Label>label</Label>
+                <Attribute>attribute</Attribute>
+                <OrderState>Activate</OrderState>
+                <Quantity>3</Quantity>
+                <ServiceLevelAgreement>BestEffort</ServiceLevelAgreement>
+            </OrderSummary_V1>
         </Results>
     </PagedResult>
 </OrderSummaryResponse_V1>
