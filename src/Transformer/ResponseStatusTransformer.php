@@ -3,6 +3,7 @@
 namespace SandwaveIo\Office365\Transformer;
 
 use SandwaveIo\Office365\Library\Observer\Status\Status;
+use SimpleXMLElement;
 
 final class ResponseStatusTransformer
 {
@@ -35,6 +36,7 @@ final class ResponseStatusTransformer
     public static function getMessages(\SimpleXMLElement $xml): array
     {
         $messages = [];
+        /** @var array<SimpleXMLElement> $xmlMessages */
         $xmlMessages = [];
 
         $result = $xml->xpath('//*[local-name() = "Comments" or local-name() = "Messages"]');
