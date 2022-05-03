@@ -44,5 +44,6 @@ final class OrderSummaryTest extends TestCase
         Assert::assertSame(25, $response->getPagedResult()->getTotal());
         Assert::assertSame(1, count($response->getPagedResult()->getResults()));
         Assert::assertSame('Activate', $response->getPagedResult()->getResults()[0]->getOrderState());
+        Assert::assertSame(10, $response->getPagedResult()->getResults()[0]->getQuantity());
     }
 }
