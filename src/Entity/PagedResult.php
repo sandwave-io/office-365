@@ -2,12 +2,14 @@
 
 namespace SandwaveIo\Office365\Entity;
 
+use SandwaveIo\Office365\Response\OrderSummary as OrderSummaryResponse;
+
 final class PagedResult implements EntityInterface
 {
     private int $total;
 
     /**
-     * @var array<OrderSummary>
+     * @var array<OrderSummaryResponse>
      */
     private array $results;
 
@@ -17,7 +19,7 @@ final class PagedResult implements EntityInterface
     }
 
     /**
-     * @return array<OrderSummary>
+     * @return array<OrderSummaryResponse>
      */
     public function getResults(): array
     {

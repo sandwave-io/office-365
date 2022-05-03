@@ -3,6 +3,7 @@
 namespace SandwaveIo\Office365\Transformer;
 
 use SandwaveIo\Office365\Library\Observer\Status\Status;
+use SimpleXMLElement;
 
 final class ResponseStatusTransformer
 {
@@ -43,6 +44,7 @@ final class ResponseStatusTransformer
             $xmlMessages = $result[0]->children();
         }
 
+        /** @var array<SimpleXMLElement> $xmlMessages */
         foreach ($xmlMessages as $message) {
             $messages[] = trim((string) $message);
         }
