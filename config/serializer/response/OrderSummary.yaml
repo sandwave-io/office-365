@@ -45,27 +45,27 @@ SandwaveIo\Office365\Response\OrderSummary:
 
     dateCreated:
       expose: true
-      type: DateTime<'Y-m-d\TH:i:s'>
+      type: DateTime<'Y-m-d\TH:i:s.v'>
       serialized_name: DateCreated
 
     dateActive:
       expose: true
-      type: DateTime<'Y-m-d\TH:i:s'>
+      type: DateTime<'Y-m-d\TH:i:s.v'>
       serialized_name: DateActive
 
     dateModified:
       expose: true
-      type: DateTime<'Y-m-d\TH:i:s'>
+      type: DateTime<'Y-m-d\TH:i:s.v'>
       serialized_name: DateModified
 
     dateTerminate:
       expose: true
-      type: DateTime<'Y-m-d\TH:i:s'>
+      type: DateTime<'Y-m-d\TH:i:s.v'>
       serialized_name: DateTerminate
 
     dateTerminated:
       expose: true
-      type: DateTime<'Y-m-d\TH:i:s'>
+      type: DateTime<'Y-m-d\TH:i:s.v'>
       serialized_name: DateTerminated
 
     label:

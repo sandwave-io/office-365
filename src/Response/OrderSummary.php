@@ -8,9 +8,9 @@ final class OrderSummary
 {
     private int $orderId;
 
-    private int $referenceOrderId;
+    private ?int $referenceOrderId;
 
-    private int $parentId;
+    private ?int $parentId;
 
     private ?int $customerId;
 
@@ -24,13 +24,13 @@ final class OrderSummary
 
     private DateTime $dateCreated;
 
-    private DateTime $dateActive;
+    private ?DateTime $dateActive;
 
-    private DateTime $dateModified;
+    private ?DateTime $dateModified;
 
     private ?DateTime $dateTerminate;
 
-    private DateTime $dateTerminated;
+    private ?DateTime $dateTerminated;
 
     private ?string $label;
 
@@ -47,12 +47,12 @@ final class OrderSummary
         return $this->orderId;
     }
 
-    public function getReferenceOrderId(): int
+    public function getReferenceOrderId(): ?int
     {
         return $this->referenceOrderId;
     }
 
-    public function getParentId(): int
+    public function getParentId(): ?int
     {
         return $this->parentId;
     }
@@ -87,12 +87,12 @@ final class OrderSummary
         return $this->dateCreated;
     }
 
-    public function getDateActive(): DateTime
+    public function getDateActive(): ?DateTime
     {
         return $this->dateActive;
     }
 
-    public function getDateModified(): DateTime
+    public function getDateModified(): ?DateTime
     {
         return $this->dateModified;
     }
@@ -102,7 +102,7 @@ final class OrderSummary
         return $this->dateTerminate;
     }
 
-    public function getDateTerminated(): DateTime
+    public function getDateTerminated(): ?DateTime
     {
         return $this->dateTerminated;
     }
