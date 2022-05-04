@@ -2,6 +2,8 @@
 
 namespace SandwaveIo\Office365\Helper;
 
+use SimpleXMLElement;
+
 final class XmlHelper
 {
     /**
@@ -115,6 +117,7 @@ final class XmlHelper
         foreach ($propertyNames as $propertyName) {
             $nodes = $simpleXml->xpath('//' . $propertyName);
 
+            /** @var array<SimpleXMLElement> $node */
             foreach ($nodes as $node) {
                 $node[0] = EntityHelper::formatDateCreated((string) $node);
             }
