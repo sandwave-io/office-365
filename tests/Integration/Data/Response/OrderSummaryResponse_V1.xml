@@ -20,11 +20,11 @@
                 <ProductName>product</ProductName>
                 <ProductGroup>Security</ProductGroup>
                 <ProductCommercialTypeName>product</ProductCommercialTypeName>
-                <DateCreated>2014-06-20T14:37:00</DateCreated>
-                <DateActive>2014-06-20T14:37:00</DateActive>
-                <DateModified>2014-06-20T14:37:00</DateModified>
-                <DateTerminate>2014-06-20T14:37:00</DateTerminate>
-                <DateTerminated>2014-06-20T14:37:00</DateTerminated>
+                <DateCreated>2014-06-20T14:37:00.000</DateCreated>
+                <DateActive>2014-06-20T14:37:00.000</DateActive>
+                <DateModified>2014-06-20T14:37:00.000</DateModified>
+                <DateTerminate>2014-06-20T14:37:00.000</DateTerminate>
+                <DateTerminated>2014-06-20T14:37:00.000</DateTerminated>
                 <Label>label</Label>
                 <Attribute>attribute</Attribute>
                 <OrderState>Activate</OrderState>
@@ -40,11 +40,11 @@
                 <ProductName>product</ProductName>
                 <ProductGroup>Security</ProductGroup>
                 <ProductCommercialTypeName>product</ProductCommercialTypeName>
-                <DateCreated>2015-06-20T14:37:00</DateCreated>
-                <DateActive>2015-06-20T14:37:00</DateActive>
-                <DateModified>2015-06-20T14:37:00</DateModified>
-                <DateTerminate>2015-06-20T14:37:00</DateTerminate>
-                <DateTerminated>2015-06-20T14:37:00</DateTerminated>
+                <DateCreated>2015-06-20T14:37:00.000</DateCreated>
+                <DateActive>2015-06-20T14:37:00.000</DateActive>
+                <DateModified>2015-06-20T14:37:00.000</DateModified>
+                <DateTerminate>2015-06-20T14:37:00.000</DateTerminate>
+                <DateTerminated>2015-06-20T14:37:00.000</DateTerminated>
                 <Label>label</Label>
                 <Attribute>attribute</Attribute>
                 <OrderState>Activate</OrderState>

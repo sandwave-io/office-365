@@ -2,6 +2,8 @@
 
 namespace SandwaveIo\Office365\Helper;
 
+use SimpleXMLElement;
+
 final class XmlHelper
 {
     /**
@@ -105,5 +107,23 @@ final class XmlHelper
         }
 
         return $data;
+    }
+
+    /**
+     * @param array<string> $propertyNames
+     */
+    public static function DateConvert(\SimpleXMLElement $simpleXml, array $propertyNames): \SimpleXMLElement
+    {
+        foreach ($propertyNames as $propertyName) {
+            $nodes = $simpleXml->xpath('//' . $propertyName);
+
+            /** @var array<SimpleXMLElement> $nodes */
+            foreach ($nodes as $node) {
+                /** @phpstan-ignore-next-line */
+                $node[0] = EntityHelper::formatDateCreated((string) $node);
+            }
+        }
+
+        return $simpleXml;
     }
 }

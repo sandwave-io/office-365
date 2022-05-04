@@ -49,9 +49,10 @@ final class EntityHelper
 
         $simpleXml = new \SimpleXMLElement($xml);
 
-        if (property_exists($simpleXml, 'Header')) {
-            $simpleXml->Header->DateCreated = self::formatDateCreated((string) $simpleXml->Header->DateCreated);
-        }
+        $simpleXml = XmlHelper::DateConvert(
+            $simpleXml,
+            ['DateCreated', 'DateModified', 'DateActive', 'DateTerminate', 'DateTerminated']
+        );
 
         return $serializer->deserialize((string) $simpleXml->saveXML(), $class, 'xml');
     }
