@@ -106,4 +106,20 @@ final class XmlHelper
 
         return $data;
     }
+
+    /**
+     * @param array<string> $propertyNames
+     */
+    public static function DateConvert(\SimpleXMLElement $simpleXml, array $propertyNames): \SimpleXMLElement
+    {
+        foreach ($propertyNames as $propertyName) {
+            $nodes = $simpleXml->xpath('//' . $propertyName);
+
+            foreach ($nodes as $node) {
+                $node[0] = EntityHelper::formatDateCreated((string)$node);
+            }
+        }
+
+        return $simpleXml;
+    }
 }
