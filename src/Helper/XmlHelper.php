@@ -117,7 +117,7 @@ final class XmlHelper
         foreach ($propertyNames as $propertyName) {
             $nodes = $simpleXml->xpath('//' . $propertyName);
 
-            /** @var array<SimpleXMLElement> $node */
+            /** @var array<SimpleXMLElement> $nodes */
             foreach ($nodes as $node) {
                 $node[0] = EntityHelper::formatDateCreated((string) $node);
             }
