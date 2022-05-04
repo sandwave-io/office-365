@@ -119,6 +119,7 @@ final class XmlHelper
 
             /** @var array<SimpleXMLElement> $nodes */
             foreach ($nodes as $node) {
+                /** @phpstan-ignore-next-line */
                 $node[0] = EntityHelper::formatDateCreated((string) $node);
             }
         }
