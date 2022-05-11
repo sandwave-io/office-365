@@ -6,6 +6,7 @@ use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\GuzzleException;
 use Psr\Http\Message\ResponseInterface;
 use SandwaveIo\Office365\Exception\Office365Exception;
+use SandwaveIo\Office365\Transformer\ResponseStatusTransformer;
 
 final class WebApiClient implements WebApiClientInterface
 {
@@ -24,7 +25,8 @@ final class WebApiClient implements WebApiClientInterface
         try {
             return $this->client->request($method, $url, ['body' => $xmlDocument]);
         } catch (GuzzleException $e) {
-            throw new Office365Exception($e->getMessage(), $e->getCode(), $e);
+            $errorCode = ResponseStatusTransformer::getStatusCode(new \SimpleXMLElement($xmlDocument));
+            throw new Office365Exception($e->getMessage(), $errorCode, $e);
         }
     }
 }
