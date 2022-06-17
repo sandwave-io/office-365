@@ -11,6 +11,8 @@ parameters:
     paths:
         - src
         - tests
+    excludes_analyse:
+            - %currentWorkingDirectory%/src/Office/OfficeClient*
 
     ignoreErrors:
         # Extending classes.
