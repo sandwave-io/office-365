@@ -39,7 +39,7 @@ final class OfficeClient
     /**
      * @param array<mixed> $webApiOptions
      */
-    public function __construct(string $host, string $username, string $password, array $webApiOptions = [])
+    public function __construct(?string $host, ?string $username, ?string $password, array $webApiOptions = [])
     {
         $this->parameterContainer = new ParameterContainer([
             'host' => $host,
