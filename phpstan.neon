@@ -7,6 +7,8 @@ includes:
 parameters:
     checkGenericClassInNonGenericObjectType: false
     level: 8
+    excludes_analyse:
+        - %currentWorkingDirectory%/src/Office/OfficeClient*
     paths:
         - src
         - tests
