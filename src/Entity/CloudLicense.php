@@ -12,6 +12,8 @@ final class CloudLicense implements EntityInterface
 
     private CloudTenant $tenant;
 
+    private ?int $tenantId;
+
     private ?int $orderId = null;
 
     private string $customerId;
@@ -53,6 +55,16 @@ final class CloudLicense implements EntityInterface
     public function setPartnerReferenceHeader(PartnerReferenceHeader $header): void
     {
         $this->partnerReferenceHeader = $header;
+    }
+
+    public function getTenantId(): ?int
+    {
+        return $this->tenantId;
+    }
+
+    public function setTenantId(?int $tenantId): void
+    {
+        $this->tenantId = $tenantId;
     }
 
     public function setAgreementContact(AgreementContact $contact): void
