@@ -76,6 +76,8 @@ final class CloudLicenseOrderTest extends TestCase
      */
     public function callbackOrderDeclined(): void
     {
+        $this->expectNotToPerformAssertions();
+
         $mockHandler = new MockHandler(
             [new Response(200, [], (string) file_get_contents(__DIR__ . '/../Data/Request/NewCloudLicenseOrderRequest.xml'))]
         );

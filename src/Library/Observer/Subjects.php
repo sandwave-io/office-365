@@ -82,7 +82,6 @@ final class Subjects
             $subject = $this->subject[$event];
 
             switch ($event) {
-
                 case Event::CALLBACK_ERROR:
                     /** @var ErrorSubject $subject */
                     if (! $entity instanceof Error) {
@@ -135,7 +134,6 @@ final class Subjects
                     /** @var OrderModifyQuantitySubject $subject */
                     $subject->setOrderModifyQuantity($entity);
                     break;
-
             }
 
             return $subject;

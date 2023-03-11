@@ -79,9 +79,7 @@ final class CustomerTest extends TestCase
                 Assert::assertNull($customer->getPhone2());
                 Assert::assertNotNull($customer->getHeader());
 
-                if ($customer->getHeader() !== null) {
-                    Assert::assertSame('134534659043869034809635435', $customer->getHeader()->getPartnerReference());
-                }
+                Assert::assertSame('134534659043869034809635435', $customer->getHeader()->getPartnerReference());
             }
         });
 
@@ -95,6 +93,8 @@ final class CustomerTest extends TestCase
      */
     public function callbackCustomerCreateDeclined(): void
     {
+        $this->expectNotToPerformAssertions();
+
         $mockHandler = new MockHandler(
             [new Response(200, [], (string) file_get_contents(__DIR__ . '/../Data/Request/NewCustomerRequest.xml'))]
         );
@@ -164,10 +164,7 @@ final class CustomerTest extends TestCase
                 Assert::assertSame('Sandwave test', $customer->getName());
                 Assert::assertSame('CID1322911', $customer->getCustomerId());
                 Assert::assertNotNull($customer->getHeader());
-
-                if ($customer->getHeader() !== null) {
-                    Assert::assertSame('134534659043869034809635435', $customer->getHeader()->getPartnerReference());
-                }
+                Assert::assertSame('134534659043869034809635435', $customer->getHeader()->getPartnerReference());
             }
         });
 
@@ -181,6 +178,8 @@ final class CustomerTest extends TestCase
      */
     public function callbackCustomerModifyDeclined(): void
     {
+        $this->expectNotToPerformAssertions();
+
         $mockHandler = new MockHandler(
             [new Response(200, [], (string) file_get_contents(__DIR__ . '/../Data/Request/ModifyCustomerRequest.xml'))]
         );

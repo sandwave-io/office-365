@@ -51,10 +51,7 @@ final class TerminateTest extends TestCase
             {
                 Assert::assertSame('13608704', $terminate->getOrderId());
                 Assert::assertNotNull($terminate->getHeader());
-
-                if ($terminate->getHeader() !== null) {
-                    Assert::assertSame('123456', $terminate->getHeader()->getPartnerReference());
-                }
+                Assert::assertSame('123456', $terminate->getHeader()->getPartnerReference());
             }
         });
 
@@ -68,6 +65,8 @@ final class TerminateTest extends TestCase
      */
     public function callbackTerminateOrderDeclined(): void
     {
+        $this->expectNotToPerformAssertions();
+
         $mockHandler = new MockHandler(
             [new Response(200, [], (string) file_get_contents(__DIR__ . '/../Data/Request/TerminateRequest.xml'))]
         );
