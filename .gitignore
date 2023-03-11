@@ -1,10 +1,10 @@
 vendor
 .idea
-.php_cs.cache
 .DS_Store
 clover.xml
 coverage
 .phpunit.result.cache
+.phpunit.cache
 .php-cs-fixer.cache
 .env
 composer.lock
