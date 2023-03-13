@@ -1,4 +1,12 @@
-# Office 365
+[![](https://user-images.githubusercontent.com/60096509/91668964-54ecd500-eb11-11ea-9c35-e8f0b20b277a.png)](https://sandwave.io)
+
+
+# Office 365 API - PHP SDK
+
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/sandwave-io/office-365/ci.yml?branch=main)](https://packagist.org/packages/sandwave-io/acronis-php)
+[![Packagist PHP Version Support](https://img.shields.io/packagist/php-v/sandwave-io/office-365-php)](https://packagist.org/packages/sandwave-io/office-365-php)
+[![Packagist PHP Version Support](https://img.shields.io/packagist/v/sandwave-io/office-365-php)](https://packagist.org/packages/sandwave-io/office-365-php)
+[![Packagist Downloads](https://img.shields.io/packagist/dt/sandwave-io/office-365-php)](https://packagist.org/packages/sandwave-io/office-365-php)
 
 This is a package for the Microsoft 365 implementation of KPN.
 
