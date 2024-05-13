@@ -1,49 +1,49 @@
 customer:
   create:
     method: post
-    url: '/api/queued'
+    url: '/queued'
 
   modify:
     method: post
-    url: '/api/queued'
+    url: '/queued'
 
   has_domain_ownership:
     method: post
-    url: '/api/realtime'
+    url: '/realtime'
 
 order:
   license_create:
     method: post
-    url: '/api/queued'
+    url: '/queued'
 
   modify:
     method: post
-    url: '/api/queued'
+    url: '/queued'
 
   summary:
     method: post
-    url: '/api/realtime'
+    url: '/realtime'
 
 addon:
   create:
     method: post
-    url: '/api/queued'
+    url: '/queued'
 
 terminate:
   order:
     method: post
-    url: '/api/queued'
+    url: '/queued'
 
 summary:
   order:
     method: post
-    url: '/api/realtime'
+    url: '/realtime'
 
 tenant:
   exists:
     method: post
-    url: '/api/realtime'
+    url: '/realtime'
 
   fetch_tenant:
     method: post
-    url: '/api/realtime'
+    url: '/realtime'
